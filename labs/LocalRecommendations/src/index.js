@@ -178,9 +178,11 @@ var handlers = {
     'GoOutIntent': function () {
 
         getWeather( (weatherData) => {
-            getWordsmithNarrative({data: weatherData}, (say) => {
-                this.emit(':tell', say, say);
-            })
+            let say = `In in ${weatherData.city}, it is ${weatherData.temp},  and  ${weatherData.conditions}.`;
+            this.emit(':tell', say, say);
+            // getWordsmithNarrative({data: weatherData}, (say) => {
+            //     this.emit(':tell', say, say);
+            // })
         });
     },
 
