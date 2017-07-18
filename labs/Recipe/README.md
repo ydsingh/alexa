@@ -32,7 +32,7 @@ The instructor will walk you through the high level steps (check the full [Fact 
 
 Practice speaking to the skill a few times to learn all the features of the skill.
 When you ask for "ingredients", you will both hear a list of ingredients, and see the list on your Alexa app or Echo Show screen, if you have one.
-When you ask to "begin cooking", the skill will guide you through each step in the process.  You can say Pause or Stop and then return to the skill and resume where you left off.
+When you ask to "begin cooking", the skill will guide you through each step in the process.
 
 
 1. Be sure you have installed Node.JS on your laptop.
@@ -54,8 +54,10 @@ Click **Save** to save the changes to your Lambda function.
 If it works well, please [publish your skill](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/publishing-an-alexa-skill)  for the world to enjoy.
 
 ### Lab 2: Allow the user to Pause and Resume
-We can configure a DynamoDB database table to remember which step the user was on when they pause the skill.
-Then, the skill can resume with the next step when the user returns to the skill.
+We can configure a DynamoDB database table to remember which step the user was on when they stop or pause the skill.
+Then, the skill can prompt the user to continue with the next step when re-launching the skill.
+
+We will need to prepare our skill Lambda function to use a database called [DynamoDB](https://aws.amazon.com/dynamodb/).
 
 #### Configure Permissions for DynamoDB
 Steps:
@@ -74,8 +76,8 @@ Steps:
 1. Test your skill.  Open the skill, say "begin cooking", and then say "stop".  You may encounter errors the first couple of times the skill runs.  This is okay.  The skill code is setting up a new table in DynamoDB which may take 60 seconds to complete.
 
 
-Test your skill again.  Now, when you say "Stop" or "Pause" during the recipe steps, you can re-launch the skill and be prompted to continue where you left off.
-
+Test your skill again.  Say Next a couple of times to advance through the recipe steps.  Next, say "Stop" or "Pause".
+Launch the skill again and you should be prompted to continue where you left off.
 
 
 ### Practice and Demo

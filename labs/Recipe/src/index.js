@@ -32,6 +32,10 @@ var data = {
     ]
 };
 
+var welcomeCardImg = {
+    smallImageUrl: 'https://s3.amazonaws.com/webappvui/img/breakfast_sandwich.jpg',
+    largeImageUrl: 'https://s3.amazonaws.com/webappvui/img/breakfast_sandwich.jpg'
+};
 // 2. Skill Code =======================================================================================================
 
 var Alexa = require('alexa-sdk');
@@ -59,7 +63,7 @@ var handlers = {
         if (!this.attributes['currentStep'] ) {
 
             var say = this.t('WELCOME') + ' ' + this.t('HELP');
-            this.emit(':ask', say, say);
+            this.emit(':askWithCard', say, say, this.t('TITLE'), this.t('WELCOME'), welcomeCardImg);
 
         } else {
 
@@ -67,8 +71,8 @@ var handlers = {
                 + this.attributes['currentStep']
                 + '. Say restart if you want to start over. '
                 + ' Ready to continue with step '
-                + this.attributes['currentStep'] + 1 + '?';
-            this.emit(':ask', say, say);
+                + (parseInt(this.attributes['currentStep']) + 1 ).toString() + '?';
+            this.emit(':askWithCard', say, say, 'Continue?', say);
         }
 
     },
@@ -89,7 +93,7 @@ var handlers = {
         this.emit(':askWithCard', say, 'Say yes if you are ready to begin cooking the recipe.', this.t('TITLE') + ' shopping list', cardlist);
 
     },
-    'AMAZON.CookIntent': function () {
+    'CookIntent': function () {
         this.emit('AMAZON.NextIntent');
     },
     'AMAZON.YesIntent': function () {
@@ -118,7 +122,7 @@ var handlers = {
         if(currentStep == data.steps.length ) {
 
             delete this.attributes['currentStep'];
-            this.emit(':tellWithCard', say + '. <say-as interpret-as="interjection">bon appetit</say-as>', this.t('TITLE'),  'Bon Appetit!');
+            this.emit(':tellWithCard', say + '. <say-as interpret-as="interjection">bon appetit</say-as>', this.t('TITLE'),  say + '\nBon Appetit!', welcomeCardImg);
 
         } else {
 
@@ -147,6 +151,10 @@ var handlers = {
         }
 
     },
+    'AMAZON.StartOverIntent': function () {
+        delete this.attributes['currentStep'];
+        this.emit('LaunchRequest');
+    },
     'AMAZON.CancelIntent': function () {
         this.emit(':tell', this.t('STOP'));
     },
@@ -156,6 +164,7 @@ var handlers = {
     },
     'SessionEndedRequest': function () {
         console.log('session ended!');
+        this.emit(':saveState', true);
     }
 
 };
