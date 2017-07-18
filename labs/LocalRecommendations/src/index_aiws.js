@@ -1,3 +1,7 @@
+var wordsmithKey = 'YOUR KEY HERE';
+var Alexa = require('alexa-sdk');
+var https = require('https');
+
 
 // 1. Text strings =====================================================================================================
 //    Modify these strings and messages to change the behavior of your Lambda function
@@ -84,8 +88,6 @@ var myAPI = {
     method: 'GET'
 };
 // 2. Skill Code =======================================================================================================
-
-var Alexa = require('alexa-sdk');
 
 exports.handler = function(event, context, callback) {
     var alexa = Alexa.handler(event, context);
@@ -175,25 +177,13 @@ var handlers = {
 
     'GoOutIntent': function () {
 
-        getWeather( ( localTime, currentTemp, currentCondition) => {
-            // time format 10:34 PM
-            // currentTemp 72
-            // currentCondition, e.g.  Sunny, Breezy, Thunderstorms, Showers, Rain, Partly Cloudy, Mostly Cloudy, Mostly Sunny
+        getWeather( (weatherData) => {
+            let say = `The high temperature will be ${weatherData.temp} in ${weatherData.city} and conditions are forecast to be ${weatherData.conditions}.`;
 
-            // sample API URL for Irvine, CA
-            // https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22irvine%2C%20ca%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys
-
-            this.emit(':tell', 'It is ' + localTime
-                + ' and the weather in ' + data.city
-                + ' is '
-                + currentTemp + ' and ' + currentCondition);
-
-            // TODO
-            // Decide, based on current time and weather conditions,
-            // whether to go out to a local beach or park;
-            // or recommend a movie theatre; or recommend staying home
-
-
+            this.emit(':tell', say, say);
+            // getWordsmithNarrative({data: weatherData}, (say) => {
+            //     this.emit(':tell', say, say);
+            // })
         });
     },
 
@@ -252,6 +242,13 @@ function getAttractionsByDistance(maxDistance) {
     return list;
 }
 
+// Abstraction layer for weather conditions
+var condMap = {
+    rain: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 35, 37, 38, 39, 40, 45, 47],
+    snow: [13, 14, 15, 16, 17, 18, 41, 42, 43, 46],
+    cloudy: [19, 20, 21, 22, 23, 24, 26, 27, 28, 29, 30, 44]
+}
+
 function getWeather(callback) {
     var https = require('https');
 
@@ -264,16 +261,20 @@ function getWeather(callback) {
             returnData = returnData + chunk;
         });
         res.on('end', () => {
-            var channelObj = JSON.parse(returnData).query.results.channel;
+            let channelObj = JSON.parse(returnData).query.results.channel;
+            let condition = 'clear';
+            Object.keys(condMap).forEach(function(key) {
+                if (condMap[key].indexOf(parseInt(channelObj.item.forecast.code)) !== -1) condition = key;
+            })
+            weatherData = {
+                city: channelObj.location.city,
+                state: channelObj.location.region,
+                temp: channelObj.item.forecast[0].high,
+                conditions: condition,
+                wind: channelObj.wind.speed
+            }
 
-            var localTime = channelObj.lastBuildDate.toString();
-            localTime = localTime.substring(17, 25).trim();
-
-            var currentTemp = channelObj.item.condition.temp;
-
-            var currentCondition = channelObj.item.condition.text;
-
-            callback(localTime, currentTemp, currentCondition);
+            callback(weatherData);
 
         });
 
@@ -284,4 +285,33 @@ function randomArrayElement(array) {
     var i = 0;
     i = Math.floor(Math.random() * array.length);
     return(array[i]);
+}
+
+function getWordsmithNarrative(data, callback) {
+    let wordsmithOpts = {
+        host: 'api.automatedinsights.com',
+        path: '/v1.5/projects/wordsmith-alexa-weather/templates/wordsmith-alexa-weather-template/outputs',
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+            'Authorization': `Bearer ${wordsmithKey}`,
+            'User-Agent': 'Voicehacks Wordsmith Alexa Weather'
+        },
+        method: 'POST'
+    }
+
+    let req = https.request(wordsmithOpts, res => {
+        res.setEncoding('utf8');
+        let returnData = '';
+
+        res.on('data', chunk => {
+            returnData += chunk;
+        });
+        res.on('end', () => {
+            console.log(returnData);
+            let narrative = JSON.parse(returnData).data.content;
+            callback(narrative);
+        });
+    })
+    req.write(JSON.stringify(data));
+    req.end();
 }

@@ -21,7 +21,7 @@ When you ask for a meal such as "breakfast", the skill will scan the list of res
 1. With the alexa-cookbook previously downloaded to a folder your laptop, open a command prompt and navigate to the cookbook folder (labs/LocalRecommendations/src).  Type in ```npm install```
 1. Next, navigate back up to the (labs/LocalRecommendations) folder.  Type in ```node testflow```
 You should see a sequence of skill events be tested and the corresponding output.
-This will look best with a black-background command prompt.
+This will look best with a black-background command prompt.  Read more about [TestFlow](../../testing/TestFlow).
 
 ### Lab 1: Customize this skill for your city or town
 Think of your hometown, current city, or favorite city.  Jot down a list of your favorite restaurants and attractions.
@@ -70,7 +70,7 @@ Once this list has been created, you could define a new slot called "bird" that 
 
 ### Lab 3: Extend the skill logic with smart recommendations
 When the user says "go outside", the ```GoOutIntent``` intent is called and the code in the GoOutIntent handler block is executed.
-This makes an API call over the Internet to a service that returns the weather and current time in your city.
+This makes an API call over the Internet to the Yahoo Weather service, which returns the weather and current time in your city.
 
 You can enhance this handler code to make a relevant activity suggestion to the user.
 For example, add a feature to decide, based on current time and weather conditions, whether to:
@@ -80,6 +80,36 @@ For example, add a feature to decide, based on current time and weather conditio
  * Attend a scheduled public event happening soon
  * Staying home to watch a movie on Amazon Prime
  * etc..
+
+
+### Lab 4: Extend the skill with other web service calls
+The ```getWeather()``` function makes a call to the Yahoo Weather API.
+
+The details of this web service call are maintained in the myAPI object:
+
+```
+var myAPI = {
+    host: 'query.yahooapis.com',
+    port: 443,
+    path: `/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22${encodeURIComponent(data.city)}%2C%20${data.state}%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys`,
+    method: 'GET'
+};
+```
+
+<a href="https://www.yahoo.com/?ilc=401" target="_blank"> <img src="https://poweredby.yahoo.com/purple.png" width="134" height="29"/> </a>
+
+ Note:
+ * This weather API allows 2000 calls per day for non-commercial use.
+ * The ```${data.city}``` and ```${data.state}``` values are dyamically inserted into the myAPI.path string.  This entire string begins and ends with tick marks ` and not normal quotes such as " or '.  Strings with tick marks can use variable substitution shown here.
+
+**Exercise:**
+Find another web service call that would add value to your skill.  It might be an API that provides restaurant hours, a taxi service fare estimator, or an API that is published by a local business or university.
+
+Implement a call to this API as a function in your skill.  Add the function to the logic in an Intent handler so that the API can help prepare a dynamic response for the user.
+
+Find more detailed examples of Lambda API calls at [external-calls/httpsGet](../../external-calls/httpsGet) and [external-calls/httpsPost](../../external-calls/httpsPost).
+
+
 
 ### Practice and Demo
 Practice all the features of your skill.  You can use [EchoSim.IO](https://echosim.io), the Amazon shopping app on your phone, or an Echo device.
