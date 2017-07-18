@@ -8,7 +8,6 @@
 #   For example,   ? AnswerIntent usstate=New%20Jersey
 
 LaunchRequest
-IngredientsIntent
 AMAZON.YesIntent
 AMAZON.NextIntent
 AMAZON.NextIntent

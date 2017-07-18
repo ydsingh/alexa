@@ -11,7 +11,7 @@
 var config = {};
 config.IOT_BROKER_ENDPOINT      = "a3npzlqqmmzqo.iot.us-east-1.amazonaws.com";  // also called the REST API endpoint
 config.IOT_BROKER_REGION        = "us-east-1";  // eu-west-1 corresponds to the Ireland Region.  Use us-east-1 for the N. Virginia region
-config.IOT_THING_NAME           = "waterPump";
+config.IOT_THING_NAME           = "thing1";
 
 var SkillMessagesUS = {
     'welcome'       :'welcome.  you can say things like, go to london or go to berlin',

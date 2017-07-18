@@ -7,12 +7,25 @@ Breakfast Sandwich is a skill that will guide the user through the process to pr
 The skill can give the user a list of recipe ingredients, and then guide them through all the recipe steps.
 You can install the skill, and then update the text within the Lambda Javascript code to define your own Recipe and Ingredients.
 
-### Installation
+### Installing the skill
 
-The instructor will walk you through the high level steps:
-1. Copy and paste the ```speechAssets/InteractionModel.json``` contents into a new skill in Skill Builder Beta.
-1. Copy the ```src/index.js``` code into a new AWS Lambda function that is based on the **Fact** blueprint.
+The instructor will walk you through the high level steps (check the full [Fact Skill Tutorial](https://github.com/alexa/skill-sample-nodejs-fact) for reference):
 
+* Create a new AWS Lambda function:
+  1. Choose the **Fact** blueprint template.
+  1. Setup "Alexa Skills Kit" as the function trigger.
+  1. Name the function ```BreakfastSandwich```
+  1. Replace the existing code by pasting in the code from [src/index.js](src/index.js).
+  1. Choose your default role ```lambda_basic_execution```
+  1. Click "Create Function"
+
+* Create a new skill
+  1. Call the skill "Breakfast Sandwich" with invocation name ```breakfast sandwich```
+  1. Launch "Skill Builder Beta"
+  1. Click the Code Editor tab (just below the turqoise Dashboard tab on the top left)
+  1. Copy and paste the ```speechAssets/InteractionModel.json``` contents into the Skill Builder Beta.
+  1. Click Save, then Build
+  1. Advance to the Configuration page, choose AWS Lambda ARN, and paste in the ARN from the function you created.
 
 
 ### Test
@@ -28,6 +41,7 @@ When you ask to "begin cooking", the skill will guide you through each step in t
 You should see a sequence of skill events be tested and the corresponding output.
 This will look best with a black-background command prompt.
 
+## Labs
 ### Lab 1: Customize this skill for your own Recipe
 
 Open your Lambda function and click on the Code tab.  Review the first section of the code that is customized for the Breakfast Sandwich meal.
@@ -59,7 +73,8 @@ Steps:
 1. Scroll up and click the blue "Save" button.
 1. Test your skill.  Open the skill, say "begin cooking", and then say "stop".  You may encounter errors the first couple of times the skill runs.  This is okay.  The skill code is setting up a new table in DynamoDB which may take 60 seconds to complete.
 
-Test your skill again.  Now, when you pause the skill during the recipe steps, you can re-launch the skill and hear the next step in your sequence.
+
+Test your skill again.  Now, when you say "Stop" or "Pause" during the recipe steps, you can re-launch the skill and be prompted to continue where you left off.
 
 
 

@@ -3,14 +3,20 @@
 // node testflow
 // node testflow staterequest.txt
 
+// var AWS = require('aws-sdk');
+// var AWSregion = 'us-east-1';  // us-east-1
+// AWS.config.update({
+//     region: AWSregion
+// });
+
 
 // Toggle on or off various debugging outputs
 const options = {
     speechOutput : true,
     slots        : true,
     attributes   : true,    // true, false, or a string with the name of an attribute
-    stdout       : true,    // standard output  / console.log() in your code
-    delay        : 1.0      // seconds between requests
+    stdout       : false,    // standard output  / console.log() in your code
+    delay        : 2.0      // seconds between requests
 };
 var appId = 'amzn1.echo-sdk-ams.app.1234';  // set this to match your skill's alexa.appId to remove warnings
 var locale = 'en-US';
@@ -138,7 +144,7 @@ function runSingleTest(myLineArray, currentLine, sa) {
     var requestType = tokenArray[0].replace('\r','');
     tokenArray.shift();
 
-    if (requestType =='LaunchRequest') {
+    if (requestType =='LaunchRequest' || requestType == 'SessionEndedRequest') {
         request =  {
             "type": requestType,
             "locale": locale

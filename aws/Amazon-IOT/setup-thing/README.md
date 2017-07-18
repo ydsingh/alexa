@@ -12,7 +12,7 @@ It is simple to create a new virtual "Thing" in the AWS IOT Thing Registry.
 1. On the left panel, locate and click on the "Registry" link
 1. A sub-menu appears. Click on the "Things" link
 1. Click on the blue "Create" button
-1. Give your Thing a name, such as ```waterPump``` and click "Create"
+1. Give your Thing a name, such as ```thing1``` and click "Create"
 1. On the next page, you will see thing details.  Click the "Interact" item on the left menu.
 1. Record the HTTPS Rest API Endpoint you see, such as ```a2eshrcp6u0000.iot.us-east-1.amazonaws.com```
 

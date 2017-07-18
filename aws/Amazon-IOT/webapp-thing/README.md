@@ -1,7 +1,7 @@
 #### Ingredients
 ## Webapp Thing<a id="title"></a>
 
-The browser app at ```waterPump.html``` can be configured to point to your IOT Thing and receive updates triggered by Alexa requests.
+The browser app at ```thing1.html``` can be configured to point to your IOT Thing and receive updates triggered by Alexa requests.
 
 #### Steps
 
@@ -28,7 +28,7 @@ Apply all settings:
 1. Modify the fields labeled REGION and mqttEndpoint and IdentityPoolId
 
 #### Launch the page
- + Open in the page waterPump.html in your favorite browser.
+ + Open in the page thing1.html in your favorite browser.
    + You can open the page right from within your project folder, you do not need to host it on a website.
  + The page should display with a green status label saying "CONNECTED"
 

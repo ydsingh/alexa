@@ -28,6 +28,12 @@
     },
     {
       "intent": "AMAZON.CancelIntent"
+    },
+    {
+      "intent": "AMAZON.RepeatIntent"
+    },
+    {
+      "intent": "AMAZON.StartOverIntent"
     }
   ]
 }

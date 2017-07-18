@@ -23,7 +23,7 @@ When you setup a virtual Thing in a particular region, you will be given the nam
 var config = {};
 config.IOT_BROKER_ENDPOINT      = "a2eshrcp6u0000.iot.us-east-1.amazonaws.com";  // also called the REST API endpoint
 config.IOT_BROKER_REGION        = "us-east-1";  // corresponds to the N.Virginia Region.  Use ```eu-west-1``` instead for the Ireland region
-config.IOT_THING_NAME           = "waterPump";
+config.IOT_THING_NAME           = "thing1";
 
 ```
 
@@ -43,7 +43,7 @@ See the [IAM Policies](../IAM_POLICIES.md) page for more details.
       "Action": [
         "iot:UpdateThingShadow"
       ],
-      "Resource":["arn:aws:iot:eu-west-1:589662380000:thing/waterPump"],
+      "Resource":["arn:aws:iot:eu-west-1:589662380000:thing/thing1"],
     }
   ]
 }

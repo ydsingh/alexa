@@ -23,6 +23,8 @@ When you ask for a meal such as "breakfast", the skill will scan the list of res
 You should see a sequence of skill events be tested and the corresponding output.
 This will look best with a black-background command prompt.  Read more about [TestFlow](../../testing/TestFlow).
 
+## Labs
+
 ### Lab 1: Customize this skill for your city or town
 Think of your hometown, current city, or favorite city.  Jot down a list of your favorite restaurants and attractions.
 
@@ -72,8 +74,8 @@ Once this list has been created, you could define a new slot called "bird" that 
 When the user says "go outside", the ```GoOutIntent``` intent is called and the code in the GoOutIntent handler block is executed.
 This makes an API call over the Internet to the Yahoo Weather service, which returns the weather and current time in your city.
 
-You can enhance this handler code to make a relevant activity suggestion to the user.
-For example, add a feature to decide, based on current time and weather conditions, whether to:
+You can enhance the ```GoOutIntent``` handler code (around line 185) to make a relevant activity suggestion to the user.
+For example, add logic to decide, based on current time and weather conditions, whether to:
 
  * Go out to a local beach or park
  * Recommend a movie theatre or mall
@@ -107,7 +109,7 @@ Find another web service call that would add value to your skill.  It might be a
 
 Implement a call to this API as a function in your skill.  Add the function to the logic in an Intent handler so that the API can help prepare a dynamic response for the user.
 
-Find more detailed examples of Lambda API calls at [external-calls/httpsGet](../../external-calls/httpsGet) and [external-calls/httpsPost](../../external-calls/httpsPost).
+For a tutorial on calling APIs from Lambda, see the README guides at [external-calls/httpsGet](../../external-calls/httpsGet) and [external-calls/httpsPost](../../external-calls/httpsPost).
 
 
 

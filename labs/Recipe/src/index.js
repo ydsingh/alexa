@@ -36,11 +36,18 @@ var data = {
 
 var Alexa = require('alexa-sdk');
 
+var AWS = require('aws-sdk');
+var AWSregion = 'us-east-1';  // us-east-1
+AWS.config.update({
+    region: AWSregion
+});
+
 exports.handler = function(event, context, callback) {
     var alexa = Alexa.handler(event, context);
 
     // alexa.appId = 'amzn1.echo-sdk-ams.app.1234';
     // alexa.dynamoDBTableName = 'RecipeSkillTable'; // creates new table for session.attributes
+
     alexa.resources = languageStrings;
     alexa.registerHandlers(handlers);
     alexa.execute();
@@ -56,14 +63,18 @@ var handlers = {
 
         } else {
 
-            var say = 'Welcome back.  You were on step ' + this.attributes['currentStep'];
-
+            var say = 'Welcome back.  You were on step '
+                + this.attributes['currentStep']
+                + '. Say restart if you want to start over. '
+                + ' Ready to continue with step '
+                + this.attributes['currentStep'] + 1 + '?';
             this.emit(':ask', say, say);
         }
 
     },
 
     'IngredientsIntent': function () {
+
         var say = "";
         var list = [];
         for (var i = 0; i < data.ingredients.length; i++) {
@@ -82,7 +93,9 @@ var handlers = {
         this.emit('AMAZON.NextIntent');
     },
     'AMAZON.YesIntent': function () {
+
         this.emit('AMAZON.NextIntent');
+
     },
     'AMAZON.NoIntent': function () {
 
@@ -102,8 +115,9 @@ var handlers = {
         var say = 'Step ' + currentStep + ', ' + data.steps[currentStep - 1];
         var sayOnScreen = data.steps[currentStep - 1];
 
-        if(currentStep == data.steps.length - 1) {
+        if(currentStep == data.steps.length ) {
 
+            delete this.attributes['currentStep'];
             this.emit(':tellWithCard', say + '. <say-as interpret-as="interjection">bon appetit</say-as>', this.t('TITLE'),  'Bon Appetit!');
 
         } else {
@@ -113,6 +127,16 @@ var handlers = {
 
     },
 
+    'AMAZON.RepeatIntent': function () {
+        if (!this.attributes['currentStep'] ) {
+            this.attributes['currentStep'] = 1;
+        } else {
+            this.attributes['currentStep'] = this.attributes['currentStep'] - 1;
+        }
+
+        this.emit('AMAZON.NextIntent');
+
+    },
     'AMAZON.HelpIntent': function () {
 
         if (!this.attributes['currentStep']) {  // new session
@@ -122,13 +146,16 @@ var handlers = {
             this.emit(':ask', 'you are on step ' + currentStep + ' of the ' + this.t('TITLE') + ' recipe. Say Next to continue or Ingredients to hear the list of ingredients.');
         }
 
-
     },
     'AMAZON.CancelIntent': function () {
         this.emit(':tell', this.t('STOP'));
     },
     'AMAZON.StopIntent': function () {
+
         this.emit(':tell', this.t('STOP'));
+    },
+    'SessionEndedRequest': function () {
+        console.log('session ended!');
     }
 
 };
