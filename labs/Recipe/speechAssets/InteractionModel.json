@@ -48,7 +48,8 @@
     {
       "name": "IngredientsIntent",
       "samples": [
-        "ingredients"
+        "ingredients",
+        "shopping list"
       ],
       "slots": []
     }

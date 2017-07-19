@@ -7,17 +7,22 @@ Amazon [AWS IoT](https://aws.amazon.com/iot), or Internet of Things, is a set of
 A Thing may be a motor, a fan, a robot, etc.
 
 You can start by creating a virtual Thing within AWS that can be controlled by your Lambda code.
-Later, you can configure a physical thing, such as a Raspberry PI device, to connect to the IOT network and receive updates to stay in sync with the virtual Thing.
+Later, you could configure a physical thing, such as an Intel Edison Arduino device, to connect to the IOT network (using certificates) and receive updates to stay in sync with the virtual Thing.
 The virtual Thing is known as a "thing shadow".  Read more on the [AWS IOT Thing Shadow Guide](http://docs.aws.amazon.com/iot/latest/developerguide/using-thing-shadows.html).
 
 ### Table of Contents (setup steps)
+Follow these three steps to build a skill that can update an IOT thing.  Step 3 has you configure a web browser page in place of a real thing.  Once configured, the page will load images of the city you ask for.
+
 1. [setup-thing](setup-thing#title)
 1. [update-shadow](update-shadow#title)
 1. [webapp-thing](webapp-thing#title)
 
-### IOT configuration settings
 
-When you setup a virtual Thing in a particular region, you will be given the name of an endpoint.  Together with the Thing name and your region, you can define the details your Lambda function will need to update the Thing.
+
+### Key configuration settings for IOT
+
+When you setup a virtual Thing in a particular region, you will be given the name of an endpoint.
+Together with the Thing name and the name of your region, you can uniquely describe your thing.  Both the back-end (Skill Lambda function) and front end (Device or web app) will point to this thing to exchange data.
 
 ```
 var config = {};
@@ -27,29 +32,6 @@ config.IOT_THING_NAME           = "thing1";
 
 ```
 
-### IAM Role Permissions
-
-Your Lambda's IAM role can be setup to include the generic ```AWSIoTDataAccess``` policy.
-
-Or, the following IAM Policy can be modified and added to your Lambda function's IAM role to only allow updating a specific Thing.
-See the [IAM Policies](../IAM_POLICIES.md) page for more details.
-
-```
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "iot:UpdateThingShadow"
-      ],
-      "Resource":["arn:aws:iot:eu-west-1:589662380000:thing/thing1"],
-    }
-  ]
-}
-```
-
- *You can learn more from the [Getting Started with AWS IOT](https://aws.amazon.com/iot-platform/getting-started/) documentation.*
 
 
 <hr />

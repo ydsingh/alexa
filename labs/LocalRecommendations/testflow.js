@@ -10,7 +10,7 @@ const options = {
     slots        : true,
     attributes   : true,    // true, false, or a string with the name of an attribute
     stdout       : true,    // standard output  / console.log() in your code
-    delay        : 1.0      // seconds between requests
+    delay        : 2.0      // seconds between requests
 };
 var appId = 'amzn1.echo-sdk-ams.app.1234';  // set this to match your skill's alexa.appId to remove warnings
 var locale = 'en-US';

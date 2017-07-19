@@ -21,7 +21,29 @@ Here is how to copy and paste your Lambda function ARN to the Skill endpoint.
 #### Add IOT permissions to your Lambda IAM Role
 
 1. Within the AWS IAM console, locate and click on the role used by your Lambda function, such as ```lambda_basic_execution```
-1. Click the blue button to add IOT Full Access policy to this role.
+1. Click the blue button to add ```AWSIoTFullAccess``` policy. to this role.
+
+```AWSIoTFullAccess``` will work fine for testing, however in a production setting, you would want to define a finer-grained set of limited permissions for your Lambda function role.
+
+The following IAM Policy can be modified and attached to your Lambda function's IAM role to only allow updating a specific Thing.
+See the [IAM Policies](../IAM_POLICIES.md) page for more details.
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iot:UpdateThingShadow"
+      ],
+      "Resource":["arn:aws:iot:eu-west-1:589662380000:thing/thing1"],
+    }
+  ]
+}
+```
+
+ *You can learn more from the [Getting Started with AWS IOT](https://aws.amazon.com/iot-platform/getting-started/) documentation.*
 
 
 #### Test your skill
