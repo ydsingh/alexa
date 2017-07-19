@@ -70,7 +70,7 @@ Steps:
 #### Enable the table within your Lambda code
 Steps:
 1. Review your Lambda function code within the AWS Lambda console.
-1. Locate the line ```// alexa.dynamoDBTableName = 'RecipeSkillTable'; ``` which is at around line 40.
+1. Locate the line ```// alexa.dynamoDBTableName = 'RecipeSkillTable'; ``` which is at around line 53.
 1. Uncomment out this line by removing the first two ```//``` characters.
 1. Scroll up and click the blue "Save" button.
 1. Test your skill.  Open the skill, say "begin cooking", and then say "stop".  You may encounter errors the first couple of times the skill runs.  This is okay.  The skill code is setting up a new table in DynamoDB which may take 60 seconds to complete.

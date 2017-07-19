@@ -40,8 +40,8 @@ var welcomeCardImg = {
 
 var Alexa = require('alexa-sdk');
 
-var AWS = require('aws-sdk');
-var AWSregion = 'us-east-1';  // us-east-1
+var AWS = require('aws-sdk');  // this is defined to enable a DynamoDB connection from local testing
+var AWSregion = 'us-east-1';   // eu-west-1
 AWS.config.update({
     region: AWSregion
 });
@@ -159,7 +159,6 @@ var handlers = {
         this.emit(':tell', this.t('STOP'));
     },
     'AMAZON.StopIntent': function () {
-
         this.emit(':tell', this.t('STOP'));
     },
     'SessionEndedRequest': function () {
