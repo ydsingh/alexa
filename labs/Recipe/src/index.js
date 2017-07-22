@@ -33,8 +33,8 @@ var data = {
 };
 
 var welcomeCardImg = {
-    smallImageUrl: 'https://s3.amazonaws.com/webappvui/img/breakfast_sandwich_small.jpg',
-    largeImageUrl: 'https://s3.amazonaws.com/webappvui/img/breakfast_sandwich_large.jpg'
+    smallImageUrl: 'https://s3.amazonaws.com/webappvui/img/breakfast_sandwich_small.png',
+    largeImageUrl: 'https://s3.amazonaws.com/webappvui/img/breakfast_sandwich_large.png'
 };
 // 2. Skill Code =======================================================================================================
 
