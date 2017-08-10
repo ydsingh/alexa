@@ -24,7 +24,7 @@ Add permissions to users of your Identity Pool:
 1. For the IOT webapp, choose ```AWSIoTDataAccess``` or define a specific set of permissions.
 
 Apply all settings:
-1. Open the /js folder and locate the file ```aws_config.js```
+1. Open the Amazon-IOT/webapp-thing/js folder and locate the file ```aws_config.js```
 1. Modify the fields labeled REGION and mqttEndpoint and IdentityPoolId
 
 #### Launch the page
