@@ -33,11 +33,11 @@ If you’re in the US, we've also included the new [speechcons](https://develope
 If you would like to see an example of this skill in action, you can enable the [Gloucester Guide](https://www.amazon.com/Robert-McCauley-Gloucester-Guide/dp/B0736QNPP1/ref=sr_1_5?s=digital-skills&ie=UTF8&qid=1501180976&sr=1-5&keywords=local+guide) from the [Alexa app](http://amazon.com/skills).  You may not get all of the info right away, but you'll definitely get a great feel for what your new local guide could sound like!
 
 ### Task 1: Build the Skill
-Create your skill using the Lambda code given in [src/index.js](src/index.js) and the [Interaction Model](speechAssets/InteractionModel.json) (We've also included a simple [test file](test.json) for your lambda function).
+Create your skill using the Lambda code given in [src/index.js](src/index.js) and the [Interaction Model](speech-assets/InteractionModel.json) (We've also included a simple [test file](tests/test.js) for your lambda function).
 
 #### New Skill Builders Path
 If you're not familiar with building Alexa skill, click the get started button for a detailed step-by-step guide
-<a href="/step-by-step/1-voice-user-interface.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_get_started._TTH_.png" /></a>
+<a href="step-by-step/1-voice-user-interface.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_get_started._TTH_.png" /></a>
 
 #### Experienced Skill Builders Path
 
