@@ -57,7 +57,7 @@ If you're not familiar with building Alexa skill, click the get started button f
   1. Choose an invocation name of your choice. we used ```Gloucester Guide```. You'll want to choose your own location.
   1. Launch "Skill Builder Beta"
   1. Click the Code Editor tab (just below the turqoise Dashboard tab on the top left)
-  1. Copy and paste the ```speechAssets/InteractionModel.json``` contents into the field over the existing text.
+  1. Copy and paste the [speechAssets/InteractionModel.json](https://github.com/alexa/alexa-cookbook/blob/master/labs/LocalRecommendations/speech-assets/InteractionModel.json) contents into the field over the existing text.
   1. Click Save, then click Build
   1. Advance to the Configuration page, choose AWS Lambda ARN, and paste in the ARN from the function you just created. [Detailed configuration Instructions](step-by-step/3-connect-vui-to-code.md)
 
