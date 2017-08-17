@@ -56,9 +56,11 @@ There are two parts to an Alexa skill.  The first part is the [Voice User Interf
 
 8.  Click on the "Code Editor" item under **Dashboard** on the top left side of the skill builder.
 
-9.  In the textfield provided, replace any existing code with the code provided in the [Interaction Model](https://github.com/voicehacks/setup-local-recommendations/blob/master/speech-assets/InteractionModel.json), then click "Apply Changes".  
+9.  In the textfield provided, replace any existing code with the code provided in the [Interaction Model](https://github.com/voicehacks/setup-local-recommendations/blob/master/speech-assets/InteractionModel.json), then click "Apply Changes" or "Save Model".  
 
-10. Add some more sample utterances for your newly generated intents.  These are the things a user would say to make a specific intent happen.  Here are a few examples:
+10. Click on the "Dashboard" button.
+
+11. Add some more sample utterances for your newly generated intents.  These are the things a user would say to make a specific intent happen.  Here are a few examples:
 
     * I want some supper
     * Lunch time
@@ -67,12 +69,12 @@ There are two parts to an Alexa skill.  The first part is the [Voice User Interf
 
     ![](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/1-10-sample-utterances._TTH_.png)
 
-11. Click on the **Save Model** button, and then click on the **Build Model** button.
+12. Click on the **Save Model** button, and then click on the **Build Model** button.
 
     ![](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/1-12-skill-builder-build-save-model._TTH_.png)
 
 
-12.  If your interaction model builds successfully, click on **Configuration button** to move on to Configuration. In our next step of this guide, we will be creating our Lambda function in the AWS developer console, but keep this browser tab open, because we will be returning here on [Page #3: Connect VUI to Code](https://github.com/voicehacks/setup-local-recommendations/blob/master/step-by-step/3-connect-vui-to-code.md).
+13.  If your interaction model builds successfully, click on **Configuration button** to move on to Configuration. In our next step of this guide, we will be creating our Lambda function in the AWS developer console, but keep this browser tab open, because we will be returning here on [Page #3: Connect VUI to Code](https://github.com/voicehacks/setup-local-recommendations/blob/master/step-by-step/3-connect-vui-to-code.md).
      ![](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/1-13-skill-builder-configuration.png)
 
      If you get an error from your interaction model, check through this list:
