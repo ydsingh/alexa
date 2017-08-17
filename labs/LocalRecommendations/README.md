@@ -1,7 +1,8 @@
 # Build An Alexa Local Recommendations Skill
 <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/header._TTH_.png" />
 
-[Voice User Interface](/LocalRecomendations/step-by-step/1-voice-user-interface.md) || [Lambda Function](/step-by-step/2-lambda-function.md) || [Connect VUI to Code](/step-by-step/3-connect-vui-to-code.md) || [Testing](/step-by-step/4-testing.md) || [Customization](/step-by-step/5-customization.md) || [Intents and Slots](/step-by-step/6-intents-slots.md) || [Smart Recommendations](/step-by-step/7-smart-recommendations.md) || [Publication](/step-by-step/10-publication.md)
+
+[Voice User Interface](step-by-step/1-voice-user-interface.md) || [Lambda Function](step-by-step/2-lambda-function.md) || [Connect VUI to Code](step-by-step/3-connect-vui-to-code.md) || [Testing](step-by-step/4-testing.md) || [Customization](step-by-step/5-customization.md) || [Intents and Slots](step-by-step/6-intents-slots.md) || [Smart Recommendations](step-by-step/7-smart-recommendations.md) || [Publication](step-by-step/10-publication.md)
 
 
 <!--<a href="https://github.com/alexa/skill-sample-nodejs-quiz-game/blob/master/step-by-step/1-voice-user-interface.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/1-off._TTH_.png" /></a><a href="https://github.com/alexa/skill-sample-nodejs-quiz-game/blob/master/step-by-step/2-lambda-function.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/2-off._TTH_.png" /></a><a href="https://github.com/alexa/skill-sample-nodejs-quiz-game/blob/master/step-by-step/3-connect-vui-to-code.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/3-off._TTH_.png" /></a><a href="https://github.com/alexa/skill-sample-nodejs-quiz-game/blob/master/step-by-step/4-testing.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/4-off._TTH_.png" /></a><a href="https://github.com/alexa/skill-sample-nodejs-quiz-game/blob/master/step-by-step/5-customization.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/5-off._TTH_.png" /></a><a href="https://github.com/alexa/skill-sample-nodejs-quiz-game/blob/master/step-by-step/10-publication.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/6-off._TTH_.png" /></a>-->
@@ -33,11 +34,13 @@ If you’re in the US, we've also included the new [speechcons](https://develope
 If you would like to see an example of this skill in action, you can enable the [Gloucester Guide](https://www.amazon.com/Robert-McCauley-Gloucester-Guide/dp/B0736QNPP1/ref=sr_1_5?s=digital-skills&ie=UTF8&qid=1501180976&sr=1-5&keywords=local+guide) from the [Alexa app](http://amazon.com/skills).  You may not get all of the info right away, but you'll definitely get a great feel for what your new local guide could sound like!
 
 ### Task 1: Build the Skill
+
 Create your skill using the Lambda code given in [src/index.js](src/index.js) and the [Interaction Model](speech-assets/InteractionModel.json) (We've also included a simple [test file](tests/test.js) for your lambda function).
+
 
 #### New Skill Builders Path
 If you're not familiar with building Alexa skill, click the get started button for a detailed step-by-step guide
-<a href="/step-by-step/1-voice-user-interface.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_get_started._TTH_.png" /></a>
+<a href="step-by-step/1-voice-user-interface.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_get_started._TTH_.png" /></a>
 
 #### Experienced Skill Builders Path
 
@@ -57,7 +60,7 @@ If you're not familiar with building Alexa skill, click the get started button f
   1. Choose an invocation name of your choice. we used ```Gloucester Guide```. You'll want to choose your own location.
   1. Launch "Skill Builder Beta"
   1. Click the Code Editor tab (just below the turqoise Dashboard tab on the top left)
-  1. Copy and paste the [speechAssets/InteractionModel.json](https://github.com/alexa/alexa-cookbook/blob/master/labs/LocalRecommendations/speech-assets/InteractionModel.json) contents into the field over the existing text.
+  1. Copy and paste the [speechAssets/InteractionModel.json](speech-assets/InteractionModel.json) contents into the field over the existing text.
   1. Click Save, then click Build
   1. Advance to the Configuration page, choose AWS Lambda ARN, and paste in the ARN from the function you just created. [Detailed configuration Instructions](/step-by-step/3-connect-vui-to-code.md)
 
