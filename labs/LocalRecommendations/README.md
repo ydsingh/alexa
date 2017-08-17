@@ -45,7 +45,7 @@ If you're not familiar with building Alexa skill, click the get started button f
 #### Experienced Skill Builders Path
 
 *1.1 Create a new AWS Lambda function:*
-[See also: Detailed Lambda Instructions](/step-by-step/2-lambda-function.md)
+[See also: Detailed Lambda Instructions](step-by-step/2-lambda-function.md)
   1. From [aws.amazon.com](https://aws.amazon.com/)
   1. Choose the **Fact** blueprint template. Tip. remember to choose the N. Virginia region.
   1. Setup "Alexa Skills Kit" as the function trigger.
@@ -55,17 +55,17 @@ If you're not familiar with building Alexa skill, click the get started button f
   1. Click "Create Function"
 
 *1.2 Create a new skill*
-[See also: Detailed Voice UI Instructions](/step-by-step/1-voice-user-interface.md)
+[See also: Detailed Voice UI Instructions](step-by-step/1-voice-user-interface.md)
   1. Sign in and create a skill at [developer.amazon.com](https://developer.amazon.com/)
   1. Choose an invocation name of your choice. we used ```Gloucester Guide```. You'll want to choose your own location.
   1. Launch "Skill Builder Beta"
   1. Click the Code Editor tab (just below the turqoise Dashboard tab on the top left)
   1. Copy and paste the [speechAssets/InteractionModel.json](speech-assets/InteractionModel.json) contents into the field over the existing text.
   1. Click Save, then click Build
-  1. Advance to the Configuration page, choose AWS Lambda ARN, and paste in the ARN from the function you just created. [Detailed configuration Instructions](/step-by-step/3-connect-vui-to-code.md)
+  1. Advance to the Configuration page, choose AWS Lambda ARN, and paste in the ARN from the function you just created. [Detailed configuration Instructions](step-by-step/3-connect-vui-to-code.md)
 
 ### Task 2: Customize the Skill to be yours
-At this point, you should have a working copy of our Local Recommendations skill.  In order to make it your own, you will need to customize it with data and responses that you create.  [Detailed steps to customize](/step-by-step/5-customization.md)
+At this point, you should have a working copy of our Local Recommendations skill.  In order to make it your own, you will need to customize it with data and responses that you create.  [Detailed steps to customize](step-by-step/5-customization.md)
 
 ### Extra Credit
 
@@ -74,7 +74,7 @@ So far you've been using the Lambda console IDE or zipping and uploading your co
 
 #### Add a New Intent and Slots
 Now that you've customized for our city/town, let’s add a feature by adding a new intent that we want our skill to handle. Let’s create an intent so we can ask this skill which sports team plays hockey, baseball, etc. Go into skill builder, create an intent, type a sample utterance, double-click on slot word and define that, then add some code to pull out a slot value and handle the intent and provide a custom response to the user.
-[Detailed steps to add an intent and slots](/step-by-step/6-intents-slots.md)
+[Detailed steps to add an intent and slots](step-by-step/6-intents-slots.md)
 
 #### Add Smart Recommendations - Call an API
 When the user says "go outside", the ```GoOutIntent``` intent is called and the code in the GoOutIntent handler block is executed.
@@ -88,12 +88,12 @@ For example, add logic to decide, based on current time and weather conditions, 
 * Staying home to watch a movie on Amazon Prime
 * etc..
 
-[See also: Detailed steps to add smart recommendations](/step-by-step/6-intents-slots.md)
+[See also: Detailed steps to add smart recommendations](step-by-step/6-intents-slots.md)
 
 #### Publish Your Skill
 An important part of learning about a new technology is to release an MVP. Once you've tested your experience well. Go through the process of publishing the skill. Then have friends and family use the skill so you can witness the complete customer experience.
 
-[Detailed steps to publish](/step-by-step/10-publication.md)
+[Detailed steps to publish](step-by-step/10-publication.md)
 
 There is also a monthly promotion for people that publish skills. Depending on the month, you could get a shirt, socks, or a device. Check here for the current [promotion details](https://developer.amazon.com/alexa-skills-kit/alexa-developer-skill-promotion)
 
