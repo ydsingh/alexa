@@ -28,6 +28,9 @@ Apply all settings:
 1. Modify the fields labeled REGION and mqttEndpoint and IdentityPoolId
 
 #### Launch the page
+
+Be sure you are working from a local laptop repository, cloned or downloaded from github.com/alexa/alexa-cookbook.
+
  + Open in the page thing1.html in your favorite browser.
    + You can open the page right from within your project folder, you do not need to host it on a website.
  + The page should display with a green status label saying "CONNECTED"
