@@ -201,12 +201,15 @@ var handlers = {
         this.emit('AMAZON.StopIntent');
     },
     'AMAZON.HelpIntent': function () {
-        this.emit(':ask', this.t('HELP'));
+        this.emit(':ask', this.t('HELP'), this.t('STOP'));
     },
     'AMAZON.CancelIntent': function () {
         this.emit(':tell', this.t('STOP'));
     },
     'AMAZON.StopIntent': function () {
+        this.emit('SessionEndedRequest');
+    },
+    'SessionEndedRequest': function () {
         this.emit(':tell', this.t('STOP'));
     }
 
