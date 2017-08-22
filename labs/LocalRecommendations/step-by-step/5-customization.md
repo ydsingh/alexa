@@ -44,7 +44,7 @@ At this point, you should have a working copy of our Local Recommendations skill
 
 3.  **Once you have made the updates listed on this page, you can move on to adding new intents and custom slots to your skill.**
 
-[Intents and Custom Slots](/step-by-step/6-intents-slots.md)
+[Intents and Custom Slots](../step-by-step/6-intents-slots.md)
 
 <br/><br/>
 <!-- <a href="../step-by-step/6-intents-slots.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_next_publication._TTH_.png" /></a> -->
