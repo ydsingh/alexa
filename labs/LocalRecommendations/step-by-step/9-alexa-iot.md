@@ -1,5 +1,6 @@
 # Build An Alexa Local Recommendations Skill
-[Voice User Interface](/step-by-step/1-voice-user-interface.md) || [Lambda Function](/step-by-step/2-lambda-function.md) || [Connect VUI to Code](/step-by-step/3-connect-vui-to-code.md) || [Testing](/step-by-step/4-testing.md) || [Customization](/step-by-step/5-customization.md) || [Intents and Slots](/step-by-step/6-intents-slots.md) || [Smart Recommendations](/step-by-step/7-smart-recommendations.md) || [Alexa Design](/step-by-step/8-alexa-design.md) || [IoT](https://github.com/voicehacks/alexa-iot/blob/master/README.md) || [Publication](/step-by-step/10-publication.md)
+[Voice User Interface](../step-by-step/1-voice-user-interface.md) || [Lambda Function](../step-by-step/2-lambda-function.md) || [Connect VUI to Code](../step-by-step/3-connect-vui-to-code.md) || [Testing](../step-by-step/4-testing.md) || [Customization](../step-by-step/5-customization.md) || [Intents and Slots](../step-by-step/6-intents-slots.md) || [Smart Recommendations](../step-by-step/7-smart-recommendations.md) || [Publication](../step-by-step/10-publication.md)
+
 
 
 
@@ -47,6 +48,6 @@ config.IOT_THING_NAME           = "thing1";
 <hr />
 
 <br/><br/>
-<a href="https://github.com/voicehacks/setup-local-recommendations/blob/master/step-by-step/10-publication.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_next_publication._TTH_.png" /></a>
+<a href="../step-by-step/10-publication.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_next_publication._TTH_.png" /></a>
 
 <img height="1" width="1" src="https://www.facebook.com/tr?id=1847448698846169&ev=PageView&noscript=1"/>
