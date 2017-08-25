@@ -47,7 +47,6 @@ The browser page should automatically create a new child window pop-up, that poi
  * If there is any issue, open your browser's Debug Console and look for any Javascript errors for clues.
  * Check for any suppressed popup window within your browser's URL bar.
 
-<hr />
+
 
 Back to the [Home Page](../../README.md#title)
-
