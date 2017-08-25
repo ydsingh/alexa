@@ -24,5 +24,4 @@
  * [Part 4 - Connect your skill to Lambda](./PAGE4.md#title)
 
 
-<hr />
 Back to the [Home Page](../../README.md#title)

@@ -51,5 +51,4 @@ Pause here and leave this browser tab open.
  * [Part 3 - Create the Lambda function](./PAGE3.md#title)
 
 
-<hr />
 Back to the [Home Page](../../README.md#title)

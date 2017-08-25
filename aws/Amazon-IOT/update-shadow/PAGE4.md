@@ -55,7 +55,9 @@ See the [IAM Policies](../IAM_POLICIES.md) page for more details.
 #### Add the dynamic web page
  * Create the single-page [webapp-thing](../webapp-thing/README.md#title)
 
+ ```
+
+  * [Part 5 - Do the webapp-thing](../../webapp-thing/README.md#title)
 
 
-<hr />
 Back to the [Home Page](../../README.md#title)

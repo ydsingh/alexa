@@ -13,9 +13,9 @@ The virtual Thing is known as a "thing shadow".  Read more on the [AWS IOT Thing
 ### Table of Contents (setup steps)
 Follow these three steps to build a skill that can update an IOT thing.  Step 3 has you configure a web browser page in place of a real thing.  Once configured, the page will load images of the city you ask for.
 
-1. [setup-thing](setup-thing#title)
-1. [update-shadow](update-shadow#title)
-1. [webapp-thing](webapp-thing#title)
+1. [setup-thing](./step-1.md#title)
+1. [update-shadow](./step-2.md#title)
+1. [webapp-thing](./step-5.md#title)
 
 
 
@@ -34,6 +34,4 @@ config.IOT_THING_NAME           = "thing1";
 
 
 
-<hr />
 Back to the [Home Page](../../README.md#title)
-

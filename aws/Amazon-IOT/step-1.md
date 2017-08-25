@@ -31,4 +31,4 @@ You can stop at this point and begin writing Lambda code to update this device. 
 Next, go to the [Update Shadow](../update-shadow/README.md#title) section.
 
 
-Back to the [Home Page](../../README.md#title)
+Back to the [Home Page](./README.md#title)
