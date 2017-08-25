@@ -28,7 +28,7 @@ You can stop at this point and begin writing Lambda code to update this device. 
 
  *You can learn more from the [Getting Started with AWS IOT](https://aws.amazon.com/iot-platform/getting-started/) documentation.*
 
-Next, go to the [Update Shadow](../update-shadow/README.md#title) section.
+Next, go to the [Update Shadow](./step-2.md#title) section.
 
 
 Back to the [Home Page](./README.md#title)

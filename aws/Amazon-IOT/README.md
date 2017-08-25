@@ -32,6 +32,6 @@ config.IOT_THING_NAME           = "thing1";
 
 ```
 
+To get started, go to [Step 1](./step-1.md#title). 
 
-
-Back to the [Home Page](../../README.md#title)
+Back to the [Home Page](./README.md#title)
