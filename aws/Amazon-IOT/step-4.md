@@ -1,4 +1,7 @@
 #### Ingredients
+
+1. [Setup Thing](./step-1.md#title) || 2. [Create The Skill](./step-2.md#title) || 3. [Create The Lambda Function](./step-3.md#title) || 4. [Connect Skill To Lambda & Add IOT Permissions](./step-4.md#title) || 5. [Webapp-Thing](./step-5.md#title)
+
 ## 4. Connect your skill to Lambda <a id="title"></a>
 <hr />
 
@@ -54,7 +57,7 @@ See the [IAM Policies](./IAM_POLICIES.md) page for more details.
 
 #### Add the dynamic web page
  * Create the single-page by going to [Part 5](./step-5.md#title)
- 
+
 
 
 Back to the [Home Page](./README.md#title)
