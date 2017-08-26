@@ -1,11 +1,19 @@
-#### Ingredients
+## Update Shadow <a id="title"></a>
+
+
+This skill includes an Intent called ```CityIntent``` with a slot called ```city```, that is of type ```AMAZON.EUROPE_CITY```.
+
+The user will say: ```go to London``` and the skill will update the IOT Device Shadow with the name of the city.
+
+#### Instructions for deploying this sample skill
+
 ## 2. Create the Skill <a id="title"></a>
 <hr />
 
 
 1. Login to [developer.amazon.com](https://developer.amazon.com) and click Alexa, then Alexa Skills Kit.
 1. Create a new Skill called **city browser** with invocation name ```city browser```.
-1. Paste in the [IntentSchema.json](./speechAssets/IntentSchema.json) :
+1. Paste in the [IntentSchema.json](./update-shadow/speechAssets/IntentSchema.json) :
 
 ```
 {
@@ -36,7 +44,7 @@
 
 ```
 
-1. Paste in the [SampleUtterances.txt](speechAssets/SampleUtterances.txt) :
+1. Paste in the [SampleUtterances.txt](./update-shadow/speechAssets/SampleUtterances.txt) :
 
 ```
 MyIntent hello
@@ -48,7 +56,7 @@ Pause here and leave this browser tab open.
 
 #### Continue to the next step
 
- * [Part 3 - Create the Lambda function](./PAGE3.md#title)
+ * [Part 3 - Create the Lambda function](./step-3.md#title)
 
 
-Back to the [Home Page](../../README.md#title)
+Back to the [Home Page](./README.md#title)
