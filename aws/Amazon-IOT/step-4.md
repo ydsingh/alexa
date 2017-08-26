@@ -4,9 +4,9 @@
 
 Here is how to copy and paste your Lambda function ARN to the Skill endpoint.
 
-1. Within the AWS Lambda function page, the ARN, or Amazon Resource Name, is shown near the top right, such as
+1. Within the AWS Lambda function page, the ARN, or Amazon Resource Name, is shown near the top right. It should look something like this:
  *  ``` arn:aws:lambda:us-east-1:333304287777:function:HelloWorld ```
-1. Copy this ARN
+1. Copy your own ARN, like the one shown below:
  + ![Amazon Resource Name](https://m.media-amazon.com/images/G/01/cookbook/arn._TTH_.png)
 1. Go to the browser tab at ```developer.amazon.com``` and navigate into your skill's Configuration page.
 1. Click the radio button for Service Endpoint Type: AWS Lambda ARN
@@ -53,11 +53,8 @@ See the [IAM Policies](./IAM_POLICIES.md) page for more details.
 
 
 #### Add the dynamic web page
- * Create the single-page [webapp-thing](./step-5.md#title)
-
- ```
-
-  * [Part 5 - Do the webapp-thing](./step-5.md#title)
+ * Create the single-page by going to [Part 5](./step-5.md#title)
+ 
 
 
 Back to the [Home Page](./README.md#title)
