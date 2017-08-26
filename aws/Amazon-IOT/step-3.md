@@ -1,4 +1,7 @@
 #### Ingredients
+
+1. [Setup Thing](./step-1.md#title) || 2. [Create The Skill](./step-2.md#title) || 3. [Create The Lambda Function](./step-3.md#title) || 4. [Connect Skill To Lambda & Add IOT Permissions](./step-4.md#title) || 5. [Webapp-Thing](./step-5.md#title)
+
 ## 3. Create the Lambda Function <a id="title"></a>
 <hr />
 *Leave the default values for any form inputs not described below.  To complete each page you will usually scroll down and find the blue button.*
