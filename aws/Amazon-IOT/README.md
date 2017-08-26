@@ -24,6 +24,8 @@ Follow these three steps to build a skill that can update an IOT thing.  Step 3 
 When you setup a virtual Thing in a particular region, you will be given the name of an endpoint.
 Together with the Thing name and the name of your region, you can uniquely describe your thing.  Both the back-end (Skill Lambda function) and front end (Device or web app) will point to this thing to exchange data.
 
+`Example Configuration:`
+
 ```
 var config = {};
 config.IOT_BROKER_ENDPOINT      = "a2eshrcp6u0000.iot.us-east-1.amazonaws.com";  // also called the REST API endpoint
@@ -36,4 +38,3 @@ config.IOT_THING_NAME           = "thing1";
 
 <hr />
 Back to the [Home Page](../../README.md#title)
-
