@@ -35,6 +35,7 @@ In the [first step](./step-2.md#title) of this guide, we created a voice user in
 The following IAM Policy can be modified and attached to your Lambda function's IAM role to only allow updating a specific Thing.
 See the [IAM Policies](./IAM_POLICIES.md) page for more details.
 
+
 ```
 {
   "Version": "2012-10-17",
@@ -60,6 +61,7 @@ See the [IAM Policies](./IAM_POLICIES.md) page for more details.
 
 
 #### Add the dynamic web page
+
  * Create the single-page by going to [Part 5](./step-5.md#title)
 
 

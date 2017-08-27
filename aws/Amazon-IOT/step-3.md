@@ -55,15 +55,11 @@
 
      <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/2-12-copy-ARN._TTH_.png" />  <!--TODO: THIS IMAGE NEEDS TO BE CUSTOMIZED FOR YOUR SKILL TEMPLATE. -->
 
- <br/><br/>
- <a href="./step-4.md#title"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_next_connect_vui_to_code._TTH_.png"/></a>
 
- <img height="1" width="1" src="https://www.facebook.com/tr?id=1847448698846169&ev=PageView&noscript=1"/>
-
-<!-- #### Continue to the next step
+#### Continue to the next step
 
 
- * [Part 4 - Connect your skill to Lambda](./step-4.md#title) -->
+ * [Part 4 - Connect your skill to Lambda](./step-4.md#title)
 
 
 Back to the [Home Page](./README.md#title)
