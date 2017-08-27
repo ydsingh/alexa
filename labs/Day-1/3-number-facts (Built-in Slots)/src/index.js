@@ -38,7 +38,7 @@ exports.handler = function(event, context, callback) {
     alexa.execute();
 };
 
-var handlers = {
+const handlers = {
     'LaunchRequest': function () {
         this.emit('GetNewFactIntent');
     },
@@ -68,9 +68,11 @@ var handlers = {
         this.emit(':responseReady');
     },
     'AMAZON.CancelIntent': function () {
-        this.emit(':tell', STOP_MESSAGE);
+        this.response.speak(STOP_MESSAGE);
+        this.emit(':responseReady');
     },
     'AMAZON.StopIntent': function () {
-        this.emit(':tell', STOP_MESSAGE);
+        this.response.speak(STOP_MESSAGE);
+        this.emit(':responseReady');
     }
 };
