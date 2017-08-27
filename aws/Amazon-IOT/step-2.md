@@ -93,11 +93,8 @@ For CityIntent:
 
 #### Continue to the next step
 
-<a href="./step-3.md#title"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_next_connect_vui_to_code._TTH_.png"/></a>
 
-<img height="1" width="1" src="https://www.facebook.com/tr?id=1847448698846169&ev=PageView&noscript=1"/>
-
-      <!-- * [Part 3 - Create the Lambda function](./step-3.md#title) -->
+      * [Part 3 - Create the Lambda function](./step-3.md#title)
 
 
 Back to the [Home Page](./README.md#title)
