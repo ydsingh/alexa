@@ -2,7 +2,7 @@
   // 1. Text strings =====================================================================================================
   //    Modify these strings and messages to change the behavior of your Lambda function
 
-  var languageStrings = {
+  const languageStrings = {
       'en': {
           'translation': {
               'WELCOME' : "Welcome to the Breakfast Sandwich Recipe skill. ",
@@ -13,7 +13,7 @@
       }
       // , 'de-DE': { 'translation' : { 'WELCOME'   : "Guten Tag etc." } }
   };
-  var data = {
+  const data = {
     // TODO: Replace this data with your own.
       "ingredients" :
           [
@@ -33,15 +33,15 @@
       ]
   };
 
-  var welcomeCardImg = {
+  const welcomeCardImg = {
       smallImageUrl: 'https://s3.amazonaws.com/webappvui/img/breakfast_sandwich_small.png',
       largeImageUrl: 'https://s3.amazonaws.com/webappvui/img/breakfast_sandwich_large.png'
   };
   // 2. Skill Code =======================================================================================================
 
-  var Alexa = require('alexa-sdk');
-  var AWS = require('aws-sdk');  // this is defined to enable a DynamoDB connection from local testing
-  var AWSregion = 'us-east-1';   // eu-west-1
+  const Alexa = require('alexa-sdk');
+  const AWS = require('aws-sdk');  // this is defined to enable a DynamoDB connection from local testing
+  const AWSregion = 'us-east-1';   // eu-west-1
   var persistenceEnabled;
   AWS.config.update({
       region: AWSregion
@@ -62,12 +62,13 @@
 
   };
 
-  var handlers = {
+  const handlers = {
       'LaunchRequest': function () {
           if (!this.attributes['currentStep'] ) {
 
               var say = this.t('WELCOME') + ' ' + this.t('HELP');
-              this.emit(':askWithCard', say, say, this.t('TITLE'), this.t('WELCOME'), welcomeCardImg);
+
+              this.response.cardRenderer(this.t('TITLE'), this.t('WELCOME'), welcomeCardImg);
 
           } else {
 
@@ -76,9 +77,11 @@
                   + '. Say restart if you want to start over. '
                   + ' Ready to continue with step '
                   + (parseInt(this.attributes['currentStep']) + 1 ).toString() + '?';
-              this.emit(':askWithCard', say, say, 'Continue?', say);
-          }
 
+              this.response.cardRenderer('Continue?', "\n" + say);
+          }
+          this.response.speak(say).listen(say);
+          this.emit(':responseReady');
       },
 
       'IngredientsIntent': function () {
@@ -91,10 +94,14 @@
           }
           say += sayArray(list,'and');
           say = 'The ingredients you will need are, ' + say + '. Are you ready to cook? ';
+          var reprompt = 'Say yes if you are ready to begin cooking the recipe.';
 
           var cardlist = list.toString().replace(/\,/g, '\n');
 
-          this.emit(':askWithCard', say, 'Say yes if you are ready to begin cooking the recipe.', this.t('TITLE') + ' shopping list', cardlist);
+          this.response.cardRenderer(this.t('TITLE') + ' shopping list', cardlist);
+          this.response.speak(say).listen(reprompt);
+
+          this.emit(':responseReady');
 
       },
       'CookIntent': function () {
@@ -105,46 +112,48 @@
 
       },
       'AMAZON.NoIntent': function () {
-          this.emit(':tell', 'Okay, see you next time!');
+          this.response.speak('Okay, see you next time!');
+          this.emit(':responseReady');
       },
       'AMAZON.PauseIntent': function () {
-          if (persistenceEnabled){
-            // cross-session persistence is enabled
-            this.emit(':tell', 'Okay, you can come back to this skill to pick up where you left off.');
-          } else {
-            // cross-session persistence is NOT enabled
-            this.emit(':ask', "If you pause, you'll lose your progress. Do you want to go to the next step?", "Do you want to go to the next step?");
 
+          var say = "If you pause, you'll lose your progress. Do you want to go to the next step?";
+          var reprompt = "Do you want to go to the next step?";
+
+          // cross-session persistence is enabled
+          if (persistenceEnabled){
+            say = 'Okay, you can come back to this skill to pick up where you left off.';
           }
+          this.response.speak(say);
+          this.emit(':responseReady');
       },
 
       'AMAZON.NextIntent': function () {
           var currentStep = incrementStep.call(this, 1);
           var say = 'Step ' + currentStep + ', ' + data.steps[currentStep - 1];
+          var reprompt = 'You can say Pause, Stop, or Next.';
           var sayOnScreen = data.steps[currentStep - 1];
 
           if(currentStep == data.steps.length ) {
 
               delete this.attributes['currentStep'];
-              this.emit(':tellWithCard', say + '. <say-as interpret-as="interjection">bon appetit</say-as>', this.t('TITLE'),  say + '\nBon Appetit!', welcomeCardImg);
+
+              say += '. <say-as interpret-as="interjection">bon appetit</say-as>';
+              this.response.cardRenderer(this.t('TITLE'), 'Bon Appetit!', welcomeCardImg);
 
           } else {
-
-              this.emit(':askWithCard', say, 'You can say Pause, Stop, or Next.', 'Step ' + currentStep, sayOnScreen);
+              reprompt += currentStep;
+              this.response.cardRenderer('Step ' + currentStep, sayOnScreen);
+              this.response.listen(reprompt);
           }
-
+          this.response.speak(say);
+          this.emit(':responseReady');
       },
       'AMAZON.PreviousIntent': function () {
-        var currentStep = incrementStep.call(this, -1);
-        var say = 'Step ' + currentStep + ', ' + data.steps[currentStep - 1];
-        var sayOnScreen = data.steps[currentStep - 1];
-
-        if(currentStep == data.steps.length ) {
-            delete this.attributes['currentStep'];
-            this.emit(':tellWithCard', say + '. <say-as interpret-as="interjection">bon appetit</say-as>', this.t('TITLE'),  say + '\nBon Appetit!', welcomeCardImg);
-        } else {
-            this.emit(':askWithCard', say, 'You can say Pause, Stop, or Next.', 'Step ' + currentStep, sayOnScreen);
-        }
+        // subtract 2 because we will add 1 in AMAZON.NextIntent
+        // for a net decrease of 1 which gives us the previous step.
+        incrementStep.call(this, -2);
+        this.emit('AMAZON.NextIntent');
       },
       'AMAZON.RepeatIntent': function () {
           if (!this.attributes['currentStep'] ) {
@@ -156,25 +165,37 @@
       },
       'AMAZON.HelpIntent': function () {
           if (!this.attributes['currentStep']) {  // new session
-              this.emit(':ask', this.t('HELP'));
+              this.speak(this.t('HELP')).listen(this.t('HELP'));
           } else {
               var currentStep = this.attributes['currentStep'];
-              this.emit(':ask', 'you are on step ' + currentStep + ' of the ' + this.t('TITLE') + ' recipe. Say Next to continue or Ingredients to hear the list of ingredients.');
+              var say = 'you are on step ' + currentStep + ' of the ' + this.t('TITLE') + ' recipe. ';
+              var reprompt = 'Say Next to continue or Ingredients to hear the list of ingredients.';
+              this.response.speak(say + reprompt).listen(reprompt);
           }
+          this.emit(':responseReady');
       },
       'AMAZON.StartOverIntent': function () {
           delete this.attributes['currentStep'];
           this.emit('LaunchRequest');
       },
+      'AMAZON.NoIntent': function () {
+          this.emit('AMAZON.StopIntent');
+      },
+      'AMAZON.HelpIntent': function () {
+          this.response.speak(this.t('HELP')).listen(this.t('HELP'));
+          this.emit(':responseReady');
+      },
       'AMAZON.CancelIntent': function () {
-          this.emit(':tell', this.t('STOP'));
+          this.response.speak(this.t('STOP'));
+          this.emit(':responseReady');
       },
       'AMAZON.StopIntent': function () {
-          this.emit(':tell', this.t('STOP'));
+          this.emit('SessionEndedRequest');
       },
       'SessionEndedRequest': function () {
           console.log('session ended!');
-          this.emit('AMAZON.StopIntent');
+          this.response.speak(this.t('STOP'));
+          this.emit(':responseReady');
       }
   };
 
