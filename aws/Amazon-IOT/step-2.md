@@ -70,11 +70,11 @@ There are two parts to an Alexa skill.  The first part is the [Voice User Interf
 10. Add some more sample utterances for your newly generated intents.  These are the things a user would say to make a specific intent happen.  Here are a few examples:
 
 For MyIntent:
-    * hello
+* hello
 
 For CityIntent:    
-    * go to {city}
-    * i am from {city}
+* go to {city}
+* i am from {city}
 
     ![](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/1-10-sample-utterances._TTH_.png)
 
