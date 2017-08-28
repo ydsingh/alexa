@@ -13,7 +13,7 @@ The user will say: ```go to London``` and the skill will update the IOT Device S
 
 ## Setting up Your Voice User Interface
 
-There are two parts to an Alexa skill.  The first part is the [Voice User Interface (VUI)](https://developer.amazon.com/alexa-skills-kit/vui).  This is where we define how we will handle a user's voice input, and which code should be executed when specific commands are uttered.  The second part is the actual code logic for our skill, and we will handle that in [the next step](../step-by-step/2-lambda-function.md) of this step-by-step guide.
+There are two parts to an Alexa skill.  The first part is the [Voice User Interface (VUI)](https://developer.amazon.com/alexa-skills-kit/vui).  This is where we define how we will handle a user's voice input, and which code should be executed when specific commands are uttered.  The second part is the actual code logic for our skill, and we will handle that in [the next step](./step-3.md#title) of this step-by-step guide.
 
 1.  **Go to the [Amazon Developer Portal](http://developer.amazon.com).  In the top-right corner of the screen, click the "Sign In" button.** </br>(If you don't already have an account, you will be able to create a new one for free.)
 
@@ -94,7 +94,7 @@ For CityIntent:
 #### Continue to the next step
 
 
-      * [Part 3 - Create the Lambda function](./step-3.md#title)
+* [Part 3 - Create the Lambda function](./step-3.md#title)
 
 
 Back to the [Home Page](./README.md#title)
