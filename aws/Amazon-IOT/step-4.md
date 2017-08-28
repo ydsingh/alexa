@@ -62,7 +62,7 @@ See the [IAM Policies](./IAM_POLICIES.md) page for more details.
 
 #### Add the dynamic web page
 
- * Create the single-page by going to [Part 5](./step-5.md#title)
+ * Create the webapp-thing by going to [Part 5](./step-5.md#title)
 
 
 
