@@ -1,5 +1,8 @@
 #### Ingredients
 ## 2. Create the Skill <a id="title"></a>
+
+1. [Setup Thing](../setup-thing/README.md#title) || 2. [Create The Skill](../update-shadow/PAGE2.md#title) || 3. [Create The Lambda Function](../update-shadow/PAGE3.md#title) || 4. [Connect Skill To Lambda & Add IOT Permissions](../update-shadow/PAGE4.md#title) || 5. [Webapp-Thing](../webapp-thing/README.md#title)
+
 <hr />
 
 
@@ -36,7 +39,7 @@
 
 ```
 
-1. Paste in the [SampleUtterances.txt](speechAssets/SampleUtterances.txt) :
+1. Paste in the [SampleUtterances.txt](./speechAssets/SampleUtterances.txt) :
 
 ```
 MyIntent hello
@@ -51,5 +54,4 @@ Pause here and leave this browser tab open.
  * [Part 3 - Create the Lambda function](./PAGE3.md#title)
 
 
-<hr />
-Back to the [Home Page](../../README.md#title)
+Back to the [Home Page](../README.md#title)

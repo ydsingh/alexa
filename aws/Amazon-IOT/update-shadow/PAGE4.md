@@ -1,5 +1,8 @@
 #### Ingredients
 ## 4. Connect your skill to Lambda <a id="title"></a>
+
+1. [Setup Thing](../setup-thing/README.md#title) || 2. [Create The Skill](../update-shadow/PAGE2.md#title) || 3. [Create The Lambda Function](../update-shadow/PAGE3.md#title) || 4. [Connect Skill To Lambda & Add IOT Permissions](../update-shadow/PAGE4.md#title) || 5. [Webapp-Thing](../webapp-thing/README.md#title)
+
 <hr />
 
 Here is how to copy and paste your Lambda function ARN to the Skill endpoint.
@@ -55,7 +58,9 @@ See the [IAM Policies](../IAM_POLICIES.md) page for more details.
 #### Add the dynamic web page
  * Create the single-page [webapp-thing](../webapp-thing/README.md#title)
 
+ ```
+
+  * [Part 5 - Do the webapp-thing](../webapp-thing/README.md#title)
 
 
-<hr />
-Back to the [Home Page](../../README.md#title)
+Back to the [Home Page](../README.md#title)
