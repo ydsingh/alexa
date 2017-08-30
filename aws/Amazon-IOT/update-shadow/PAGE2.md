@@ -8,44 +8,12 @@
 
 1. Login to [developer.amazon.com](https://developer.amazon.com) and click Alexa, then Alexa Skills Kit.
 1. Create a new Skill called **city browser** with invocation name ```city browser```.
-1. Paste in the [IntentSchema.json](./speechAssets/IntentSchema.json) :
+1. Click 'save' and then click 'next'.
+1. Click on the 'Launch Skill Builder' button.
+1. Click on the 'Code Editor' on the left hand side and paste the [InteractionModel.json](./speechAssets/InteractionModel.json) into the editor.
+1. Click 'Save Model'
+1. Click 'Build Model'
 
-```
-{
-  "intents": [
-    {
-      "intent": "MyIntent",  "slots":[]
-    },
-    {
-      "intent": "CityIntent",
-      "slots":[
-        {
-          "name":"city",
-          "type":"AMAZON.EUROPE_CITY"
-      }
-      ]
-    },
-    {
-      "intent": "AMAZON.HelpIntent"
-    },
-    {
-      "intent": "AMAZON.StopIntent"
-    },
-    {
-      "intent": "AMAZON.CancelIntent"
-    }
-  ]
-}
-
-```
-
-1. Paste in the [SampleUtterances.txt](./speechAssets/SampleUtterances.txt) :
-
-```
-MyIntent hello
-CityIntent go to {city}
-CityIntent i am from {city}
-```
 
 Pause here and leave this browser tab open.
 
