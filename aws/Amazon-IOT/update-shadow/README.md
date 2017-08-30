@@ -1,6 +1,6 @@
 #### Ingredients
 
-1. [Setup Thing](../setup-thing/README.md#title) || 2. [Create The Skill](./step-2.md#title) || 3. [Create The Lambda Function](./step-3.md#title) || 4. [Connect Skill To Lambda & Add IOT Permissions](./step-4.md#title) || 5. [Webapp-Thing](./step-5.md#title)
+1. [Setup Thing](../setup-thing/README.md#title) || 2. [Create The Skill](../step-2.md#title) || 3. [Create The Lambda Function](../step-3.md#title) || 4. [Connect Skill To Lambda & Add IOT Permissions](../step-4.md#title) || 5. [Webapp-Thing](../step-5.md#title)
 
 ## Update Shadow <a id="title"></a>
 
