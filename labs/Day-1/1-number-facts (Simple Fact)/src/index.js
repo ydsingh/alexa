@@ -35,13 +35,13 @@ var handlers = {
         var fact = data;
         var speechOutput = GET_FACT_MESSAGE + fact;
         this.response.cardRenderer(SKILL_NAME, fact);
-        this.speak(speechOutput);
+        this.response.speak(speechOutput);
         this.emit(':responseReady');
     },
     'AMAZON.HelpIntent': function () {
         var speechOutput = HELP_MESSAGE;
         var reprompt = HELP_REPROMPT;
-        this.speak(speechOutput).listen(reprompt);
+        this.response.speak(speechOutput).listen(reprompt);
         this.emit(':responseReady');
     },
     'AMAZON.CancelIntent': function () {
