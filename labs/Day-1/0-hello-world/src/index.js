@@ -21,7 +21,7 @@ var handlers = {
   },
 
   'HelloWorldIntent': function () {
-      this.speak('Hello World from Alexa!')
+      this.response.speak('Hello World from Alexa!')
       this.emit(':responseReady');
   }
 };
