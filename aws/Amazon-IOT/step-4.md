@@ -45,7 +45,7 @@ See the [IAM Policies](./IAM_POLICIES.md) page for more details.
       "Action": [
         "iot:UpdateThingShadow"
       ],
-      "Resource":["arn:aws:iot:eu-west-1:589662380000:thing/thing1"],
+      "Resource":["arn:aws:iot:eu-west-1:589662380000:thing/thing1"]
     }
   ]
 }
