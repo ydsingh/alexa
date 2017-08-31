@@ -165,7 +165,7 @@
       },
       'AMAZON.HelpIntent': function () {
           if (!this.attributes['currentStep']) {  // new session
-              this.speak(this.t('HELP')).listen(this.t('HELP'));
+              this.response.speak(this.t('HELP')).listen(this.t('HELP'));
           } else {
               var currentStep = this.attributes['currentStep'];
               var say = 'you are on step ' + currentStep + ' of the ' + this.t('TITLE') + ' recipe. ';
