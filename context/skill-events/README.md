@@ -5,7 +5,7 @@ In the list sample project. We'll cover integration of a skill with SMAPI
 ## What You Will Learn
 *  [AWS Lambda](http://aws.amazon.com/lambda)
 *  [Alexa Skills Kit (ASK)](https://developer.amazon.com/alexa-skills-kit)
-*  [SMAPI](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/work-with-smapi)
+*  [SMAPI](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/ask-cli-intro)
 *  Lists for Alexa Skills
 
 ## What You Will Need
