@@ -5,7 +5,7 @@ In the list sample project. We'll cover integration of a skill with SMAPI
 ## What You Will Learn
 *  [AWS Lambda](http://aws.amazon.com/lambda)
 *  [Alexa Skills Kit (ASK)](https://developer.amazon.com/alexa-skills-kit)
-*  [SMAPI](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/work-with-smapi)
+*  [SMAPI](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/quick-start-alexa-skills-kit-command-line-interface)
 *  Lists for Alexa Skills
 
 ## What You Will Need
@@ -204,7 +204,7 @@ From the terminal on your computer
 10. **Test your Skill**
 
     The Service Simulator is not a device, so it cannot be used to test household list events. Use an actual device for testing by saying
-    `Alexa, add bread to my shopping list`. 
+    `Alexa, add bread to my shopping list`.
 
     If you look in the cloudwatch logs -- you'll see that the event was received by your skill:
 
