@@ -5,13 +5,13 @@ In the list sample project. We'll cover integration of a skill with SMAPI
 ## What You Will Learn
 *  [AWS Lambda](http://aws.amazon.com/lambda)
 *  [Alexa Skills Kit (ASK)](https://developer.amazon.com/alexa-skills-kit)
-*  [SMAPI](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/quick-start-alexa-skills-kit-command-line-interface)
+*  [SMAPI](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/work-with-smapi)
 *  Lists for Alexa Skills
 
 ## What You Will Need
 *  [Amazon Developer Portal Account](http://developer.amazon.com)
 *  [Amazon Web Services Account](http://aws.amazon.com/)
-*  [ASK CLI](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/command-line-usage-instructions)
+*  [ASK CLI](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/quick-start-alexa-skills-kit-command-line-interface)
 *  [NPM](https://www.npmjs.com/get-npm)
 *  The sample code on [GitHub](https://github.com/Alexa/alexa-cookbook/context/skill-events).
 
