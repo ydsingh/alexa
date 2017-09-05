@@ -7,8 +7,8 @@
 
 // 1. Text strings =====================================================================================================
 //    Modify these strings and messages to change the behavior of your Lambda function
-var myBucket = 'alexabucket12';      // replace with your own bucket name!
-var myObject = 'hello.txt';          // replace with your own file name!
+var myBucket = 'justin-cookbook-bucket'; //'alexabucket12';      // replace with your own bucket name!
+var myObject = 'output-file.txt'; //'hello.txt';          // replace with your own file name!
 
 // 2. Skill Code =======================================================================================================
 
@@ -29,26 +29,21 @@ var handlers = {
     'LaunchRequest': function () {
         this.emit('MyIntent');
     },
-
     'MyIntent': function () {
-
         var myParams = {
-            Bucket: myBucket,
-            Key: myObject
+          Bucket: myBucket,
+          Key: myObject,
+          Body: `Write this string to the file ${myBucket}/${myObject}`
         };
 
-        S3read(myParams,  myResult => {
-                console.log("sent     : " + JSON.stringify(myParams));
-                console.log("received : " + myResult);
+        S3write(myParams,  myResult => {
+          console.log("sent     : " + JSON.stringify(myParams));
+          console.log("received : " + JSON.stringify(myResult));
 
-                this.response.speak('The S 3 file says, ' + myResult );
-                this.emit(':responseReady');
-
-            }
-        );
-
+          this.response.speak('The S 3 file was successfully written. ETag: ' + myResult );
+          this.emit(':responseReady');
+        });
     },
-
     'AMAZON.HelpIntent': function () {
         var reprompt = 'Say hello or write a file to S 3.';
         this.response.speak('Welcome to s3 file whisperer. ' + reprompt).listen(reprompt);
@@ -61,10 +56,6 @@ var handlers = {
     'AMAZON.StopIntent': function () {
         this.response.speak('Goodbye!');
         this.emit(':responseReady');
-    },
-    'SessionEndedRequest': function () {
-        console.log('session ended!');
-        this.emit('AMAZON.StopIntent');
     }
 
 };
@@ -72,19 +63,16 @@ var handlers = {
 //    END of Intent Handlers {} ========================================================================================
 // 3. Helper Function  =================================================================================================
 
-
-function S3read(params, callback) {
+function S3write(params, callback) {
     // call AWS S3
     var AWS = require('aws-sdk');
     var s3 = new AWS.S3();
 
-    s3.getObject(params, function(err, data) {
+    s3.putObject(params, function(err, data) {
         if(err) { console.log(err, err.stack); }
         else {
+            callback(data["ETag"]);
 
-            var fileText = data.Body.toString();  // this is the complete file contents
-
-            callback(fileText);
         }
     });
 }
