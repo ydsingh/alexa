@@ -21,7 +21,7 @@ Follow these three steps to build a skill that can update an IOT thing.  Step 3 
 
 
 
-### Key configuration settings for IOT
+### Key configuration settings for AWS IOT
 
 When you setup a virtual Thing in a particular region, you will be given the name of an endpoint.
 Together with the Thing name and the name of your region, you can uniquely describe your thing.  Both the back-end (Skill Lambda function) and front end (Device or web app) will point to this thing to exchange data.
