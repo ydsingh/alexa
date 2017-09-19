@@ -42,7 +42,7 @@ In the [first step of this guide](https://github.com/alexa/alexa-cookbook/blob/m
   8.2.1. go to https://github.com/alexa/alexa-cookbook  
   8.2.2. clone or download the zip file and extract the files. This sample makes use of the [delegate directive](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/dialog-interface-reference#directives) and you can learn more about it's [states and dialog flow](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/dialog-interface-reference#details) in the documentation  
   8.2.3. from the command prompt or terminal:
-    navigate to the \handling-responses\dialog-directive-delegate\src folder and type `npm install`
+    navigate to the `/handling-responses/dialog-directive-delegate/sample-nodejs-plan-my-trip/src` folder and type `npm install`
   8.2.4. zip the files in the src folder (DO NOT include the parent src folder itself)  
   8.3. Back on AWS.Amazon.com, click the upload button and upload your zip file.  
 
