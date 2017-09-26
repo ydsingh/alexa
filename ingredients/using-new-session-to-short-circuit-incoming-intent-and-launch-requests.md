@@ -18,7 +18,7 @@ A skill containing a `NewSession` intent will automatically route all `IntentReq
       loadGameLevel();
       
       if (this.event.request.type === 'IntentRequest') {
-          this.emit(this.event.request.name); 
+          this.emit(this.event.request.intent.name); 
       } 
       this.emit('LaunchRequest');
 }
