@@ -55,7 +55,7 @@ possible responses and how to mix them, you could randomly combine parts
 of sentences into complete coherent sentences for maximum effect.
 
 For a more in-depth look, check out the [quiz
-game](../../skill-sample-nodejs-quiz-game/blob/master/src/index.js). The
-right and wrong answer responses have been randomized. My favorite is
+game](https://github.com/alexa/skill-sample-nodejs-quiz-game/blob/master/src/index.js). 
+The right and wrong answer responses have been randomized. My favorite is
 the one that tricks the user into thinking they had the wrong answer
 when they were in fact correct.
