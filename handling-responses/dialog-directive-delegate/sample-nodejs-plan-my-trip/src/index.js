@@ -13,8 +13,8 @@
  // 1. Text strings =====================================================================================================
  //    Modify these strings and messages to change the behavior of your Lambda function
 
- const speechOutput;
- const reprompt;
+ let speechOutput;
+ let reprompt;
  const welcomeOutput = "Let's plan a trip. Where would you like to go?";
  const welcomeReprompt = "Let me know where you'd like to go or when you'd like to go on your trip";
  const tripIntro = [
