@@ -20,4 +20,3 @@ var handlers = {
         this.emit(':tell', 'Hello World from Alexa');
     }
 };
-
