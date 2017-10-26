@@ -1,7 +1,7 @@
-var Alexa = require('alexa-sdk');
+const Alexa = require('alexa-sdk');
 
 exports.handler = function(event, context, callback) {
-    var alexa = Alexa.handler(event, context);
+    let alexa = Alexa.handler(event, context);
 
     // alexa.appId = 'amzn1.echo-sdk-ams.app.1234';
 
@@ -11,7 +11,7 @@ exports.handler = function(event, context, callback) {
     alexa.execute();
 };
 
-var handlers = {
+const handlers = {
     'LaunchRequest': function () {
         this.emit('MyIntent');
     },
