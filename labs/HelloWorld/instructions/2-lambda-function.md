@@ -1,5 +1,5 @@
 # Build An Alexa Hello World Skill
-[![Voice User Interface](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/1-locked._TTH_.png)](https://github.com/JakeMKelly/alexa-cookbook/tree/master/labs/HelloWorld/instructions/1-voice-user-interface.md)[![Lambda Function](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/2-on._TTH_.png)](https://github.com/JakeMKelly/alexa-cookbook/tree/master/labs/HelloWorld/instructions/2-lambda-function.md)[![Connect VUI to Code](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/3-off._TTH_.png)](https://github.com/JakeMKelly/alexa-cookbook/tree/master/labs/HelloWorld/instructions/3-connect-vui-to-code.md)[![Testing](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/4-off._TTH_.png)](https://github.com/JakeMKelly/alexa-cookbook/tree/master/labs/HelloWorld/instructions/4-testing.md)[![Customization](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/5-off._TTH_.png)](https://github.com/JakeMKelly/alexa-cookbook/tree/master/labs/HelloWorld/instructions/5-customization.md)[![Publication](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/6-off._TTH_.png)](https://github.com/JakeMKelly/alexa-cookbook/tree/master/labs/HelloWorld/instructions/6-publication.md)
+[![Voice User Interface](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/1-locked._TTH_.png)](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/1-voice-user-interface.md)[![Lambda Function](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/2-on._TTH_.png)](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/2-lambda-function.md)[![Connect VUI to Code](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/3-off._TTH_.png)](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/3-connect-vui-to-code.md)[![Testing](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/4-off._TTH_.png)](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/4-testing.md)[![Customization](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/5-off._TTH_.png)](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/5-customization.md)[![Publication](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/6-off._TTH_.png)](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/6-publication.md)
 
 
 
@@ -29,7 +29,7 @@ In the [first step of this guide](../instructions/1-voice-user-interface.md), we
 
     <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/fact/2-5-blueprint._TTH_.png" />  <!--TODO: THIS IMAGE NEEDS TO BE CUSTOMIZED FOR YOUR SKILL TEMPLATE. -->
 
-6.  **Configure your function.** This screen is where we will enter the important parts of our Lambda function.  These values will only ever be visible to you, but make sure that you name your function something meaningful.  "TriviaSkill" is sufficient if you don't have another idea for a name.
+6.  **Configure your function.** This screen is where we will enter the important parts of our Lambda function.  These values will only ever be visible to you, but make sure that you name your function something meaningful.  "HelloWorld" is sufficient if you don't have another idea for a name.
 
     <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/2-7-configure-your-function._TTH_.png" />
 
@@ -48,13 +48,22 @@ In the [first step of this guide](../instructions/1-voice-user-interface.md), we
 
     Once you have selected Alexa Skills Kit, click the **Configuration** Tab to go back to your code.
 
-10.  **Copy and paste the [provided code](https://github.com/alexa/skill-sample-nodejs-trivia/blob/master/lambda/custom/index.js) into the Lambda function code box.**  We have provided the code for this skill on [GitHub](../src/index.js).  Delete the contents of the code box, and paste the contents of the new code.
+10.  **Copy and paste the [provided code](https://github.com/JakeMKelly/alexa-cookbook/tree/master/labs/HelloWorld/lambda/custom/index.js) into the Lambda function code box.**  We have provided the code for this skill on [GitHub](https://github.com/JakeMKelly/alexa-cookbook/tree/master/labs/HelloWorld/lambda/custom/index.js).  Delete the contents of the code box, and paste the contents of the new code.
+
+**Next, we will add a handler to the AWS Lambda function**
+
+  1. Within the AWS Lambda Console console, review your function code
+  1. Within the handlers section, notice the three lines of code that handle the MyIntent event.
+  1. Create a new handler function for the WhatsUpIntent
+  1. Customize the message Alexa will say
+  1. Look at the HelpIntent function for a hint on how to keep the session open after Alexa responds.
+  1. Test your new skill by opening the skill and saying "what is up"
 
 11. **The ARN value should be in the top right corner. Copy this value for use in the next section of the guide.**
 
     <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/2-12-copy-ARN._TTH_.png" />  <!--TODO: THIS IMAGE NEEDS TO BE CUSTOMIZED FOR YOUR SKILL TEMPLATE. -->
 
 <br/><br/>
-<a href="../instructions/3-connect-vui-to-code.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_next_connect_vui_to_code._TTH_.png"/></a>
+<a href="https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/3-connect-vui-to-code.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_next_connect_vui_to_code._TTH_.png"/></a>
 
 <img height="1" width="1" src="https://www.facebook.com/tr?id=1847448698846169&ev=PageView&noscript=1"/>

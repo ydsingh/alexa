@@ -1,5 +1,5 @@
 # Build An Alexa Hello World Skill
-[![Voice User Interface](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/1-locked._TTH_.png)](https://github.com/JakeMKelly/alexa-cookbook/tree/master/labs/HelloWorld/instructions/1-voice-user-interface.md)[![Lambda Function](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/2-locked._TTH_.png)](https://github.com/JakeMKelly/alexa-cookbook/tree/master/labs/HelloWorld/instructions/2-lambda-function.md)[![Connect VUI to Code](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/3-locked._TTH_.png)](https://github.com/JakeMKelly/alexa-cookbook/tree/master/labs/HelloWorld/instructions/3-connect-vui-to-code.md)[![Testing](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/4-locked._TTH_.png)](https://github.com/JakeMKelly/alexa-cookbook/tree/master/labs/HelloWorld/instructions/4-testing.md)[![Customization](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/5-locked._TTH_.png)](https://github.com/JakeMKelly/alexa-cookbook/tree/master/labs/HelloWorld/instructions/5-customization.md)[![Publication](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/6-on._TTH_.png)](https://github.com/JakeMKelly/alexa-cookbook/tree/master/labs/HelloWorld/instructions/6-publication.md)
+[![Voice User Interface](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/1-locked._TTH_.png)](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/1-voice-user-interface.md)[![Lambda Function](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/2-locked._TTH_.png)](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/2-lambda-function.md)[![Connect VUI to Code](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/3-locked._TTH_.png)](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/3-connect-vui-to-code.md)[![Testing](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/4-locked._TTH_.png)](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/4-testing.md)[![Customization](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/5-locked._TTH_.png)](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/5-customization.md)[![Publication](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/navigation/6-on._TTH_.png)](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/6-publication.md)
 
 ## Get Your Skill Certified and Published
 
@@ -13,14 +13,14 @@ We are almost done!  The last step is to add the metadata that your skill will u
 
     <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/6-2-global-fields._TTH_.png" />
 
-    *  **For Category, we are building a trivia skill, so select "Games, Trivia, and Accessories."**  You will also be presented with a **Sub-Category** option.  For this skill, choose "Knowledge and Trivia."
+    *  **For Category, we are building a hello world skill, so select "Games, Trivia, and Accessories."**  You will also be presented with a **Sub-Category** option.  For this skill, choose "Knowledge and Trivia."
 
     *  **Provide testing instructions.** Testing instructions give you an opportunity to explain your skill, and any special or possibly confusing features, to the certification team.  A value is required in this box.
 
-        *  Since you are using our Trivia Sample, make sure to add this sentence to your Testing Instructions:
+        *  Since you are using our HelloWorld Sample, make sure to add this sentence to your Testing Instructions:
 
            ```
-           This was built using the Trivia Sample.
+           This was built using the HelloWorld Sample.
            ```
 
            This will let the testing team understand what you're providing them, and should decrease the testing time required.        
@@ -83,9 +83,9 @@ We are almost done!  The last step is to add the metadata that your skill will u
 
     <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/6-8-global-fields._TTH_.png"/>
 
-    *  **Does this skill allow users to make purchases or spend real money?** For this trivia skill, the answer is no.  For future skills, make sure you answer this appropriately.
+    *  **Does this skill allow users to make purchases or spend real money?** For this hello world skill, the answer is no.  For future skills, make sure you answer this appropriately.
 
-    *  **Does this Alexa skill collect users' personal information?** Again, for this trivia skill, the answer is no.  If you do collect information about a user, such as names, email addresses, phone numbers, and so forth, ensure that you answer Yes to this question.
+    *  **Does this Alexa skill collect users' personal information?** Again, for this hello world skill, the answer is no.  If you do collect information about a user, such as full names, email addresses, phone numbers, and so forth, ensure that you answer Yes to this question.
         *  Answering "yes" to this question will also require you to provide a link to your Privacy Policy at the bottom of the page.
 
     *  **Is your skill directed to children under the age of 13?** Because you customized this skill with data you provided, it is possible that you created a skill that targets children under the age of 13.  For this trivia skill, the answer is **no** because it doesn't target a specific age group.
