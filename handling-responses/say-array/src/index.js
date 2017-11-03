@@ -8,7 +8,7 @@
 // 1. Text strings =====================================================================================================
 //    Modify these strings and messages to change the behavior of your Lambda function
 
-const myRequest = ['apples', 'oranges', 'strawberries'];  // Array of items
+const myRequest = ['apples', 'oranges', 'strawberries', 'lemons', 'cherries'];  // Array of items
 
 // 2. Skill Code =======================================================================================================
 
@@ -32,7 +32,7 @@ const handlers = {
 
     'MyIntent': function () {
 
-        var speechOutput = 'the list contains ' + sayArray(myRequest,  'and')
+        let speechOutput = 'the list contains ' + sayArray(myRequest,  'and')
                     + '. please choose either ' +  sayArray(myRequest,  'or');
         this.response.speak(speechOutput);
         this.emit(':responseReady');
@@ -44,34 +44,20 @@ const handlers = {
 // 3. Helper Function  =================================================================================================
 
 
-function sayArray(myData, andor) {
+function sayArray(myData, penultimateWord = 'and') {
     // the first argument is an array [] of items
-    // the second argument is the list penultimate word; and/or/nor etc.
+    // the second argument is the list penultimate word; and/or/nor etc.  Default to 'and'
+    let result = '';
 
-    var listString = '';
-
-    if (myData.length == 1) {
-        listString = myData[0];
-    } else {
-        if (myData.length == 2) {
-            listString = myData[0] + ' ' + andor + ' ' + myData[1];
+    myData.forEach(function(element, index, arr) {
+        
+        if (index === 0) {
+            result = element;
+        } else if (index === myData.length - 1) {
+            result += ` ${penultimateWord} ${element}`;
         } else {
-
-            for (var i = 0; i < myData.length; i++) {
-                if (i < myData.length - 2) {
-                    listString = listString + myData[i] + ', ';
-                    if (i = myData.length - 2) {
-                        listString = listString + myData[i] + ', ' + andor + ' ';
-                    }
-
-                } else {
-                    listString = listString + myData[i];
-                }
-
-            }
+            result += `, ${element}`;
         }
-
-    }
-
-    return(listString);
+    });
+    return result;
 }
