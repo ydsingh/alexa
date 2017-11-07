@@ -8,106 +8,83 @@ exports.handler = function(event, context) {
     alexa.execute();
 };
 
-const introSong = 'https://s3.amazonaws.com/asksounds/happyintro.mp3';
-const easySong = 'https://s3.amazonaws.com/asksounds/waitingtime1.mp3';
-const mediumSong = 'https://s3.amazonaws.com/asksounds/waitingtime3.mp3';
-const hardSong = 'https://s3.amazonaws.com/asksounds/waitingtime2.mp3';
-const correctSong = 'https://s3.amazonaws.com/asksounds/correct1.mp3';
-
-//question, hint, answer
-//easy medium hard
-    //duration of prompt
-    //question nature
-//painting the picture for the kids
-//that was fun, here comes your next one!
-//quit, help, reset, dynamo to save index of questions
-    //ending prompt scenario global attribute: easy medium hard, json object answer question synonyms audio file, Amy 
-
 var handlers = {
     'NewSession': function() {
         if(Object.keys(this.attributes).length === 0) {
-            this.attributes['currentStage'] = 'easy';
-            this.attributes['currentLevel'] = 0;
+            setUserStatus.call(this, "easy", 0);
         }
         this.emit("LaunchRequest");
     },
     'LaunchRequest': function() {
-        //ask a new question
-        this.response.speak("<audio src='" + introSong + "' /> Welcome to Mix Master! ");
-        this.emit(':responseReady');
+        getPrompt.call(this, "<audio src='" + songs['intro'] + "' /> Welcome to Mix Master! ");
     },
     'QuestionIntent': function() {
-        //get a question
-        if(!this.attributes['currentStage'] || !this.attributes['currentLevel']) {
-            this.attributes['currentStage'] = 'easy';
-            this.attributes['currentLevel'] = 0;
-        }
-
-        let data = mixMasterElements[this.attributes['currentStage']][this.attributes['currentLevel']];
-        var audio = '';
-
-        if (this.attributes['currentStage'] == 'easy') {
-            audio = easySong;
-        } else if (this.attributes['currentStage'] == 'medium') {
-            audio = mediumSong;
-        } else {
-            audio = hardSong;
-        }
-        //ask the question
-        this.response.speak("Think about what " + data.mix[0] + " and " + data.mix[1] + " could make. <audio src='" + audio + "' /> What do they make?").listen("What do they make?");
-        this.emit(':responseReady');
+        getPrompt.call(this, "");
     },
     'AnswerIntent': function () {
-        //get the Answer
+        //get and check the answer
+        let stage = this.attributes['currentStage'];
+        let level = parseInt(this.attributes['currentLevel']);
+
         let slotValues = getSlotValues(this.event.request.intent.slots);
         let givenAnswer = slotValues.answer.resolved;
+        let correctAnswer = mixMasterElements[stage][level].answer;
 
-        let correctAnswer = mixMasterElements[this.attributes['currentStage']][this.attributes['currentLevel']].answer;
         let speechOutput = "";
 
-        if(correctAnswer.toUpperCase()==givenAnswer.toUpperCase()) {
-            speechOutput = "<audio src='" + correctSong + "' />" + getSpeechCon(true)+ " you got it! " + givenAnswer + " was right. ";
+        if(correctAnswer.toUpperCase() == givenAnswer.toUpperCase()) {
+            speechOutput += "<audio src='" + songs['correct'] + "' />" + getSpeechCon(true)+ " you got it! " + givenAnswer + " was right. ";
             
-            //update stage and level
-            if (this.attributes['currentLevel'] < mixMasterElements[this.attributes['currentStage']].length) {
-                this.attributes['currentLevel'] = parseInt(this.attributes['currentLevel']) + 1;
-            } else {
-                if (this.attributes['currentStage'] == 'easy') {
-                    speechOutput += getSpeechCon(true) + " you leveled up!";
-                    this.attributes['currentStage'] = 'medium';
-                    this.attributes['currentLevel'] = 0;
-                } else if (this.attributes['currentStage'] == 'medium') {
-                    speechOutput += getSpeechCon(true) + " you leveled up!";
-                    this.attributes['currentStage'] = 'hard';
-                    this.attributes['currentLevel'] = 0;
-                } else {
-                    speechOutput += getSpeechCon(true) + " you completed all of the mixes! What level would you like to start at next?";
-                    this.response.listen(speechOutput);
-                    this.emit(':responseReady');
-                }
+            // increase their level
+            this.attributes['currentLevel'] = parseInt(level) + 1;
+            checkUserStatus.call(this);
+
+            if (this.attributes['currentStage'] == "easy" && parseInt(this.attributes['currentLevel']) == 0) {
+                // if we reach this circle back to the beginning state, they have finished all of the mixes
+                speechOutput += " And you completed all of the mixes!";
             }
-            speechOutput = " To play in this scene, say play. To move on, say next question.";
+
+            speechOutput += " To play in this scene, say play scene. To move on, say next question.";
+            this.response.speak(speechOutput).listen("Say, play scene or next question.");
             this.emit(':responseReady');
         } else {
             //incorrect + hint
             speechOutput =
                 getSpeechCon(false) 
                     + " you are almost right! Here is a hint. "
-                    + mixMasterElements[this.attributes['currentStage']][this.attributes['currentLevel']].hint
+                    + mixMasterElements[stage][level].hint
                     + ". Now let's try that one again. ";
-            this.emit('QuestionIntent');
+            getPrompt.call(this, speechOutput);
         }
     },
     'PlaySceneIntent': function() {
-        let scene = mixMasterElements[this.attributes['currentStage']][this.attributes['currentLevel']].scene;
-        let audio = mixMasterElements[this.attributes['currentStage']][this.attributes['currentLevel']].audio;
-        let speechOutput = scene + "<audio src='" + audio + "' />" + getSpeechCon(true) + " that was fun! Here comes your next mix master question. ";
-        this.emit('QuestionIntent');
+        // since the user status was already updated, call playScene with the previous state
+        let stage = this.attributes['currentStage'];
+        let level = parseInt(this.attributes['currentLevel']);
+        let tempStage = stage;
+        let tempLevel = level - 1;
+        if (level == 0) {
+            switch(stage) {
+                case "easy":
+                    tempStage = "hard";
+                    break;
+                case "medium":
+                    tempStage = "easy";
+                    break;
+                case "hard":
+                    tempStage = "medium";
+                    break;
+                default:
+                    getPrompt.call(this, "Could not play scene at this time. ");
+            }
+            tempLevel = mixMasterElements[tempStage].length - 1;
+        }
+
+        playScene.call(this, tempStage, tempLevel);
     },
     'HintIntent': function() {
-        speechOutput = "Here is a hint. " + mixMasterElements[this.attributes['currentStage']][this.attributes['currentLevel']].hint + ". Here it comes again, ";
-        this.response.speak(speechOutput);
-        this.emit('QuestionIntent');
+        let speechOutput = "Here is a hint. " + mixMasterElements[this.attributes['currentStage']][this.attributes['currentLevel']].hint + ". Here it comes again, ";
+        getPrompt.call(this, speechOutput);
     },
     'NewGameIntent':function(){
       this.emit('LaunchRequest');
@@ -139,6 +116,54 @@ var handlers = {
 // HELPER FUNCTIONS
 //=========================================================================================================================================
 
+function setUserStatus(stage, level) {
+    this.attributes['currentStage'] = stage;
+    this.attributes['currentLevel'] = level;
+    console.log("attributes " + this.attributes['currentStage']);
+}
+
+function checkUserStatus() {
+    let stage = this.attributes['currentStage'];
+    let level = this.attributes['currentLevel'];
+
+    // new user
+    if(!stage || !level) {
+        setUserStatus.call(this, "easy", 0);
+    }
+
+    //account for an incorrect status
+    if (parseInt(level) >= mixMasterElements[stage].length) {
+        if (stage == 'easy') {
+            setUserStatus.call(this, "medium", 0);
+        } else if (stage == 'medium') {
+            setUserStatus.call(this, "hard", 0);
+        } else {
+            setUserStatus.call(this, "easy", 0);
+        }
+    }
+}
+
+function getPrompt(speechOutput) {
+    checkUserStatus.call(this);
+
+    let stage = this.attributes['currentStage'];
+    let level = parseInt(this.attributes['currentLevel']);
+
+    let data = mixMasterElements[stage][level];
+    var audio = songs[stage];
+    speechOutput += "Think about what " + data.mix[0] + " and " + data.mix[1] + " could make. <audio src='" + audio + "' /> What do they make?";
+
+    this.response.speak(speechOutput);
+    this.emit(':responseReady');
+}
+
+function playScene(stage, level) {
+    let scene = mixMasterElements[stage][level].scene;
+    let audio = mixMasterElements[stage][level].audio;
+    let speechOutput = scene + "<audio src='" + audio + "' />" + getSpeechCon(true) + " that was fun! Here comes your next mix master question. ";
+    getPrompt.call(this, speechOutput);
+}
+
 function getSpeechCon(type) {
     var speechCon = "";
     if (type) return "<say-as interpret-as='interjection'>" + speechConsCorrect[getRandom(0, speechConsCorrect.length-1)] + "! </say-as><break strength='strong'/>";
@@ -148,6 +173,7 @@ function getSpeechCon(type) {
 function getRandom(min, max) {
     return Math.floor(Math.random() * (max-min+1)+min);
 }
+
 //This is a list of positive speechcons that this skill will use when a user gets a correct answer.  For a full list of supported
 //speechcons, go here: https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speechcon-reference
 var speechConsCorrect = ["Booya", "All righty", "Bam", "Bazinga", "Bingo", "Boom", "Bravo", "Cha Ching", "Cheers", "Dynomite",
@@ -209,6 +235,15 @@ function getSlotValues (filledSlots) {
 //=========================================================================================================================================
 // DATA
 //=========================================================================================================================================
+
+const songs = {
+    "intro":"https://s3.amazonaws.com/asksounds/happyintro.mp3",
+    "easy":"https://s3.amazonaws.com/asksounds/waitingtime1.mp3",
+    "medium":"https://s3.amazonaws.com/asksounds/waitingtime3.mp3",
+    "hard":"https://s3.amazonaws.com/asksounds/waitingtime2.mp3",
+    "correct":"https://s3.amazonaws.com/asksounds/correct1.mp3"
+};
+
 const mixMasterElements = {
     "easy": [
         {
@@ -226,15 +261,9 @@ const mixMasterElements = {
             "hint":"don't forget your umbrella",
             "scene":"You are in a scary thunder storm! Take cover!",
             "audio":"https://s3.amazonaws.com/asksounds/thunder.mp3"
-        },
-        {
-            "answer":"campfire",
-            "mix":["fire", "wood"],
-            "synonyms":["bonfire", "camping"],
-            "hint":"we can roast marshmellows",
-            "scene":"You are at a spooky campsite, I hope there aren't monsters in the forrest!",
-            "audio":"https://s3.amazonaws.com/asksounds/campfire.mp3"
-        },
+        }
+    ],
+    "medium": [
         {
             "answer":"space",
             "mix":["stars", "moon"],
@@ -242,14 +271,6 @@ const mixMasterElements = {
             "hint":"do you think aliens exist?",
             "scene":"Now you are deep in space, let's go exploring!",
             "audio":"https://s3.amazonaws.com/asksounds/space.mp3"
-        },
-        {
-            "answer":"library",
-            "mix":["words", "paper"],
-            "synonyms":["books", "literature", "bookstore"],
-            "hint":"<amazon:effect name='whispered'>Shush! Use your quiet voice!</amazon:effect>",
-            "scene":"<amazon:effect name='whispered'>We are in the library, don't make too much noise!</amazon:effect>",
-            "audio":"https://s3.amazonaws.com/asksounds/library.mp3"
         },
         {
             "answer":"snow",
@@ -260,15 +281,22 @@ const mixMasterElements = {
             "audio":"https://s3.amazonaws.com/asksounds/wind.mp3"
         }
     ],
-    "medium": [
+    "hard": [
         {
-            "answer":"glass",
-            "mix":["sand", "fire"],
-            "synonyms":["mirror"],
-            "hint":"what are windows made out of",
-            "scene":"Everything is glass, step carefully!",
-            "audio":"askjhd"
+            "answer":"library",
+            "mix":["words", "paper"],
+            "synonyms":["books", "literature", "bookstore"],
+            "hint":"<amazon:effect name='whispered'>Shush! Use your quiet voice!</amazon:effect>",
+            "scene":"<amazon:effect name='whispered'>We are in the library, don't make too much noise!</amazon:effect>",
+            "audio":"https://s3.amazonaws.com/asksounds/library.mp3"
+        },
+        {
+            "answer":"campfire",
+            "mix":["fire", "wood"],
+            "synonyms":["bonfire", "camping"],
+            "hint":"we can roast marshmellows",
+            "scene":"You are at a spooky campsite, I hope there aren't monsters in the forrest!",
+            "audio":"https://s3.amazonaws.com/asksounds/campfire.mp3"
         }
-    ],
-    "hard": []
+    ]
 };
