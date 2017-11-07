@@ -26,6 +26,7 @@
           "samples": [
             "I think it's {answer}",
             "{answer}",
+            "they make {answer}",
             "{answer} did that",
             "that was {answer}",
             "is it {answer}"
@@ -66,8 +67,7 @@
         {
           "name": "PlaySceneIntent",
           "samples": [
-            "play scene",
-            "play"
+            "play scene"
           ]
         }
       ],
