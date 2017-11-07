@@ -28,6 +28,8 @@ this.emit(':ask','your score was ' + finalScore);
 
 Click to [FlashCards](FlashCards), and scroll down to review the README.
 
+[MixMaster](MixMaster) is an example kids skill that heavily utilizes audio and speechcons. Review the README to find out more.
+
 
 <hr />
 
