@@ -4,7 +4,7 @@ Because of the nature of voice interactions, there will be times where a user sa
 
 In some cases, Alexa might have just misunderstood the user.  By repeating what Alexa heard, the user can try to correct their request to get it right the second time.  In other cases, your skill just doesn't know how to handle their request.  This still lets them know that you're aware, and gives them an opportunity to try something else.
 
-From your intent, you can call `getRandomConfusionMessage(value)`, and it will return a message indicating the miss to your user.  The "value" is the slot text that you received.
+From your intent, you can call `getRandomConfusionMessage(value)`, and it will return a message indicating the miss to your user.  The "value" is the slot text that you received.  (To easily grab a slot value, check out the ingredient "[Retrieving A Slot Value](https://github.com/alexa/alexa-cookbook/blob/dev-tips/ingredients/getting-a-slot-value.md).")
 
     var speechText = getRandomConfusionMessage(value);
 
