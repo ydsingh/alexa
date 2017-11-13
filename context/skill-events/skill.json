@@ -30,6 +30,46 @@
     "permissions": [
       { "name": "alexa::household:lists:read" }
     ],
+    "events": {
+     "endpoint": {
+      "uri": "### TODO: FILL IN WITH YOUR LAMBDA ARN ###"
+     },
+     "subscriptions": [
+        {
+          "eventName": "SKILL_ENABLED"
+        },
+        {
+          "eventName": "SKILL_DISABLED"
+        },
+        {
+          "eventName": "SKILL_PERMISSION_ACCEPTED"
+        },
+        {
+          "eventName": "SKILL_PERMISSION_CHANGED"
+        },
+        {
+          "eventName": "SKILL_ACCOUNT_LINKED"
+        },
+        {
+          "eventName": "ITEMS_CREATED"
+        },
+        {
+          "eventName": "ITEMS_UPDATED"
+        },
+        {
+          "eventName": "ITEMS_DELETED"
+        },
+        {
+          "eventName": "LIST_CREATED"
+        },
+        {
+          "eventName": "LIST_UPDATED"
+        },
+        {
+          "eventName": "LIST_DELETED"
+        }
+      ]
+    },
     "manifestVersion": "1.0"
   }
 }
