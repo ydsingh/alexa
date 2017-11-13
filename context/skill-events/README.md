@@ -16,7 +16,7 @@ In the list sample project. We'll cover integration of a skill with SMAPI
 *  The sample code on [GitHub](https://github.com/Alexa/alexa-cookbook/context/skill-events).
 
 ## What your skill will do
-Customers can add items to their Alexa lists using their voice or through the Alexa app. Your skill will subscribe to the `AlexaHouseholdListEvent.ItemsCreated`, `AlexaHouseholdListEvent.ItemsUpdated` and `AlexaHouseholdListEvent.ItemsDeleted` events. Your skill will call the List API to retrieve the list item details and log them to the console.
+Customers can create their own list, update and delete the list using their voice or through the Alexa app. Customers can also add items to the Alexa lists or their own lists. Your skill will subscribe to the `AlexaHouseholdListEvent.ListCreated`, `AlexaHouseholdListEvent.ListUpdated`, `AlexaHouseholdListEvent.ListDeleted`, `AlexaHouseholdListEvent.ItemsCreated`, `AlexaHouseholdListEvent.ItemsUpdated` and `AlexaHouseholdListEvent.ItemsDeleted` events. Your skill will call the List API to retrieve the list and list item details and log them to the console.
 
 When a user enables a skill within the Alexa app, the user will be prompted to provide consent for list read permissions. This is so your skill can retrieve list item details when a user add, updates or removes an item from one of their Alexa lists. This code can be extended to sync with your list service so that a customer's Alexa list will stay in sync with your service.
 
@@ -227,6 +227,11 @@ From the terminal on your computer
     If you look in the cloudwatch logs -- you'll see that the event was received by your skill:
 
     `2017-08-30T06:33:14.989Z	1925b897-8d4d-11e7-bef4-e3bc239a4867	bread was added to Alexa shopping list`
+
+- **More Information**
+    For more information, you can check the documentation in [Alexa develper portal][https://developer.amazon.com/]: 
+    - [Skill Events in Alexa Skills](https://developer.amazon.com/docs/smapi/skill-events-in-alexa-skills.html)
+    - [List Events in Alexa Skills](https://developer.amazon.com/docs/smapi/list-events-in-alexa-skills.html)
 
 - **Next Steps!**
 
