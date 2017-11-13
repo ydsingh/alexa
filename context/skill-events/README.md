@@ -110,6 +110,15 @@ From the terminal on your computer
             },
             {
                 "eventName": "ITEMS_DELETED"
+            },
+            {
+                "eventName": "LIST_CREATED"
+            },
+            {
+                "eventName": "LIST_UPDATED"
+            },
+            {
+                "eventName": "LIST_DELETED"
             }
             ]
         }
@@ -181,6 +190,15 @@ From the terminal on your computer
         },
         {
           "eventName": "ITEMS_DELETED"
+        },
+        {
+          "eventName": "LIST_CREATED"
+        },
+        {
+          "eventName": "LIST_UPDATED"
+        },
+        {
+          "eventName": "LIST_DELETED"
         }
       ]
     },
@@ -208,7 +226,7 @@ From the terminal on your computer
 
     If you look in the cloudwatch logs -- you'll see that the event was received by your skill:
 
-    `2017-08-30T06:33:14.989Z	1925b897-8d4d-11e7-bef4-e3bc239a4867	bread was added to list {listId}`
+    `2017-08-30T06:33:14.989Z	1925b897-8d4d-11e7-bef4-e3bc239a4867	bread was added to Alexa shopping list`
 
 - **Next Steps!**
 
