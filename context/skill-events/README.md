@@ -229,7 +229,7 @@ From the terminal on your computer
     `2017-08-30T06:33:14.989Z	1925b897-8d4d-11e7-bef4-e3bc239a4867	bread was added to Alexa shopping list`
 
 - **More Information**
-    For more information, you can check the documentation in [Alexa develper portal][https://developer.amazon.com/]: 
+    For more information, you can check the documentation in [Alexa develper portal](https://developer.amazon.com/): 
     - [Skill Events in Alexa Skills](https://developer.amazon.com/docs/smapi/skill-events-in-alexa-skills.html)
     - [List Events in Alexa Skills](https://developer.amazon.com/docs/smapi/list-events-in-alexa-skills.html)
 
