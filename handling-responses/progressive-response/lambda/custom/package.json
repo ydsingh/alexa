@@ -2,7 +2,7 @@
   "name": "skill-sample-nodejs-historybuff",
   "version": "1.0.0",
   "description": "historyBuff sample skill",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "mocha test"
   },
