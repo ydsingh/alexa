@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:alexa/skill-samples-nodejs.git"
+    "url": "git@github.com:alexa/alexa-cookbook.git"
   },
   "author": "Amazon.com",
   "license": "ASL 2.0",
   "dependencies": {
-    "alexa-sdk": "^1.0.15"
+    "alexa-sdk": "^1.0.20"
   },
   "devDependencies": {
     "del": "^3.0.0",
