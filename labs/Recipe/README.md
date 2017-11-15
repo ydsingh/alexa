@@ -58,7 +58,9 @@ Steps:
 1. Click "Attach Policy"
 
 ### Task 3: Enable Database
-Now that we've added permission to our database, it's time to enable it within our Lambda function. In the source code provided, uncomment the line that looks like this: ```// alexa.dynamoDBTableName = 'RecipeSkillTable'; ``` Again, if you are familiar with this process or understand what you just did, move on to the next task. If not, refer to the section below.
+Now that we've added permission to our database, it's time to enable it within our Lambda function. In the source code provided, uncomment the line (around line 53) that looks like this: ```// alexa.dynamoDBTableName = 'RecipeSkillTable'; ``` 
+Also, verify or modify the region setting around line 44.  For developers building in the Ireland region, set this region to '''eu-west-1''' instead of the default '''us-east-1'''.
+Again, if you are familiar with this process or understand what you just did, move on to the next task. If not, refer to the section below.
 
 #### Enable the table within your Lambda code
 Steps:
