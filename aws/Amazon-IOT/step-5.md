@@ -26,8 +26,11 @@ Add permissions to users of your Identity Pool:
 1. Click the `Attach Policy` button to add the appropriate permissions to your role
 1. For the IOT webapp, choose `AWSIoTDataAccess` or define a specific set of permissions.
 
-Apply all settings:
-1. In another browser tab, open the [aws_config](./webapp-thing/js/aws_config.js) file.
+**Prepare your web application**
+
+Be sure you are working from a local laptop repository, cloned or downloaded from github.com/alexa/alexa-cookbook.
+
+1. In your favorite text editor, open the ```/webapp-thing/js/aws_config.js``` file.
 1. Replace the default values with your own for:
  * `REGION`
  * `mqttEndpoint`
@@ -35,17 +38,14 @@ Apply all settings:
 
 #### Launch the page
 
-Be sure you are working from a local repository, cloned or downloaded from `github.com/alexa/alexa-cookbook`.
-
-
-* Open the page thing1.html in your favorite browser.
+* Open the page ```thing1.html``` in Chrome or Firefox browser (within the browser, choose File, Open)
   * You can open the page right from within your project folder, you do not need to host it on a website.
 * The page should display with a green status label saying "CONNECTED"
 
 #### Test your skill
 1. Say: Alexa, open city browser
 1. Say: go to Frankfurt
-1. Say: go to Belfast
+1. Say: go to Dublin
 1. Say: stop
 
 The browser page should automatically create a new child window pop-up, that points to an Image Search URL for the city you requested!
