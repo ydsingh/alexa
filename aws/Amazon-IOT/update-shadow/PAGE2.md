@@ -9,7 +9,7 @@
 1. Create a new Skill called **city browser** with invocation name `city browser`.
 1. Click 'save' and then click 'next'.
 1. Click on the 'Launch Skill Builder' button.
-1. Click on the 'Code Editor' on the left hand side and paste the [InteractionModel.json](./speechAssets/InteractionModel.json) into the editor.
+1. Click on the 'Code Editor' on the left hand side and paste the [InteractionModel.json](./speechAssets/InteractionModel.json) into the editor. **PLEASE NOTE**: For India skills, the AMAZON.EU_CITY slot is not supported.  Find this reference and change it to AMAZON.City instead. 
 1. Click 'Save Model'
 1. Click 'Build Model'
 
