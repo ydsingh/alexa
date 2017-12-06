@@ -45,5 +45,6 @@ This role is typically called **```lambda_basic_execution```**.
 Continue reading the [Guide to adding IAM Policies](./IAM_POLICIES.md#title) to your role.
 
 <hr />
+
 Back to the [Home Page](../README.md#title)
 
