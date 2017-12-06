@@ -15,5 +15,6 @@ Alexa skill developers can take advantage of functions to prepare effective spee
 
 
 <hr />
+
 Back to the [Home Page](../README.md#title)
 
