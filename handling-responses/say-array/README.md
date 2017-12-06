@@ -25,6 +25,7 @@ You pass in two arguments: the list array, and the connecting word.
 
 
 <hr />
+
 Back to the [Home Page](../../README.md#title)
 
 

@@ -40,4 +40,5 @@ Pause here and leave this browser tab open.
 
 
 <hr />
+
 Back to the [Home Page](../../README.md#title)
