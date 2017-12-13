@@ -24,17 +24,15 @@ In the [first step of this guide](../instructions/1-voice-user-interface.md), we
 
 5.  **There are two boxes labeled "Author from scratch" and "Blueprints". Click the radio button in the box titled "Blueprints" then choose the blueprint named "alexa-skill-kit-sdk-factskill".** We have created a blueprint as a shortcut to getting everything set up for your skill. You can search for a blueprint using the provided search box.  This blueprint adds the alexa-sdk to your Lambda function so that you don't have to upload it yourself.
 
-        <!-- <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/fact/2-5-blueprint._TTH_.png" />  <!--TODO: THIS IMAGE NEEDS TO BE CUSTOMIZED FOR YOUR SKILL TEMPLATE, THIS ONE IS OUT OF DATE. -->
+      <!-- <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/fact/2-5-blueprint._TTH_.png" />  <!--TODO: THIS IMAGE NEEDS TO BE CUSTOMIZED FOR YOUR SKILL TEMPLATE, THIS ONE IS OUT OF DATE. -->
 
 6.  **Configure your function.** This screen is where we will enter the important parts of our Lambda function.  These values will only ever be visible to you, but make sure that you name your function something meaningful.  "HelloWorld" is sufficient if you don't have another idea for a name.
 
-    <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/2-7-configure-your-function._TTH_.png" />
-
+  <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/2-7-configure-your-function._TTH_.png" />
 
 7.  **Set up your Lambda function role.**  If you haven't done this before, we have a [detailed walkthrough for setting up your first role for Lambda](../../../aws/lambda-role.md).  If you have done this before, set your **Existing role** value to "lambda_basic_execution."
 
-
-    <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/2-9-lambda-function-role._TTH_.png" />
+  <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/2-9-lambda-function-role._TTH_.png" />
 
 8. **Click Create Function in the bottom right corner.**  You will need to scroll down to find **Create Function.**
 
@@ -52,7 +50,7 @@ In the [first step of this guide](../instructions/1-voice-user-interface.md), we
 
 11.  **Copy and paste the [provided code](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/lambda/src/index.js) into the Lambda function code box.**  We have provided the code for this skill on [GitHub](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/lambda/custom/index.js).  Delete the contents of the code box, and paste the contents of the new code.
 
-**Next, we will add a handler to the AWS Lambda function**
+12. **Next, we will add a handler to the AWS Lambda function**
 
   1. Within the AWS Lambda Console console, review your function code
   1. Within the handlers section, notice the three lines of code that handle the MyIntent event.
@@ -61,9 +59,9 @@ In the [first step of this guide](../instructions/1-voice-user-interface.md), we
   1. Look at the HelpIntent function for a hint on how to keep the session open after Alexa responds.
   1. Test your new skill by opening the skill and saying "what is up"
 
-11. **Make sure you've copied the ARN value**  The ARN value should be in the top right corner. If you haven't already, copy this value for use in the next section of the guide.
+13. **Make sure you've copied the ARN value**  The ARN value should be in the top right corner. If you haven't already, copy this value for use in the next section of the guide.
 
-    <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/2-12-copy-ARN._TTH_.png" />  <!--TODO: THIS IMAGE NEEDS TO BE CUSTOMIZED FOR YOUR SKILL TEMPLATE. -->
+  <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/2-12-copy-ARN._TTH_.png" />  <!--TODO: THIS IMAGE NEEDS TO BE CUSTOMIZED FOR YOUR SKILL TEMPLATE. -->
 
 <br/><br/>
 <a href="https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/3-connect-vui-to-code.md"><img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/buttons/button_next_connect_vui_to_code._TTH_.png"/></a>
