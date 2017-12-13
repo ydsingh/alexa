@@ -20,6 +20,8 @@ const DIRECTIVESERVICEMESSAGE = 'Please wait...';
 
 const DIRECTIVEERRORMESSAGE = 'Cannot enqueue a progressive direcitve.';
 
+const GETEVENTSERRORMESSAGE = 'Cannot get events from wiki, thanks for using the history buff skill';
+
 const GOODBYE = 'Bye! Thanks for using the history buff skill';
 
 const UNHANDLED = 'This skill doesn\'t support that. Please ask something else.';
@@ -36,6 +38,7 @@ module.exports = {
     'HELPREPROMPTTEXT': HELPREPROMPTTEXT,
     'DIRECTIVESERVICEMESSAGE': DIRECTIVESERVICEMESSAGE,
     'DIRECTIVEERRORMESSAGE': DIRECTIVEERRORMESSAGE,
+    'GETEVENTSERRORMESSAGE' : GETEVENTSERRORMESSAGE,
     'GOODBYE': GOODBYE,
     'UNHANDLED': UNHANDLED
 };
