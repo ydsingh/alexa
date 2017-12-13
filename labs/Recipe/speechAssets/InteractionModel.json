@@ -13,6 +13,10 @@
       "samples": []
     },
     {
+      "name": "AMAZON.PreviousIntent",
+      "samples": []
+    },
+    {
       "name": "AMAZON.NoIntent",
       "samples": []
     },

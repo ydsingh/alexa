@@ -13,7 +13,7 @@
 
 If you manage your Lambda code in a local folder on your laptop, you can test your code with a unit test command.  Choose any one of the testing options here:
 
-   + You can write another javascript script that calls your skill code directly.  Navigate to the tests folder, such as [Cookbook/ExternalCalls/httpsGet/tests](../ExternalCalls/httpsGet/tests) and type ```node test.js```
+   + You can write another javascript script that calls your skill code directly.  Navigate to the tests folder, such as [Cookbook/ExternalCalls/httpsGet/tests](https://github.com/alexa/alexa-cookbook/tree/master/external-calls/httpsGet/tests) and type ```node test.js```
    + You can define and run a local test in your ```src/package.json``` configuration file, under the ```scripts``` section.  Verify the *test* command and then type in the command: ```npm test``` to a terminal prompt.
    + You can define and use a remote test in your ```src/package.json``` configuration file, under the ```scripts``` section.  Verify the *invoke* command and then type in the command: ```npm invoke``` to a terminal prompt.  This will test the function that exists within AWS Lambda.  You will need to have previously installed and configured the [AWS CLI](https://developer.amazon.com/blogs/post/Tx1UE9W1NQ0GYII/publishing-your-skill-code-to-lambda-via-the-command-line-interface) for this to work.
 
