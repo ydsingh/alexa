@@ -157,7 +157,7 @@
       },
       'AMAZON.RepeatIntent': function () {
           if (!this.attributes['currentStep'] ) {
-              this.attributes['currentStep'] = 1;
+              this.attributes['currentStep'] = 0;
           } else {
               this.attributes['currentStep'] = this.attributes['currentStep'] - 1;
           }
