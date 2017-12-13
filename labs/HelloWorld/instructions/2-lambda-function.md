@@ -52,12 +52,12 @@ In the [first step of this guide](../instructions/1-voice-user-interface.md), we
 
 12. **Next, we will add a handler to the AWS Lambda function**
 
-  1. Within the AWS Lambda Console console, review your function code
-  1. Within the handlers section, notice the three lines of code that handle the MyIntent event.
-  1. Create a new handler function for the WhatsUpIntent
-  1. Customize the message Alexa will say
-  1. Look at the HelpIntent function for a hint on how to keep the session open after Alexa responds.
-  1. Test your new skill by opening the skill and saying "what is up"
+    1. Within the AWS Lambda Console console, review your function code
+    1. Within the handlers section, notice the three lines of code that handle the MyIntent event.
+    1. Create a new handler function for the WhatsUpIntent
+    1. Customize the message Alexa will say
+    1. Look at the HelpIntent function for a hint on how to keep the session open after Alexa responds.
+    1. Test your new skill by opening the skill and saying "what is up"
 
 13. **Make sure you've copied the ARN value**  The ARN value should be in the top right corner. If you haven't already, copy this value for use in the next section of the guide.
 
