@@ -153,7 +153,7 @@ function getPrompt(speechOutput) {
     var audio = songs[stage];
     speechOutput += "Think about what " + data.mix[0] + " and " + data.mix[1] + " could make. <audio src='" + audio + "' /> What do they make?";
 
-    this.response.speak(speechOutput);
+    this.response.speak(speechOutput).listen("What do " + data.mix[0] + " and " + data.mix[1] + " make?");
     this.emit(':responseReady');
 }
 
