@@ -64,7 +64,7 @@ There are two parts to an Alexa skill.  The first part is the [Voice User Interf
 
 11.  In the textbox provided, enter the new intent name: **WhatsUpIntent**, and click the **Create Intent** button.
 
-    ![Add Intent](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/1-9-add-custom-intent._TTH_.png)
+  ![Add Intent](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/1-9-add-custom-intent._TTH_.png)
 
 12. Add 3-5 sample utterances for your intent.  These are the things a user would say to make this intent happen.  Here are a few examples:
 

@@ -48,7 +48,7 @@ In the [first step of this guide](../instructions/1-voice-user-interface.md), we
 
   Once you have selected Alexa Skills Kit, scroll down and click the **Add** button. Then click the **Save** button in the top right. You should see a green success message at the top of your screen. Now, click the box that has the Lambda icon followed by the name of your function (HelloWorld if you used our suggestion) and scroll down to the field called "Function code".
 
-11.  **Copy and paste the [provided code](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/lambda/src/index.js) into the Lambda function code box.**  We have provided the code for this skill on [GitHub](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/lambda/custom/index.js).  Delete the contents of the code box, and paste the contents of the new code.
+11.  **Copy and paste the [provided code](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/lambda/custom/index.js) into the Lambda function code box.**  We have provided the code for this skill on [GitHub](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/lambda/custom/index.js).  Delete the contents of the code box, and paste the contents of the new code.
 
 12. **Next, we will add a handler to the AWS Lambda function**
 
