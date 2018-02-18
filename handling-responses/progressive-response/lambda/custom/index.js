@@ -43,37 +43,47 @@ const handlers = {
         const calendar = dateSlotValue && (isNaN(Date.parse(dateSlotValue)) ? new Date() : new Date(dateSlotValue));
         const month = MONTH_NAMES.split(',')[calendar.getMonth()];  
         const date = calendar.getDate().toString();
-        callDirectiveService(this.event);
+        const directiveServiceCall = callDirectiveService(this.event)
+                                    .catch((error) => {
+                                        console.log(Messages.DIRECTIVEERRORMESSAGE + error);
+                                    });
         const wikiRequestClient = new WikiRequestClient();
-        wikiRequestClient.getEventsFromWiki(month, date)
-        .then((events) => {
-            if(events.length === 0) {
-                this.response
-                    .speak(Messages.CONNECTERROR);
-                this.emit(':responseReady');
-                return;
-            } 
-            const cardTitle = 'Events on ' + month + ' ' + date;
-            const startIndex = 0;
-            let speechOutput = '<p>For ' + month + ' ' + date + '</p> ' + selectCurrentEvents(events, startIndex).speechOutputContent;
-            let cardOutput = 'For ' + month + ' ' + date + ', ' + selectCurrentEvents(events, startIndex).cardOutputContent;
-            if(startIndex + PAGINATION_SIZE >= events.length) {
-                this.response
-                    .speak(speechOutput)
-                    .listen(Messages.NOMORE)
-                    .cardRenderer(Messages.CARDTITLE, cardOutput);
-                this.emit(':responseReady');
-                return;
-            }
-            this.attributes[SESSION_INDEX] = PAGINATION_SIZE;
-            this.attributes[SESSION_TEXT] = events;
-            speechOutput += Messages.GODEEPER;
-            cardOutput += Messages.GODEEPER;
-            this.response.speak(speechOutput)
-                        .listen(Messages.MOREREPROMPTTEXT)
-                        .cardRenderer(cardTitle, cardOutput);
-            this.emit(':responseReady');    
-        }); 
+        const getEventsCall= wikiRequestClient.getEventsFromWiki(month, date);
+        Promise.all([directiveServiceCall, getEventsCall])
+                .then((values) => {
+                    const events = values[1];
+                    if(events.length === 0) {
+                        this.response
+                            .speak(Messages.CONNECTERROR);
+                        this.emit(':responseReady');
+                        return;
+                    } 
+                    const cardTitle = 'Events on ' + month + ' ' + date;
+                    const startIndex = 0;
+                    let speechOutput = '<p>For ' + month + ' ' + date + '</p> ' + selectCurrentEvents(events, startIndex).speechOutputContent;
+                    let cardOutput = 'For ' + month + ' ' + date + ', ' + selectCurrentEvents(events, startIndex).cardOutputContent;
+                    if(startIndex + PAGINATION_SIZE >= events.length) {
+                        this.response
+                            .speak(speechOutput)
+                            .listen(Messages.NOMORE)
+                            .cardRenderer(Messages.CARDTITLE, cardOutput);
+                        this.emit(':responseReady');
+                        return;
+                    }
+                    this.attributes[SESSION_INDEX] = PAGINATION_SIZE;
+                    this.attributes[SESSION_TEXT] = events;
+                    speechOutput += Messages.GODEEPER;
+                    cardOutput += Messages.GODEEPER;
+                    this.response.speak(speechOutput)
+                                .listen(Messages.MOREREPROMPTTEXT)
+                                .cardRenderer(cardTitle, cardOutput);
+                    this.emit(':responseReady');
+                })
+                .catch((error) => {
+                    console.log(error);
+                    this.response.speak(Messages.GETEVENTSERRORMESSAGE);
+                    this.emit(':responseReady');
+                });
     },
 
     'GetNextEventIntent': function () {
@@ -144,11 +154,8 @@ function callDirectiveService(event) {
     const endpoint = event.context.System.apiEndpoint;
 	const token = event.context.System.apiAccessToken;
 	const directive = new Alexa.directives.VoicePlayerSpeakDirective(requestId, Messages.DIRECTIVESERVICEMESSAGE);
-    ds.enqueue(directive, endpoint, token)
-    .catch((err) => {
-        console.log(Messages.DIRECTIVEERRORMESSAGE + err);
-    });
-}
+    return ds.enqueue(directive, endpoint, token);
+};
 
 function selectCurrentEvents(events, startIndex) {
     let speechOutputContent = '';
@@ -161,4 +168,4 @@ function selectCurrentEvents(events, startIndex) {
             'speechOutputContent': speechOutputContent,
             'cardOutputContent': cardOutputContent
     };
-}
+};

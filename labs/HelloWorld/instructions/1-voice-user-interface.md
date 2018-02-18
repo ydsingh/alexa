@@ -57,13 +57,14 @@ There are two parts to an Alexa skill.  The first part is the [Voice User Interf
 
     ![Add Intent Button](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/1-8-intents-button._TTH_.png)
 
+
 9.  Click on the "Code Editor" item under **Dashboard** on the top left side of the skill builder.
 
 10.  In the textfield provided, replace any existing code with the code provided in the [Interaction Model](../InteractionModel.json), then click "Apply Changes" or "Save Model".  
 
 11.  In the textbox provided, enter the new intent name: **WhatsUpIntent**, and click the **Create Intent** button.
 
-    ![Add Intent](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/1-9-add-custom-intent._TTH_.png)
+  ![Add Intent](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/1-9-add-custom-intent._TTH_.png)
 
 12. Add 3-5 sample utterances for your intent.  These are the things a user would say to make this intent happen.  Here are a few examples:
 
@@ -74,7 +75,9 @@ There are two parts to an Alexa skill.  The first part is the [Voice User Interf
 
     ![](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/1-10-sample-utterances._TTH_.png)
 
+
 13. Click on the **Save Model** button, and then click on the **Build Model** button.
+
 
     ![](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/1-12-skill-builder-build-save-model._TTH_.png)
 
@@ -121,7 +124,9 @@ There are two parts to an Alexa skill.  The first part is the [Voice User Interf
         Once you have added these sample utterances to your skill, you can click the "Save" button to verify that your interaction model is built properly without any errors.
 -->
 
+
 14.  If your interaction model builds successfully, click on **Configuration button** to move on to Configuration. In our next step of this guide, we will be creating our Lambda function in the AWS developer console, but keep this browser tab open, because we will be returning here on [Page #3: Connect VUI to Code](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/3-connect-vui-to-code.md).
+
      ![](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/1-13-skill-builder-configuration.png)
 
      If you get an error from your interaction model, check through this list:

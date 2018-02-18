@@ -68,7 +68,7 @@ const handlers = {
             console.log("Error: " + err.message);
         }
 
-        let speechOutput = "Your end point receive a request, here's a breakdown. " + requestType + " " + intentName + slots;
+        let speechOutput = "Your end point received a request, here's a breakdown. " + requestType + " " + intentName + slots;
         let cardTitle = "Skill ID: " + skillId;
         let cardContent = speechOutput;
 

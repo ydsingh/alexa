@@ -3,7 +3,7 @@
 
 ## Testing Your Alexa Skill
 
-So far, we have [created a Voice User Interface](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/1-voice-user-interface.md) and [a Lambda function](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/2-lambda-function.md), and [connected the two together](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/3-connect-vui-to-lambda.md).  Your skill is now ready to test.
+So far, we have [created a Voice User Interface](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/1-voice-user-interface.md) and [a Lambda function](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/2-lambda-function.md), and [connected the two together](https://github.com/alexa/alexa-cookbook/tree/master/labs/HelloWorld/instructions/3-connect-vui-to-code.md).  Your skill is now ready to test.
 
 1.  **Go back to the [Amazon Developer Portal](https://developer.amazon.com/edw/home.html#/skills/list) and select your skill from the list.** You may still have a browser tab open if you started at the beginning of this tutorial.
 
@@ -41,6 +41,7 @@ pronounce it. To make changes to her pronunciation, use Speech Synthesis Markup 
     * If you receive a response that reads: *"The remote endpoint could not be called, or the response it returned was invalid,"* this is an indication that something is broken.  AWS Lambda offers an additional testing tool to help you troubleshoot your skill.
 
 5.  **Configure a test event in AWS Lambda.** Now that you are familiar with the **request** and **response** boxes in the Service Simulator, it's important for you to know that you can use your **requests** to directly test your Lambda function every time you update it.  To do this:
+
     1.  Enter an utterance in the service simulator, and copy the generated Lambda Request for the next step.
 
     2.  **Open your Lambda function in AWS, open the Actions menu, and select "Configure test events."**
@@ -58,6 +59,7 @@ pronounce it. To make changes to her pronunciation, use Speech Synthesis Markup 
     5.  **Click the "Create" button.** This will save your test event and bring you back to the main configuration for your lambda function.
 
     6.  **Click the "Test" button to execute the "startSession" test event.**
+
 
         <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/general/4-5-5-save-and-test._TTH_.png" />
 
@@ -80,7 +82,9 @@ pronounce it. To make changes to her pronunciation, use Speech Synthesis Markup 
 6.  **Other testing methods to consider:**
 
     *  [Echosim.io](https://echosim.io) - a browser-based Alexa skill testing tool that makes it easy to test your skills without carrying a physical device everywhere you go.
+
     *  [Unit Testing with Alexa](https://github.com/alexa/alexa-cookbook/tree/master/testing/postman/README.md) - a modern approach to unit testing your Alexa skills with [Postman](http://getpostman.com) and [Amazon API Gateway](http://aws.amazon.com/apigateway).
+
 
 7.  **If your sample skill is working properly, you can now customize your skill.**
 
