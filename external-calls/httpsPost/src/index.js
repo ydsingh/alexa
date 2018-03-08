@@ -72,7 +72,7 @@ function httpsPost(myData, callback) {
             // this particular API returns a JSON structure:
             // returnData: {"usstate":"New Jersey","population":9000000}
 
-            population = JSON.parse(returnData).population;
+            var population = JSON.parse(returnData).population;
 
             callback(population);
 
