@@ -12,15 +12,22 @@
         },
 
         {
-          "intent": "AMAZON.HelpIntent"
+          "intent": "AMAZON.HelpIntent",
+            "slots": [],
+            "samples": []
         },
         {
-          "intent": "AMAZON.StopIntent"
+          "intent": "AMAZON.StopIntent",
+            "slots": [],
+            "samples": []
         },
         {
-          "intent": "AMAZON.CancelIntent"
+          "intent": "AMAZON.CancelIntent",
+            "slots": [],
+            "samples": []
         }
-      ]
+      ],
+      "types": []
     }
   }
 }
