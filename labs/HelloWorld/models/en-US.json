@@ -10,7 +10,6 @@
             "hello"
           ]
         },
-
         {
           "intent": "AMAZON.HelpIntent",
             "slots": [],
