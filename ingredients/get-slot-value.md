@@ -10,7 +10,7 @@ in an undefined reference and throw an error.
 From your intent you can call `getSpokenValue` and it will either return the
 slot value, or 'undefined' if it is not available.
 
-    var spokenValue = getSpokenValue.call(this);
+    var spokenValue = getSpokenValue.call(this, slotName);
 
 You can drop the following helper function, `getSpokenValue` into your code
 and finish the rest of your intent code.
