@@ -122,52 +122,51 @@ var speechConsWrong = ["Argh", "Aw man", "Blarg", "Blast", "Boo", "Bummer", "Dar
 "Mamma mia", "Oh boy", "Oh dear", "Oof", "Ouch", "Ruh roh", "Shucks", "Uh oh", "Wah wah", "Whoops a daisy", "Yikes"];
 
 
-
-function getSlotValues (filledSlots) {
-    //given event.request.intent.slots, a slots values object so you have
-    //what synonym the person said - .synonym
-    //what that resolved to - .resolved
-    //and if it's a word that is in your slot values - .isValidated
+/** Given the (event.request.intent.slots) value from a request, return an extracted ojbect with values from the filled slots
+*     synonym: What synonym the person said
+*     resolved: What the synonym resolved to
+*     isValidated: If it's a word that is in your slot values
+*     statusCode: The Entity Resolution status code for the slot value
+*/
+function getSlotValues(filledSlots) {
     let slotValues = {};
 
-    console.log(JSON.stringify(filledSlots));
+    //console.log(JSON.stringify(filledSlots));
 
-    Object.keys(filledSlots).forEach(function(item) {
-        //console.log("item in filledSlots: "+JSON.stringify(filledSlots[item]));
-        var name=filledSlots[item].name;
-        //console.log("name: "+name);
-        if(filledSlots[item]&&
-           filledSlots[item].resolutions &&
-           filledSlots[item].resolutions.resolutionsPerAuthority[0] &&
-           filledSlots[item].resolutions.resolutionsPerAuthority[0].status &&
-           filledSlots[item].resolutions.resolutionsPerAuthority[0].status.code ) {
+    Object.keys(filledSlots).forEach(function (item) {
+        let name = filledSlots[item].name;
+        slotValues[name] = {};
 
-            switch (filledSlots[item].resolutions.resolutionsPerAuthority[0].status.code) {
-                case "ER_SUCCESS_MATCH":
-                    slotValues[name] = {
-                        "synonym": filledSlots[item].value,
-                        "resolved": filledSlots[item].resolutions.resolutionsPerAuthority[0].values[0].value.name,
-                        "isValidated": filledSlots[item].value == filledSlots[item].resolutions.resolutionsPerAuthority[0].values[0].value.name
-                    };
-                    break;
-                case "ER_SUCCESS_NO_MATCH":
-                    slotValues[name] = {
-                        "synonym":filledSlots[item].value,
-                        "resolved":filledSlots[item].value,
-                        "isValidated":false
-                    };
-                    break;
-                }
-            } else {
-                slotValues[name] = {
-                    "synonym": filledSlots[item].value,
-                    "resolved":filledSlots[item].value,
-                    "isValidated": false
-                };
-            }
-        },this);
-        //console.log("slot values: "+JSON.stringify(slotValues));
-        return slotValues;
+        // Extract the nested key 'code' from the ER resolutions in the request
+        let erStatusCode = undefined;
+        try {
+            erStatusCode = ((((filledSlots[item] || {}).resolutions || {}).resolutionsPerAuthority[0] || {}).status || {}).code;
+        }
+        catch (e) {
+            // console.log('erStatusCode e:' + e)
+        }
+
+        switch (erStatusCode) {
+            case "ER_SUCCESS_MATCH":
+                slotValues[name].synonym = filledSlots[item].value;
+                slotValues[name].resolved = filledSlots[item].resolutions.resolutionsPerAuthority[0].values[0].value.name;
+                slotValues[name].isValidated = filledSlots[item].value === filledSlots[item].resolutions.resolutionsPerAuthority[0].values[0].value.name;
+                slotValues[name].statusCode = erStatusCode;
+                break;
+
+            default: // ER_SUCCESS_NO_MATCH, undefined
+                slotValues[name].synonym = filledSlots[item].value;
+                slotValues[name].resolved = filledSlots[item].value;
+                slotValues[name].isValidated = false;
+                slotValues[name].statusCode = erStatusCode === undefined ? "undefined" : erStatusCode;
+                break;
+        }
+
+    }, this);
+
+    //console.log("slotValues: " + JSON.stringify(slotValues));
+
+    return slotValues;
 }
 
 
