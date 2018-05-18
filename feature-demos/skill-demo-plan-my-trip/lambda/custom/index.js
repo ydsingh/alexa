@@ -72,10 +72,10 @@ const CompletedPlanMyTripHandler = {
     }
 
     // Now let's recap the trip
-    speechOutput = `${speechOutput} from ${slotValues.fromCity} to ${slotValues.toCity} on ${slotValues.travelDate}`;
+    speechOutput = `${speechOutput} from ${slotValues.fromCity.synonym} to ${slotValues.toCity.synonym} on ${slotValues.travelDate.synonym}`;
 
-    if (slotValues.activity) {
-      speechOutput += ` to go ${slotValues.activity}.`;
+    if (slotValues.activity.synonym) {
+      speechOutput += ` to go ${slotValues.activity.synonym}.`;
     }
 
     return responseBuilder
