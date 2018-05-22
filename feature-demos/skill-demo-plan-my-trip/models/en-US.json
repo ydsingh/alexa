@@ -59,7 +59,8 @@
 											"i want to visit {toCity} ",
 											"I want to travel from {fromCity} to {toCity} {travelDate} ",
 											"Plan a trip",
-											"I'll go to {toCity} on the {travelDate} "
+											"I'll go to {toCity} on the {travelDate} ",
+											"{toCity} "
 									]
 							}
 					],
