@@ -1,4 +1,0 @@
-HelloWorldIntent hello
-HelloWorldIntent hi
-HelloWorldIntent how are you
-HelloWorldIntent what's up
