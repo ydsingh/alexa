@@ -1,7 +1,3 @@
-/* eslint-disable no-console */
-/* eslint no-use-before-define: ["error", {"functions": false}] */
-/* eslint-disable prefer-destructuring */
-
 const Alexa = require('ask-sdk-core');
 
 // 1. Text strings ================================================================================
