@@ -1,11 +1,6 @@
-# Enitity_Resolution_Quiz_Sample
-This sample shows how to use entity resolution in a simple quiz.
+# Entity Resolution Quiz Demo
+Hey there! Looking for where this demo went? 
 
-Let's say Alexa asks, "Who is credited with suggesting the word "hello" be used when answering the telephone?"
+We've updated the demo and moved it here: [feature-demos/skill-demo-entity-resolution-quiz](../../feature-demos/skill-demo-entity-resolution-quiz)
 
-The user can answer with, "Thomas Edison" or similar phrases like "Edison" or "Menlo Park".
-
-If they say Edison, your code will get "Edison" as what they said as well as "Thomas Edison" which is what that resolves to.
-
-To make this skill,
-Build the fact skill (https://github.com/alexa/skill-sample-nodejs-fact) and replace the index.js and in the skill builder use the code editor to paste the interaction model.
+:smiley_cat:
