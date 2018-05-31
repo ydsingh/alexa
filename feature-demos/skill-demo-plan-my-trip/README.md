@@ -6,13 +6,13 @@ The "Plan my trip" sample asks the user questions about an upcoming trip they'd 
 ## What You Will Need
 *  [Amazon Developer Account](http://developer.amazon.com/alexa)
 *  [Amazon Web Services Account](http://aws.amazon.com/)
-*  The sample code on [GitHub](https://github.com/alexa/alexa-cookbook/feature-demos/skill-demo-plan-my-trip/).
+*  The sample code on [GitHub](https://github.com/alexa/alexa-cookbook/tree/master/feature-demos/skill-demo-plan-my-trip/).
 
 ## Setting Up the Demo
 This folder contains the interaction model and skill code.  It is structured to make it easy to deploy if you have the ASK CLI already setup.  If you would like to use the Developer Portal, you can follow the steps outlined in the [Hello World](https://github.com/alexa/skill-sample-nodejs-hello-world) example, substituting the [Model](./models/en-US.json) and the [skill code](./lambda/custom/index.js) when called for.
 
 ## Exploring Dialog Management
-Once the skill is configured, naviagate to the Build tab in the skill builder, and explore the PlanMyTrip Intent, slots, sample utterances and prompts.
+Once the skill is configured, navigate to the Build tab in the skill builder, and explore the PlanMyTrip Intent, slots, sample utterances and prompts.
 
 ## Running the Demo
 To start the demo say "alexa open plan my trip demo".  Alexa will prompt you to provide a US city as a starting point and a US city as a destination.
