@@ -1,10 +1,10 @@
 {
   "name": "skill-sample-nodejs-historybuff",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "historyBuff sample skill",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test"
+    "test": ""
   },
   "repository": {
     "type": "git",
@@ -13,16 +13,8 @@
   "author": "Amazon.com",
   "license": "ASL 2.0",
   "dependencies": {
-    "alexa-sdk": "^1.0.20"
+    "ask-sdk": "^2.0.0"
   },
   "devDependencies": {
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-jshint": "^2.0.4",
-    "gulp-mocha": "4.3.1",
-    "gulp-zip": "^4.0.0",
-    "run-sequence": "2.2.0",
-    "jshint": "^2.9.5",
-    "nock": "^9.0.22"
   }
 }

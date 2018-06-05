@@ -1,5 +1,5 @@
 {
-  "skillManifest": {
+  "manifest": {
     "publishingInformation": {
       "locales": {
         "en-US": {
@@ -14,7 +14,7 @@
             "buff",
             "history"
           ],
-          "name": "NodeSample-HistoryBuff",
+          "name": "Progressive Response Demo",
           "description": "Dummy Description"
         }
       },
@@ -30,14 +30,6 @@
         }
       }
     },
-    "manifestVersion": "1.0",
-    "permissions": [],
-    "privacyAndCompliance": {
-      "allowsPurchases": false,
-      "isExportCompliant": true,
-      "containsAds": false,
-      "isChildDirected": false,
-      "usesPersonalInfo": false
-    }
+    "manifestVersion": "1.0"
   }
 }
