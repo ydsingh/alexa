@@ -72,11 +72,8 @@ const GetFirstEventHandler = {
       }
       // let's purposely insert a 5 second delay for this demo.
       // shouldn't go longer else Lambda function may time out
-      const delayLength = 5000; // milliseconds
-      const stopTime = new Date().getTime() + delayLength;
-      while (new Date().getTime() < stopTime) {
-        // do nothing but wait
-      }
+      await sleep(5000);
+
       const cardTitle = `Events on ${month} ${date}`;
       const startIndex = 0;
       let speechOutput = `<p>For ${month} ${date}</p> ${selectCurrentEvents(events, startIndex).speechOutputContent}`;
@@ -248,6 +245,10 @@ function selectCurrentEvents(events, startIndex) {
     speechOutputContent,
     cardOutputContent,
   };
+}
+
+function sleep(milliseconds) {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
 
 // 4. Exports handler function and setup ===================================================
