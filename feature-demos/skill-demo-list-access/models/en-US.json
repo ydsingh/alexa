@@ -1,11 +1,11 @@
 {
 	"interactionModel": {
 		"languageModel": {
-            "invocationName": "invocation name",
+			"invocationName": "list demo",
 			"intents": [
 				{
-					"intent": "TopToDoIntent",
-					"samples" : [
+					"name": "TopToDoIntent",
+					"samples": [
 						"what is my top todo",
 						"what is my top to do",
 						"top todo",
@@ -15,10 +15,10 @@
 						"stop todo",
 						"stop to do"
 					]
-				  },
-				  {
-					"intent": "CompleteTopToDoIntent",
-					"samples":[
+				},
+				{
+					"name": "CompleteTopToDoIntent",
+					"samples": [
 						"clear top todo",
 						"clear top to do",
 						"delete top todo",
@@ -31,16 +31,16 @@
 						"complete my todo",
 						"complete top todo"
 					]
-				  },
-				  {
-					"intent": "AMAZON.CancelIntent"
-				  },
-				  {
-					"intent": "AMAZON.HelpIntent"
-				  },
-				  {
-					"intent": "AMAZON.StopIntent"
-				  }
+				},
+				{
+					"name": "AMAZON.CancelIntent"
+				},
+				{
+					"name": "AMAZON.HelpIntent"
+				},
+				{
+					"name": "AMAZON.StopIntent"
+				}
 			]
 		}
 	}

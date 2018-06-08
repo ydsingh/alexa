@@ -8,7 +8,7 @@
           "apis": {
             "custom": {
               "endpoint": {
-                "uri": "ask-skillname-default"
+                "uri": "ask-list-access-demo-default"
               }
             }
           }

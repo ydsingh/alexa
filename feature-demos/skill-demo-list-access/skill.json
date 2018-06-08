@@ -9,7 +9,7 @@
               "TOOD: example phrase 2",
               "TOOD: example phrase 3"
             ],
-            "name": "TODO: Skill Name",
+            "name": "Demo - List Access",
             "description": "TODO: skill description"
           }
         },
@@ -25,6 +25,14 @@
           }
         }
       },
+      "permissions": [
+        {
+          "name": "alexa::household:lists:read"
+        },
+        {
+          "name": "alexa::household:lists:write"
+        }
+      ],
       "manifestVersion": "1.0"
     }
   }

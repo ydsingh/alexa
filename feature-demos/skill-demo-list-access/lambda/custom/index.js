@@ -1,5 +1,4 @@
 const Alexa = require('ask-sdk');
-const https = require('https');
 
 const listIsEmpty = '#list_is_empty#';
 
@@ -7,6 +6,11 @@ const welcomeOutput = 'Welcome. You can say, top todo';
 const welcomeReprompt = 'You can say, top todo';
 const helpOutput = 'You can say top todo or cancel top todo.';
 const helpReprompt = 'Say top todo or cancel top todo.';
+
+const listStatuses = {
+  ACTIVE: 'active',
+  COMPLETED: 'completed',
+};
 
 // handlers
 
@@ -44,11 +48,15 @@ const TopToDoHandler = {
         .getResponse();
     } else if (itemName === listIsEmpty) {
       speechOutput = 'Your todo list is empty.';
-    } else {
-      speechOutput = `Your top todo is ${itemName}`;
+      return responseBuilder
+        .speak(speechOutput)
+        .getResponse();
     }
+    speechOutput = `Your top todo is ${itemName}.  To mark it as complete, say complete my to do.`;
+    const speechReprompt = 'Say complete my to do to mark it complete.';
     return responseBuilder
       .speak(speechOutput)
+      .reprompt(speechReprompt)
       .getResponse();
   },
 };
@@ -56,30 +64,32 @@ const TopToDoHandler = {
 const CompleteTopToDoHandler = {
   canHandle(handlerInput) {
     const request = handlerInput.requestEnvelope.request;
-    return request.type === 'IntentRequest' && request.intent.name === 'ClearTopToDoIntent';
+    return request.type === 'IntentRequest' && request.intent.name === 'CompleteTopToDoIntent';
   },
   async handle(handlerInput) {
     const responseBuilder = handlerInput.responseBuilder;
 
     let speechOutput;
     console.info('Starting complete top todo handler');
-    const status = await completeTopToDoAction(handlerInput);
-    if (!status) {
-      speechOutput = 'Alexa List permissions are missing. You can grant permissions within the Alexa app.';
-      const permissions = ['write::alexa:household:list'];
-      return responseBuilder
-        .speak(speechOutput)
-        .withAskForPermissionsConsentCard(permissions)
-        .getResponse();
-    } else if (status === listIsEmpty) {
-      speechOutput = 'I could not delete your top todo. Your todo list is empty.';
-    } else if (status === 200) {
-      speechOutput = 'I successfully deleted your top todo.';
-    } else {
-      speechOutput = `I could not delete the todo. The developers are debugging response code ${status}`;
+    try {
+      const result = await completeTopToDoAction(handlerInput);
+      if (!result) {
+        speechOutput = 'Alexa List permissions are missing. You can grant permissions within the Alexa app.';
+        const permissions = ['write::alexa:household:list'];
+        return responseBuilder
+          .speak(speechOutput)
+          .withAskForPermissionsConsentCard(permissions)
+          .getResponse();
+      } else if (result === listIsEmpty) {
+        speechOutput = 'I could not complete your top todo. Your todo list is empty.';
+      } else {
+        speechOutput = `I successfully completed ${result.value}, which was your top todo.  Bye for now!`;
+      }
+    } catch (err) {
+      speechOutput = 'I could not complete the todo.  Please try again later';
     }
     return responseBuilder
-      .speak(helpOutput)
+      .speak(speechOutput)
       .getResponse();
   },
 };
@@ -146,225 +156,84 @@ const ErrorHandler = {
 // helpers
 
 /**
- * List API to retrieve the List of Lists : Lists Metadata.
- */
-function getListsMetadata(session) {
-  if (!session.user.permissions) {
-    console.log('permissions are not defined');
-    return;
-  }
-  const consentToken = session.user.permissions.consentToken;
-  console.log('Starting the get list metadata call.');
-  // todo convert to serviceclient
-  const options = {
-    host: api_url,
-    port: api_port,
-    path: '/v2/householdlists/',
-    method: 'GET',
-    headers: {
-      'Authorization': 'Bearer ' + consentToken,
-      'Content-Type': 'application/json'
-    }
-  }
-
-  var req = https.request(options, (res) => {
-    console.log('STATUS: ', res.statusCode);
-    console.log('HEADERS: ', JSON.stringify(res.headers));
-
-    if (res.statusCode === 403) {
-      console.log("permissions are not granted");
-      callback(null);
-      return;
-    }
-
-    var body = [];
-    res.on('data', function (chunk) {
-      body.push(chunk);
-    }).on('end', function () {
-      body = Buffer.concat(body).toString();
-      callback(body);
-    });
-
-    res.on('error', (e) => {
-      console.log(`Problem with request: ${e.message}`);
-    });
-  }).end();
-}
-
-/**
 * List API to retrieve the customer to-do list.
 */
-function getToDoList(session) {
-  if (!session.user.permissions) {
-    console.log('permissions are not defined');
-    return;
-  }
-  const consentToken = session.user.permissions.consentToken;
-  console.log('Starting get todo list call.');
+async function getToDoListId(handlerInput) {
+  // check session attributes to see if it has already been fetched
+  const attributesManager = handlerInput.attributesManager;
+  const sessionAttributes = attributesManager.getSessionAttributes();
+  let listId;
 
-  const returnValue = getListsMetadata(session);
-  if (!returnValue) {
-    console.log('permissions are not defined');
-    return;
-  }
-  var obj = JSON.parse(returnValue);
-  var todo_path = "";
-  for (i = 0; i < obj.lists.length; i++) {
-    if (obj.lists[i].name === 'Alexa to-do list') {
-      for (j = 0; j < obj.lists[i].statusMap.length; j++) {
-        if (obj.lists[i].statusMap[j].status === 'active') {
-          todo_path = obj.lists[i].statusMap[j].href;
-          break;
-        }
+  if (!sessionAttributes.todoListId) {
+    // lookup the id for the 'to do' list
+    const listClient = handlerInput.serviceClientFactory.getListManagementServiceClient();
+    const listOfLists = await listClient.getListsMetadata();
+    if (!listOfLists) {
+      console.log('permissions are not defined');
+      return null;
+    }
+    for (let i = 0; i < listOfLists.lists.length; i += 1) {
+      console.log(`found ${listOfLists.lists[i].name} with id ${listOfLists.lists[i].listId}`);
+      const decodedListId = Buffer.from(listOfLists.lists[i].listId, 'base64').toString('utf8');
+      console.log(`decoded listId: ${decodedListId}`);
+      // The default lists (To-Do and Shopping List) list_id values are base-64 encoded strings with these formats:
+      //  <Internal_identifier>-TASK for the to-do list
+      //  <Internal_identifier>-SHOPPING_LIST for the shopping list
+      // Developers can base64 decode the list_id value and look for the specified string at the end. This string is constant and agnostic to localization.
+      if (decodedListId.endsWith('-TASK')) {
+        // since we're looking for the default to do list, it's always present and always active
+        listId = listOfLists.lists[i].listId;
+        break;
       }
-      break;
     }
   }
-
-  const options = {
-    host: api_url,
-    port: api_port,
-    path: todo_path,
-    method: 'GET',
-    headers: {
-      'Authorization': 'Bearer ' + consentToken,
-      'Content-Type': 'application/json'
-    }
-  }
-
-  const req = https.request(options, (res) => {
-    console.log('STATUS: ', res.statusCode);
-    console.log('HEADERS: ', JSON.stringify(res.headers));
-
-    if (res.statusCode === 403) {
-      console.log("permissions are not granted");
-      return;
-    }
-
-    const body = [];
-    res.on('data', function (chunk) {
-      body.push(chunk);
-    }).on('end', function () {
-      body = Buffer.concat(body).toString();
-      callback(JSON.parse(body));
-    });
-
-    res.on('error', (e) => {
-      console.log(`Problem with request: ${e.message}`);
-    });
-  }).end();
+  attributesManager.setSessionAttributes(sessionAttributes);
+  console.log(JSON.stringify(handlerInput));
+  return listId; // sessionAttributes.todoListId;
 }
 
 /**
 * Helper function to retrieve the top to-do item.
 */
-function getTopToDoItem(session) {
-  const returnValue = getToDoList(session);
-  if (!returnValue) {
-    return;
+async function getTopToDoItem(handlerInput) {
+  const listClient = handlerInput.serviceClientFactory.getListManagementServiceClient();
+  const listId = await getToDoListId(handlerInput);
+  console.log(`listid: ${listId}`);
+  const list = await listClient.getList(listId, listStatuses.ACTIVE);
+  if (!list) {
+    console.log('null list');
+    return null;
+  } else if (!list.items || list.items.length === 0) {
+    console.log('empty list');
+    return listIsEmpty;
   }
-  else if (!returnValue.items || returnValue.items.length === 0) {
-    return (listIsEmpty);
-  }
-  else {
-    return (returnValue.items[0].value);
-  };
-};
+  console.log(`list item found: ${list.items[0].value} with id: ${list.items[0].id}`);
+  return list.items[0].value;
+}
 
 /**
 * List API to delete the top todo item.
 */
-function completeTopToDoAction(session) {
-  returnValue = getToDoList(session);
-  if (!returnValue) {
-    return;
-  }
-  else if (!returnValue.items || returnValue.items.length === 0) {
+async function completeTopToDoAction(handlerInput) {
+  const listClient = handlerInput.serviceClientFactory.getListManagementServiceClient();
+  // get the list
+  const listId = await getToDoListId(handlerInput);
+  const list = await listClient.getList(listId, listStatuses.ACTIVE);
+  // if the list doesn't exist, no permissions or has no items
+  if (!list) {
+    return null;
+  } else if (!list.items || list.items.length === 0) {
     return (listIsEmpty);
-
   }
 
-  if (!session.user.permissions) {
-    console.log("permissions are not defined");
-    return;
-  }
-  const consentToken = session.user.permissions.consentToken;
-
-  var path = "/v2/householdlists/_listId_/items/_itemId_";
-  path = path.replace("_listId_", returnValue.listId);
-  path = path.replace("_itemId_", returnValue.items[0].id);
-
-  var options = {
-    host: api_url,
-    port: api_port,
-    path: path,
-    method: 'DELETE',
-    headers: {
-      'Authorization': 'Bearer ' + consentToken,
-      'Content-Type': 'application/json'
-    }
-  }
-
-  var req = https.request(options, (res) => {
-    console.log('STATUS: ', res.statusCode);
-    console.log('HEADERS: ', JSON.stringify(res.headers));
-
-    if (res.statusCode === 403) {
-      console.log("permissions are not granted");
-      return;
-    }
-
-    var body = [];
-    res.on('data', function (chunk) {
-      body.push(chunk);
-    }).on('end', function () {
-      body = Buffer.concat(body).toString();
-      callback(res.statusCode);
-    });
-
-    res.on('error', (e) => {
-      console.log(`Problem with request: ${e.message}`);
-    });
-
-  }).end();
-};
-
-function getSlotValues(filledSlots) {
-  const slotValues = {};
-
-  Object.keys(filledSlots).forEach((item) => {
-    const name = filledSlots[item].name;
-    slotValues[name] = {};
-
-    // Extract the nested key 'code' from the ER resolutions in the request
-    let erStatusCode;
-    try {
-      erStatusCode = ((((filledSlots[item] || {}).resolutions ||
-        {}).resolutionsPerAuthority[0] || {}).status || {}).code;
-    } catch (e) {
-      // console.log('erStatusCode e:' + e)
-    }
-
-    switch (erStatusCode) {
-      case 'ER_SUCCESS_MATCH':
-        slotValues[name].synonym = filledSlots[item].value;
-        slotValues[name].resolved = filledSlots[item].resolutions
-          .resolutionsPerAuthority[0].values[0].value.name;
-        slotValues[name].isValidated = filledSlots[item].value ===
-          filledSlots[item].resolutions.resolutionsPerAuthority[0].values[0].value.name;
-        slotValues[name].statusCode = erStatusCode;
-        break;
-
-      default: // ER_SUCCESS_NO_MATCH, undefined
-        slotValues[name].synonym = filledSlots[item].value;
-        slotValues[name].resolved = filledSlots[item].value;
-        slotValues[name].isValidated = false;
-        slotValues[name].statusCode = erStatusCode === undefined ? 'undefined' : erStatusCode;
-        break;
-    }
-  }, this);
-
-  return slotValues;
+  // get first item
+  const item = list.items[0];
+  const updateRequest = {
+    value: item.value,
+    status: listStatuses.COMPLETED,
+    version: item.version,
+  };
+  return listClient.updateListItem(listId, item.id, updateRequest);
 }
 
 // exports
