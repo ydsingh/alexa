@@ -8,167 +8,113 @@ const helpReprompt = 'Try saying ...';
 // Status of list, either active or completed
 const STATUS = {
   ACTIVE: 'active',
-  COMPLETED: 'completed'
+  COMPLETED: 'completed',
 };
 
 // handlers
 
-const SkillEnabledEventHandler = {
+const SkillEventHandler = {
   canHandle(handlerInput) {
     const request = handlerInput.requestEnvelope.request;
-    return request.type === 'AlexaSkillEvent.SkillEnabled';
+    return (request.type === 'AlexaSkillEvent.SkillEnabled' ||
+      request.type === 'AlexaSkillEvent.SkillDisabled' ||
+      request.type === 'AlexaSkillEvent.SkillPermissionAccepted' ||
+      request.type === 'AlexaSkillEvent.SkillPermissionChanged' ||
+      request.type === 'AlexaSkillEvent.SkillAccountLinked');
   },
   handle(handlerInput) {
     const userId = handlerInput.requestEnvelope.context.System.user.userId;
-    console.log(`skill was enabled for user: ${userId}`);
+    let acceptedPermissions;
+    switch (handlerInput.requestEnvelope.request.type) {
+      case 'AlexaSkillEvent.SkillEnabled':
+        console.log(`skill was enabled for user: ${userId}`);
+        break;
+      case 'AlexaSkillEvent.SkillDisabled':
+        console.log(`skill was disabled for user: ${userId}`);
+        break;
+      case 'AlexaSkillEvent.SkillPermissionAccepted':
+        acceptedPermissions = JSON.stringify(handlerInput.requestEnvelope.request.body.acceptedPermissions);
+        console.log(`skill permissions were accepted for user ${userId}. New permissions: ${acceptedPermissions}`);
+        break;
+      case 'AlexaSkillEvent.SkillPermissionChanged':
+        acceptedPermissions = JSON.stringify(handlerInput.requestEnvelope.request.body.acceptedPermissions);
+        console.log(`skill permissions were changed for user ${userId}. New permissions: ${acceptedPermissions}`);
+        break;
+      case 'AlexaSkillEvent.SkillAccountLinked':
+        console.log(`skill account was linked for user ${userId}`);
+        break;
+      default:
+        console.log(`unexpected request type: ${handlerInput.requestEnvelope.request.type}`);
+    }
   },
-}
+};
 
-const SkillDisabledEventHandler = {
+const ItemEventHandler = {
   canHandle(handlerInput) {
     const request = handlerInput.requestEnvelope.request;
-    return request.type === 'AlexaSkillEvent.SkillDisabled';
-  },
-  handle(handlerInput) {
-    const userId = handlerInput.requestEnvelope.context.System.user.userId;
-    console.log(`skill was disabled for user: ${userId}`);
-  },
-}
-
-const SkillPermissionAcceptedEventHandler = {
-  canHandle(handlerInput) {
-    const request = handlerInput.requestEnvelope.request;
-    return request.type === 'AlexaSkillEvent.SkillPermissionAccepted';
-  },
-  handle(handlerInput) {
-    const userId = handlerInput.requestEnvelope.context.System.user.userId;
-    const acceptedPermissions = JSON.stringify(handlerInput.requestEnvelope.request.body.acceptedPermissions);
-    console.log(`skill permissions were accepted for user ${userId}. New permissions: ${acceptedPermissions}`);
-  },
-}
-
-const SkillPermissionChangedEventHandler = {
-  canHandle(handlerInput) {
-    const request = handlerInput.requestEnvelope.request;
-    return request.type === 'AlexaSkillEvent.SkillPermissionChanged';
-  },
-  handle(handlerInput) {
-    const userId = handlerInput.requestEnvelope.context.System.user.userId;
-    const acceptedPermissions = JSON.stringify(handlerInput.requestEnvelope.request.body.acceptedPermissions);
-    console.log(`skill permissions were changed for user ${userId}. New permissions: ${acceptedPermissions}`);
-  },
-}
-
-const SkillAccountLinkedEventHandler = {
-  canHandle(handlerInput) {
-    const request = handlerInput.requestEnvelope.request;
-    return request.type === 'AlexaSkillEvent.SkillAccountLinked';
-  },
-  handle(handlerInput) {
-    const userId = handlerInput.requestEnvelope.context.System.user.userId;
-    console.log(`skill account was linked for user ${userId}`);
-  },
-}
-
-const ItemsCreatedEventHandler = {
-  canHandle(handlerInput) {
-    const request = handlerInput.requestEnvelope.request;
-    return request.type === 'AlexaHouseholdListEvent.ItemsCreated';
+    console.log(request);
+    return (request.type === 'AlexaHouseholdListEvent.ItemsCreated' ||
+      request.type === 'AlexaHouseholdListEvent.ItemsDeleted' ||
+      request.type === 'AlexaHouseholdListEvent.ItemsUpdated');
   },
   async handle(handlerInput) {
     const listId = handlerInput.requestEnvelope.request.body.listId;
-    const accessToken = handlerInput.requestEnvelope.context.System.apiAccessToken;
-    const apiEndpoint = handlerInput.requestEnvelope.context.System.apiEndpoint;
     const listItemIds = handlerInput.requestEnvelope.request.body.listItemIds;
     const status = STATUS.ACTIVE;
-
-    const list = await getListInfo(listId, status, accessToken);
-    const listItem = await traverseListItems(listId, listItemIds, accessToken);
-    const itemName = listItem.value;
-    console.log(`${itemName} was added to list ${list.name}`);
+    const listServiceClient = handlerInput.serviceClientFactory.getListManagementServiceClient();
+    console.log('item created');
+    const list = await listServiceClient.getList(listId, status);
+    if (handlerInput.requestEnvelope.request.type === 'AlexaHouseholdListEvent.ItemsDeleted') {
+      console.log(`${listItemIds} was deleted from list ${list.name}`);
+    } else {
+      for (let i = 0, len = listItemIds.length; i < len; i += 1) {
+        // using await within the loop to avoid throttling
+        const listItem = await listServiceClient.getListItem(listId, listItemIds[i]);
+        const itemName = listItem.value;
+        switch (handlerInput.requestEnvelope.request.type) {
+          case 'AlexaHouseholdListEvent.ItemsCreated':
+            console.log(`${itemName} was added to list ${list.name}`);
+            break;
+          case 'AlexaHouseholdListEvent.ItemsUpdated':
+            console.log(`${itemName} was updated on list ${list.name}`);
+            break;
+          default:
+            console.log(`unexpected request type ${handlerInput.requestEnvelope.request.type}`);
+        }
+      }
+    }
   },
-}
+};
 
-const ItemsDeletedEventHandler = {
+const ListEventHandler = {
   canHandle(handlerInput) {
     const request = handlerInput.requestEnvelope.request;
-    return request.type === 'AlexaHouseholdListEvent.ItemsDeleted';
+    return (request.type === 'AlexaHouseholdListEvent.ListCreated' ||
+      request.type === 'AlexaHouseholdListEvent.ListUpdated' ||
+      request.type === 'AlexaHouseholdListEvent.ListDeleted');
   },
   async handle(handlerInput) {
-    const listId = handlerInput.requestEnvelope.request.body.listId;
-    const accessToken = handlerInput.requestEnvelope.context.System.apiAccessToken;
-    const apiEndpoint = handlerInput.requestEnvelope.context.System.apiEndpoint;
-    const listItemIds = handlerInput.requestEnvelope.request.body.listItemIds;
-    const status = STATUS.ACTIVE;
-
-    const list = await getListInfo(listId, status, accessToken);
-    console.log(`${listItemIds} was deleted from list ${list.name}`);
-  },
-}
-
-const ItemsUpdatedEventHandler = {
-  canHandle(handlerInput) {
-    const request = handlerInput.requestEnvelope.request;
-    return request.type === 'AlexaHouseholdListEvent.ItemsUpdated';
-  },
-  async handle(handlerInput) {
-    const listId = handlerInput.requestEnvelope.request.body.listId;
-    const accessToken = handlerInput.requestEnvelope.context.System.apiAccessToken;
-    const apiEndpoint = handlerInput.requestEnvelope.context.System.apiEndpoint;
-    const listItemIds = handlerInput.requestEnvelope.request.body.listItemIds;
-    const status = STATUS.ACTIVE;
-
-    const list = await getListInfo(listId, status, accessToken);
-    const listItem = traverseListItems(listId, listItemIds, accessToken);
-    const itemName = listItem.value;
-    console.log(`${itemName} was updated on list ${list.name}`);
-  },
-}
-
-const ListCreatedEventHandler = {
-  canHandle(handlerInput) {
-    const request = handlerInput.requestEnvelope.request;
-    return request.type === 'AlexaHouseholdListEvent.ListCreated';
-  },
-  async handle(handlerInput) {
-    const listId = handlerInput.requestEnvelope.request.body.listId;
-    const accessToken = handlerInput.requestEnvelope.context.System.apiAccessToken;
-    const apiEndpoint = handlerInput.requestEnvelope.context.System.apiEndpoint;
-    const status = STATUS.ACTIVE;
-
-    const list = getListInfo(listId, status, accessToken);
-    console.log(`list ${list.name} was created`);
-  },
-}
-
-const ListUpdatedEventHandler = {
-  canHandle(handlerInput) {
-    const request = handlerInput.requestEnvelope.request;
-    return request.type === 'AlexaHouseholdListEvent.ListUpdated';
-  },
-  async handle(handlerInput) {
-    const listId = handlerInput.requestEnvelope.request.body.listId;
-    const accessToken = handlerInput.requestEnvelope.context.System.apiAccessToken;
-    const apiEndpoint = handlerInput.requestEnvelope.context.System.apiEndpoint;
-    const status = STATUS.ACTIVE;
-
-    const list = await getListInfo(listId, status, accessToken);
-    console.log(`list ${list.name} was updated`);
-  },
-}
-
-const ListDeletedEventHandler = {
-  canHandle(handlerInput) {
-    const request = handlerInput.requestEnvelope.request;
-    return request.type === 'AlexaHouseholdListEvent.ListDeleted';
-  },
-  handle(handlerInput) {
+    const listClient = handlerInput.serviceClientFactory.getListManagementServiceClient();
     const listId = handlerInput.requestEnvelope.request.body.listId;
     const status = STATUS.ACTIVE;
 
-    console.log(`list ${listId} was deleted`);
+    if (handlerInput.requestEnvelope.request.type === 'AlexaHouseholdListEvent.ListDeleted') {
+      console.log(`list ${listId} was deleted`);
+    } else {
+      const list = await listClient.getList(listId, status);
+      switch (handlerInput.requestEnvelope.request.type) {
+        case 'AlexaHouseholdListEvent.ListCreated':
+          console.log(`list ${list.name} was created`);
+          break;
+        case 'AlexaHouseholdListEvent.ListUpdated':
+          console.log(`list ${list.name} was updated`);
+          break;
+        default:
+          console.log(`unexpected request type ${handlerInput.requestEnvelope.request.type}`);
+      }
+    }
   },
-}
+};
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
@@ -181,6 +127,16 @@ const LaunchRequestHandler = {
       .speak(welcomeOutput)
       .reprompt(welcomeReprompt)
       .getResponse();
+  },
+};
+
+const UnhandledHandler = {
+  canHandle(handlerInput) {
+    return true;
+  },
+  handle(handlerInput) {
+    console.log('unhandled');
+    console.log(handlerInput.requestEnvelope.request);
   },
 };
 
@@ -243,51 +199,6 @@ const ErrorHandler = {
   },
 };
 
-// helpers
-
-/**
- * Fetches list item information for each listItem in listItemIds. Executes the
- * callback function with the response back from api.amazonalexa.com
- * for each item in the list.
- *
- * @param {String} listId list id to check
- * @param {String[]} listItemIds list item ids in the request
- * @param {String} consentToken consent token from Alexa request
- * @param {(String) => void} callback func for each list item
- */
-function traverseListItems(listId, listItemIds, accessToken) {
-  const listClient = new Alexa.services.ListManagementService();
-  listItemIds.forEach((itemId) => {
-    const listRequest = listClient.getListItem(listId, itemId, accessToken);
-
-    listRequest.then((response) => {
-      return response;
-    }).catch((err) => {
-      console.error(err);
-    });
-  });
-};
-
-/**
- * Fetches list information for given list id. Executes the
- * callback function with the response back from api.amazonalexa.com.
- *
- * @param {String} listId list id to check
- * @param {String} status specify either “active” or “completed” items.
- * @param {String} consentToken consent token from Alexa request
- * @param {(String) => void} callback func for the list
- */
-function getListInfo(listId, status, accessToken) {
-  const listClient = new Alexa.services.ListManagementService();
-  const listInfo = listClient.getList(listId, status, accessToken);
-
-  listInfo.then((response) => {
-    return response;
-  }).catch((err) => {
-    console.error(err);
-  });
-}
-
 // exports
 
 const skillBuilder = Alexa.SkillBuilders.custom();
@@ -296,18 +207,11 @@ exports.handler = skillBuilder
     AmazonCancelStopHandler,
     AmazonHelpHandler,
     LaunchRequestHandler,
-    SkillEnabledEventHandler,
-    SkillDisabledEventHandler,
-    SkillPermissionAcceptedEventHandler,
-    SkillPermissionChangedEventHandler,
-    SkillAccountLinkedEventHandler,
-    ItemsCreatedEventHandler,
-    ItemsDeletedEventHandler,
-    ItemsUpdatedEventHandler,
-    ListCreatedEventHandler,
-    ListUpdatedEventHandler,
-    ListDeletedEventHandler,
+    SkillEventHandler,
+    ItemEventHandler,
+    ListEventHandler,
     SessionEndedHandler,
+    UnhandledHandler,
   )
   .addErrorHandlers(ErrorHandler)
   .withApiClient(new Alexa.DefaultApiClient())

@@ -6,11 +6,6 @@
       "merge": {
         "manifest": {
           "apis": {
-            "custom": {
-              "endpoint": {
-                "uri": "ask-skillname-default"
-              }
-            }
           }
         }
       }

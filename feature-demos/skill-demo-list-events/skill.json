@@ -9,7 +9,7 @@
             "TOOD: example phrase 2",
             "TOOD: example phrase 3"
           ],
-          "name": "household-list",
+          "name": "Demo - skill and list events",
           "description": "TODO: skill description"
         }
       },
@@ -19,11 +19,6 @@
       "distributionCountries": []
     },
     "apis": {
-      "custom": {
-        "endpoint": {
-          "sourceDir": "lambda/custom"
-        }
-      },
       "householdList": {}
     },
     "permissions": [
