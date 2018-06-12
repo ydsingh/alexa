@@ -4,7 +4,7 @@
 
 15. Open the file `models/en-US.json` in your preferred Code Editor.
 
-16. Scroll to `line 4` and change the `invocationName` value from `"hello world"` to `"hello jeff"` Feel free to use your own name instead.
+16. Scroll to `line 4` and change the `invocationName` value from `"greeter"` to `"hello jeff"` Feel free to use your own name instead.
 
   **TIP:** The interaction model is a mapping between a user's utterance and an Alexa Skill's handler. The handler will contain the code that will execute when an utterance is detected.
   
