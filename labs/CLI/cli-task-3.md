@@ -6,7 +6,7 @@
 
 14. Scroll down to `line 11` and change the `speechText` string to say whatever you would like Alexa to say when a user opens this skill. Save the file.
 
-15. Since we made a change to our Lambda function, let's update it. Go back to your command prompt and type the following command:
+15. Since we made a change to our Lambda function, let's update it. Go back to your command prompt, make sure you are in the root folder of your directory and type the following command:
 
   ```
   ask deploy -t lambda
