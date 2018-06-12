@@ -28,4 +28,4 @@ ask deploy
 
 11. You can also log into the [skill developer portal](https://developer.amazon.com/alexa/console/ask) to see the interaction model with all of your skill metadata has been deployed.
 
-12. Feel free to test your skill on any echo device registered to your account by saying "Alexa, start hello world". If you don't have a device handy, you can test from the testing pane in the [developer portal](https://developer.amazon.com/alexa/console/ask) or on [echosim.io](www.echosim.io).
+12. Feel free to test your skill on any echo device registered to your account by saying "Alexa, start greeter". If you don't have a device handy, you can test from the testing pane in the [developer portal](https://developer.amazon.com/alexa/console/ask) or on [echosim.io](www.echosim.io).
