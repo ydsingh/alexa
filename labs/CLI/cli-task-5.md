@@ -18,7 +18,7 @@
             "how are you",
             "howdy do"
           ]
-        },  
+        },
    ```
 **Tip:** Don't forget the trailing comma after the closed curly brace!
 
@@ -34,7 +34,7 @@ const HowAreYouIntentHandler = {
       		&& handlerInput.requestEnvelope.request.intent.name === 'HowAreYouIntent';
   		},
   		handle(handlerInput) {
-  
+
     		const speechText = 'I\'m doing just great!';
 
     		return handlerInput.responseBuilder
@@ -63,4 +63,4 @@ const HowAreYouIntentHandler = {
 
   **Extra Points:** Test directly by entering `ask simulate -l en-US -t "start hello world"` into your command prompt.
 
-  Woohoo! Test the changes you've made to your skill on your device, from the [developer portal](https://developer.amazon.com/alexa/console/ask) or on [echosim.io](www.echosim.io). Remember to try your new utterances, "Alexa, ask hello jeff howdy do?" Or you can try to say something like "Alexa, start hello jeff" or you can also try "Alexa, start hello jeff" and then follow up with "how are you?"...go ahead and experiment with a few variations.
+  Woohoo! Test the changes you've made to your skill on your device, from the [developer portal](https://developer.amazon.com/alexa/console/ask) or on [echosim.io](https://www.echosim.io). Remember to try your new utterances, "Alexa, ask hello jeff howdy do?" Or you can try to say something like "Alexa, start hello jeff" or you can also try "Alexa, start hello jeff" and then follow up with "how are you?"...go ahead and experiment with a few variations.
