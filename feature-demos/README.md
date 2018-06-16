@@ -18,3 +18,7 @@ Comming soon!
 [List events](./skill-demo-list-events) demonstrates how to recieve skill, list and item level events.
 
 [Progressive Response](./skill-demo-progressive-response) demonstrates how to deliver a progressive response to a customer.
+
+### Requesting a Demo
+
+Is there a feature you'd like to see a demo created for?  If so, create an issue [here](../issues/new?template=feature_request.md) to request it.  If you want to request a new feature, use https://alexa.uservoice.com.

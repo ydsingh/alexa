@@ -1,7 +1,10 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
+name: Cookbook request
+about: Suggest an idea for the cookbook
 
+The [Alexa Developer Forum](https://forums.developer.amazon.com/spaces/23/Alexa+Skills+Kit.html) would be the best source for general help.
+
+[User Voice](https://alexa.uservoice.com) is the best place to submit Alexa Skills Kit feature requests.
 ---
 
 **Is your feature request related to a problem? Please describe.**
