@@ -26,6 +26,7 @@ If you would like to explore the skill, the areas to pay attention to are the Am
 
 ## Running the Demo
 Launch the demo, 'Alexa, open payments demo', and you'll be immediately directed to the purchase flow.  If you receive the message `Thank you for ordering form Blitz and Chips` then you have successfully configured your skill! If you receive an error, proceed to the [troubleshooting section](#troubleshooting).
+
 ![alt text](https://i.imgur.com/joMdlZl.png)
 
 You will get a payment record in your email and your Alexa app home screen.
