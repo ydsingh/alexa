@@ -1,6 +1,0 @@
-FACT_TYPE
-
-math
-trivia
-year
-date
