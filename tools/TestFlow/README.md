@@ -12,7 +12,6 @@ The Alexa evangelist team built a simulation tool called TestFlow to streamline 
 A voice designer could define a happy-path flow of user requests to the skill. For example, imagine a file listing the launch request, then a help query, and then a stop command.
 
 
-
 ```
 LaunchRequest
 AMAZON.HelpIntent
@@ -40,8 +39,7 @@ and secondly as an input to Testflow.
 TestFlow will open both this file and your source file and execute this series of unit tests for you.
 
 To run TestFlow, you just type :  ```node testflow```
-
-    ![](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/testflow/Picture1._TTH_.png)
+![](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/testflow/Picture1._TTH_.png)
 
 
 #### How TestFlow Works
@@ -49,14 +47,12 @@ To run TestFlow, you just type :  ```node testflow```
 You can think of TestFlow as a lightweight skill simulator rather than a traditional testing tool. Both the inputs and outputs to and from TestFlow are reduced to the simplest possible format to remove any friction in the testing process. As TestFlow executes multiple events, it will maintain session state for you, like the real Alexa service.
 Developers can envision, define, run, and repeat “what if” scenarios quickly, having full control over which text and attributes to display, whether the test runs fully automated or with guided user input, and how slowly the test should run. For example, if you set a delay of 5 seconds between test events, users will have time to read and digest each request and response as it scrolls past. TestFlow is not network-dependent; it is a single file that runs alongside your code, and is perfect for developers who want to develop offline, like when traveling.  Testflow is configurable; you can set display and runtime options directly in the testflow.js file, or hack the script for your own purposes.
 Here we see the test begins in automated fashion, then pauses to allow the user to type in a custom slot value of 33 rather than accept the default value.
-
-    ![](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/testflow/Picture2._TTH_.png)
+![](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/testflow/Picture2._TTH_.png)
 
 
 
 Developers must understand how to set and get context, or session attributes, in order to remember things and provide intelligent responses to the user. An attribute could be used to remember the value of a user utterance slot, or for internal metadata such as a count of times the user launched the skill.
-
-    ![](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/testflow/Picture3._TTH_.png)
+![](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/testflow/Picture3._TTH_.png)
 
 However, session attributes are largely invisible, requiring the developer to imagine their state or log their state as a skill executes.
 Developers can configure TestFlow to show all the session attributes shaded in magenta; or just a single named attribute, similar to a “watch” variable in traditional debugging.
@@ -64,7 +60,7 @@ Developers can configure TestFlow to show all the session attributes shaded in m
 TestFlow prepares a mock request JSON for each execution, containing a User ID and timestamp.
 
 Developers can define unique User IDs for events to run as, as well as whether the event runs as of right now or at a past or future time. In this way, you can simulate skills with multiple users and persistent memory.
-    ![](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/testflow/Picture4._TTH_.png)
+![](https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/testflow/Picture4._TTH_.png)
 
 
 You can also specify slot values in the dialog sequence using a single value, or by simulating various entity resolution events, such as testing both synonym with canonical values  See the dialog sequence spec for the full details.
