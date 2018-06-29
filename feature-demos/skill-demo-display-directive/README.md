@@ -1,5 +1,3 @@
-# Display Interface Skill for Echo Show
-
 # Display Directive Demo
 This demos how the List Templates and Body Templates works on devices with display capability. There are two templates for displaying lists, one that scrolls vertically and one horizontally. There are five body templates, one for each U.S. state held in the skill's data object.  
 
@@ -19,4 +17,4 @@ There is one interface to be enabled on the skill configuration side, however mo
 
 ## Running the demo
 
-Once enabled, try saying horizontal or vertical to see different list views.  Say state names to see the different body templates.  Navigate by touch.
+Once enabled, try saying horizontal or vertical to see different list views.  Say state names or template names to see the different body templates.  Navigate by touch.
