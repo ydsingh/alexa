@@ -2,7 +2,7 @@
 ## Task 4
  **Now let's practice using the CLI to make changes in a skill's interaction model.**
 
-15. Open the file `models/en-US.json` in your preferred Code Editor.
+15. Open the your locale specific interaction model, it should be in a file with naming convention `models/en-US.json` (i.e. `models/fr-FR.json`) in your preferred Code Editor.
 
 16. Scroll to `line 4` and change the `invocationName` value from `"greeter"` to `"hello jeff"` Feel free to use your own name instead.
 
