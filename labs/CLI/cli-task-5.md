@@ -3,7 +3,7 @@
 
   **Lets expand our Alexa Skill's features. If someone were to say "Alexa, ask hello jeff how he's doing?" the Skill should have an answer.**
 
-18. Let's start by editing the front-end (VUI). Open the interaction model in your preferred Code Editor (`models/en-US.json`)
+18. Let's start by editing the front-end (VUI). Open the interaction model in your preferred Code Editor (`models/en-US.json` or `models/fr-FR.json`)
 
 19. Copy and paste the following block of JSON below in between `line 26` and `line 27`. Feel free to add additional utterances
 
@@ -59,6 +59,7 @@ const HowAreYouIntentHandler = {
   )
   ```
   **Tip:** Don't forget to comma separate the items in your array!
+  
 22. Now Deploy your changes. Since you've changed both the interaction model and the lambda function simply enter `ask deploy` into your command prompt to push both the interaction model and lambda function changes up.
 
   **Extra Points:** Test directly by entering `ask simulate -l en-US -t "start greeter"` into your command prompt.  (If you changed the invocation name as suggested in an earlier step, be sure to replace 'greeter' with the invocation name of your skill.)
