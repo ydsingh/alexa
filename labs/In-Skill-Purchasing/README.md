@@ -52,11 +52,8 @@
 
 10. **Open** the AWS Lambda function code file, index.js.
 
-11. **Replace** the contents of *index.js* with the contents of [this JS file](https://github.com/alexa/skill-sample-nodejs-fact-in-skill-purchases/blob/master/lambda/custom/index.js), and save it.
+11. **Replace** the contents of *index.js* with the contents of [this JS file](https://github.com/alexa/alexa-cookbook/blob/master/labs/In-Skill-Purchasing/index.js), and save it.
 
-    ```js
-    .withApiClient(new Alexa.DefaultApiClient())
-    ```
 12. **Navigate** back to the root project directory.
 
 	```bash
@@ -83,7 +80,7 @@ There are ASK CLI commands for creating your in-skill purchases.  This guide wil
 	$ ask add isp
 	```
 
-3. **Choose** Entitlement.
+2. **Choose** Entitlement.
 
 	```bash
 	? List of in-skill product types you can choose (Use arrow keys)
@@ -91,35 +88,35 @@ There are ASK CLI commands for creating your in-skill purchases.  This guide wil
   	Subscription
 	```
 
-4. **Choose** Entitlement_Template as your template.
+3. **Choose** Entitlement_Template as your template.
 
 	```bash
 	? List of in-skill product templates you can choose (Use arrow keys)
 	❯ Entitlement_Template
 	```
 
-5. **Name** your in-skill product *help*.
+4. **Name** your in-skill product *help*.
 
 	```bash
 	? Please type in your new in-skill product name:
  	(Entitlement_Template) help
 	```
 
-6. **Navigate** to the new ISPs directory, and note the new folder, *entitlement*.  This is where the JSON files for each of your in-skill products reside.
+5. **Navigate** to the new ISPs directory, and note the new folder, *entitlement*.  This is where the JSON files for each of your in-skill products reside.
 
 	```bash
 	$ cd isps
 	$ ls
 	```
 
-7. **Navigate** to the *entitlement* folder.  You should see your help.json file in this directory.
+6. **Navigate** to the *entitlement* folder.  You should see your help.json file in this directory.
 
 	```bash
 	$ cd entitlement
 	$ ls
 	```
 
-8. **Open** help.json
+7. **Open** help.json
 
 	This JSON file contains all of the necessary fields for your in-skill product, but you'll need to add the details to get them ready to sell. Because we used the Entitlement_Template template, we have provided a small explanation for each field, make sure you replace all of them. Take a look at [the sample in our docs](https://developer.amazon.com/docs/smapi/isp-schemas.html#entitlement-schema) for an additional reference.  For this sample, at a minimum, you will need to update the name (not referenceName!), smallIconUri, largeIconUri, summary, description, purchasePromptDescription, boughtCardDescription, releaseDate and privacyPolicyUrl.
 
@@ -151,8 +148,19 @@ There are ASK CLI commands for creating your in-skill purchases.  This guide wil
 2. Your skill can now be tested on devices associated with your developer account, as well as the Test tab in the Developer Portal. To start using your skill, just type or say:
 
 	```text
-	Alexa, open premium facts sample
+	Alexa, start not helpful
 	```
+
+### Extra Credit
+If you have extra time after you finish this lab, here are some additional tasks to complete:
+
+1. You now have a skill with an entitlement enabled.  Add a subscription ISP.
+
+2. Adapt your code to allow either the entitlement or the subscription to access the help content.
+
+3. Start diagramming a skill you could build that uses in-skill purchases.
+
+
 
 **Note: The developer account associated with the skill is never charged for in-skill products.**  For more details about testing skills with in-skill products, please refer to the [In-Skill Purchase Testing Guide](https://developer.amazon.com/docs/in-skill-purchase/isp-test-guide.html)
 
