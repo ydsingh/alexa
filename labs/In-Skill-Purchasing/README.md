@@ -38,6 +38,15 @@
 
 7. **Change** the the invocation name in *en-US.json* to "not helpful" and save the file.
 
+    ```json
+    {
+    "interactionModel": {
+      "languageModel": {
+        "invocationName": "not helpful"
+      }
+    }
+    ```
+
 8. **Go back** to the project's root folder.
 
 	```bash
