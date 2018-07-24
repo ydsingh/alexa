@@ -151,6 +151,10 @@ There are ASK CLI commands for creating your in-skill purchases.  This guide wil
 	Alexa, start not helpful
 	```
 
+**Note: The developer account associated with the skill is never charged for in-skill products.**  For more details about testing skills with in-skill products, please refer to the [In-Skill Purchase Testing Guide](https://developer.amazon.com/docs/in-skill-purchase/isp-test-guide.html)
+
+
+
 ### Extra Credit
 If you have extra time after you finish this lab, here are some additional tasks to complete:
 
@@ -159,11 +163,6 @@ If you have extra time after you finish this lab, here are some additional tasks
 2. Adapt your code to allow either the entitlement or the subscription to access the help content.
 
 3. Start diagramming a skill you could build that uses in-skill purchases.
-
-
-
-**Note: The developer account associated with the skill is never charged for in-skill products.**  For more details about testing skills with in-skill products, please refer to the [In-Skill Purchase Testing Guide](https://developer.amazon.com/docs/in-skill-purchase/isp-test-guide.html)
-
 
 
 ## License Summary
