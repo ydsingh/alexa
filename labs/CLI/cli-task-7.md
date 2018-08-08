@@ -131,6 +131,6 @@ const BuyResponseHandler = {
   )
 ``` 
 
-7. Now Deploy your changes. Since you've changed both the interaction model and the lambda function simply enter `ask deploy` into your command prompt to push both the interaction model and lambda function changes up. This command will also push up any changes you've made to the metadata for your in-skill product.
+7. Now Deploy your changes with `ask deploy`
 
-**Congratulations!** Test the changes you've made to your skill on your device, from the developer portal or on echosim.io. You can try to say something like "Alexa, start hello jeff" and then follow up with "buy it now"...go ahead and experiment with declining the option to purchase, and then try again with accepting the purchase.
+8. Test the changes you've made to your skill on your device, from the developer portal or on echosim.io. You can try to say something like "Alexa, start hello jeff" and then follow up with "buy it now". Experiment with declining the option to purchase, and then try the experience again with accepting the purchase.
