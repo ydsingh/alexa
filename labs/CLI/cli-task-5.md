@@ -35,12 +35,12 @@ const HowAreYouIntentHandler = {
 	},
 	handle(handlerInput) {
 
-	const speechText = 'I\'m doing just great!';
+		const speechText = 'I\'m doing just great!';
 
-	return handlerInput.responseBuilder
-      		.speak(speechText)
-      		.withSimpleCard('Hello World', speechText)
-      		.getResponse();
+		return handlerInput.responseBuilder
+			.speak(speechText)
+			.withSimpleCard('Hello World', speechText)
+			.getResponse();
 	},
 };
   ```
