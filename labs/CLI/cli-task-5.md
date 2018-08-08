@@ -3,9 +3,9 @@
 
   **Lets expand our Alexa Skill's features. If someone were to say "Alexa, ask hello jeff how he's doing?" the Skill should have an answer.**
 
-18. Let's start by editing the front-end (VUI). Open the interaction model in your preferred Code Editor (`models/en-US.json` or `models/fr-FR.json`)
+1. Let's start by editing the front-end (VUI). Open the interaction model in your preferred Code Editor (`models/en-US.json` or `models/fr-FR.json`)
 
-19. Copy and paste the following block of JSON below in between `line 26` and `line 27`. Feel free to add additional utterances
+2. Copy and paste the following block of JSON below in between `line 26` and `line 27`. Feel free to add additional utterances
 
   ```
         {
@@ -24,7 +24,7 @@
 
   **Extra Points:** Feel free to add additional Utterances to the samples array. Remember to comma separate!
 
-20. Save your interaction model and open your lambda function (`lambda/custom/index.js`) and copy/paste the following brick of code at `line 35`
+3. Save your interaction model and open your lambda function (`lambda/custom/index.js`) and copy/paste the following brick of code at `line 35`
 
   ```
 const HowAreYouIntentHandler = {
@@ -46,7 +46,7 @@ const HowAreYouIntentHandler = {
   ```
 **Extra Points:** Feel free to edit the  speechText variable to say anything you want
 
-21. In your lambda function, scroll down to `line 113` and add `HowAreYouIntentHandler,` to the array of Intent Handlers and save the changes you've made. It should look something like this
+4. In your lambda function, scroll down to `line 113` and add `HowAreYouIntentHandler,` to the array of Intent Handlers and save the changes you've made. It should look something like this
 
   ```
     .addRequestHandlers(
@@ -60,7 +60,7 @@ const HowAreYouIntentHandler = {
   ```
   **Tip:** Don't forget to comma separate the items in your array!
   
-22. Now Deploy your changes. Since you've changed both the interaction model and the lambda function simply enter `ask deploy` into your command prompt to push both the interaction model and lambda function changes up.
+5. Now Deploy your changes. Since you've changed both the interaction model and the lambda function simply enter `ask deploy` into your command prompt to push both the interaction model and lambda function changes up.
 
   **Extra Points:** Test directly by entering `ask simulate -l en-US -t "start greeter"` into your command prompt.  (If you changed the invocation name as suggested in an earlier step, be sure to replace 'greeter' with the invocation name of your skill.)
 
