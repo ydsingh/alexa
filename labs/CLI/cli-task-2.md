@@ -12,9 +12,9 @@ ask new
 
 3. You'll be asked to provide a skill name. This can be anything you would like it to be, though the best practice is to name it something descriptive and sensible. For our case, lets just call it `hello-world`
 
-4. You should receive a confirmation message "New Project for Alexa Skill Created".
+4. You should receive a confirmation message *"New Project for Alexa Skill Created"*.
 
-5. Navigate into the directory you just created. Notice that the CLI has already created the base files for our Alexa Skill with the project name of "hello-world".
+5. When you typed in `hello-world` the CLI created the */hello-world* folder for you. Navigate into the `/hello-world` directory. Also, notice that the CLI has created the base files for your Alexa Skill with the project name of "hello-world".
 
 6. Next, enter the following command:
 
