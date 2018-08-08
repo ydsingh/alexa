@@ -95,4 +95,4 @@ exports.handler = skillBuilder
 
 12. Run `ask deploy` to deploy the contents of your skill. 
 
-13. Test your new functionality within echosim.io or the skill development console. The logic will check to see if your customer is entitled to to your product and if they are, the greeting will change! Since you haven't paid for the skill yet, you should still see the standard greeting. We'll fix this in the next step.
+13. Test the new functionality within echosim.io or the skill development console. The logic will check to see if your customer is entitled to to your product and if they are, the greeting will change! Since you haven't paid for the skill yet, you should still see the standard greeting. We'll fix this in the next step.
