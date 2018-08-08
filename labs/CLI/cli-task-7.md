@@ -1,7 +1,7 @@
 # CLI Lab
 ## Task 7
 
-**Lets set up the code for our customer's purchase path.** Our custommers need a way to buy this product. Let's create a new intent for them that will present them with the pricing options and the ability to accept or decline the purchase of their in skill product.
+**Lets set up the code for our customer's purchase path.** Our customers need a way to buy this product. Let's create a new intent for them that will present them with the pricing options and the ability to accept or decline the purchase of their in skill product.
 
   1. Start by editing the front-end (VUI) again. Open the interaction model in your preferred Code Editor (`models/en-US.json`). 
   
