@@ -29,19 +29,19 @@
   ```
 const HowAreYouIntentHandler = {
 
-  		canHandle(handlerInput) {
+	canHandle(handlerInput) {
     		return handlerInput.requestEnvelope.request.type === 'IntentRequest'
       		&& handlerInput.requestEnvelope.request.intent.name === 'HowAreYouIntent';
-  		},
-  		handle(handlerInput) {
+	},
+	handle(handlerInput) {
 
-    		const speechText = 'I\'m doing just great!';
+	const speechText = 'I\'m doing just great!';
 
-    		return handlerInput.responseBuilder
+	return handlerInput.responseBuilder
       		.speak(speechText)
       		.withSimpleCard('Hello World', speechText)
       		.getResponse();
-  		},
+	},
 };
   ```
 **Extra Points:** Feel free to edit the  speechText variable to say anything you want
@@ -50,13 +50,13 @@ const HowAreYouIntentHandler = {
 
   ```
     .addRequestHandlers(
-		    LaunchRequestHandler,
-		    HelloWorldIntentHandler,
-		    HowAreYouIntentHandler,
-		    HelpIntentHandler,
-		    CancelAndStopIntentHandler,
-		    SessionEndedRequestHandler
-  )
+	    LaunchRequestHandler,
+	    HelloWorldIntentHandler,
+	    HowAreYouIntentHandler,
+	    HelpIntentHandler,
+	    CancelAndStopIntentHandler,
+	    SessionEndedRequestHandler
+    )
   ```
   **Tip:** Don't forget to comma separate the items in your array!
   
