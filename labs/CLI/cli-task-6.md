@@ -93,5 +93,6 @@ exports.handler = skillBuilder
   .lambda();
 ```
 
+12. Run `ask deploy` to deploy the contents of your skill. 
 
-**Congratulations!** You've created a product and the associated experience. The logic will check to see if your customer is entitled to to your product and if they are, the greeting will change! Test the changes you've made to your skill on your device, from the developer portal or on echosim.io. You can try to say something like "Alexa, ask hello jeff to say hello". Since your simulator hasn't paid for the skill yet, you should still get the standard greeting.
+13. Test your new functionality within echosim.io or the skill development console. The logic will check to see if your customer is entitled to to your product and if they are, the greeting will change! Since you haven't paid for the skill yet, you should still see the standard greeting. We'll fix this in the next step.
