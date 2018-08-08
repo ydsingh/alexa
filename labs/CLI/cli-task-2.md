@@ -10,22 +10,28 @@
 ask new
   ```
 
-3. You'll be asked to provide a skill name. This can be anything you would like it to be, though the best practice is to name it something descriptive and sensible. For our case, lets just call it `hello-world`
+3. Provide a skill name. 
 
-4. You should receive a confirmation message *"New Project for Alexa Skill Created"*.
+This can be anything you would like it to be, though the best practice is to name it something descriptive and sensible. For our case, lets just call it `hello-world`
 
-5. When you typed in `hello-world` the CLI created the */hello-world* folder for you. Navigate into the `/hello-world` directory. Also, notice that the CLI has created the base files for your Alexa Skill with the project name of "hello-world".
+**LOOK FOR:** You should receive a confirmation message *"New Project for Alexa Skill Created"*.
 
-6. Next, enter the following command:
+4. Navigate into the `/hello-world` directory. 
+
+Notice that the CLI has created the base files for your Alexa Skill with the project name of "hello-world". When you typed in `hello-world` the CLI created the */hello-world* folder for you. 
+
+5. Enter the following command:
 
   ```
 ask deploy
   ```
 
-7. This command will deploy the lambda function and the interaction model for your Alexa Skill.
+This command will deploy the lambda function and the interaction model for your Alexa Skill.
 
-8. Log into your [AWS Console](https://aws.amazon.com/lambda/) to see the lambda function deployed to the cloud.
+6. Log into your [AWS Console](https://aws.amazon.com/lambda/) to see the lambda function deployed to the cloud.
 
-9. You can also log into the [skill developer portal](https://developer.amazon.com/alexa/console/ask) to see the interaction model with all of your skill metadata has been deployed.
+7. Log into the [skill developer portal](https://developer.amazon.com/alexa/console/ask) to see the interaction model with all of your skill metadata has been deployed.
 
-10. Feel free to test your skill on any echo device registered to your account by saying "Alexa, start greeter". If you don't have a device handy, you can test from the testing pane in the [developer portal](https://developer.amazon.com/alexa/console/ask) or on [echosim.io](https://www.echosim.io).
+8. Test your skill on any echo device registered to your account by saying "Alexa, start greeter". If you don't have a device handy, you can test from the testing pane in the [developer portal](https://developer.amazon.com/alexa/console/ask) or on [echosim.io](https://www.echosim.io).
+
+**Finished early?** Help your neighbors! If we catch you, we'll give you a small prize :)
