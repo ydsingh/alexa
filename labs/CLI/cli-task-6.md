@@ -34,7 +34,7 @@ ask add isp
 
 If you completed this part successfully, your `HelloWorldIntentHandler` should look something like this:
 
-	```
+```
 	const HelloWorldIntentHandler = {
 	  canHandle(handlerInput) {
 	    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
@@ -50,9 +50,9 @@ If you completed this part successfully, your `HelloWorldIntentHandler` should l
 	      .getResponse();
 	  },
 	};
-	```
+```
 
-	**Let's put our premium greeting behind a pay wall. If a customer is entitled to our "premium greeting" product, we'll send them the premium speech output -- otherwise they will get a standard greeting with an upsell message to**
+**Let's put our premium greeting behind a pay wall. If a customer is entitled to our "premium greeting" product, we'll send them the premium speech output -- otherwise they will get a standard greeting with an upsell message to**
 	
 10. Go ahead and copy and paste the following brick of code at `line 29`:
 
