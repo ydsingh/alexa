@@ -2,7 +2,9 @@
 ## Task 2
   **Once you have the CLI setup let's scaffold our first project**
 
-1. Open up a command prompt. Navigate to a directory that you would like to work in.
+1. Open up a terminal window (or command prompt). Navigate to a directory that you would like to work in.
+
+**Note:** Once you have your terminal window open, don't close it! We'll be using it throughout the rest of this lab.
 
 2. Enter the command below. 
 
@@ -20,7 +22,7 @@ This can be anything you would like it to be, though the best practice is to nam
 
 Notice that the CLI has created the base files for your Alexa Skill with the project name of "hello-world". When you typed in `hello-world` the CLI created the */hello-world* folder for you. 
 
-5. Enter the following command:
+5. Enter the following command into your terminal window:
 
   ```
 ask deploy
