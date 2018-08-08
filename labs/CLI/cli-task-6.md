@@ -30,7 +30,12 @@ ask add isp
 
 **TIP:** If you're curious about what the `async` expression does, you can read more about it [by clicking here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function).
 
-9. Let's also add a reprompt at this point to keep alexa listening for another utterance from our customer. After `line 27` add `let repromptText = 'Try saying hello. ';` and after `line 30` add `.reprompt(repromptText)` to the responseBuilder return block. 
+9. Next, look at the line below the one you just edited. You'll want to change `const` to `let`. After your changes it should look like:
+```
+     let speechText = 'Hello World!';
+```
+
+10. Let's also add a reprompt at this point to keep alexa listening for another utterance from our customer. After `line 27` add `let repromptText = 'Try saying hello. ';` and after `line 30` add `.reprompt(repromptText)` to the responseBuilder return block. 
 
 If you completed this part successfully, your `HelloWorldIntentHandler` should look something like this:
 
@@ -41,7 +46,7 @@ If you completed this part successfully, your `HelloWorldIntentHandler` should l
 	      && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
 	  },
 	  async handle(handlerInput) {
-	    const speechText = 'Hello World!';
+	    let speechText = 'Hello World!';
 	
 	    return handlerInput.responseBuilder
 	      .speak(speechText)
@@ -54,7 +59,7 @@ If you completed this part successfully, your `HelloWorldIntentHandler` should l
 
 **Let's put our premium greeting behind a pay wall. If a customer is entitled to our "premium greeting" product, we'll send them the premium speech output -- otherwise they will get a standard greeting with an upsell message to**
 	
-10. Go ahead and copy and paste the following brick of code at `line 29`:
+11. Go ahead and copy and paste the following brick of code at `line 29`:
 
 ```
     const locale = handlerInput.requestEnvelope.request.locale;
@@ -74,7 +79,7 @@ If you completed this part successfully, your `HelloWorldIntentHandler` should l
     }
 ```
 	
-11. The final step is to go down to around `line 135` and add the following line to the exports handler:
+12. The final step is to go down to around `line 135` and add the following line to the exports handler:
 `  .withApiClient(new Alexa.DefaultApiClient())`
 
 Your exports handler should look something like this when it's done:
@@ -93,6 +98,6 @@ exports.handler = skillBuilder
   .lambda();
 ```
 
-12. Run `ask deploy` to deploy the contents of your skill. 
+13. Run `ask deploy` to deploy the contents of your skill. 
 
-13. Test the new functionality within echosim.io or the skill development console. The logic will check to see if your customer is entitled to to your product and if they are, the greeting will change! Since you haven't paid for the skill yet, you should still see the standard greeting. We'll fix this in the next step.
+14. Test the new functionality within echosim.io or the skill development console. The logic will check to see if your customer is entitled to to your product and if they are, the greeting will change! Since you haven't paid for the skill yet, you should still see the standard greeting. We'll fix this in the next step.
