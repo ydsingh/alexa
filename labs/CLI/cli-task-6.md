@@ -1,9 +1,7 @@
 # CLI Lab
 ## Task 6
 
-  **Lets experiment with monetizing our skill. Let's give our customers the ability to one-time purchase a special greeting.**
-
-Let's add a product for our skill.
+  **Let's experiment with monetizing our skill. We'll give our customers the ability to one-time purchase a special greeting by adding a product to the skill."
 
 1. In your terminal window or command prompt, navigate to your skill directory and type in the following command:  
   
