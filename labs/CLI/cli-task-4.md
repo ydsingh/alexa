@@ -2,13 +2,13 @@
 ## Task 4
  **Now let's practice using the CLI to make changes in a skill's interaction model.**
 
-15. Open the your locale specific interaction model, it should be in a file with naming convention `models/en-US.json` (i.e. `models/fr-FR.json`) in your preferred Code Editor.
+1. Open the your locale specific interaction model, it should be in a file with naming convention `models/en-US.json` (i.e. `models/fr-FR.json`) in your preferred Code Editor.
 
-16. Scroll to `line 4` and change the `invocationName` value from `"greeter"` to `"hello jeff"` Feel free to use your own name instead.
+2. Scroll to `line 4` and change the `invocationName` value from `"greeter"` to `"hello jeff"` Feel free to use your own name instead.
 
   **TIP:** The interaction model is a mapping between a user's utterance and an Alexa Skill's handler. The handler will contain the code that will execute when an utterance is detected.
 
-17. Now lets update our skills interaction model. Open the command prompt. Navigate to the directory the skill is in and type the following command:
+3. Now lets update our skills interaction model. Open the command prompt. Navigate to the directory the skill is in and type the following command:
 
   ```
   ask deploy -t model
