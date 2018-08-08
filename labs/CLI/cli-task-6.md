@@ -74,8 +74,24 @@ If you completed this part successfully, your `HelloWorldIntentHandler` should l
     }
 ```
 	
-11. The final step is to go down to `line 122` and add the following line to the exports handler:
+11. The final step is to go down to around `line 135` and add the following line to the exports handler:
 `  .withApiClient(new Alexa.DefaultApiClient())`
+
+Your exports handler should look something like this when it's done:
+```
+exports.handler = skillBuilder
+  .addRequestHandlers(
+    LaunchRequestHandler,
+    HelloWorldIntentHandler,
+    HowAreYouIntentHandler,
+    HelpIntentHandler,
+    CancelAndStopIntentHandler,
+    SessionEndedRequestHandler
+  )
+  .addErrorHandlers(ErrorHandler)
+  .withApiClient(new Alexa.DefaultApiClient())
+  .lambda();
+```
 
 
 **Congratulations!** You've created a product and the associated experience. The logic will check to see if your customer is entitled to to your product and if they are, the greeting will change! Test the changes you've made to your skill on your device, from the developer portal or on echosim.io. You can try to say something like "Alexa, ask hello jeff to say hello". Since your simulator hasn't paid for the skill yet, you should still get the standard greeting.
