@@ -60,6 +60,6 @@ const HowAreYouIntentHandler = {
   
 6. Now Deploy your changes. Since you've changed both the interaction model and the lambda function simply enter `ask deploy` into your command prompt to push both the interaction model and lambda function changes up.
 
-  **Extra Points:** Test directly by entering `ask simulate -l en-US -t "start greeter"` into your command prompt.  (If you changed the invocation name as suggested in an earlier step, be sure to replace 'greeter' with the invocation name of your skill.)
+7. Test directly by entering `ask simulate -l en-US -t "start greeter"` into your command prompt.  (If you changed the invocation name as suggested in an earlier step, be sure to replace 'greeter' with the invocation name of your skill.)
 
   Woohoo! Test the changes you've made to your skill on your device, from the [developer portal](https://developer.amazon.com/alexa/console/ask) or on [echosim.io](https://www.echosim.io). Remember to try your new utterances, "Alexa, ask hello jeff howdy do?" Or you can try to say something like "Alexa, start hello jeff" or you can also try "Alexa, start hello jeff" and then follow up with "how are you?"...go ahead and experiment with a few variations.
