@@ -10,7 +10,7 @@ Alternatively feel free to use a standard text editor like notepad.
 
 3. Save the file.
 
-For example, if you want your skill to say "Hello, you're the best", the code should look something like `const speechText = "Hello, you\'re the best!"`. 
+For example, if you want your skill to say "You're the best! Say hello to me!", the code should look something like `const speechText = "You\'re the best! Say hello to me!"`. 
 
 Since we made a change to our Lambda function, let's make sure we deploy it.
 
