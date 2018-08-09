@@ -11,11 +11,15 @@
  1. Permissions to write to `file/folder/here/'.
  
     Try elevating your user priveleges to the super user and rerunning the command. 
+    
     It should be something like: `sudo npm install -g ask-cli`
 
  2. Running into Python errors?
  
     Try uninstalling the ask-cli package and reinstalling.
+    
     To uninstall: `npm uninstall -g ask-cli`
+    
     To install: `npm install-g ask-cli`
+    
     PS. Thanks, [Joe](@JLKoszerak) for the tip!
