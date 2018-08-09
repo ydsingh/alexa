@@ -59,7 +59,7 @@ If you completed this part successfully, your `HelloWorldIntentHandler` should l
 	  },
 	  async handle(handlerInput) {
 	    let speechText = 'Hello World!';
-	
+	    let repromptText = 'Try saying hello. ';
 	    return handlerInput.responseBuilder
 	      .speak(speechText)
 	      .reprompt(repromptText)
