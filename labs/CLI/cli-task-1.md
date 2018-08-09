@@ -6,3 +6,9 @@
  
  **Links:**
  [Familiarize yourself with some of the CLI features](https://developer.amazon.com/docs/smapi/ask-cli-command-reference.html).
+ 
+ **Common Issues:**
+ 1. Permissions to write to `file/folder/here/'.
+ 
+    Try elevating your user priveleges to the super user and rerunning the command. 
+    It should be something like: `sudo npm install -g ask-cli`
