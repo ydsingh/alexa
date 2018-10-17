@@ -14,14 +14,17 @@ When you run this command, you will get a list of skills to choose from, so you 
 
 Once you have made changes to your skill, you should deploy those changes.  The first time (ever) that you've deployed your skill will require using `ask deploy` to deploy all the parts of your skill.  However later on, you only have to deploy those things which have changed.  By specifying the `--target` option, you can only deploy the parts you have changed.
 
-```ask deploy --target lambda```
-```ask deploy --target isp```
+```
+ask deploy --target lambda
+ask deploy --target isp
+```
 
 # Testing a skill
 
 The `ask simulate` command is handy to quickly test your skill, or when setting up some automation around testing your skill.  You might get tired of providing the locale each time you issue the command.  If that's the case, you can set the `ASK_DEFAULT_DEVICE_LOCALE` enviroment variable to your default locale.
 
-Linux/Mac/Cloud09: `export ASK_DEFAULT_DEVICE_LOCALE=en-US`
+Linux/Mac/Cloud9: `export ASK_DEFAULT_DEVICE_LOCALE=en-US`
+
 Windows: `set ASK_DEFAULT_DEVICE_LOCALE=en-US`
 
 \###
