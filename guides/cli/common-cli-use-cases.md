@@ -10,6 +10,8 @@ You may have created a skill using the Developer Console or another tool.  To us
 
 When you run this command, you will get a list of skills to choose from, so you don't need to look up the skill id.  If you know the skill id already, more power to ya!
 
+> ***Note - when you clone a skill it will overwrite any local changes you have if you are not cloning into an empty directory.  Use with caution!***
+
 # Deploying a skill
 
 Once you have made changes to your skill, you should deploy those changes.  The first time (ever) that you've deployed your skill will require using `ask deploy` to deploy all the parts of your skill.  However later on, you only have to deploy those things which have changed.  By specifying the `--target` option, you can only deploy the parts you have changed.
@@ -26,5 +28,8 @@ The `ask simulate` command is handy to quickly test your skill, or when setting 
 Linux/Mac/Cloud9: `export ASK_DEFAULT_DEVICE_LOCALE=en-US`
 
 Windows: `set ASK_DEFAULT_DEVICE_LOCALE=en-US`
+
+Now you can use just `ask simulate -t "open space facts"` instead of `ask simulate -l en-US -t "open space facts"`.
+
 
 \###
