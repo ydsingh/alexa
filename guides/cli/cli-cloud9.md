@@ -31,7 +31,7 @@ Want to quickly and easily setup an Alexa Skill Develpment environemnt, complete
 1. Switch back to the Cloud9 terminal.  Paste the code at the prompt.
 1. If you have more than one Vendor ID associated with your login, select the one you want to use.
    > If your Vendor ID cannot be retrieved (error message is 'call list-vendors error' / 401 / 'You are not authorized to access this operation'), it typically means you haven't fully created your Developer Account.  Return to https://developer.amazon.com/alexa-skills-kit and finish providing the requested data.
-1. Now that the ASK CLI is installed and configured, there's one last step to get it to work with Cloud9 Temporary Credentials.  Enter this command `export ASK_DEPLOY_ROLE_PREFIX=Cloud9-`.  (Notice the dash at the end.)  This will allow the ASK CLI to create IAM roles compatible with Cloud9 Temporary Credential restrictions.
+1. Now that the ASK CLI is installed and configured, there's one last step to get it to work with Cloud9 Temporary Credentials.  Enter this command `echo 'export ASK_DEPLOY_ROLE_PREFIX=Cloud9-' >> ~/.bashrc`.  This will allow the ASK CLI to create IAM roles compatible with Cloud9 Temporary Credential restrictions.  By appending it to the .bashrc file, it will be automatically set each time you use Cloud9.
 
 That's it!  Now that you've created your Cloud9 development environment, you can use it for developing your skills.  You can reconnect to it whenever you want to continue working on it, and it'll be in the same state as you left it.  To make reconnecting easier, simply bookmark the URL.
 

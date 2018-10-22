@@ -25,11 +25,15 @@ ask deploy --target isp
 
 The `ask simulate` command is handy to quickly test your skill, or when setting up some automation around testing your skill.  You might get tired of providing the locale each time you issue the command.  If that's the case, you can set the `ASK_DEFAULT_DEVICE_LOCALE` enviroment variable to your default locale.
 
-Linux/Mac/Cloud9: `export ASK_DEFAULT_DEVICE_LOCALE=en-US`
+Linux/Mac/Cloud9: `echo 'export ASK_DEFAULT_DEVICE_LOCALE=en-US' >> ~/.bashrc`
+(or for just one session: `export ASK_DEFAULT_DEVICE_LOCALE=en-US`)
 
-Windows: `set ASK_DEFAULT_DEVICE_LOCALE=en-US`
+Windows: `setx ASK_DEFAULT_DEVICE_LOCALE en-US`
 
 Now you can use just `ask simulate -t "open space facts"` instead of `ask simulate -l en-US -t "open space facts"`.
+
+# Working in both the CLI and Developer Console
+
 
 
 \###
