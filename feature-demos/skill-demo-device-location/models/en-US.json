@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "device address demo",
+      "invocationName": "device location demo",
       "intents": [
         {
           "name": "GetAddressIntent",
