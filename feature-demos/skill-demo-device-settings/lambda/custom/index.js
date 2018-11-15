@@ -22,13 +22,13 @@ const LaunchRequest = {
     const { requestEnvelope, serviceClientFactory, attributesManager } = handlerInput;
     const { deviceId } = requestEnvelope.context.System.device;
     let usertimeZone;
-    let userDistantceUnits;
+    let userDistanceUnits;
     let userTemperatureUnits;
 
     try {
       const upsServiceClient = serviceClientFactory.getUpsServiceClient();
       usertimeZone = await upsServiceClient.getSystemTimeZone(deviceId);
-      userDistantceUnits = await upsServiceClient.getSystemDistanceUnits(deviceId);
+      userDistanceUnits = await upsServiceClient.getSystemDistanceUnits(deviceId);
       userTemperatureUnits = await upsServiceClient.getSystemTemperatureUnit(deviceId);
     } catch (error) {
       if (error.name !== 'ServiceError') {
@@ -39,13 +39,13 @@ const LaunchRequest = {
 
     const requestAttributes = attributesManager.getRequestAttributes();
     requestAttributes.timeZone = usertimeZone;
-    requestAttributes.distanceUnits = userDistantceUnits;
+    requestAttributes.distanceUnits = userDistanceUnits;
     requestAttributes.temperatureUnits = userTemperatureUnits;
     attributesManager.setRequestAttributes(requestAttributes);
 
     console.log(JSON.stringify(attributesManager.getRequestAttributes()));
 
-    const message = `Your time zone is ${usertimeZone}, your distance units are ${userDistantceUnits}, and your temperature units are ${userTemperatureUnits}.`;
+    const message = `Your time zone is ${usertimeZone}, your distance units are ${userDistanceUnits}, and your temperature units are ${userTemperatureUnits}.`;
     return handlerInput.responseBuilder.speak(message)
       .withStandardCard(message)
       .getResponse();
