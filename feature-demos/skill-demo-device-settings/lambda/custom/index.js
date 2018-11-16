@@ -139,4 +139,5 @@ exports.handler = skillBuilder
   )
   .addErrorHandlers(SettingsError)
   .withApiClient(new Alexa.DefaultApiClient())
+  .withCustomUserAgent('cookbook/device-settings/v1')
   .lambda();

@@ -36,8 +36,7 @@ const GetAddressIntent = {
   async handle(handlerInput) {
     const { requestEnvelope, serviceClientFactory, responseBuilder } = handlerInput;
 
-    const consentToken = requestEnvelope.context.System.user.permissions
-      && requestEnvelope.context.System.user.permissions.consentToken;
+    const consentToken = requestEnvelope.context.System.apiAccessToken;
     if (!consentToken) {
       return responseBuilder
         .speak(messages.NOTIFY_MISSING_PERMISSIONS)
@@ -164,4 +163,5 @@ exports.handler = skillBuilder
   )
   .addErrorHandlers(GetAddressError)
   .withApiClient(new Alexa.DefaultApiClient())
+  .withCustomUserAgent('cookbook/device-location/v1')
   .lambda();
