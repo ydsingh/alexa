@@ -3,11 +3,11 @@
     "publishingInformation": {
       "locales": {
         "en-US": {
-          "summary": "A sample skill to learn the Alexa Customer Profile API.",
+          "summary": "A sample skill for the Alexa Customer Profile API.",
           "examplePhrases": [
             "Alexa open customer profile demo"
           ],
-          "name": "test Alexa Customer Profile",
+          "name": "Customer Profile Demo",
           "description": "Create a skill to access your name, email, and address."
         }
       },

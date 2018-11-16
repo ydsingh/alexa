@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "customer settings demo",
+      "invocationName": "device settings demo",
       "intents": [
         {
           "name": "MySettingsIntent",

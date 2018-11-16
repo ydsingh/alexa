@@ -3,11 +3,11 @@
       "publishingInformation": {
         "locales": {
           "en-US": {
-            "summary": "Customer Settings Demo Skill",
+            "summary": "Device Settings Demo Skill",
             "examplePhrases": [
-              "Alexa, open customer settings demo"
+              "Alexa, open device settings demo"
             ],
-            "name": "Customer Settings Demo",
+            "name": "Device Settings Demo",
             "description": "TODO: skill description"
           }
         },

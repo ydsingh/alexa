@@ -9,7 +9,7 @@
             "Alexa ask device address demo where am i",
             "Alexa ask device address demo whats my location"
           ],
-          "name": "Device Address Demo",
+          "name": "Device Location Demo",
           "description": "Create a demo skill to access your device's address."
         }
       },
