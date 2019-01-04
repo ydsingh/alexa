@@ -33,7 +33,7 @@
         }
       ],
       "endpoint": {
-        "uri": "arn:aws:lambda:us-east-1:589662381973:function:ask-custom-PingMe"
+        "uri": "** TODO: REPLACE WITH YOUR Lambda ARN after created **"
       },
       "subscriptions": [
         {
@@ -43,7 +43,7 @@
       "regions": {
         "NA": {
           "endpoint": {
-            "uri": "arn:aws:lambda:us-east-1:589662381973:function:ask-custom-PingMe"
+            "uri": "Default"
           }
         }
       }

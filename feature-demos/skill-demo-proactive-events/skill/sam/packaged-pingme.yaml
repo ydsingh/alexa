@@ -30,7 +30,7 @@ Resources:
     Type: AWS::Serverless::SimpleTable
   askLambdaFunction:
     Properties:
-      CodeUri: s3://alexabucket234/075fc83e2bdecbadab61e43553b2f574
+      CodeUri: s3://ask-samples-resources/code-packages/0c0e791d1e718cecc4be8716df6dcdf8
       Description: Alexa Skill Lambda function
       Environment:
         Variables:

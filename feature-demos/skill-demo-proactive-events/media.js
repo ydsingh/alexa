@@ -5,8 +5,8 @@ const fs = require('fs');
 
 const mode = 'dev'; // or 'prod'
 
-const clientID = `amzn1.application-oa2-client.726774c6b8144c8f96fa71a814f2c222`;
-const clientSecret = `39ea4a2064f8e8e90696dde395ef891a75b41a3c7b62288211ce6405cb444444`;
+const clientID = `amzn1.application-oa2-client.72677....`;
+const clientSecret = `39ea4....`;
 
 const nextEvent = getNextEvent('./schedule.txt');
 
