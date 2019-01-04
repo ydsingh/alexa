@@ -43,7 +43,7 @@
       "regions": {
         "NA": {
           "endpoint": {
-            "uri": "Default"
+            "uri": "** TODO: REPLACE WITH YOUR Lambda ARN after created **"
           }
         }
       }

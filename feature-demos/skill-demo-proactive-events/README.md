@@ -4,13 +4,14 @@ The [Proacive Events API](https://developer.amazon.com/docs/smapi/proactive-even
 The user will then hear a chime sound from their Echo device indicating a notification has arrived.
 They ask Alexa for "notifications" and hear the details.
 
-This Node.JS feature demo will show you how to setup a sample skill called Ping Me, and a script to generate notifications.
+This feature demo will show you how to setup a sample skill called Ping Me, and a script to generate notifications.
 
 ## What You Will Need
 *  [Amazon Developer Account](http://developer.amazon.com/alexa)
 *  [Amazon Web Services Account](http://aws.amazon.com/)
 *  [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 *  [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html)
+*  [Node.JS version 8](https://nodejs.org/)
 *  The sample code on [GitHub](https://github.com/alexa/alexa-cookbook/tree/master/feature-demos/skill-demo-proactive-events/).
 
 Your notification must follow one of the pre-defined formats listed in the [Proactive Events Schema](https://developer.amazon.com/docs/smapi/schemas-for-proactive-events.html)
