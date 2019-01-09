@@ -45,8 +45,12 @@ const LaunchRequestHandler = {
         .speak(`${messages.WELCOME_REMINDER_COUNT} ${remindersCount}. ${messages.WHAT_DO_YOU_WANT}`)
         .reprompt(messages.WHAT_DO_YOU_WANT)
         .getResponse();
-
     } catch (error) {
+      console.log(`error message: ${error.message}`);
+      console.log(`error stack: ${error.stack}`);
+      console.log(`error status code: ${error.statusCode}`);
+      console.log(`error response: ${error.response}`);
+
       if (error.name === 'ServiceError' && error.statusCode === 401) {
         console.log('No reminders permissions (yet).  Skipping reporting on reminder count.');
         return responseBuilder
