@@ -13,8 +13,8 @@ New to using layers?  Get detailed instructions [here](./using-lambda-layers.md)
 ###  Current Layers for ASK SDK for Node.js
 | Language Runtime | SDK Version | Region | Layer ARN |
 |-|-|-|-|
-| ASK SDK for Node.js | v2.3.0 | us-east-1 | arn:aws:lambda:us-east-1:173334852312:layer:ask-sdk-for-nodejs:1
-| ASK SDK for Node.js | v2.3.0 | us-west-2 | n/a (yet)
+| ASK SDK for Node.js | v2.3.0 | us-east-1 | arn:aws:lambda:us-east-1:173334852312:layer:ask-sdk-for-nodejs:4
+| ASK SDK for Node.js | v2.3.0 | us-west-2 | arn:aws:lambda:us-west-2:173334852312:layer:ask-sdk-for-nodejs:4
 | ASK SDK for Node.js | v2.3.0 | eu-west-1 | n/a (yet)
 | ASK SDK for Node.js | v2.3.0 | ap-northeast-1 | n/a (yet)
 
@@ -22,7 +22,7 @@ New to using layers?  Get detailed instructions [here](./using-lambda-layers.md)
 
 | Language Runtime | SDK Version | Region | Layer ARN |
 |-|-|-|-|
-| ASK SDK for Python 3.6 | v1.6.2 | us-east-1 | arn:aws:lambda:us-east-1:173334852312:layer:ask-sdk-for-python-36:1
+| ASK SDK for Python 3.6 | v1.6.0 | us-east-1 | arn:aws:lambda:us-east-1:173334852312:layer:ask-sdk-for-python-36:1
 | ASK SDK for Python 3.6 | v1.6.2 | us-west-2 | n/a (yet)
 | ASK SDK for Python 3.6 | v1.6.2 | eu-west-1 | n/a (yet)
 | ASK SDK for Python 3.6 | v1.6.2 | ap-northeast-1 | n/a (yet)
@@ -31,7 +31,7 @@ New to using layers?  Get detailed instructions [here](./using-lambda-layers.md)
 
 | Language Runtime | SDK Version | Region | Layer ARN |
 |-|-|-|-|
-| ASK SDK for Python 2.7 | v1.6.2 | us-east-1 | arn:aws:lambda:us-east-1:173334852312:layer:ask-sdk-for-python-27:1
+| ASK SDK for Python 2.7 | v1.6.2 | us-east-1 | n/a (yet)
 | ASK SDK for Python 2.7 | v1.6.2 | us-west-2 | n/a (yet)
 | ASK SDK for Python 2.7 | v1.6.2 | eu-west-1 | n/a (yet)
 | ASK SDK for Python 2.7 | v1.6.2 | ap-northeast-1 | n/a (yet)
@@ -54,9 +54,9 @@ This layer includes the following modules and any required dependencies not alre
 
 #### Layer History
 
-| Layer Contents | region | arn |
-|----------|------|----|
-| ASK SDK for Node.js v2.3.0 | us-east-1 | arn:aws:lambda:us-east-1:173334852312:layer:ask-sdk-for-nodejs:1
+| Layer Contents | region | arn | Status
+|----------|------|----|-|
+| ASK SDK for Node.js v2.3.0 | us-east-1 | arn:aws:lambda:us-east-1:173334852312:layer:ask-sdk-for-nodejs:4 | Active |
 
 
 ### Python 3.6
@@ -67,10 +67,9 @@ This layer includes the following libraries and any required dependencies not al
 
 #### Layer History
 
-| Layer Contents | region | arn |
-|----------|------|----|
-| ASK SDK for Python v1.6.2 | us-east-1 | arn:
-| ASK SDK for Python v1.6.0 | us-east-1 | arn:aws:lambda:us-east-1:173334852312:layer:ask-sdk-for-python-36:1
+| Layer Contents | region | arn | Status |
+|----------|------|----|-|
+| ASK SDK for Python v1.6.0 | us-east-1 | arn:aws:lambda:us-east-1:173334852312:layer:ask-sdk-for-python-36:1 | Active |
 
 ### Python 2.7
 
@@ -80,8 +79,7 @@ This layer includes the following libraries and any required dependencies not al
 
 #### Layer History
 
-| Layer Contents | region | arn |
-|----------|------|----|
-| ASK SDK for Python v1.6.2 | us-east-1 | arn:
-| ASK SDK for Python v1.6.0 | us-east-1 | arn:aws:lambda:us-east-1:173334852312:layer:ask-sdk-for-python-27:1
+| Layer Contents | region | arn | Status |
+|----------|------|----|-|
+| ASK SDK for Python v1.6.2 | us-east-1 | n/a (yet) | Pending |
 

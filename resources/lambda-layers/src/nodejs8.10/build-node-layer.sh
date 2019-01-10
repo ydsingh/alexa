@@ -7,8 +7,8 @@ curl -g https://raw.githubusercontent.com/alexa/alexa-skills-kit-sdk-for-nodejs/
 echo "ASK SDK for Node.js" > NOTICE
 echo "Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved." >> NOTICE
 
-mkdir node
-cd node
+mkdir nodejs
+cd nodejs
 # get package.json
 curl -o package.json https://raw.githubusercontent.com/alexa/alexa-cookbook/master/resources/lambda-layers/src/nodejs8.10/package.json
 # download files
