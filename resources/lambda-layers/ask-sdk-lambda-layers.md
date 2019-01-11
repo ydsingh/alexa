@@ -53,7 +53,7 @@ This layer includes the following modules and any required dependencies not alre
 * i18next
 * i18next-sprintf-postprocessor
 
-Build details can be found [here](./nodejs8.10/)
+Build details can be found [here](./src/nodejs8.10/)
 
 #### Layer History
 
@@ -73,7 +73,7 @@ This layer includes the following libraries and any required dependencies not al
 * ask-sdk-dynamodb
 * ask-sdk-dynamodb-persistence-adapter
 
-Build details can be found [here](./py3.6/)
+Build details can be found [here](./src/py3.6/)
 
 #### Layer History
 
@@ -92,7 +92,7 @@ This layer includes the following libraries and any required dependencies not al
 * ask-sdk-dynamodb
 * ask-sdk-dynamodb-persistence-adapter
 
-Build details can be found [here](./py2.7/)
+Build details can be found [here](./src/py2.7/)
 
 #### Layer History
 
