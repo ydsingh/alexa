@@ -1,6 +1,6 @@
 # Alexa Proactive Events API
 
-The [Proacive Events API](https://developer.amazon.com/docs/smapi/proactive-events-api.html) allows you to send notifications to users of your skill.
+The [Proactive Events API](https://developer.amazon.com/docs/smapi/proactive-events-api.html) allows you to send notifications to users of your skill.
 The user will then hear a chime sound from their Echo device indicating a notification has arrived.
 They ask Alexa for "notifications" and hear the details.
 
@@ -12,7 +12,7 @@ This feature demo will show you how to setup a sample skill called Ping Me, and 
 *  [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 *  [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html)
 *  [Node.JS version 8](https://nodejs.org/)
-*  The sample code on [GitHub](https://github.com/alexa/alexa-cookbook/tree/master/feature-demos/skill-demo-proactive-events/).
+*  This sample code on [GitHub](https://github.com/alexa/alexa-cookbook/tree/master/feature-demos/skill-demo-proactive-events/).
 
 Your notification must follow one of the pre-defined formats listed in the [Proactive Events Schema](https://developer.amazon.com/docs/smapi/schemas-for-proactive-events.html)
 For example, here is a sample from the OrderStatus schema:
@@ -45,11 +45,14 @@ Download this repository to your laptop via the ```git clone``` command or the g
 We will setup the AWS Lambda function first, as part of a CloudFormation stack called PingMe.
 The stack will include the Lambda trigger, IAM role, and a DynamoDB table to track userIds.
 
+ * Note: The CloudFormation package should be run from the **us-east-1** region, also known as N. Virginia.  Verify your default region in the AWS CLI by typing ```aws configure``` and pressing enter four times.
+
+
 1. Open a (bash) command terminal.
 1. Navigate to the ```/skill/sam``` folder
 1. Make the deploy script executable via the commmand ```chmod +x ./deploy.sh```
 1. Execute the script to create your stack:  ```./deploy.sh```
- * This will launch a CloudFormation setup from a packaged project (s3://ask-samples-resources/code-packages/0c0e791d1e718cecc4be8716df6dcdf8)
+ * This will launch a CloudFormation setup from the packaged project defined in pingme.yaml.
 1. Open the [CloudFormation console](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks) and verify the new stack called PingMe is created.  It will take a few moments to complete.
 1. Click on this stack and then the Outputs tab.  Copy down the AWS Lambda ARN that is shown.
 
@@ -98,7 +101,7 @@ The root of the project contains two sample Node.JS scripts you can run from the
  * This script will scan through the list of sports events in schedule.txt, locate the next future event, and send out a Multicast notification.
 
 ```
-// schedule.txt
+// skill/lambda/custom/schedule.txt
 2018-12-20T13:00:00.000Z, "Owls at Badgers",   "Speech Radio"
 2019-01-25T13:00:00.000Z, "Otters at Swans",   "Listen Channel"
 2019-02-14T13:00:00.000Z, "Pandas at Tigers",  "Voice TV"
@@ -143,8 +146,8 @@ The job could check existing systems for any new events, and generate Proactive 
  * Q: Can I send an ad-hoc or literal message as a notification?
  * A: No, your notification must follow the form of one of the [Proactive API schemas](https://developer.amazon.com/docs/smapi/schemas-for-proactive-events.html). You can propose new schemas via [alexa.uservoice.com](https://alexa.uservoice.com) .
 
- * Q: Can I get a notification banner to appear on my Echo Show?
- * A: Yes, the notification banner will appear provided your skill has been prepared for publishing and the icons have been set.
+ * Q: How do I get a notification banner to appear on my Echo Show device?
+ * A: Complete the skill's Build, Test, and Distribution sections, to set the icons.
 
  * Q: Can I send a notification to a mobile phone?
  * A: You could send a TXT/SMS to a phone number via other channels, however the Proactive API works with Alexa devices.

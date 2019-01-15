@@ -1,11 +1,49 @@
 
 const constants = require('./constants.js');
-const AWS = constants.AWS;
 const helpers = require('./helpers.js');
+const path = require("path");
+const fs = require('fs');
 
 
 module.exports = {
 
+    'getNextEvent': function(dataFile){
+        let now = new Date();
+        const resolvedFile = path.resolve(__dirname, dataFile);
+        const scheduleFile = fs.readFileSync(resolvedFile, function (err, data) {
+            if (err) { console.log('error reading file: ' + dataFile + '\n' + err); }
+        });
+
+        scheduleArray = scheduleFile.toString().split(`\n`);
+        let nextMediaEvent = 0;
+        let timeUntil = 0;
+
+        // iterate through the schedule to find the next future event
+        for(let i=0; i<scheduleArray.length; i++) {
+            let lineData = scheduleArray[i].split(',');
+            let eventDate = new Date(Date.parse(lineData[0]));
+            timeUntil = module.exports.timeDelta(now, eventDate);
+
+            if(timeUntil.timeSpanMIN > 0 ) {
+                nextMediaEvent = i;
+                i = scheduleArray.length; // break
+            }
+        }
+        const daysTillEvent = Math.floor(timeUntil/24);
+
+        const mediaEvent = scheduleArray[nextMediaEvent].split(',');
+        const mediaEventTime = mediaEvent[0];
+        const mediaEventName = mediaEvent[1].replace(/['"]+/g, '');
+        const mediaEventProvider = mediaEvent[2].replace(/['"]+/g, '');
+
+        return {
+            "mediaEventName":mediaEventName,
+            "mediaEventTime":mediaEventTime,
+            "mediaEventProvider":mediaEventProvider,
+            "daysTillEvent": daysTillEvent
+        }
+
+    },
     'randomArrayElement': function(myArray) {
         return(myArray[Math.floor(Math.random() * myArray.length)]);
     },

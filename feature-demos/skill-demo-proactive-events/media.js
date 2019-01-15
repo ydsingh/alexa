@@ -6,11 +6,12 @@ const fs = require('fs');
 const mode = 'dev'; // or 'prod'
 
 const clientID = `amzn1.application-oa2-client.72677....`;
+
 const clientSecret = `39ea4....`;
 
-const nextEvent = getNextEvent('./schedule.txt');
+const nextEvent = getNextEvent('./skill/lambda/custom/schedule.txt');
 
-if(nextEvent.daysTillEvent === 2 || true) { // adjust as needed
+if(nextEvent.daysTillEvent === 1 || true) { // adjust as needed
 
     notify(nextEvent.mediaEventName, nextEvent.mediaEventTime, nextEvent.mediaEventProvider );  // Multicast
 
@@ -47,10 +48,7 @@ function getMediaEvent(mediaEventName, mediaEventTime, mediaEventProvider) {
     let expiryTime = new Date();
     let startTime = new Date(mediaEventTime);
 
-    // startTime.setTime(startTime.getTime() + 2 * 86400000);
-    startTime.setHours(12, 0, 0, 0);
-
-    expiryTime.setMinutes(expiryTime.getMinutes() + 60);
+    expiryTime.setMinutes(expiryTime.getHours() + 24);
 
     let referenceId = "SampleReferenceId" + new Date().getTime();  // cross reference to records in your existing systems
 
@@ -202,7 +200,7 @@ function getNextEvent(dataFile) {
         let lineData = scheduleArray[i].split(',');
         let eventDate = new Date(Date.parse(lineData[0]));
         timeUntil = timeDelta(now, eventDate);
-        if(timeUntil > 0 ) {
+        if(timeUntil.timeSpanMIN > 0 ) {
             nextMediaEvent = i;
             i = scheduleArray.length; // break
         }
@@ -234,6 +232,6 @@ function timeDelta(t1, t2) {
         "timeSpanDesc" : ""
     };
 
-    return span.timeSpanHR;
+    return span;
 
 }

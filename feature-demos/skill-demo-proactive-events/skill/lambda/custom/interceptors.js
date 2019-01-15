@@ -47,6 +47,10 @@ module.exports = {
                                     reject(err);
                                 });
 
+                        })
+                        .catch((error) => {
+                            console.log(`requires DynamoDB table`);
+                            reject(error);
                         });
 
                 });

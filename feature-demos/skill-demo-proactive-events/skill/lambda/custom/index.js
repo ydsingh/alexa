@@ -8,21 +8,29 @@ const Alexa = require('ask-sdk');
 const helpers = require('./helpers.js');
 const interceptors = require('./interceptors.js');
 const constants = require('./constants.js');
-const AWS = constants.AWS;
 const DYNAMODB_TABLE = constants.DYNAMODB_TABLE;
 
 
-const LaunchRequestHandler = {
+const NextGameHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
+    return (handlerInput.requestEnvelope.request.type === 'LaunchRequest'
+            || (handlerInput.requestEnvelope.request.type === 'IntentRequest'
+                && handlerInput.requestEnvelope.request.intent.name === 'NextGameIntent')
+    );
   },
   handle(handlerInput) {
-    const speechText = 'Welcome to the Alexa Skills Kit, you can say hello!';
+    const nextEvent = helpers.getNextEvent('schedule.txt');
+
+    const nextEventDate = new Date(nextEvent.mediaEventTime);
+    // Determine user's device time (time zone) not covered; see  https://developer.amazon.com/blogs/alexa/post/c2ba44fa-4bd8-4b49-925d-29dbc0330b1e/personalize-your-alexa-skill-with-customer-specific-time-zones-and-measurements-using-the-alexa-settings-api
+
+    let speechText = `The next game is ${nextEvent.mediaEventName} at ${nextEventDate.toDateString().slice(0, -5)} on ${nextEvent.mediaEventProvider}. `;
+    speechText += `I can notify you the day before if you visit the Alexa App and enable notifications.`;
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .withAskForPermissionsConsentCard(['alexa::devices:all:notifications:write'])
       .getResponse();
   },
 };
@@ -93,9 +101,14 @@ const ErrorHandler = {
 
         const debug = true;
         const stack = error.stack.split('\n');
-        console.log(stack[0]);
+        let speechOutput = 'Sorry, an error occurred. ';
+
+        console.log(stack[0].slice(0, 33));
         console.log(stack[1]);
         console.log(stack[2]);
+        if(stack[0].slice(0, 33) === `AskSdk.DynamoDbPersistenceAdapter`) {
+            speechOutput = 'DyanamoDB error.  Be sure your table and IAM execution role are setup. ';
+        }
 
         let errorLoc = stack[1].substring(stack[1].lastIndexOf('/') + 1, 900);
 
@@ -105,7 +118,7 @@ const ErrorHandler = {
         let line = errorLoc.substring(errorLoc.indexOf(':') + 1, 900);
         line = line.substring(0, line.indexOf(':'));
 
-        let speechOutput = 'Sorry, an error occurred. ';
+
         if(debug) {
             speechOutput +=  error.message + ' in ' + file + ', line ' + line;
         }
@@ -123,7 +136,7 @@ const skillBuilder = Alexa.SkillBuilders.standard();
 
 exports.handler = skillBuilder
   .addRequestHandlers(
-    LaunchRequestHandler,
+    NextGameHandler,
     HelloWorldIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
@@ -136,6 +149,6 @@ exports.handler = skillBuilder
   .addResponseInterceptors(interceptors.ResponsePersistenceInterceptor)
 
   .withTableName(DYNAMODB_TABLE)
-  .withAutoCreateTable(true)
+//  .withAutoCreateTable(true)  // created by SAM deploy
 
   .lambda();

@@ -9,31 +9,31 @@
         {
           "name": "AMAZON.CancelIntent",
           "samples": [
-
           ]
         },
         {
           "name": "AMAZON.HelpIntent",
           "samples": [
-
           ]
         },
         {
           "name": "AMAZON.StopIntent",
           "samples": [
-
           ]
         },
         {
-          "name": "HelloWorldIntent",
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": [
+          ]
+        },
+        {
+          "name": "NextGameIntent",
           "slots": [
-
           ],
           "samples": [
-            "hello",
-            "hello world",
-            "say hello",
-            "say hello world"
+            "when is the next game",
+            "next game",
+            "next match"
           ]
         }
       ]

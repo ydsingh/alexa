@@ -1,7 +1,7 @@
-# https://github.com/awslabs/serverless-application-model/releases/tag/1.4.0
+# !Sub 'arn:aws:ec2:${AWS::Region}:${AWS::AccountId}:vpc/${vpc}'
 
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Alexa Sample Skill
+Description: Alexa Proactive Events API Feature Demo
 Transform: AWS::Serverless-2016-10-31
 Parameters:
   ProjectName:
@@ -14,7 +14,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: !Sub 'ask-custom-${ProjectName}'
-      CodeUri: ../lambda/index.zip
+      CodeUri: s3://ask-samples-us-east-1-region/proactive-events-demo/proactive-events-skill.zip
       Description: Alexa Skill Lambda function
       Handler: index.handler
       MemorySize: 128
@@ -37,7 +37,6 @@ Resources:
                 - "dynamodb:PutItem"
                 - "dynamodb:UpdateItem"
                 - "dynamodb:DeleteItem"
-                - "dynamodb:CreateTable"
               Resource:
                 - !Sub 'arn:aws:dynamodb:*:*:table/ask${ProjectName}'
 
@@ -55,27 +54,7 @@ Resources:
 Outputs:
   AlexaSkillFunctionARN:
     Value: !GetAtt askLambdaFunction.Arn
-    Description: 'Paste this ARN into your Skill Endpoint!'
+    Description: 'Paste this Lambda ARN into your skill.json file!'
   DynamoDbTable:
     Value: !Sub 'ask${ProjectName}'
 
-#    Export:
-#      Name: 'Export Text'
-
-#   DynamoDBTable:
-#     Type: AWS::DynamoDB::Table
-#     Properties:
-#       AttributeDefinitions:
-#         - AttributeName: id
-#           AttributeType: S
-#       KeySchema:
-#         - AttributeName: id
-#           KeyType: HASH
-#       ProvisionedThroughput:
-#         ReadCapacityUnits: 5
-#         WriteCapacityUnits: 5
-#       StreamSpecification:
-#         StreamViewType: streamview type
-
-#    Export:
-#      Name: !Sub "${AWS::StackName}-Role"

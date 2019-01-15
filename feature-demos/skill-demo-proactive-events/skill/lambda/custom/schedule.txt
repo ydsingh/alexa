@@ -9,3 +9,4 @@
 2019-12-17T13:00:00.000Z, "Otters at Badgers", "Stream Site"
 2020-12-17T13:00:00.000Z, "Badgers at Snails", "Voice TV"
 2021-12-17T13:00:00.000Z, "Snails at Owls",    "Listen Channel"
+2022-12-17T13:00:00.000Z, "Goats at Swans",    "Speech Radio"
