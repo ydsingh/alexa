@@ -14,7 +14,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: !Sub 'ask-custom-${ProjectName}'
-      CodeUri: s3://ask-samples-us-east-1-region/proactive-events-demo/proactive-events-skill.zip
+      CodeUri: s3://ask-samples-resources/code-packages/proactive-events-skill.zip
       Description: Alexa Skill Lambda function
       Handler: index.handler
       MemorySize: 128

@@ -2,12 +2,16 @@
 
 PROJECT_NAME="PingMe"
 
-aws cloudformation deploy --template-file ./pingme.yaml --stack-name $PROJECT_NAME --parameter-overrides ProjectName=$PROJECT_NAME  --capabilities CAPABILITY_IAM
+ aws cloudformation deploy --template-file ./pingme.yaml --stack-name $PROJECT_NAME --parameter-overrides ProjectName=$PROJECT_NAME  --capabilities CAPABILITY_IAM
 
-#    PACKAGE_BUCKET="ask-samples-us-east-1-region"
-#    BUCKET_FOLDER="proactive-events-demo"
+#    PACKAGE_BUCKET="ask-samples-resources"
+#    BUCKET_FOLDER="code-packages"
 #    OBJECT_NAME="proactive-events-skill.zip"
-
+#
+##    PACKAGE_BUCKET="ask-samples-us-east-1-region"
+##    BUCKET_FOLDER="proactive-events-demo"
+##    OBJECT_NAME="proactive-events-skill.zip"
+#
 #    cd ../lambda
 #    rm $OBJECT_NAME
 #    cd custom
