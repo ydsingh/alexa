@@ -17,56 +17,81 @@ This readme assumes you have your developer environment ready to go and that you
 1. **Make sure** you are running the latest version of the CLI
 
 	```bash
-	$ npm update -g ask-cli
+	npm update -g ask-cli
 	```
 
-2. **Clone** the repository.
+1. If it's your first time using it, **initialize** the [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html?&sc_category=Owned&sc_channel=RD&sc_campaign=Evangelism2018&sc_publisher=github&sc_content=Content&sc_detail=hello-world-nodejs-V2_CLI-1&sc_funnel=Convert&sc_country=WW&sc_medium=Owned_RD_Evangelism2018_github_Content_hello-world-nodejs-V2_CLI-1_Convert_WW_beginnersdevs&sc_segment=beginnersdevs) by navigating into the repository and running npm command: `ask init`. Follow the prompts.
 
 	```bash
-	$ git clone https://github.com/alexa/skill-sample-nodejs-hello-world
+	ask init
 	```
+1. **Create** the skill from a template by using the wizard or specifying the template source
+	1. Start the wizard by using the `ask new` command: (For the sake of this guide, we'll choose **Node.js V8** and **Hello World**, however a comparable process can be used if you select Python or any other of the templates.)
+		```bash
+		ask new
 
-3. If it's your first time using it, **initialize** the [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html?&sc_category=Owned&sc_channel=RD&sc_campaign=Evangelism2018&sc_publisher=github&sc_content=Content&sc_detail=hello-world-nodejs-V2_CLI-1&sc_funnel=Convert&sc_country=WW&sc_medium=Owned_RD_Evangelism2018_github_Content_hello-world-nodejs-V2_CLI-1_Convert_WW_beginnersdevs&sc_segment=beginnersdevs) by navigating into the repository and running npm command: `ask init`. Follow the prompts.
+		? Please select the runtime (Use arrow keys)
+		> Node.js V8
+  		Python3
+
+		? List of templates you can choose (Use arrow keys)
+		> Hello World
+			Buttons ColorChanger
+			City Guide
+			Decision Tree
+			Fact
+			Feed
+			Foodie
+		(Move up and down to reveal more choices)
+
+		? Please type in your skill name:  (skill-sample-nodejs-hello-world) <skill-name>
+
+		Skill "<skill-name>" has been created based on the chosen template		
+		```
+	1. Alternatively, create the skill by specifying the template source when using the `ask new` command with the `--url` option:
+		```bash
+		ask new --url https://github.com/alexa/skill-sample-nodejs-hello-world.git
+		```
+
+1. (Optional) Prior to deploying, the ASK CLI will automatically install any required dependencies specified in the package.json.  You can do this manually by navigating into the `/lambda/custom` directory and running the npm command: `npm install`
 
 	```bash
-	$ cd skill-sample-nodejs-hello-world
-	$ ask init
+	cd lambda/custom
+	npm install
 	```
-
-4. Install npm dependencies by navigating into the `/lambda/custom` directory and running the npm command: `npm install --save`
-
-	```bash
-	$ cd lambda/custom
-	$ npm install
-	```
+> Note: the dependencies can also be installed by using AWS Lambda Layers.  For more information on how to do that, click [here](https://alexa.design/using-lambda-layers)
 
 ### Deployment
 
 ASK CLI **will create the skill and the Lambda function for you**. The Lambda function will be created in ```us-east-1 (Northern Virginia)``` by default.
 
 1. Navigate to the project's root directory. you should see a file named 'skill.json' there.
-2. Deploy the skill and the Lambda function in one step by running the following command:
+1. Deploy the skill and the Lambda function in one step by running the following command:
 
 	```bash
-	$ ask deploy
+	ask deploy
 	```
 
 ### Testing
 
-1. To test, you need to login to Alexa Developer Console, and **enable the "Test" switch on your skill from the "Test" Tab**.
+1. Enabling testing for the skill should be the last step in the deploy process.  The following steps assume you are still in the project's root directory.
 
-2. Simulate verbal interaction with your skill through the command line (this might take a few moments) using the following example:
+1. Simulate verbal interaction with your skill through the command line using the following example:
 
 	```bash
-	 $ ask simulate -l en-US -t "start Hello World"
+	ask simulate -l en-US -t "start Hello World"
 
 	 ✓ Simulation created for simulation id: 4a7a9ed8-94b2-40c0-b3bd-fb63d9887fa7
 	◡ Waiting for simulation response{
 	  "status": "SUCCESSFUL",
 	  ...
 	 ```
+1. Start a dialog with your skill using the `ask dialog` command.
+```bash
+ask dialog -l en-US
+```
 
-3. Once the "Test" switch is enabled, your skill can be tested on devices associated with the developer account as well. Speak to Alexa from any enabled device, from your browser at [echosim.io](https://echosim.io/welcome), or through your Amazon Mobile App and say :
+1. You can also test out your skill on devices associated with the developer account. Speak to Alexa from any enabled device, from your browser at [echosim.io](https://echosim.io/welcome), using Alexa for PC, or through your Amazon Mobile App and say :
 
 	```text
 	Alexa, start hello world
@@ -92,5 +117,5 @@ ASK CLI **will create the skill and the Lambda function for you**. The Lambda fu
 4. Remember to re-deploy your skill and Lambda function for your changes to take effect.
 
 	```bash
-	$ ask deploy
+	ask deploy
 	```

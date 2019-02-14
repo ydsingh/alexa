@@ -22,4 +22,21 @@ From here you can add, remove or rearrange the layers.
 
 To add a new layer, click **Add a layer**, select the option to **Provide a layer version ARN** and paste the ARN for the layer you want to use.  Be sure to use a layer compatible with your Lambda function's runtime.  Click [here](../../resources/lambda-layers/ask-sdk-lambda-layers.md) to see the list of the ASK SDK layers.  Click **Add** and once you're back on your function page, be sure to click **Save**!
 
+## Do layers work with the ASK CLI?
+
+The ASK CLI will attempt to install any required dependencies prior to deploying your Lambda function code.  This is the ideal practice to ensure the code will have what it needs to run in Lambda.  Layers can be used a fall back in case your deployment doesn't include everything, or you can change your dependencies into development only dependencies and they won't be included in your Lambda deployment package.
+
+### Adjusting Node.js Dependencies
+
+To adjust your node dependencies to development only, from the `/lambda/custom` directory, issue these commands for any libraries which should be shifted:
+
+```bash
+npm install --dev ask-sdk
+```
+> If you're not sure which dependencies are being used, open the `package.json` file and take a look.  Refer to https://alexa.design/current-lambda-layers to see which are included in a given layer.
+
+### Adjusting Python Dependencies
+
+To adjust your python dependencies to development only, locate your `requirements.txt` in the `/lambda/py` directory.  Move any entries (lines) from the requirements.txt file into `dev-requirements.txt`.  (Note: you many need to create this file.) 
+
 \###
