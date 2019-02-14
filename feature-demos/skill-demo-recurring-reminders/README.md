@@ -21,7 +21,7 @@ A reminder is somewhat like an alarm, however Alexa will speak the reminder, for
 First, let's create the skill.
 1. Navigate to the [Alexa Skills Kit Developer Console](https://developer.amazon.com/alexa/console/ask). Click the **Create Skill** button in the upper right.
 1. Enter `Channel Guide` as your skill name, choose **en-US**, select **Custom** and click **Create skill**.
-1. Navigate to the **JSON Editor** section.  Copy the interaction model from [here](./models/en-us.json) and paste it over the existing model.  Save and build the model.
+1. Navigate to the **JSON Editor** section.  Copy the interaction model from [here](./models/en-US.json) and paste it over the existing model.  Save and build the model.
 1. Navigate to the **Permissions** section and enable the **Reminders** option.  Save the permissions.
 1. Navigate to the **Endpoints** section.  Leave this section here, as you'll need to come back to it after creating the AWS Lambda function.
 
