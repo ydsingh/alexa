@@ -22,5 +22,5 @@ In the XD file, to the right of the templates and scenarios is the grid. This is
 ## Resources
 
 * [Quick Start in XD format](./quick-start.xd)
-* [Quick Start in PDF format](/quick-start.pdf)
+* [Quick Start in PDF format](./quick-start.pdf)
 * [College Coach example design (XD format)](./college-coach.xd)
