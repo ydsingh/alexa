@@ -85,7 +85,7 @@ const MyLocationIntentHandler = {
                     speechText += handlerInput.t('HEADING_MSG', {heading: getHeading(heading, handlerInput)});
                 }
             } else {
-                speechText = handlerInput.t('LOCATION_INACCURATE_MSG')
+                speechText = handlerInput.t('LOCATION_INACCURATE');
             }
         }
 

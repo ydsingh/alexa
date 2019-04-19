@@ -45,7 +45,7 @@
         "es-ES": {
           "summary": "Una demo que obtiene la ubicación de forma dinámica.",
           "examplePhrases": [
-            "Alexaabre demo de ubicación"
+            "Alexa abre demo de ubicación"
           ],
           "name": "Demo de Ubicación",
           "description": "Una skill de demostración para acceder a la ubicación de forma dinámica."
@@ -53,7 +53,7 @@
         "es-MX": {
           "summary": "Una demo que obtiene la ubicación de forma dinámica.",
           "examplePhrases": [
-            "Alexaabre demo de ubicación"
+            "Alexa abre demo de ubicación"
           ],
           "name": "Demo de Ubicación",
           "description": "Una skill de demostración para acceder a la ubicación de forma dinámica."

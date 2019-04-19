@@ -1,0 +1,127 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "trivia game",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "StartIntent",
+                    "slots": [],
+                    "samples": [
+                        "let's play",
+                        "play",
+                        "let's begin",
+                        "begin",
+                        "bring it on",
+                        "i want some trivia",
+                        "i want trivia",
+                        "let's get started",
+                        "start quiz",
+                        "start"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AnswerIntent",
+                    "slots": [
+                        {
+                            "name": "answer",
+                            "type": "AnswerType",
+                            "samples": [
+                                "it is {answer}",
+                                "it's {answer}",
+                                "{answer}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "the obvious answer is {answer}",
+                        "my answer is {answer}",
+                        "i bet it's {answer}",
+                        "maybe {answer}",
+                        "i think it's {answer}",
+                        "it is {answer}",
+                        "it's {answer}",
+                        "{answer}",
+                        "the answer is {answer}"
+                    ]
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                }
+            ],
+            "types": [
+                {
+                    "name": "AnswerType",
+                    "values": [
+                        {
+                            "id": "1",
+                            "name": {
+                                "value": "i don't know",
+                                "synonyms": [
+                                    "no idea",
+                                    "i have no idea",
+                                    "you got me",
+                                    "i don't know that",
+                                    "i wish i knew",
+                                    "i'm blank",
+                                    "give me another one",
+                                    "next one",
+                                    "next question",
+                                    "let's move on"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "AnswerIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "answer",
+                            "type": "AnswerType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1442608566521.117093081993"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.1442608566521.117093081993",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "please answer the question"
+                    }
+                ]
+            }
+        ]
+    }
+}
