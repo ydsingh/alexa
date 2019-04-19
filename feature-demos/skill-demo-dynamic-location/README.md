@@ -12,8 +12,8 @@ This folder contains the interaction model and skill code.  It is structured to 
 ## Running the Demo
 To start the demo say "alexa open location demo".  It will tell you to ask what's your current location.  Say "where am i" to listen to your latest location info.
 
-You will need to grant Location permissions to the skill using the Alexa app.
+You will need to grant Location permissions to the skill via the Alexa app.
 
-> Note: location updates are not supported in the Alexa developer console simulator.
+> Note: location updates are not supported in the Alexa developer console simulator. You can use the skill from the Alexa app in your phone to pass the dynamic location
 
 \###

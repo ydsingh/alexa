@@ -6,6 +6,8 @@ const Alexa = require('ask-sdk-core');
 const axios = require('axios');
 // Library to decode special characters in strings returned by the external quiz API (like e.g. &amp; -> &)
 const he = require('he');
+// Library to convert numbers into words (like e.g. 100 -> one hundred)
+const numberWords = require('number-words');
 
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
@@ -25,9 +27,9 @@ const StartIntentHandler = {
         const {attributesManager, requestEnvelope} = handlerInput;
         const sessionAttributes = attributesManager.getSessionAttributes();
 
-        let speechText = '';
+        let speechText, repromptText = '';
         if(requestEnvelope.session['new'])
-            speechText = "<audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_intro_01'/> Welcome to the Trivia Game. I will ask questions and give you a set of answers. Only one of them is correct. Here's the first one. ";
+            speechText = "<audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_intro_01'/> Welcome to the Trivia Game. I will ask questions and give you a set of answers to choose from. Only one of them is correct. Here's the first one. ";
         else
             speechText = "Ok let's get started. Here's the first one. ";
 
@@ -38,18 +40,19 @@ const StartIntentHandler = {
             speechText += he.decode(trivia.question) + ' ';
             // decode all answers in case they have encoded special characters and add to speech output
             const decodedAnswers = joinAndDecodeAnswers(trivia.correct_answer, trivia.incorrect_answers);
-            decodedAnswers.map((answer) => speechText += answer + ', ');
+            decodedAnswers.map((answer) => {speechText += answer + ', '; repromptText += answer + ', '});
             // save correct answer in session attributes to compare later
             sessionAttributes['correctAnswer'] = he.decode(trivia.correct_answer);
             // add answers as dynamic entities
             addDynamicEntities(handlerInput.responseBuilder, decodedAnswers);
         } else {
-            speechText = "I had a problem fetching a new question for you. Please say start to try again. "
+            speechText = "I had a problem fetching a new question for you. Please say start to try again. ";
+            repromptText = "Please say start to try again. ";
         }
 
         return handlerInput.responseBuilder
             .speak(speechText)
-            .reprompt(speechText)
+            .reprompt(repromptText)
             .getResponse();
     }
 }
@@ -64,7 +67,7 @@ const AnswerIntentHandler = {
         const sessionAttributes = attributesManager.getSessionAttributes();
         const {intent} = requestEnvelope.request;
 
-        let answer, speechText;
+        let answer, speechText, repromptText = '';
         console.log(JSON.stringify(intent.slots));
         const correctAnswer = sessionAttributes['correctAnswer'];
 
@@ -81,6 +84,9 @@ const AnswerIntentHandler = {
         }
         if (slotValues.dynamic.statusCode === 'ER_SUCCESS_MATCH') {
             answer = slotValues.value;
+            // check if value is a number and covert to words if so
+            if(!isNaN(answer))
+                answer = numberWords.decode(answer);
             if(answer.toLowerCase() === correctAnswer.toLowerCase()) {
                 sessionAttributes['rightAnswers']++;
                 speechText = `<audio src='soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_positive_response_02'/>That's right! `;
@@ -99,18 +105,19 @@ const AnswerIntentHandler = {
             speechText += he.decode(trivia.question) + ' ';
             // decode all answers in case they have encoded special characters and add to speech output
             const decodedAnswers = joinAndDecodeAnswers(trivia.correct_answer, trivia.incorrect_answers);
-            decodedAnswers.map((answer) => speechText += answer + ', ');
+            decodedAnswers.map((answer) => {speechText += answer + ', '; repromptText += answer + ', '});
             // save correct answer in session attributes to compare later
             sessionAttributes['correctAnswer'] = he.decode(trivia.correct_answer);
             // add answers as dynamic entities
             addDynamicEntities(handlerInput.responseBuilder, decodedAnswers);
         } else {
-            speechText = "I had a problem fetching a new question for you. Please say start to try again. "
+            speechText = "I had a problem fetching a new question for you. Please say start to try again. ";
+            repromptText = "Please say start to try again. ";
         }
 
         return handlerInput.responseBuilder
             .speak(speechText)
-            .reprompt(speechText)
+            .reprompt(repromptText)
             .getResponse();
     }
 }
@@ -136,7 +143,7 @@ const HelpIntentHandler = {
             && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
     },
     handle(handlerInput) {
-        const speechText = "You can say start to play the game or stop to exit. ";
+        const speechText = "You can say start to play the game or stop to exit and get your game stats. What would you like to do?";
 
         return handlerInput.responseBuilder
             .speak(speechText)
@@ -164,11 +171,13 @@ const CancelAndStopIntentHandler = {
             speechText += `That's a ${Math.floor(rightAnswers*100/totalAnswers)} percent effectiveness! `;
         }
         speechText += "See you later!";
+
         // It's a good practice to clear all dynamic entities at the end of a session
         const clearEntitiesDirective = {
           type: 'Dialog.UpdateDynamicEntities',
           updateBehavior: 'CLEAR'
         };
+
         return handlerInput.responseBuilder
             .speak(speechText)
             .addDirective(clearEntitiesDirective)
@@ -195,7 +204,7 @@ const ErrorHandler = {
     },
     handle(handlerInput, error) {
         console.log(`~~~~ Error handled: ${error.message}`);
-        const speechText = "There's was an error. Please try again. ";
+        const speechText = "There was an error. Please try again. ";
 
         return handlerInput.responseBuilder
             .speak(speechText)

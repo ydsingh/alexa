@@ -105,7 +105,13 @@
                             "elicitationRequired": true,
                             "prompts": {
                                 "elicitation": "Elicit.Slot.1442608566521.117093081993"
-                            }
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1011004802465.1357824383618.343932851136"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -119,6 +125,15 @@
                     {
                         "type": "PlainText",
                         "value": "please answer the question"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1011004802465.1357824383618.343932851136",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "That's not a valid answer. Please try again"
                     }
                 ]
             }
