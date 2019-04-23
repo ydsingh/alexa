@@ -1,4 +1,4 @@
-Want to quickly and easily setup an Alexa Skill Develpment environemnt, complete with the ASK-CLI?  Here's how you can do just that using [AWS Cloud 9](https://aws.amazon.com/cloud9/)!
+Want to quickly and easily setup an Alexa Skill Development environment, complete with the ASK-CLI?  Here's how you can do just that using [AWS Cloud 9](https://aws.amazon.com/cloud9/)!
 
 > Note: New AWS customers who are eligible for the AWS Free Tier can use AWS Cloud9 for free. If your AWS Cloud9 environment makes use of resources beyond the free tier, you are charged the normal AWS rates for those resources.  For an example of AWS Cloud9 pricing, or more details on AWS Cloud9 pricing, check out: https://aws.amazon.com/cloud9/pricing/
 
@@ -22,7 +22,7 @@ Want to quickly and easily setup an Alexa Skill Develpment environemnt, complete
 1. Enter a name and optional description.  Click **Next step**.
 1. Accept the defaults and click **Next step**.
 1. Review and click **Create Environment**.
-1. Wait a few minutes while the environemnt is being created.
+1. Wait a few minutes while the environment is being created.
 1. Once the environment is ready, you will see the Cloud9 IDE.  In the lower pane a default terminal session has been started for you.  In this window, enter the command `npm install ask-cli -g` to install the ASK CLI.
 1. Configure the ASK CLI by entering the command `ask init --no-browser`.  This will guide you through the setup process where you'll specify the AWS credentials to be used as well as the Developer Account to be used.  The no-browser flag indicates that a URL should be displayed instead of automatically opening the URL in the default browser.
 1. Press **ENTER** to use the default profile.  This will use the temporary AWS credentials managed by Cloud9.  Click [here](https://docs.aws.amazon.com/cloud9/latest/user-guide/auth-and-access-control.html#auth-and-access-control-temporary-managed-credentials) to learn more about Temporary Credentials.
