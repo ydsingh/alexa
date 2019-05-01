@@ -15,7 +15,7 @@ These instructions assume you are using the ASK CLI connected to AWS Lambda for 
 1. Clone or download this repo.  At the command line, switch to the skill-demo-delete-persistent-attributes directory.
 1. Deploy the skill using the `ask deploy` command.
 1. Once deployed, open the skill.json file.
-1. Add the `events` configuration as a child of the **manifest** node:
+1. Add the `events` configuration as a child of the **manifest** node, replacing the **uri** value with your lambda function's ARN (which you can copy from the **apis >> endpoint >> custom >> uri** value.):
     ```
     "events": {
       "endpoint": {
