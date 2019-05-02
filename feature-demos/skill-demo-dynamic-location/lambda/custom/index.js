@@ -49,12 +49,12 @@ const MyLocationIntentHandler = {
                 } else {
                     if(context.Geolocation.locationServices.access !== 'ENABLED'){
                         return handlerInput.responseBuilder
-                            .speak(handlerInput.t('LOCATION_ENABLED'))
+                            .speak(handlerInput.t('LOCATION_DISABLED'))
                             .getResponse();
                     }
                     if(context.Geolocation.locationServices.status !== 'RUNNING'){
                         return handlerInput.responseBuilder
-                            .speak(handlerInput.t('LOCATION_RUNNING'))
+                            .speak(handlerInput.t('LOCATION_NOT_RUNNING'))
                             .getResponse();
                     }
                     return handlerInput.responseBuilder
@@ -176,14 +176,19 @@ function getHeading(degrees, handlerInput) {
   str2 = cardinal[(input + 1) % 4];
   strC = (str1 === cardinal[0] || str1 === cardinal[2]) ? str1 + str2 : str2 + str1;
   result = pointDesc[j].replace('1', str1).replace('2', str2).replace('C', strC);
-  //special replacement for es-*
-  if(handlerInput.requestEnvelope.request.locale.startsWith('es')){
-      result = result.replace('norteeste', 'noreste');
-      result = result.replace('norteoeste', 'noroeste');
-      result = result.replace('norte-noreste', 'nor-noreste');
-      result = result.replace('norte-noroeste', 'nor-noroeste');
-  }
+  result = fixHeadingForLocale(result, handlerInput.requestEnvelope.request.locale);
   return result;
+}
+
+function fixHeadingForLocale(heading, locale){
+    //special replacement for es-*
+    if(locale.startsWith('es')){
+        heading = heading.replace('norteeste', 'noreste');
+        heading = heading.replace('norteoeste', 'noroeste');
+        heading = heading.replace('norte-noreste', 'nor-noreste');
+        heading = heading.replace('norte-noroeste', 'nor-noroeste');
+    }
+    return heading;
 }
 
 // This handler acts as the entry point for your skill, routing all request and response
