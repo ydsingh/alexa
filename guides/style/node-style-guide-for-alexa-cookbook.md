@@ -188,13 +188,30 @@ In the require section add:
 const i18n = require('i18next');
 const sprintf = require('i18next-sprintf-postprocessor');
 ```
-Import the desired translations by adding this section (always include all locales, just comment out the ones not included).
+Import the desired translations by adding this section (always include all locales in this section, just comment out the ones without translations).
 ```javascript
 const languageStrings = {
+//  'de': require('languages\de.js'),
+//  'de-DE': require('languages\de-DE.js'),
   'en' : require('languages\en.js'),
-  'en-US': require('languages\en-US.js'),
+//  'en-AU': require('languages\en-AU.js'),
+//  'en-CA': require('languages\en-CA.js'),
 //  'en-GB': require('languages\en-GB.js'),
-  'de': require('languages\de.js'),
+//  'en-IN': require('languages\en-IN.js'),
+  'en-US': require('languages\en-US.js'),
+//  'es' : require('languages\es.js'),
+//  'es-ES': require('languages\es-ES.js'),
+//  'es-MX': require('languages\es-MX.js'),
+//  'es-US': require('languages\es-US.js'),
+//  'fr' : require('languages\fr.js'),
+//  'fr-CA': require('languages\fr-CA.js'),
+//  'fr-FR': require('languages\fr-FR.js'),
+//  'it' : require('languages\it.js'),
+//  'it-IT': require('languages\it-IT.js'),
+//  'ja' : require('languages\ja.js'),
+//  'ja-JP': require('languages\ja-JP.js'),
+//  'pt' : require('languages\pt.js'),
+//  'pt-BR': require('languages\pt-BR.js'),
 };
 ```
 Process the translations using this code:
