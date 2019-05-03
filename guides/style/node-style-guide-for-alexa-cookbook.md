@@ -88,12 +88,12 @@ const errorMessage='I had trouble processing that request. Please try again and 
     1.	ErrorHandler
 1. Include the Handlers in this order when constructing the SkillBuilder:
     1. LaunchRequestHandler
-    1. <skill specific intent handlers>
-    1.	RepeatHandler (if applicable)
-    1.	HelpHandler
-    1.	ExitHandler
-    1.  FallbackHandler
-    1.	SessionEndedRequestHandler
+    1. ...skill specific intent handlers...
+    1. RepeatHandler (if applicable)
+    1. HelpHandler
+    1. ExitHandler
+    1. FallbackHandler
+    1. SessionEndedRequestHandler
 1. Include the suffix **Interceptor** on both request and response interceptors.
 
 ### Boilerplate Code
@@ -114,7 +114,22 @@ const SessionEndedRequestHandler = {
 ```
 #### FallbackHandler
 ```javascript
-// coming soon
+const FallbackHandler = {
+  // This handler will only be triggered by those skills/locales that support
+  // the FallbackIntent, so this handler can be safely deployed to any locale.
+  canHandle(handlerInput) {
+    const request = handlerInput.requestEnvelope.request;
+    return request.type === 'IntentRequest'
+           && request.intent.name === 'AMAZON.FallbackIntent';
+  },
+  handle(handlerInput) {
+    const requestAttributes = handlerInput.attributesManager.getRequestAttributes();
+    return handlerInput.responseBuilder
+      .speak(requestAttributes.t('FALLBACK_MESSAGE'))
+      .reprompt(requestAttributes.t('FALLBACK_REPROMPT'))
+      .getResponse();
+  },
+};
 ```
 #### ErrorHandler
 ```javascript
@@ -137,11 +152,24 @@ const ErrorHandler = {
 ```
 #### LogRequestInterceptor
 ```javascript
-// coming soon
+const LogRequestInterceptor = {
+	process(handlerInput) {
+    if (debug) {
+  		console.log(`REQUEST ENVELOPE = ${JSON.stringify(handlerInput.requestEnvelope)}`
+		  );
+    }
+	}
+};
 ```
 #### LogResponseInterceptor
 ```javascript
-// coming soon
+const LoggingResponseInterceptor = {
+  process(handlerInput, response) {
+    if (debug) {
+      console.log(`Outgoing response: ${JSON.stringify(response)}`);
+    }
+  }
+};
 ```
 ## Functions
 1. All (non-handler) functions should be named in "camelCase"
