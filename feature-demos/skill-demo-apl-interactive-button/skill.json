@@ -5,17 +5,17 @@
         "en-US": {
           "summary": "Sample Short Description",
           "examplePhrases": [
-            "Alexa open hello world",
-            "hello",
-            "help"
+            "Alexa open interactive button",
+            "demo",
+            "Alexa ask interactive button to demo"
           ],
-          "name": "skill-demo-apl-interactive-button",
-          "description": "Sample Full Description"
+          "name": "APL Interactive Button Demo",
+          "description": "A demo that demonstrates how to build an interactive button with Alexa Presentation Language (APL). The button provides visual feedback when clicked, disables itself after it is clicked to prevent multiple sending multiple events and sends press events to Lambda."
         }
       },
       "isAvailableWorldwide": true,
       "testingInstructions": "Sample Testing Instructions.",
-      "category": "KNOWLEDGE_AND_TRIVIA",
+      "category": "EDUCATION_AND_REFERENCE",
       "distributionCountries": []
     },
     "apis": {
@@ -23,7 +23,12 @@
         "endpoint": {
           "sourceDir": "lambda/custom",
           "uri": "ask-custom-skill-demo-apl-interactive-button-default"
-        }
+        },
+        "interfaces": [
+          {
+            "type": "ALEXA_PRESENTATION_APL"
+          }
+        ]
       }
     },
     "manifestVersion": "1.0"
