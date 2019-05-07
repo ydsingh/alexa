@@ -31,8 +31,8 @@ Ensure that the code in index.js follows this order:
 1. Code needs to be internationalized (use language strings, etc.) but does not need to be translated. Minimum support of en-US required.
 1. Lint the code according to this [ESLint configuration file](./eslintrc.json). Using ESLint is not required, presuming the result matches. (Config files for other tools accepted as PR's.)
 > If you are new to ESLint, get started with [ESLint installation and usage information](https://eslint.org/docs/user-guide/getting-started). 
-1. The `.speak` method should always take `speakOutput` as its parameter.
-1. The `.reprompt` method should always take `repromptOutput` or `speakOutput` as its parameter.
+1. The `.speak` method should take `speakOutput` as its parameter.
+1. The `.reprompt` method should take `repromptOutput` or `speakOutput` as its parameter.
 1. Comments usage:
     1. Indicate where required/optional action is required.
     1. Mark required actions in comments with `**TODO**`.
@@ -77,25 +77,28 @@ const errorMessage='I had trouble processing that request. Please try again and 
 ```
 
 ## Handlers & Interceptors
-1.	Rename all handlers to NOT include the word "Intent", but the word "Handler" instead. So, name them like - 
-    1.	LaunchRequestHandler 
-    1.	SomeRandomHandler
-    1.	RepeatHandler
-    1.	HelpHandler
-    1.	ExitHandler
-    1.  FallbackHandler
-    1.	SessionEndedRequestHandler
-    1.	ErrorHandler
-1. Include the Handlers in this order when constructing the SkillBuilder:
+1. If a handler handles exactly one intent/request type, name the handler like <event>Handler (without the AMAZON prefix for built-in intents):
+    -	LaunchRequestHandler 
+    -	SomeRandomIntentHandler
+    -	RepeatIntentHandler
+    -	SessionEndedRequestHandler
+1. The preferred order for the Handlers when constructing the SkillBuilder:
     1. LaunchRequestHandler
     1. ...skill specific intent handlers...
-    1. RepeatHandler (if applicable)
-    1. HelpHandler
-    1. ExitHandler
-    1. FallbackHandler
+    1. RepeatIntentHandler (if applicable)
+    1. HelpIntentHandler
+    1. ExitIntentHandler
+    1. FallbackIntentHandler
     1. SessionEndedRequestHandler
-1. Include the suffix **Interceptor** on both request and response interceptors.
-
+1. Request and response interceptors should use the suffix **Interceptor** and should include **Request** or **Response** (if specific to that type).
+1. The Handlers & Interceptors implementation code should be in the same order as they are added to the SkillBuilder.
+1. If a handler is not the only handler for a given intent, include a comment to that effect immediately preceding the canHandle().  I.e.
+    ```javascript
+    const LaunchRequestHandler = {
+        // This LaunchRequestHandler catches LaunchRequests which are not handled by more specific handlers
+        canHandle(handlerInput){
+          ...
+    ```
 ### Boilerplate Code
 The code in these sections should be used for their respective handlers. If the functionality of the code requires changes, use this as a baseline.
 #### SessionEndedRequestHandler
@@ -245,6 +248,10 @@ module.exports = {
 		/// ...
 	}
 }
+```
+Name the keys with all caps and underscores to separate words.
+```javascript
+'HELP_REPROMPT'
 ```
 For strings to be translated, first setup with:
 ```javascript
