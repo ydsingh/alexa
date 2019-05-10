@@ -265,4 +265,5 @@ exports.handler = skillBuilder
   )
   .addErrorHandlers(ErrorHandler)
   .withApiClient(new Alexa.DefaultApiClient())
+  .withCustomUserAgent('cookbook/progressive-response/v1')
   .lambda();

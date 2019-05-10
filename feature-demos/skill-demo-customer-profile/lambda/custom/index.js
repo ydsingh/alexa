@@ -248,5 +248,4 @@ exports.handler = skillBuilder
   .addErrorHandlers(ProfileError)
   .withApiClient(new Alexa.DefaultApiClient())
   .withCustomUserAgent('cookbook/customer-profile/v1')
-
   .lambda();

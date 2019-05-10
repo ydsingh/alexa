@@ -381,4 +381,5 @@ exports.handler = skillBuilder
     SessionEndedRequestHandler,
   )
   .addErrorHandlers(ErrorHandler)
+  .withCustomUserAgent('cookbook/display-directive/v1')
   .lambda();

@@ -237,4 +237,5 @@ exports.handler = skillBuilder
     SessionEndedHandler,
   )
   .addErrorHandlers(ErrorHandler)
+  .withCustomUserAgent('cookbook/entity-resolution/v1')
   .lambda();

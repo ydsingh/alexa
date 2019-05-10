@@ -215,4 +215,5 @@ exports.handler = skillBuilder
   )
   .addErrorHandlers(ErrorHandler)
   .withApiClient(new Alexa.DefaultApiClient())
+  .withCustomUserAgent('cookbook/list-events/v1')
   .lambda();
