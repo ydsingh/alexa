@@ -1,0 +1,112 @@
+{
+  "type": "APL",
+  "version": "1.0",
+  "theme": "dark",
+  "import": [
+    {
+      "name": "alexa-styles",
+      "version": "1.0.0"
+    }
+  ],
+  "resources": [],
+  "styles": {
+    "textStylePressable": {
+      "values": [
+        {
+          "color": "white",
+          "textAlign": "center",
+          "verticalAlign": "center"
+        },
+        {
+          "when": "${state.disabled}",
+          "color": "white",
+          "textAlign": "center",
+          "verticalAlign": "center"
+        }
+      ]
+    },
+    "buttonStyle": {
+      "values": [
+        {
+          "width": 500,
+          "borderColor": "black",
+          "borderRadius": 10,
+          "backgroundColor": "blue",
+          "paddingLeft": 20,
+          "paddingTop": 20,
+          "paddingRight": 20,
+          "paddingBottom": 20
+        },
+        {
+          "when": "${state.disabled}",
+          "width": 500,
+          "borderColor": "black",
+          "borderRadius": 10,
+          "backgroundColor": "grey",
+          "paddingLeft": 20,
+          "paddingTop": 20,
+          "paddingRight": 20,
+          "paddingBottom": 20
+        }
+      ]
+    }
+  },
+  "layouts": {},
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": [
+      {
+        "type": "Container",
+        "width": "100vw",
+        "height": "100vh",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "backgroundColor": "white",
+        "item": [
+          {
+            "type": "Text",
+            "text": "Interactive APL Button Demo"
+          },
+          {
+            "type": "Container",
+            "item": [
+              {
+                "type": "TouchWrapper",
+                "id": "press-me-button",
+                "inheritParentState": true,
+                "item": {
+                  "type": "Frame",
+                  "style": "buttonStyle",
+                  "inheritParentState": true,
+                  "item": {
+                    "type": "Text",
+                    "inheritParentState": true,
+                    "text": "Press Me",
+                    "style": "textStylePressable"
+                  }
+                },
+                "onPress": {
+                  "type": "Parallel",
+                  "commands": [
+                    {
+                      "type": "SetState",
+                      "componentId": "press-me-button",
+                      "state": "disabled",
+                      "value": true
+                    },
+                    {
+                      "type": "SendEvent",
+                      "arguments": ["You pressed the button"]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
