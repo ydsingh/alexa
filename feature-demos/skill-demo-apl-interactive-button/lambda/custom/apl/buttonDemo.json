@@ -98,7 +98,7 @@
                     },
                     {
                       "type": "SendEvent",
-                      "arguments": ["You pressed the button"]
+                      "arguments": ["You pressed the button and I received this argument in the send event intent handler on the server."]
                     }
                   ]
                 }
