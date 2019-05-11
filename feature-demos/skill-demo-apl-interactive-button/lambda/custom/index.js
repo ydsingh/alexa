@@ -1,51 +1,54 @@
 /* eslint-disable  func-names */
 /* eslint-disable  no-console */
 
-const Alexa = require('ask-sdk-core');
+const Alexa = require('ask-sdk-core')
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
+    return handlerInput.requestEnvelope.request.type === 'LaunchRequest'
   },
   handle(handlerInput) {
-    const speechText = 'Welcome to the Alexa Skills Kit, you can say hello!';
+    const speechText = 'Welcome to the Interactive APL Button Demo! Enjoy clicking around and go check out the code on GitHub.'
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard('Hello World', speechText)
-      .getResponse();
+      .addDirective({
+        type: 'Alexa.Presentation.APL.RenderDocument',
+        version: '1.0',
+        document: require('./apl/buttonDemo'),
+        datasources: {}
+      })
+      .getResponse()
   },
 };
 
-const HelloWorldIntentHandler = {
+const SendEventIntentHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
+    return handlerInput.requestEnvelope.request.source.type === 'TouchWrapper'
+      && handlerInput.requestEnvelope.request.source.id === 'press-me-button'
   },
   handle(handlerInput) {
-    const speechText = 'Hello World!';
-
+    const speechText = handlerInput.requestEnvelope.request.arguments[0]
     return handlerInput.responseBuilder
-      .speak(speechText)
-      .withSimpleCard('Hello World', speechText)
-      .getResponse();
-  },
+        .speak(speechText)
+        .getResponse()
+  }
 };
 
 const HelpIntentHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
+      && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent'
   },
   handle(handlerInput) {
-    const speechText = 'You can say hello to me!';
+    const speechText = 'Press the button.'
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard('Hello World', speechText)
-      .getResponse();
+      .withSimpleCard('Press the button and checkout GitHub for the source code.', speechText)
+      .getResponse()
   },
 };
 
@@ -53,49 +56,49 @@ const CancelAndStopIntentHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
       && (handlerInput.requestEnvelope.request.intent.name === 'AMAZON.CancelIntent'
-        || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent');
+        || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent')
   },
   handle(handlerInput) {
-    const speechText = 'Goodbye!';
+    const speechText = 'Goodbye!'
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Hello World', speechText)
-      .getResponse();
+      .withSimpleCard('Thanks for trying the demo. You could find the code on GitHub', speechText)
+      .getResponse()
   },
 };
 
 const SessionEndedRequestHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'SessionEndedRequest';
+    return handlerInput.requestEnvelope.request.type === 'SessionEndedRequest'
   },
   handle(handlerInput) {
-    console.log(`Session ended with reason: ${handlerInput.requestEnvelope.request.reason}`);
+    console.log(`Session ended with reason: ${handlerInput.requestEnvelope.request.reason}`)
 
-    return handlerInput.responseBuilder.getResponse();
+    return handlerInput.responseBuilder.getResponse()
   },
 };
 
 const ErrorHandler = {
   canHandle() {
-    return true;
+    return true
   },
   handle(handlerInput, error) {
-    console.log(`Error handled: ${error.message}`);
+    console.log(`Error handled: ${error.message}`)
 
     return handlerInput.responseBuilder
       .speak('Sorry, I can\'t understand the command. Please say again.')
       .reprompt('Sorry, I can\'t understand the command. Please say again.')
-      .getResponse();
+      .getResponse()
   },
 };
 
-const skillBuilder = Alexa.SkillBuilders.custom();
+const skillBuilder = Alexa.SkillBuilders.custom()
 
 exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
-    HelloWorldIntentHandler,
+    SendEventIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler

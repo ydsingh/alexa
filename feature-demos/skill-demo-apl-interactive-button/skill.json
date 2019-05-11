@@ -3,11 +3,11 @@
     "publishingInformation": {
       "locales": {
         "en-US": {
-          "summary": "Sample Short Description",
+          "summary": "An interactive APL demo. Find the code base on GitHub.",
           "examplePhrases": [
             "Alexa open interactive button",
-            "demo",
-            "Alexa ask interactive button to demo"
+            "help",
+            "stop"
           ],
           "name": "APL Interactive Button Demo",
           "description": "A demo that demonstrates how to build an interactive button with Alexa Presentation Language (APL). The button provides visual feedback when clicked, disables itself after it is clicked to prevent multiple sending multiple events and sends press events to Lambda."
