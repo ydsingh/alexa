@@ -1,33 +1,18 @@
-# Build An Alexa Hello World Skill
+# Interactive APL Button Demo
 <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/header._TTH_.png" />
 
-### This is a simple tutorial to introduce a simple Alexa skill and code.
+This is a tutorial that demonstrates how to implement an interactive APL (Alexa Presentation Language) button.
 
-## Skill Architecture
-Each skill consists of two basic parts, a front end and a back end.
-The front end is the voice interface, or VUI.
-The voice interface is configured through the voice interaction model.
-The back end is where the logic of your skill resides.
+## What You Will Need
+*  [Amazon Developer Account](http://developer.amazon.com/alexa)
+*  [Amazon Web Services Account](http://aws.amazon.com/)
+*  [ASK CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html)
+*  The sample code on [GitHub](https://github.com/alexa/alexa-cookbook/tree/master/feature-demos/skill-demo-customer-profile/).
 
-## Three Options for Skill Setup
-There are a number of different ways for you to setup your skill, depending on your experience and what tools you have available.
 
- * If this is your first skill, choose the [Alexa-Hosted backend instructions](./instructions/setup-vui-alexa-hosted.md) to get started quickly.
- * If you want to manage the backend resources in your own AWS account, you can follow the [AWS-Hosted instructions](./instructions/setup-vui-aws-hosted.md).
- * Developers with the ASK Command Line Interface configured may follow the [ASK CLI instructions](./instructions/cli.md).
+## Setting Up the Demo
+This folder contains the interaction model and skill code.  It is structured to make it easy to deploy if you have the ASK CLI already setup.  If you would like to use the Developer Portal, you can follow the steps outlined in the [Hello World](https://github.com/alexa/skill-sample-nodejs-hello-world) example, substituting the [Model](./models/en-US.json) and the [skill code](./lambda/custom/index.js) when called for.
 
----
+## Running the Demo
 
-## Additional Resources
-
-### Community
-* [Amazon Developer Forums](https://forums.developer.amazon.com/spaces/165/index.html) - Join the conversation!
-* [Hackster.io](https://www.hackster.io/amazon-alexa) - See what others are building with Alexa.
-
-### Tutorials & Guides
-* [Voice Design Guide](https://developer.amazon.com/designing-for-voice/) - A great resource for learning conversational and voice user interface design.
-* [Codecademy: Learn Alexa](https://www.codecademy.com/learn/learn-alexa) - Learn how to build an Alexa Skill from within your browser with this beginner friendly tutorial on Codecademy!
-
-### Documentation
-* [Official Alexa Skills Kit Node.js SDK](https://www.npmjs.com/package/ask-sdk) - The Official Node.js SDK Documentation
-*  [Official Alexa Skills Kit Documentation](https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html) - Official Alexa Skills Kit Documentation
+To start the demo say "alexa open button demo".
