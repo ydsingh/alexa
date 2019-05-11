@@ -31,7 +31,7 @@ You can remove any sections not applicable.
   - [ ] Does not include Privacy and Compliance section
 - [ ] Readme.md with description and instructions based on this [template](../resources/cookbook-template/feature-demo-README.md)
 - [ ] en-US.json language model (other locales optional)
-  - [ ] invocation name includes the word 'demo' (for en-US)
+  - [ ] invocation name includes the word 'demo' (for en-US. Use equivalent for other languages/locales.)
 - [ ] skill code written in node.js, python or java (node.js and python preferred since java requires additional setup)
 - [ ] Does not include excess functionality not required to demonstrate the feature
 
@@ -49,22 +49,24 @@ You can remove any sections not applicable.
 *Description of Resource:*
 
 #### Checklist for Intent Resource type
-- [ ] Checked that it does not duplicate an existing built-in intent or one already in the Cookbook
-- [ ] en-US.json language model (other locales optional)
-- [ ] Intent name is prefixed with `COOKBOOK.`
+- [ ] Checked that it does not duplicate an existing [built-in intent](https://developer.amazon.com/docs/custom-skills/built-in-intent-library.html) or one already in the Cookbook
+- [ ] en-US.json formatted language model (other locales optional)
+- [ ] en-US.txt formatted language model (other locales optional)
+- [ ] Intent name is prefixed with `COOKBOOK_`
 - [ ] Includes 20+ (quality) sample utterances
 - [ ] reference/link to typical slot types used with intent (if any)
-- [ ] Includes 5+ prompts and 5+ sample utterances for slot elicitation. (Prompts and sample utterances should include references to associated slots.)
-- [ ] Includes 5+ slot validation prompts (including references to associated slot values)
-- [ ] Includes a description/link in the applicable resource directory file.
+    - [ ] Includes 5+ prompts and 5+ sample utterances for slot elicitation. (Prompts and sample utterances should include references to associated slots.)
+    - [ ] Includes 5+ slot validation prompts (including references to associated slot values)
+- [ ] Includes a description/link in the applicable resource category README. (If you are not sure what category to use, open an issue to ask.)
 
 #### Checklist for Slot Resource type
-- [ ] Checked that it does not duplicate an existing built-in slot type or one already in the Cookbook
-- [ ] en-US.json language model (other locales optional)
-- [ ] Slot Type Name is prefixed with `COOKBOOK.`
+- [ ] Checked that it does not duplicate an existing [built-in slot type](https://developer.amazon.com/docs/custom-skills/slot-type-reference.html) or one already in the Cookbook
+- [ ] en-US.json formatted language model (other locales optional)
+- [ ] en-US.txt formatted language model (other locales optional)
+- [ ] Slot Type Name is prefixed with `COOKBOOK_`
 - [ ] Includes id's
 - [ ] Includes synonyms
-- [ ] Includes a description/link in the applicable resource directory file.
+- [ ] Includes a description/link in the applicable resource category README. (If you are not sure what category to use, open an issue to ask.)
 
 <!--- *** Guide section *** --->
 ### New Guide

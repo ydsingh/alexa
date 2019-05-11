@@ -1,7 +1,7 @@
 # Resources: Intents and Slots
 In this folder you will find intents you can use as a starting point for your skill.  They are grouped by general use case, and if there is an intent that is designed to work with a slot of a specific type, that slot type will be included as part of the resource. In some cases, the resource is just a slot type, which you can add to your interaction model.
 
-> You will get the best recognition results when using [built-in intents](https://developer.amazon.com/docs/custom-skills/built-in-intent-library.html) and [built-in slots](https://developer.amazon.com/docs/custom-skills/slot-type-reference.html#list-types). Before using a custom intent or slot, check the list of available built-in intents and slots for one suitable to your use case.
+> You will get the best recognition results when using [built-in intents](https://developer.amazon.com/docs/custom-skills/built-in-intent-library.html) and [built-in slots](https://developer.amazon.com/docs/custom-skills/slot-type-reference.html). Before using a custom intent or slot, check the list of available built-in intents and slots for one suitable to your use case.
 
 [Jump straight to Resource Categories](#categories)
 
