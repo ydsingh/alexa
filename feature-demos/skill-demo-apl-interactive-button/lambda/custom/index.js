@@ -8,16 +8,15 @@ const LaunchRequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest'
   },
   handle(handlerInput) {
-    const speechText = 'Welcome to the Interactive APL Button Demo! Enjoy clicking around and go check out the code on GitHub.'
+    const speechText = 'Welcome to the Interactive APL Button Demo! Press the button to learn how I work. Then go see the code on GitHub.'
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText)
       // Add this to render APL document
       .addDirective({
         type: 'Alexa.Presentation.APL.RenderDocument',
         version: '1.0',
-        document: require('./apl/button'), // Pull in document
+        document: require('./apl/button'), // Import button APL document
         datasources: {}
       })
       .getResponse()

@@ -98,7 +98,7 @@
                     },
                     {
                       "type": "SendEvent",
-                      "arguments": ["You pressed the button and I received this argument in the send event intent handler on the server."]
+                      "arguments": ["You pressed the button and three things happened. One. I disabled myself, so you can't click on me multiple times and have multiple send events sent to the server. Go ahead and try, but nothing will happen. Two. My styles were re-evaluated and I check if the button's state is disabled. When it is, I apply styles to update my backgroud color to grey to provide visual feedback that it was clicked. Three. I did a send event to the server to be handled by the Send Event Intent Handler which is how I am able to speak this message back to you."]
                     }
                   ]
                 }
