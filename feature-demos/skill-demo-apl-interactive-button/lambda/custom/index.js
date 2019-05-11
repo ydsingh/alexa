@@ -13,10 +13,11 @@ const LaunchRequestHandler = {
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
+      // Add this to render APL document
       .addDirective({
         type: 'Alexa.Presentation.APL.RenderDocument',
         version: '1.0',
-        document: require('./apl/buttonDemo'),
+        document: require('./apl/buttonDemo'), // Pull in document
         datasources: {}
       })
       .getResponse()
@@ -25,10 +26,12 @@ const LaunchRequestHandler = {
 
 const SendEventIntentHandler = {
   canHandle(handlerInput) {
+    // Check for SendEvent sent from the button
     return handlerInput.requestEnvelope.request.source.type === 'TouchWrapper'
       && handlerInput.requestEnvelope.request.source.id === 'press-me-button'
   },
   handle(handlerInput) {
+    // Take argument sent from the button to speak back to the user
     const speechText = handlerInput.requestEnvelope.request.arguments[0]
     return handlerInput.responseBuilder
         .speak(speechText)
