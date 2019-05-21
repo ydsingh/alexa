@@ -14,7 +14,7 @@ This Cookbook is a desk reference for other Alexa skill design materials.
 #### Table of Contents <a id="toc"></a>
  + [feature-demos](feature-demos) are demos focused on demonstrating a specific feature
  + [guides](guides) contains supplemental guides to address specific use cases
- + [tools](tools) contains utilities and tools which help make skill building or operating easiser.
+ + [tools](tools) contains utilities and tools which help make skill building or operating easier.
 
 
 #### Before Cooking (prerequisites)
