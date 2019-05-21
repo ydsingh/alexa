@@ -280,4 +280,5 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addErrorHandlers(
         ErrorHandler)
     .addRequestInterceptors(LocalisationRequestInterceptor)
+    .withCustomUserAgent('cookbook/dynamic-entities/v1')
     .lambda();
