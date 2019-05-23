@@ -26,8 +26,7 @@ const LaunchRequestHandler = {
 const SendEventIntentHandler = {
   canHandle(handlerInput) {
     // Check for SendEvent sent from the button
-    return handlerInput.requestEnvelope.request.source.type === 'TouchWrapper'
-      && handlerInput.requestEnvelope.request.source.id === 'press-me-button'
+    return handlerInput.requestEnvelope.request.type === 'Alexa.Presentation.APL.UserEvent'
   },
   handle(handlerInput) {
     // Take argument sent from the button to speak back to the user
