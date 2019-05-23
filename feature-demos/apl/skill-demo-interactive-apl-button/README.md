@@ -24,3 +24,16 @@ If you would like to use the Developer Portal, you can
 ## Running the Demo
 
 To start the demo say "alexa, open button demo".
+
+
+## Known Issues
+
+Alexa Presentation Language (APL) is currently in public beta so there are some known bugs. In this demo there are the following issues:
+
+**Physical Device**
+
+Styles do not render properly so the button will appear to have no padding.
+
+**Simulator**
+
+The SendEvent request to the Lambda will be missing `source` information which is present when using a physical device
