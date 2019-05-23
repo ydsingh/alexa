@@ -86,10 +86,10 @@ const ErrorHandler = {
   },
   handle(handlerInput, error) {
     console.log(`Error handled: ${error.message}`)
-
+    const speechText = 'I had trouble processing that request. Please try again and if the issue persists, please contact the skill developer. What can I help you with?'
     return handlerInput.responseBuilder
-      .speak('Sorry, I can\'t understand the command. Please say again.')
-      .reprompt('Sorry, I can\'t understand the command. Please say again.')
+      .speak(speechText)
+      .reprompt(speechText)
       .getResponse()
   },
 };
