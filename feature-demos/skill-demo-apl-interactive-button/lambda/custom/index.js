@@ -105,4 +105,5 @@ exports.handler = skillBuilder
     SessionEndedRequestHandler
   )
   .addErrorHandlers(ErrorHandler)
+  .withCustomUserAgent('cookbook/apl-interactive-button/v1')
   .lambda();
