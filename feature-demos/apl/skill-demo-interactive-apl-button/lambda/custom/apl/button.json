@@ -67,6 +67,7 @@
         "item": [
           {
             "type": "Text",
+            "textAlign": "center",
             "text": "Interactive APL Button Demo"
           },
           {
