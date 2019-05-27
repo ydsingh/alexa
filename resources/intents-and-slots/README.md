@@ -22,4 +22,4 @@ If you have additional values or synonyms to add, please create an issue or a pu
 ## Categories
 - [General](./general)
 - [Monetization (general)](./monetization)
-- [Physical Goods](./physical-goods)
+- [Real-World Goods and Services](./physical-commerce)

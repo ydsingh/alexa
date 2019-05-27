@@ -1,6 +1,6 @@
 # Monetization Intents and Slots
 
-> Note: additional monetization-related intents and slots can be found in [physical goods category](../physical-goods).
+> Note: additional monetization-related intents and slots can be found in [real-world goods and services category](../physical-commerce).
 
 These intents and slots are useful for monetization use cases.
 
