@@ -1,0 +1,7 @@
+Intent Name
+-----------
+COOKBOOK_LettersSlotType
+
+Sample Utterances
+-----------------
+

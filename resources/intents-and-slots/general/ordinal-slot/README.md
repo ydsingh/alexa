@@ -11,13 +11,13 @@ Use these values if your tool uses a simple list as the input mechanism (e.g. de
 
 Available languages/locales:
 - English US - use the built-in slot type: [AMAZON.Ordinal](https://developer.amazon.com/docs/custom-skills/slot-type-reference.html#ordinal)
-- [Spanish MX](./es-MS.txt)
+- [Spanish MX](./es-MX.txt)
 
 ## SlotType Schema JSON Snippet
 Use this JSON Snippet if you are editing the interaction model JSON directly.
 
 Available languages/locales:
 - English US - use the built-in slot type: [AMAZON.Ordinal](https://developer.amazon.com/docs/custom-skills/slot-type-reference.html#ordinal)
-- [Spanish MX](./es-MS.json)
+- [Spanish MX](./es-MX.json)
 
 [Return to General category page](..)
