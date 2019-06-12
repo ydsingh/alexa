@@ -10,14 +10,16 @@ Use these values if your tool uses a simple list as the input mechanism (e.g. de
 > Note: the slot type values are comma separated in this order: value, id, synonym1, synonym2, ...
 
 Available languages/locales:
-- English US - use the built-in slot type: [AMAZON.Ordinal](https://developer.amazon.com/docs/custom-skills/slot-type-reference.html#ordinal)
+> If you are building for en-US and only en-US, you can use the built-in slot type: [AMAZON.Ordinal](https://developer.amazon.com/docs/custom-skills/slot-type-reference.html#ordinal)
+- [English US](./en-US.txt) 
 - [Spanish MX](./es-MX.txt)
 
 ## SlotType Schema JSON Snippet
 Use this JSON Snippet if you are editing the interaction model JSON directly.
 
 Available languages/locales:
-- English US - use the built-in slot type: [AMAZON.Ordinal](https://developer.amazon.com/docs/custom-skills/slot-type-reference.html#ordinal)
+> If you are building for en-US and only en-US, you can use the built-in slot type: [AMAZON.Ordinal](https://developer.amazon.com/docs/custom-skills/slot-type-reference.html#ordinal)
+- [English US](./en-US.json) 
 - [Spanish MX](./es-MX.json)
 
 [Return to General category page](..)
