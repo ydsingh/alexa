@@ -1,9 +1,9 @@
+// Alexa Cookbook - Amazon SQS Helper Module
 // version 0.1.0
 
-// eslint-disable-next-line import/no-unresolved
 const AWS = require('aws-sdk');
 
-// =========== helper functions ==============
+// =========== request builders ==============
 function buildSendMessagePayload(queueUrl, messageText) {
   return {
     MessageBody: messageText,

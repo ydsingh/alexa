@@ -11,8 +11,7 @@ Parameters:
     Description: Enter the name for Lambda function execution role. The CLI defaults to "ask-lambda-" followed by the normalized skill name.
 Resources:
   LambdaRole:
-    # add rights to SQS
-    # include default permissions
+    # add rights to access SQS
     Description: Creating service role in IAM for AWS Lambda
     Type: AWS::IAM::Role
     Properties:
@@ -35,8 +34,15 @@ Resources:
             Statement:
             -
               Effect: Allow
-              Action: "*"
+              Action:
+              -
+                sqs:DeleteMessage
+                sqs:GetQueueAttributes
+                sqs:GetQueueUrl
+                sqs:ReceiveMessage
+                sqs:SendMessage
               Resource: !GetAtt TheQueue.Arn
+      # includes default Lambda execution permissions
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
   TheQueue:

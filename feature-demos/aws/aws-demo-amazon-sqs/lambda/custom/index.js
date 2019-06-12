@@ -1,16 +1,19 @@
 const Alexa = require('ask-sdk-core');
-const SQS = require('./sqs.js');
+const CookbookSQS = require('./cookbook-sqs.js');
+const util = require('util');
 
 const queueName = 'SQS4SkillDevelopers';
 const queueRegion = process.env.AWS_REGION; // defaults to region the lambda function is running in
 
-// 1. Text strings
-const HELP_MESSAGE = 'You can demonstrate the delegate directive by saying "plan a trip".';
+// Text strings
+const HELP_MESSAGE = 'You can demonstrate using an Amazon SQS queue by launching the skill.';
 const GOODBYE_MESSAGE = 'Talk to you later!';
-const MESSAGE_BODY = 'Hello!\nHere is your SQS message which was sent at ';
+const MESSAGE_BODY = 'Hello!\nHere is your SQS message which was sent at %s';
 const ERROR_MESSAGE = 'I had trouble processing that request. Please try again and if the issue persists, please contact the skill developer.';
+const NUMBER_OF_MESSAGES = 'The total number of messages in the queue is %d. ';
+const TAIL_MESSAGE = 'The tail of the message id is <speak-as "characters">%s</speak-as>.';
 
-// 1. Intent Handlers =============================================
+// Intent Handlers =============================================
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
@@ -21,17 +24,18 @@ const LaunchRequestHandler = {
     const responseBuilder = handlerInput.responseBuilder;
     let speechOutput = '';
 
-    const queue = new SQS.SQSQueue(queueName, queueRegion);
+    const queue = new CookbookSQS.SQSQueue(queueName, queueRegion);
     // check queue size
     const attributes = await queue.getQueueAttributes(['ApproximateNumberOfMessages']);
     if (attributes.ApproximateNumberOfMessages) {
-      speechOutput += `The total number of messages in the queue is ${attributes.ApproximateNumberOfMessages}. `;
+      speechOutput += util.format(NUMBER_OF_MESSAGES, attributes.ApproximateNumberOfMessages);
     }
 
     // build and send message
     const currentDateTime = new Date();
-    const messageText = `${MESSAGE_BODY} ${currentDateTime.toISOString().substr(11, 5)}`;
-    speechOutput += `The tail of the message id is <speak-as "characters">${(await queue.sendMessage(messageText)).toString().substr(-6)}</speak-as>.`;
+    const messageText = util.format(MESSAGE_BODY, currentDateTime.toISOString().substr(11, 5));
+    const messageId = await queue.sendMessage(messageText);
+    speechOutput += util.format(TAIL_MESSAGE, messageId.toString().substr(-6));
 
     return responseBuilder
       .speak(speechOutput)
@@ -63,7 +67,6 @@ const CancelStopHandler = {
 
     return responseBuilder
       .speak(GOODBYE_MESSAGE)
-      .withShouldEndSession(true)
       .getResponse();
   },
 };
