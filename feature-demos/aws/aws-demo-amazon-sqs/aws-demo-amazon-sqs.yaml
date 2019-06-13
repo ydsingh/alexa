@@ -32,15 +32,13 @@ Resources:
           PolicyDocument:
             Version: 2012-10-17
             Statement:
-            -
-              Effect: Allow
+            - Effect: Allow
               Action:
-              -
-                sqs:DeleteMessage
-                sqs:GetQueueAttributes
-                sqs:GetQueueUrl
-                sqs:ReceiveMessage
-                sqs:SendMessage
+              - sqs:DeleteMessage
+              - sqs:GetQueueAttributes
+              - sqs:GetQueueUrl
+              - sqs:ReceiveMessage
+              - sqs:SendMessage
               Resource: !GetAtt TheQueue.Arn
       # includes default Lambda execution permissions
       ManagedPolicyArns:
