@@ -11,7 +11,7 @@ const GOODBYE_MESSAGE = 'Talk to you later!';
 const MESSAGE_BODY = 'Hello!\nHere is your SQS message which was sent at %s';
 const ERROR_MESSAGE = 'I had trouble processing that request. Please try again and if the issue persists, please contact the skill developer.';
 const NUMBER_OF_MESSAGES = 'The total number of messages in the queue is %d. ';
-const TAIL_MESSAGE = 'The tail of the message id is <speak-as "characters">%s</speak-as>.';
+const TAIL_MESSAGE = 'The tail of the message id is <say-as interpret-as="characters">%s</say-as>.';
 
 // Intent Handlers =============================================
 
