@@ -23,17 +23,19 @@ You can remove any sections not applicable.
 *Feature being demonstrated:*
 
 #### Checklist for Feature Demo
+- [ ] Used [feature demo template](../resources/cookbook-templates/feature-demo-template) as base.
 - [ ] Checked that an existing feature demo does not already exist
-- [ ] .ask/config file (normally unmodified [template](../resources/cookbook-templates/config))
+- [ ] .ask/config file (normally unmodified [template](../resources/cookbook-templates/feature-demo-template/.ask/config))
 - [ ] skill.json
   - [ ] Includes en-US section
   - [ ] Includes Lambda endpoint section including uri
-  - [ ] Does not include Privacy and Compliance section
-- [ ] Readme.md with description and instructions based on this [template](../resources/cookbook-template/feature-demo-README.md)
+  - [ ] Does not include Privacy and Compliance section or other publishing attributes
+- [ ] Readme.md with description and instructions based on this [template](../resources/cookbook-template/feature-demo-template/README.md)
 - [ ] en-US.json language model (other locales optional)
   - [ ] invocation name includes the word 'demo' (for en-US)
 - [ ] skill code written in node.js, python or java (node.js and python preferred since java requires additional setup)
 - [ ] Does not include excess functionality not required to demonstrate the feature
+- [ ] Passes all skill certification criteria (https://developer.amazon.com/docs/custom-skills/certification-requirements-for-custom-skills.html) 
 
 <!--- *** Resource section *** --->
 ### New Resource
