@@ -35,5 +35,4 @@ The list of messages you include can vary based on your skill and the amount of 
 
 This approach could be used with the **AMAZON.FallbackIntent**, however you won't get a slot value in that case, so your message will be generic and should include guidance that can help point the customer in the right direction, for example:
 
-:loud_sound: Alexa: The Super Hero Game skill can't help you with that, but can play games related to super heroes. To learn more, ask for help. What can I do for you?
-
+> **Alexa:** :loud_sound: _The Super Hero Game skill can't help you with that, but can play games related to super heroes. To learn more, ask for help. What can I do for you?_
