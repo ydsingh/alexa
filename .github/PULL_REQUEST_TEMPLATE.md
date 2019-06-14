@@ -1,6 +1,7 @@
 <!---
-when submitting a PR, be sure to complete the appropriate section
-also, consider opening an issue to discuss the contribution
+When submitting a PR, be sure to complete the appropriate section
+Also, consider opening an issue to discuss the contribution
+Additionally, switch to the "preview" view to be able to click the links.
 
 sections:
 - issue related (including patch/bug fix)
@@ -23,14 +24,14 @@ You can remove any sections not applicable.
 *Feature being demonstrated:*
 
 #### Checklist for Feature Demo
-- [ ] Used [feature demo template](../resources/cookbook-templates/feature-demo-template) as base.
+- [ ] Used [feature demo template](../tree/master/resources/cookbook-templates/feature-demo-template) as base.
 - [ ] Checked that an existing feature demo does not already exist
-- [ ] .ask/config file (normally unmodified [template](../resources/cookbook-templates/feature-demo-template/.ask/config))
+- [ ] .ask/config file (normally unmodified [template](../blob/master/resources/cookbook-templates/feature-demo-template/.ask/config))
 - [ ] skill.json
   - [ ] Includes en-US section
   - [ ] Includes Lambda endpoint section including uri
   - [ ] Does not include Privacy and Compliance section or other publishing attributes
-- [ ] Readme.md with description and instructions based on this [template](../resources/cookbook-templates/feature-demo-template/README.md)
+- [ ] Readme.md with description and instructions based on this [template](../blob/master/resources/cookbook-templates/feature-demo-template/README.md)
 - [ ] en-US.json language model (other locales optional)
   - [ ] invocation name includes the word 'demo' (for en-US. Use equivalent for other languages/locales.)
 - [ ] skill code written in node.js, python or java (node.js and python preferred since java requires additional setup)
@@ -84,7 +85,7 @@ You can remove any sections not applicable.
 - [ ] Includes a description/link in the applicable guide directory file.
 
 ### Tests/checks which any code/configuration submission will need to pass
-- [ ] Adheres to any applicable [code style guidelines](../guides/style) including linting
+- [ ] Adheres to any applicable [code style guidelines](../tree/master/guides/style) including linting
 - [ ] Code is i18n-ready (does not need to be translated/localized)
 - [ ] Does not utilize practices which would prevent certification
 - [ ] `ask deploy` successfully deploys skill and is ready for use
