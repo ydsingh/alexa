@@ -30,7 +30,7 @@ You can remove any sections not applicable.
   - [ ] Includes en-US section
   - [ ] Includes Lambda endpoint section including uri
   - [ ] Does not include Privacy and Compliance section or other publishing attributes
-- [ ] Readme.md with description and instructions based on this [template](../resources/cookbook-template/feature-demo-template/README.md)
+- [ ] Readme.md with description and instructions based on this [template](../resources/cookbook-templates/feature-demo-template/README.md)
 - [ ] en-US.json language model (other locales optional)
   - [ ] invocation name includes the word 'demo' (for en-US. Use equivalent for other languages/locales.)
 - [ ] skill code written in node.js, python or java (node.js and python preferred since java requires additional setup)
