@@ -1,6 +1,6 @@
 # Alexa Proactive Events API
 
-The [Proactive Events API](https://developer.amazon.com/docs/smapi/proactive-events-api.html) allows you to send notifications to users of your skill. When your skill successfully sends a notification to a user’s Alexa device, the user hears a chime sound that indicates a notification has arrived. The use can then say, “alexa, read my notifications” and hear the details.
+The [Proactive Events API](https://developer.amazon.com/docs/smapi/proactive-events-api.html) allows you to send notifications to users of your skill. When your skill successfully sends a notification to a user’s Alexa device, the user hears a chime sound that indicates a notification has arrived. The user can then say, “Alexa, read my notifications” and hear the details.
 
 This feature demo shows you how to set up a sample skill called Ping Me, and a script to generate notifications.
 
@@ -13,7 +13,7 @@ This feature demo shows you how to set up a sample skill called Ping Me, and a s
 *  This sample code on [GitHub](https://github.com/alexa/alexa-cookbook/tree/master/feature-demos/skill-demo-proactive-events/).
 
 Your notification must follow one of the pre-defined formats listed in the [Proactive Events Schema](https://developer.amazon.com/docs/smapi/schemas-for-proactive-events.html)
-For example, here is a sample notification that uses the `OrderStatus` schema:
+For example, here is a sample notification that uses the **OrderStatus** schema:
 ```
         "event": {
             "name": "AMAZON.OrderStatus.Updated",
@@ -39,12 +39,12 @@ Note that the expected arrival time is given in the user's time zone, and not in
 ## Set Up the Demo
 Be sure you have the AWS CLI and ASK CLI setup.
 Download this repository to your laptop. You can do this in one of two ways:
-Run the ```git clone``` command.
-Click the **Fork** button at the top of the page, and then click the green **Clone or download** button.
+* Run the ```git clone https://github.com/alexa/alexa-cookbook``` command, or
+* Click the **Code** tab near the top of the page, and then click the green **Clone or download** button.
 
 #### AWS setup steps
 First, you will set up the AWS Lambda function, which contains the skill service code, as part of a CloudFormation stack called PingMe.
-The stack will include the AWS Lambda trigger, IAM role, and a DynamoDB table to track userIds. The IAM role (Identity Access Management) provides the necessary permissions for the developer to manage the skill infrastructure. CloudFormation provides the infrastructure that you require to send notifications from your skill. You can provision a different infrastructure if you prefer, but this demo uses CloudFormation. 
+The stack also includes the AWS Lambda trigger, IAM role, and a DynamoDB table to track userIds. The IAM role (Identity Access Management) provides the necessary permissions for the Lambda function to read and write from the DyanmoDB table. 
 
  * Note: The CloudFormation package should be run from the **us-east-1** region, also known as N. Virginia.  Verify your default region in the AWS CLI by typing ```aws configure``` and pressing enter four times.
 
@@ -61,13 +61,13 @@ Next, you will update the skill manifest with the **AlexaSkillFunctionARN** valu
 
 1. Open the file ```skill.json``` found within the ```/skill``` folder
 1. Locate the two lines with "uri" on about lines 36 and 46.
-1. Replace the values of these with the ARN from your AWS Lambda function that you created previously, and save the file.
+1. Replace the values of these with the **AlexaSkillFunctionARN** value, and save the file.
 1. Notice the publications eventNames listed: ```"eventName": "AMAZON.OrderStatus.Updated"```, etc.  The [Proactive Events](https://developer.amazon.com/docs/smapi/schemas-for-proactive-events.html) you intend to use must be defined here.
 1. Run the command ```ask deploy``` to create the skill.
 1. When the command completes, log in to the [Developer Portal](https://developer.amazon.com/alexa/console/ask) and open your Ping Me skill.
 1. Click the **Test** tab, and enable skill testing in "Development".
-1. Test the skill with the utterance "open ping me" and then "stop"
-1. Locate your ```userId``` from within the Skill I/O JSON Input panel. Copy this ```userId``` value.
+1. Test the skill with the utterance `open ping me` and then `stop`.
+1. Locate your ```userId``` from within the Skill I/O JSON Input panel. Copy this ```userId``` value to a temporary location (like a text file) - you will be copying additional values before using this value.
 1. Click the **Build** tab, and click "Permissions" at the the bottom left.
 1. At the bottom of the **Permissions** page, locate and copy the two Skill Messaging Client credentials, **Client Id** and **Client Secret**.
 
@@ -85,8 +85,9 @@ The root of the project contains two sample Node.JS scripts you can run from the
 * **order.js** shows how to send a notification to an individual user
 * **media.js** shows how to send a broadcast message to all users
 
-1. Open ```order.js``` and review the three settings for clientID, clientSecret, and userId1.
-1. Open ```media.js``` and review the two settings for clientID and clientSecret.
+1. Open ```order.js``` and locate the three settings for clientID, clientSecret, and userId1.
+1. Replace these values with the values you copied in the previous steps.
+1. Open ```media.js``` and locate the two settings for clientID and clientSecret.
 1. Replace these values with the values you copied in the previous steps.
 1. Review the ```schedule.txt``` file that accompanies the media demo.
 
