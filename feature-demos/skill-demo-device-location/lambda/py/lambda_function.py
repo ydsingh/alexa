@@ -1,80 +1,111 @@
 # -*- coding: utf-8 -*-
-"""Simple fact sample app."""
 
 import random
 import logging
 
-from ask_sdk_core.skill_builder import SkillBuilder
+from ask_sdk_core.skill_builder import CustomSkillBuilder
+from ask_sdk_core.api_client import DefaultApiClient
 from ask_sdk_core.dispatch_components import (
     AbstractRequestHandler, AbstractExceptionHandler,
     AbstractRequestInterceptor, AbstractResponseInterceptor)
-from ask_sdk_core.utils import is_request_type, is_intent_name
+from ask_sdk_core.utils import (
+    is_request_type, is_intent_name,
+    get_api_access_token, get_device_id)
 from ask_sdk_core.handler_input import HandlerInput
 
-from ask_sdk_model.ui import SimpleCard
 from ask_sdk_model import Response
-
-
-# =========================================================================================================================================
-# TODO: The items below this comment need your attention.
-# =========================================================================================================================================
-SKILL_NAME = "Space Facts"
-GET_FACT_MESSAGE = "Here's your fact: "
-HELP_MESSAGE = "You can say tell me a space fact, or, you can say exit... What can I help you with?"
-HELP_REPROMPT = "What can I help you with?"
-STOP_MESSAGE = "Goodbye!"
-FALLBACK_MESSAGE = "The Space Facts skill can't help you with that.  It can help you discover facts about space if you say tell me a space fact. What can I help you with?"
-FALLBACK_REPROMPT = 'What can I help you with?'
-EXCEPTION_MESSAGE = "Sorry. I cannot help you with that."
+from ask_sdk_model.services import ServiceException
+from ask_sdk_model.ui import AskForPermissionsConsentCard
 
 # =========================================================================================================================================
-# TODO: Replace this data with your own.  You can find translations of this data at http://github.com/alexa/skill-sample-python-fact/lambda/data
-# =========================================================================================================================================
-
-data = [
-  'A year on Mercury is just 88 days long.',
-  'Despite being farther from the Sun, Venus experiences higher temperatures than Mercury.',
-  'Venus rotates counter-clockwise, possibly because of a collision in the past with an asteroid.',
-  'On Mars, the Sun appears about half the size as it does on Earth.',
-  'Earth is the only planet not named after a god.',
-  'Jupiter has the shortest day of all the planets.',
-  'The Milky Way galaxy will collide with the Andromeda Galaxy in about 5 billion years.',
-  'The Sun contains 99.86% of the mass in the Solar System.',
-  'The Sun is an almost perfect sphere.',
-  'A total solar eclipse can happen once every 1 to 2 years. This makes them a rare event.',
-  'Saturn radiates two and a half times more energy into space than it receives from the sun.',
-  'The temperature inside the Sun can reach 15 million degrees Celsius.',
-  'The Moon is moving approximately 3.8 cm away from our planet every year.',
-]
+WELCOME = 'Welcome to the Sample Device Address API Skill!  You can ask for the device address by saying what is my address.  What do you want to ask?'
+WHAT_DO_YOU_WANT = 'What do you want to ask?'
+NOTIFY_MISSING_PERMISSIONS = 'Please enable Location permissions in the Amazon Alexa app.'
+NO_ADDRESS = 'It looks like you don\'t have an address set. You can set your address from the companion app.'
+ADDRESS_AVAILABLE = 'Here is your full address: {}, {}, {}'
+ERROR = 'There was an error with the skill. Please check the logs.'
+LOCATION_FAILURE = 'There was an error with the Device Address API.'
+GOODBYE = 'Bye! Thanks for using the Sample Device Address API Skill!'
+HELP = 'You can use this skill by asking something like: whats my address?'
 
 # =========================================================================================================================================
-# Editing anything below this line might break your skill.
+
+PERMISSIONS = ['read::alexa:device:all:address']
+
 # =========================================================================================================================================
 
-sb = SkillBuilder()
+sb = CustomSkillBuilder(api_client=DefaultApiClient())
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
-
 # Built-in Intent Handlers
-class GetNewFactHandler(AbstractRequestHandler):
-    """Handler for Skill Launch and GetNewFact Intent."""
+class GetAddressIntentHandler(AbstractRequestHandler):
+    """Handler for Help Intent."""
     def can_handle(self, handler_input):
         # type: (HandlerInput) -> bool
-        return (is_request_type("LaunchRequest")(handler_input) or
-                is_intent_name("GetNewSpaceFactIntent")(handler_input))
+        return (is_request_type("LaunchRequest")(handler_input)
+                or (is_intent_name("GetAddressIntent")(handler_input)))
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        logger.info("In GetNewFactHandler")
+        logger.info("In GetAddressIntentHandler")
 
-        random_fact = random.choice(data)
-        speech = GET_FACT_MESSAGE + random_fact
+        service_client_fact = handler_input.service_client_factory
+        response_builder = handler_input.response_builder
 
-        handler_input.response_builder.speak(speech).set_card(
-            SimpleCard(SKILL_NAME, random_fact))
-        return handler_input.response_builder.response
+        if not (get_api_access_token(handler_input)):
+            logger.info("no api access token")
+            response_builder.speak(NOTIFY_MISSING_PERMISSIONS)
+            response_builder.set_card(
+                AskForPermissionsConsentCard(permissions=PERMISSIONS))
+            return response_builder.response
 
+        try:
+            device_id = get_device_id(handler_input)
+            device_addr_client = service_client_fact.get_device_address_service()
+            addr = device_addr_client.get_full_address(device_id)
+
+            logger.info('Location API response retrieved, now building response')
+
+            if addr.address_line1 is None and addr.state_or_region is None:
+                response_builder.speak(NO_ADDRESS)
+            else:
+                response_builder.speak(ADDRESS_AVAILABLE.format(
+                    addr.address_line1, addr.state_or_region, addr.postal_code))
+            return response_builder.response
+        except ServiceException as e:
+            logger.error("error reported by device location service")
+            raise e
+        except Exception as e:
+            logger.error(e, exc_info=True)
+            return handler_input.response_builder.speak(ERROR)
+    
+class GetAddressErrorHandler(AbstractExceptionHandler):
+    """Catch getAddress error handler, log exception and
+    respond with custom message.
+    """
+    def can_handle(self, handler_input, exception):
+        # type: (HandlerInput, Exception) -> bool
+        return (isinstance(exception, ServiceException))
+
+    def handle(self, handler_input, exception):
+        # type: (HandlerInput, Exception) -> Response
+        logger.info("In GetAddressErrorHandler")
+        logger.error(exception , exc_info=True)
+
+        if (exception.status_code==403):
+            return (handler_input.response_builder
+                .speak(NOTIFY_MISSING_PERMISSIONS)
+                .set_card(
+                    AskForPermissionsConsentCard(permissions=PERMISSIONS))
+                .response
+            )
+
+        # not a permissions issue, so just return general failure
+        return (handler_input.response_builder
+            .speak(LOCATION_FAILURE)
+            .response
+        )
 
 class HelpIntentHandler(AbstractRequestHandler):
     """Handler for Help Intent."""
@@ -86,11 +117,8 @@ class HelpIntentHandler(AbstractRequestHandler):
         # type: (HandlerInput) -> Response
         logger.info("In HelpIntentHandler")
 
-        handler_input.response_builder.speak(HELP_MESSAGE).ask(
-            HELP_REPROMPT).set_card(SimpleCard(
-                SKILL_NAME, HELP_MESSAGE))
+        handler_input.response_builder.speak(HELP).ask(HELP)
         return handler_input.response_builder.response
-
 
 class CancelOrStopIntentHandler(AbstractRequestHandler):
     """Single handler for Cancel and Stop Intent."""
@@ -103,29 +131,8 @@ class CancelOrStopIntentHandler(AbstractRequestHandler):
         # type: (HandlerInput) -> Response
         logger.info("In CancelOrStopIntentHandler")
 
-        handler_input.response_builder.speak(STOP_MESSAGE)
+        handler_input.response_builder.speak(GOODBYE)
         return handler_input.response_builder.response
-
-
-class FallbackIntentHandler(AbstractRequestHandler):
-    """Handler for Fallback Intent.
-
-    AMAZON.FallbackIntent is only available in en-US locale.
-    This handler will not be triggered except in that locale,
-    so it is safe to deploy on any locale.
-    """
-    def can_handle(self, handler_input):
-        # type: (HandlerInput) -> bool
-        return is_intent_name("AMAZON.FallbackIntent")(handler_input)
-
-    def handle(self, handler_input):
-        # type: (HandlerInput) -> Response
-        logger.info("In FallbackIntentHandler")
-
-        handler_input.response_builder.speak(FALLBACK_MESSAGE).ask(
-            FALLBACK_REPROMPT)
-        return handler_input.response_builder.response
-
 
 class SessionEndedRequestHandler(AbstractRequestHandler):
     """Handler for Session End."""
@@ -140,27 +147,6 @@ class SessionEndedRequestHandler(AbstractRequestHandler):
         logger.info("Session ended reason: {}".format(
             handler_input.request_envelope.request.reason))
         return handler_input.response_builder.response
-
-
-# Exception Handler
-class CatchAllExceptionHandler(AbstractExceptionHandler):
-    """Catch all exception handler, log exception and
-    respond with custom message.
-    """
-    def can_handle(self, handler_input, exception):
-        # type: (HandlerInput, Exception) -> bool
-        return True
-
-    def handle(self, handler_input, exception):
-        # type: (HandlerInput, Exception) -> Response
-        logger.info("In CatchAllExceptionHandler")
-        logger.error(exception, exc_info=True)
-
-        handler_input.response_builder.speak(EXCEPTION_MESSAGE).ask(
-            HELP_REPROMPT)
-
-        return handler_input.response_builder.response
-
 
 # Request and Response loggers
 class RequestLogger(AbstractRequestInterceptor):
@@ -179,14 +165,13 @@ class ResponseLogger(AbstractResponseInterceptor):
 
 
 # Register intent handlers
-sb.add_request_handler(GetNewFactHandler())
+sb.add_request_handler(GetAddressIntentHandler())
 sb.add_request_handler(HelpIntentHandler())
 sb.add_request_handler(CancelOrStopIntentHandler())
-sb.add_request_handler(FallbackIntentHandler())
 sb.add_request_handler(SessionEndedRequestHandler())
 
 # Register exception handlers
-sb.add_exception_handler(CatchAllExceptionHandler())
+sb.add_exception_handler(GetAddressErrorHandler())
 
 # TODO: Uncomment the following lines of code for request, response logs.
 # sb.add_global_request_interceptor(RequestLogger())
