@@ -1,0 +1,40 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "skill connections requester demo",
+      "intents": [
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "SendPrintWebPage",
+          "slots": [],
+          "samples": [
+            "send connections request to print webpage",
+            "print webpage",
+            "send print request",
+            "tell provider to print webpage"
+          ]
+        }
+      ],
+      "types": []
+    }
+  }
+}

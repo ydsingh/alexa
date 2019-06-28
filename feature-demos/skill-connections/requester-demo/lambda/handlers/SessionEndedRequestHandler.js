@@ -1,0 +1,14 @@
+/**
+ * Handler to handle SessionEndedRequest
+ */
+const SessionEndedRequestHandler = {
+    canHandle(handlerInput) {
+        return handlerInput.requestEnvelope.request.type === "SessionEndedRequest";
+    },
+    handle(handlerInput) {
+        console.log(`Session ended with reason: ${handlerInput.requestEnvelope.request.error.message}`);
+        return handlerInput.responseBuilder.getResponse();
+    }
+};
+
+module.exports = SessionEndedRequestHandler;
