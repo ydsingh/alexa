@@ -7,11 +7,12 @@ const PrintWebPageTaskHandler = {
     canHandle(handlerInput) {
         const request = handlerInput.requestEnvelope.request;
         return request.type === 'LaunchRequest'
+            && request.task
             && request.task.name == "AMAZON.PrintWebPage";
     },
     handle(handlerInput) {
-        console.log("handling AMAZON.PrintWebPage task");
-        let speechText = "OK, your print is confirmed";
+        console.log("Handling AMAZON.PrintWebPage task");
+        const speechText = 'Successfully received an AMAZON.PrintWebPage task.';
 
         return handlerInput.responseBuilder
             .speak(speechText)
@@ -19,7 +20,7 @@ const PrintWebPageTaskHandler = {
                 "type": "Tasks.CompleteTask",
                 "status": {
                     "code": "200",
-                    "message": "return as desired",
+                    "message": "Success",
                 }
             })
             .withShouldEndSession(true)
@@ -35,11 +36,43 @@ const LaunchRequestHandler = {
     handle(handlerInput) {
         console.log("LaunchRequest received");
 
+        const speechText = 'Welcome to Skill Connections AMAZON.PrintWebPage Provider Skill. Launch with a AMAZON.PrintWebPage task.'
+
         return handlerInput.responseBuilder
-            .speak('Welcome to Skill Connections Provider Skill')
+            .speak(speechText)
             .getResponse();
     },
 };
+
+const HelpIntentHandler = {
+    canHandle(handlerInput) {
+      return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+        && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
+    },
+    handle(handlerInput) {
+      const speechText = 'All I do is handle Skill Connections Requests. Launch with a AMAZON.PrintWebPage task.';
+  
+      return handlerInput.responseBuilder
+        .speak(speechText)
+        .getResponse();
+    },
+  };
+  
+const CancelAndStopIntentHandler = {
+    canHandle(handlerInput) {
+        return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+        && (handlerInput.requestEnvelope.request.intent.name === 'AMAZON.CancelIntent'
+            || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent');
+    },
+    handle(handlerInput) {
+        const speechText = 'Goodbye!';
+
+        return handlerInput.responseBuilder
+        .speak(speechText)
+        .getResponse();
+    },
+};
+  
 
 const SessionEndedRequestHandler = {
   canHandle(handlerInput) {
@@ -77,6 +110,9 @@ exports.handler = Alexa.SkillBuilders
     PrintWebPageTaskHandler,
     LaunchRequestHandler,
     SessionEndedRequestHandler,
+    HelpIntentHandler,
+    CancelAndStopIntentHandler,
   )
   .addErrorHandlers(ErrorHandler)
+  .withCustomUserAgent('cookbook/connections-provider/v1')
   .lambda();

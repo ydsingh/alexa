@@ -9,18 +9,12 @@
         },
         {
           "name": "AMAZON.HelpIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.NoIntent",
-          "samples": []
+          "samples": [
+            "help"
+          ]
         },
         {
           "name": "AMAZON.StopIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.YesIntent",
           "samples": []
         },
         {
