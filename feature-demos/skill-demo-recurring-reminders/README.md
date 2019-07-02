@@ -1,9 +1,9 @@
 # Recurring Reminders Demo
 This Alexa Skill Feature Demo demonstrate how to set a recurring reminder using the Alexa Skills Kit (ASK) SDK for Java.
 
-A reminder is somewhat like an alarm, however Alexa will speak the reminder, for example "Play a 3-minute mediation".  This sample shows how a skill can setup a reminder that happens on a recurring basis, rather than just once.
+A reminder is somewhat like an alarm. However, Alexa will speak the reminder, such as "Play a 3-minute meditation."  This sample shows how a skill can set up a reminder that happens on a recurring basis, rather than just once.
 
-> Note: the Alexa Skill Simulator does not support reminders so you will need a device (e.g. Amazon Echo) in order to experience the reminder.
+> Note: the Alexa Skill Simulator does not support reminders so you will need an Alexa-enabled device, such as Amazon Echo, in order to experience the reminder.
 
 ## What You Will Need
 *  [Amazon Developer Account](http://developer.amazon.com/alexa)
@@ -19,7 +19,7 @@ A reminder is somewhat like an alarm, however Alexa will speak the reminder, for
 
 ### Create the Skill
 First, let's create the skill.
-1. Navigate to the [Alexa Skills Kit Developer Console](https://developer.amazon.com/alexa/console/ask). Click the **Create Skill** button in the upper right.
+1. Navigate to the [Alexa Skills Kit Developer Console](https://developer.amazon.com/alexa/console/ask). Click the **Create Skill** button at the upper right.
 1. Enter `Channel Guide` as your skill name, choose **en-US**, select **Custom** and click **Create skill**.
 1. Navigate to the **JSON Editor** section.  Copy the interaction model from [here](./models/en-US.json) and paste it over the existing model.  Save and build the model.
 1. Navigate to the **Permissions** section and enable the **Reminders** option.  Save the permissions.
@@ -39,7 +39,7 @@ First, let's create the skill.
 1. Copy the **ARN** for the Lambda function from the upper right of the function page.  Switch back to the Alexa Developer Console's **Endpoint** section and paste the ARN into the **Default Endpoint** field.
 
 ### Grant Permissions
-In order for the demo to work, you must grant permissions to the skill using the Alexa app.  One option is to navigate to the Skills section, search for your new skill, and grant permission, however you could just try out the skill.  When you attempt to set a reminder, if you haven't granted permissions, the skill will send a card to the app which you can use to go directly to the skill's settings and grant permissions.  Might be the simplest approach and it's what's going to happen when some customers use reminders in your skill, so take a short walk in your customers' shoes!
+In order for the demo to work for you as a user, you must grant permissions to the skill using the Alexa app. One option is to navigate to the Skills section, search for your new skill, and grant permission. However, you could just try out the skill.  When you attempt to set a reminder, if you haven't granted permissions, the skill sends a card to the Alexa app which you can use to go directly to the skill's settings and grant permissions. This might be the simplest approach and it's what's going to happen when some customers use reminders in your skill, so take a short walk in your customers' shoes!
  
 ## Running the Demo
 It is possible to test some of the skill using the **Test** tab of the developer console, however since reminders are not supported in the simulator, your best option is to test using a device.
