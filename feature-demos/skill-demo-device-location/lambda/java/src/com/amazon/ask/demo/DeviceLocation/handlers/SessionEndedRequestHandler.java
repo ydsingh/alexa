@@ -1,4 +1,4 @@
-package com.amazon.ask.address.handlers;
+package com.amazon.ask.demo.DeviceLocation.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;

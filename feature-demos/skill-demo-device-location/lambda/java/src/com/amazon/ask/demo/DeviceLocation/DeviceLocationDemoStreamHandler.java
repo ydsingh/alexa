@@ -1,18 +1,18 @@
-package com.amazon.ask.address;
+package com.amazon.ask.demo.DeviceLocation;
 
 import com.amazon.ask.Skill;
 import com.amazon.ask.Skills;
 import com.amazon.ask.SkillStreamHandler;
-import com.amazon.ask.address.handlers.ServiceExceptionHandler;
-import com.amazon.ask.address.handlers.CancelandStopIntentHandler;
-import com.amazon.ask.address.handlers.GenericExceptionHandler;
-import com.amazon.ask.address.handlers.GetAddressIntentHandler;
-import com.amazon.ask.address.handlers.HelpIntentHandler;
-import com.amazon.ask.address.handlers.LaunchRequestHandler;
-import com.amazon.ask.address.handlers.SessionEndedRequestHandler;
-import com.amazon.ask.address.handlers.UnsupportedRequestHandler;
+import com.amazon.ask.demo.DeviceLocation.handlers.ServiceExceptionHandler;
+import com.amazon.ask.demo.DeviceLocation.handlers.CancelandStopIntentHandler;
+import com.amazon.ask.demo.DeviceLocation.handlers.GenericExceptionHandler;
+import com.amazon.ask.demo.DeviceLocation.handlers.GetAddressIntentHandler;
+import com.amazon.ask.demo.DeviceLocation.handlers.HelpIntentHandler;
+import com.amazon.ask.demo.DeviceLocation.handlers.LaunchRequestHandler;
+import com.amazon.ask.demo.DeviceLocation.handlers.SessionEndedRequestHandler;
+import com.amazon.ask.demo.DeviceLocation.handlers.UnsupportedRequestHandler;
 
-public class AddressSkillStreamHandler extends SkillStreamHandler {
+public class DeviceLocationDemoStreamHandler extends SkillStreamHandler {
 
     private static Skill getSkill() {
         return Skills.standard()
@@ -30,7 +30,7 @@ public class AddressSkillStreamHandler extends SkillStreamHandler {
                 .build();
     }
 
-    public AddressSkillStreamHandler() {
+    public DeviceLocationDemoStreamHandler() {
         super(getSkill());
     }
 

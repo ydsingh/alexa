@@ -1,4 +1,4 @@
-package com.amazon.ask.address;
+package com.amazon.ask.demo.DeviceLocation;
 
 public class Constants {
     public static final String WELCOME = "Welcome to the Sample Device Address API Skill!  You can ask for the device address by saying what is my address.  What do you want to ask?";

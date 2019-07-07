@@ -1,6 +1,6 @@
-package com.amazon.ask.address.handlers;
+package com.amazon.ask.demo.DeviceLocation.handlers;
 
-import com.amazon.ask.address.Constants;
+import com.amazon.ask.demo.DeviceLocation.Constants;
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Permissions;
