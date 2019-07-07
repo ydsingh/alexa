@@ -29,11 +29,12 @@ To use the Java version:
 1. Create the skill in a manner similar to the process described in the [Java Fact Sample Skill](https://github.com/alexa/skill-sample-java-fact#setup), with the following adjustments.
     * Use `512 MB` for the Lambda function's **Memory** setting.
     * Use `com.amazon.ask.demo.DeviceLocation.DeviceLocationDemoStreamHandler` as the **Handler**.
-1. Build the jar file to upload:
+1. Build the jar file with dependencies:
     ```
     cd custom/java
     mvn assembly:assembly -DdescriptorId=jar-with-dependencies package
     ```
+1. Upload the jar file which includes the dependencies.
 > Remember to configure the Alexa Skills Kit trigger on the Lambda function.
 
 ## Running the Demo
