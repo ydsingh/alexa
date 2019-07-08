@@ -10,10 +10,10 @@ This sample shows how to use Skill Connections as a Requester
 This folder contains the interaction model and skill code.  It is structured to make it easy to deploy if you have the ASK CLI already setup.  If you would like to use the Developer Portal, you can follow the steps outlined in the [Hello World](https://github.com/alexa/skill-sample-nodejs-hello-world) example, substituting the [Model](./models/en-US.json) and the [skill code](./lambda/custom/index.js) when called for.
 
 ## Exploring Skill Connections
-Once the skill is configured, naviagate to the Build tab in the skill builder, and explore the intents, slots, sample utterances and prompts.
+Once the skill is configured, navigate to the Build tab in the skill builder, and explore the intents, slots, sample utterances and prompts.
 
 ## Running the Demo
-To start the demo say "alexa ask skill connections requester send connections request to print webpage". Your skill will then send a request that will be routed to the best provider for PrintWebpage
+To start the demo say "alexa open skill connections requester demo". Your skill will then start a connection that will be routed to the best provider for PrintWebpage
 
 ## Further Documentation:
 More documentation on how to be a Skill Connections requester can be found here:
