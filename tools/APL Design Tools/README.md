@@ -4,7 +4,7 @@ The APL design tools are for the Sketch design program. Download Sketch [here](h
 These tools can help you design the visual display for your skill.
 
 Included in this toolset are the following items:
-* Alexa Design System Layouts for APL
+* Alexa Design System Templates for APL
 * Amazon Typeface files
 * Links to download Sketch, Alexa Design System Library (including the Color Palette), and Anima Sketch Plugin
 
@@ -16,5 +16,5 @@ Included in this toolset are the following items:
 # Installation Instructions
 
 1. Download the Alexa Design System Layouts and Amazon Typefaces files from the links provided here in GitHub.
-2. Install the Alexa Design System Library plugin [here](sketch://add-library/?url=https://s3-us-west-2.amazonaws.com/ddg-apl-library/Alexa-Design-System-Library-appcast.xml). Clicking this link will automatically start the download to Sketch. Anytime the library is updated, you'll automatically be updated as well so you’ll always have the most recent version.
+2. You can download the sketch files here with manual updates, or you get automatic updates by installing the Alexa Design System Library plugin at sketch://add-library/?url=https://s3-us-west-2.amazonaws.com/ddg-apl-library/Alexa-Design-System-Library-appcast.xml. Pasting this link in your browser will automatically start the download for Sketch. Anytime the library is updated, you'll automatically be updated as well so you’ll always have the most recent version.
 3. The layouts file utilizes the library. You can either copy and paste artboards from the layouts file or save it as a template (but not a library).
