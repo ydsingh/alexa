@@ -20,7 +20,7 @@
                     "slots": [
                         {
                             "name": "toCity",
-                            "type": "AMAZON.US_CITY",
+                            "type": "AMAZON.City",
                             "samples": [
                                 "i'd like to go to {toCity} ",
                                 "{toCity} ",
@@ -32,7 +32,7 @@
                         },
                         {
                             "name": "fromCity",
-                            "type": "AMAZON.US_CITY",
+                            "type": "AMAZON.City",
                             "samples": [
                                 "{fromCity} ",
                                 "leaving from {fromCity} ",
@@ -76,7 +76,7 @@
                     "slots": [
                         {
                             "name": "toCity",
-                            "type": "AMAZON.US_CITY",
+                            "type": "AMAZON.City",
                             "confirmationRequired": false,
                             "elicitationRequired": true,
                             "prompts": {
@@ -85,7 +85,7 @@
                         },
                         {
                             "name": "fromCity",
-                            "type": "AMAZON.US_CITY",
+                            "type": "AMAZON.City",
                             "confirmationRequired": false,
                             "elicitationRequired": true,
                             "prompts": {
