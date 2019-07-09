@@ -24,9 +24,9 @@ const LaunchRequestHandler = {
     return responseBuilder
       .speak(welcomeOutput)
       .addDelegateDirective({
-            name: 'PlanMyTripIntent',
-            confirmationStatus: 'NONE',
-            slots: {}
+        name: 'PlanMyTripIntent',
+        confirmationStatus: 'NONE',
+        slots: {}
       })
       .getResponse();
   },
@@ -47,20 +47,10 @@ const CompletedPlanMyTripHandler = {
     // compose speechOutput that simply reads all the collected slot values
     let speechOutput = getRandomPhrase(tripIntro);
 
-    // activity is optional so we'll add it to the output
-    // only when we have a valid activity
-    if (slotValues.travelMode) {
-      speechOutput += slotValues.travelMode;
-    } else {
-      speechOutput += "You'll go ";
-    }
+    speechOutput += "You'll go ";
 
     // Now let's recap the trip
     speechOutput = `${speechOutput} from ${slotValues.fromCity.synonym} to ${slotValues.toCity.synonym} on ${slotValues.travelDate.synonym}`;
-
-    if (slotValues.activity.synonym) {
-      speechOutput += ` to go ${slotValues.activity.synonym}.`;
-    }
 
     return responseBuilder
       .speak(speechOutput)
@@ -188,5 +178,5 @@ exports.handler = skillBuilder
     SessionEndedHandler,
   )
   .addErrorHandlers(ErrorHandler)
-  .withCustomUserAgent('cookbook/dialog-delegate/v1')
+  .withCustomUserAgent('cookbook/intent-chaining/v1')
   .lambda();

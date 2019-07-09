@@ -3,65 +3,27 @@
       "publishingInformation": {
         "locales": {
           "en-US": {
-            "summary": "TODO: skill summary",
-            "examplePhrases": [
-              "TODO: Alexa open invocation name",
-              "TOOD: example phrase 2",
-              "TOOD: example phrase 3"
-            ],
-            "name": "Plan my trip - demo",
-            "description": "TODO: skill description"
+            "name": "Intent Chaining demo"
           },
           "en-IN": {
-            "summary": "TODO: skill summary",
-            "examplePhrases": [
-              "TODO: Alexa open invocation name",
-              "TOOD: example phrase 2",
-              "TOOD: example phrase 3"
-            ],
-            "name": "Plan my trip - demo",
-            "description": "TODO: skill description"
+            "name": "Intent Chaining demo"
           },
           "en-AU": {
-            "summary": "TODO: skill summary",
-            "examplePhrases": [
-              "TODO: Alexa open invocation name",
-              "TOOD: example phrase 2",
-              "TOOD: example phrase 3"
-            ],
-            "name": "Plan my trip - demo",
-            "description": "TODO: skill description"
+            "name": "Intent Chaining demo"
           },
           "en-GB": {
-            "summary": "TODO: skill summary",
-            "examplePhrases": [
-              "TODO: Alexa open invocation name",
-              "TOOD: example phrase 2",
-              "TOOD: example phrase 3"
-            ],
-            "name": "Plan my trip - demo",
-            "description": "TODO: skill description"
+            "name": "Intent Chaining demo"
           },
           "en-CA": {
-            "summary": "TODO: skill summary",
-            "examplePhrases": [
-              "TODO: Alexa open invocation name",
-              "TOOD: example phrase 2",
-              "TOOD: example phrase 3"
-            ],
-            "name": "Plan my trip - demo",
-            "description": "TODO: skill description"
+            "name": "Intent Chaining demo"
           }
-        },
-        "isAvailableWorldwide": true,
-        "testingInstructions": "TODO: Sample Testing Instructions.",
-        "category": "EDUCATION_AND_REFERENCE",
-        "distributionCountries": []
+        }
       },
       "apis": {
         "custom": {
           "endpoint": {
-            "sourceDir": "lambda/custom"
+            "sourceDir": "lambda/custom",
+            "uri": "ask-intent-chaining-demo"
           }
         }
       },
