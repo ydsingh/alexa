@@ -22,3 +22,9 @@ sketch://add-library/?url=https://s3-us-west-2.amazonaws.com/ddg-apl-library/Ale
 ```
 Pasting this link in your browser will automatically start the download for Sketch. Anytime the library is updated, you'll automatically be updated as well so you’ll always have the most recent version.
 3. The layouts file utilizes the library. You can either copy and paste artboards from the layouts file or save it as a template (but not a library).
+
+# Further Reading
+
+For more information about APL, check out the following documentation:
+* [Alexa Design Guide](https://developer.amazon.com/docs/alexa-design/get-started.html)
+* [Alexa Presentation Language Reference Documentation](https://developer.amazon.com/docs/alexa-presentation-language/apl-overview.html) 
