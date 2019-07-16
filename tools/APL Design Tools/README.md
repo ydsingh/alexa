@@ -1,4 +1,4 @@
-# APL Design Tools
+# APL Design Toolkit
 
 The APL design tools are for the Sketch design program. Download Sketch [here](https://www.sketch.com/).
 These tools can help you design the visual display for your skill.
