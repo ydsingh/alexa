@@ -10,7 +10,7 @@ This folder contains focused demos of different features or techniques.  These d
 
 ### Display Directives
 
-Comming soon!
+Coming soon!
 
 ### Other Areas
 [Accessing Lists](./skill-demo-list-access) demonstrates how to access the list API for reading and writing to Alexa's lists.
