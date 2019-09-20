@@ -10,8 +10,8 @@ Included in this toolset are the following items:
 
 # System Requirements
 
-* Sketch version 55.2 or higher. Download Sketch [here](https://www.sketch.com/)<br>
-**Note:** There is currently an issue with Sketch version 58 and our library. If you’ve updated already, the recommended workaround is to downgrade back to Sketch version 57.
+* Sketch version 55.2 or higher. Download Sketch [here](https://www.sketch.com/updates/)<br>
+**Note:** There is currently an issue with Sketch version 58 and our library. If you’ve updated already, the recommended workaround is to [downgrade back to Sketch version 57](https://www.sketch.com/updates/).
 * Anima Sketch plugin (free) in order for the library to work. Download Anima [here](https://www.animaapp.com/).
 
 # Installation Instructions
