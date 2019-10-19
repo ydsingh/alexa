@@ -99,7 +99,7 @@ function handleAuthorizationDeclines( authorizationStatusReasonCode, handlerInpu
 
 	switch ( authorizationStatusReasonCode ) {
 		case 'AmazonRejected':
-		case 'InvalidPaymentMethod':
+		case 'SellerAuthorizationNote':
 		case 'ProcessingFailure':
 		case 'TransactionTimedOut':
 			errorMessage = config.authorizationDeclineMessage;	
@@ -111,7 +111,7 @@ function handleAuthorizationDeclines( authorizationStatusReasonCode, handlerInpu
 	debug( handlerInput );
 	
 	return handlerInput.responseBuilder
-		.speak( errorMessage )
+		//.speak( errorMessage )
 		.getResponse( );	
 }
 
