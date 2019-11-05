@@ -1,31 +1,18 @@
-# APL Design Toolkit
+# Alexa Design System Toolkits
+Designing a visual Alexa experience? Use our Sketch and Adobe XD design toolkits to leverage the latest styles, patterns, and components available in Alexa Presentation Language (APL).
 
-The APL design tools are for the Sketch design program. Download Sketch [here](https://www.sketch.com/).
-These tools can help you design the visual display for your skill.
+## How It Works
 
-Included in this toolset are the following items:
-* Alexa Design System Templates for APL
-* Amazon Typeface files
-* Links to download Sketch, Alexa Design System Library (including the Color Palette), and Anima Sketch Plugin
+The design system toolkits include libraries and templates to design multimodal skills that will be built with APL. These libraries and templates represent the code-backed Alexa Styles and Alexa Layout packages, so the responsive templates and responsive components will automatically adapt to different viewport profiles. The toolkits will be updated with every major release of APL, so you’ll always have the right tools for your design.
 
-# System Requirements
+### (Get the Sketch Toolkit) [link to folder]
 
-* Sketch version 55.2 or higher. Download Sketch [here](https://www.sketch.com/updates/)<br>
-**Note:** There is currently an issue with Sketch version 58 and our library. If you’ve updated already, the recommended workaround is to [downgrade back to Sketch version 57](https://www.sketch.com/updates/).
-* Anima Sketch plugin (free) in order for the library to work. Download Anima [here](https://www.animaapp.com/).
+### (Get the Adobe XD Toolkit) [link to folder]
 
-# Installation Instructions
+***
 
-1. Download the Alexa Design System Layouts and Amazon Typefaces files from the links provided here in GitHub.
-2. You can download the sketch files here with manual updates, or you get automatic updates by installing the Alexa Design System Library plugin at:
-```
-sketch://add-library/?url=https://s3-us-west-2.amazonaws.com/ddg-apl-library/Alexa-Design-System-Library-appcast.xml
-```
-Pasting this link in your browser will automatically start the download for Sketch. Anytime the library is updated, you'll automatically be updated as well so you’ll always have the most recent version.
-3. The layouts file utilizes the library. You can either copy and paste artboards from the layouts file or save it as a template (but not a library).
-
-# Further Reading
-
-For more information about APL, check out the following documentation:
-* [Alexa Design Guide](https://developer.amazon.com/docs/alexa-design/get-started.html)
-* [Alexa Presentation Language Reference Documentation](https://developer.amazon.com/docs/alexa-presentation-language/apl-overview.html) 
+## Additional Resources
+Alexa Design Guidelines [https://developer.amazon.com/docs/alexa-design/get-started.html](https://developer.amazon.com/docs/alexa-design/get-started.html)  ]
+Learn more about using Sketch  [https://www.sketch.com/docs/](https://www.sketch.com/docs/)
+Learn more about using Adobe XD  [https://letsxd.com/ ](https://letsxd.com)
+Report bugs or request future Adobe XD features [https://adobexd.uservoice.com/](https://adobexd.uservoice.com)
