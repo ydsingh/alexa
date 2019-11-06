@@ -8,8 +8,8 @@
 ## System Requirements
 * [Sketch version 55.2 or higher](https://www.sketch.com/)<br> **Note:** There is currently an issue with Sketch version 58 and our library. If you’ve updated already, the recommended workaround is to [downgrade back to Sketch version 57](https://www.sketch.com/updates/)
 * [Anima Sketch plugin (free version)](https://www.animaapp.com/)
-* [Alexa Design System layouts]()
-* [Amazon typeface folder]()
+* [Alexa Design System layouts](https://github.com/alexa/alexa-cookbook/blob/master/tools/APL%20Design%20Toolkit/Sketch/Alexa-Design-System-Templates.sketch)
+* [Amazon typeface folder](https://github.com/alexa/alexa-cookbook/tree/master/tools/APL%20Design%20Toolkit/Sketch/Amazon%20Typefaces)
 * [Alexa Design System Library](https://github.com/alexa/alexa-cookbook/blob/master/tools/APL%20Design%20Toolkit/Sketch/Alexa-Design-System-Library.sketch) <br> **Note:** For automatic updates, download the Alexa Design System Sketch Plugin here:
 ```
 sketch://add-library/?url=https://s3-us-west-2.amazonaws.com/ddg-apl-library/Alexa-Design-System-Library-appcast.xml
