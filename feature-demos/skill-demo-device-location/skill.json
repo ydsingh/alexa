@@ -21,7 +21,8 @@
     "apis": {
       "custom": {
         "endpoint": {
-          "sourceDir": "lambda/custom"
+          "sourceDir": "lambda/node",
+          "uri": "ask-device-location-demo"
         }
       }
     },

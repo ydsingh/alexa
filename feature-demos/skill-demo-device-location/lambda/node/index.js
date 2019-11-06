@@ -6,32 +6,20 @@ const messages = {
   NOTIFY_MISSING_PERMISSIONS: 'Please enable Location permissions in the Amazon Alexa app.',
   NO_ADDRESS: 'It looks like you don\'t have an address set. You can set your address from the companion app.',
   ADDRESS_AVAILABLE: 'Here is your full address: ',
-  ERROR: 'Uh Oh. Looks like something went wrong.',
+  ERROR: 'There was an error with the Device Address API. Please check the logs.',
   LOCATION_FAILURE: 'There was an error with the Device Address API. Please try again.',
   GOODBYE: 'Bye! Thanks for using the Sample Device Address API Skill!',
-  UNHANDLED: 'This skill doesn\'t support that. Please ask something else.',
   HELP: 'You can use this skill by asking something like: whats my address?',
-  STOP: 'Bye! Thanks for using the Sample Device Address API Skill!',
 };
 
 const PERMISSIONS = ['read::alexa:device:all:address'];
 
-const LaunchRequest = {
+const GetAddressIntentHandler = {
   canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
-  },
-  handle(handlerInput) {
-    return handlerInput.responseBuilder.speak(messages.WELCOME)
-      .reprompt(messages.WHAT_DO_YOU_WANT)
-      .getResponse();
-  },
-};
+    const request = handlerInput.requestEnvelope.request;
 
-const GetAddressIntent = {
-  canHandle(handlerInput) {
-    const { request } = handlerInput.requestEnvelope;
-
-    return request.type === 'IntentRequest' && request.intent.name === 'GetAddressIntent';
+    return ((request.type === 'IntentRequest' && request.intent.name === 'GetAddressIntent')
+            || (handlerInput.requestEnvelope.request.type === 'LaunchRequest'));
   },
   async handle(handlerInput) {
     const { requestEnvelope, serviceClientFactory, responseBuilder } = handlerInput;
@@ -54,7 +42,7 @@ const GetAddressIntent = {
       if (address.addressLine1 === null && address.stateOrRegion === null) {
         response = responseBuilder.speak(messages.NO_ADDRESS).getResponse();
       } else {
-        const ADDRESS_MESSAGE = `${messages.ADDRESS_AVAILABLE + address.addressLine1}, ${address.stateOrRegion}, ${address.postalCode}`;
+        const ADDRESS_MESSAGE = `${messages.ADDRESS_AVAILABLE} ${address.addressLine1}, ${address.stateOrRegion}, ${address.postalCode}`;
         response = responseBuilder.speak(ADDRESS_MESSAGE).getResponse();
       }
       return response;
@@ -68,70 +56,7 @@ const GetAddressIntent = {
   },
 };
 
-const SessionEndedRequest = {
-  canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'SessionEndedRequest';
-  },
-  handle(handlerInput) {
-    console.log(`Session ended with reason: ${handlerInput.requestEnvelope.request.reason}`);
-
-    return handlerInput.responseBuilder.getResponse();
-  },
-};
-
-const UnhandledIntent = {
-  canHandle() {
-    return true;
-  },
-  handle(handlerInput) {
-    return handlerInput.responseBuilder
-      .speak(messages.UNHANDLED)
-      .reprompt(messages.UNHANDLED)
-      .getResponse();
-  },
-};
-
-const HelpIntent = {
-  canHandle(handlerInput) {
-    const { request } = handlerInput.requestEnvelope;
-
-    return request.type === 'IntentRequest' && request.intent.name === 'AMAZON.HelpIntent';
-  },
-  handle(handlerInput) {
-    return handlerInput.responseBuilder
-      .speak(messages.HELP)
-      .reprompt(messages.HELP)
-      .getResponse();
-  },
-};
-
-const CancelIntent = {
-  canHandle(handlerInput) {
-    const { request } = handlerInput.requestEnvelope;
-
-    return request.type === 'IntentRequest' && request.intent.name === 'AMAZON.CancelIntent';
-  },
-  handle(handlerInput) {
-    return handlerInput.responseBuilder
-      .speak(messages.GOODBYE)
-      .getResponse();
-  },
-};
-
-const StopIntent = {
-  canHandle(handlerInput) {
-    const { request } = handlerInput.requestEnvelope;
-
-    return request.type === 'IntentRequest' && request.intent.name === 'AMAZON.StopIntent';
-  },
-  handle(handlerInput) {
-    return handlerInput.responseBuilder
-      .speak(messages.STOP)
-      .getResponse();
-  },
-};
-
-const GetAddressError = {
+const GetAddressErrorHandler = {
   canHandle(handlerInput, error) {
     return error.name === 'ServiceError';
   },
@@ -149,19 +74,56 @@ const GetAddressError = {
   },
 };
 
+const HelpIntentHandler = {
+  canHandle(handlerInput) {
+    const { request } = handlerInput.requestEnvelope;
+
+    return request.type === 'IntentRequest' && request.intent.name === 'AMAZON.HelpIntent';
+  },
+  handle(handlerInput) {
+    return handlerInput.responseBuilder
+      .speak(messages.HELP)
+      .reprompt(messages.HELP)
+      .getResponse();
+  },
+};
+
+const CancelAndStopIntentHandler = {
+  canHandle(handlerInput) {
+    const { request } = handlerInput.requestEnvelope;
+
+    return request.type === 'IntentRequest'
+        && (request.intent.name === 'AMAZON.CancelIntent'
+            || request.intent.name === 'AMAZON.StopIntent');
+  },
+  handle(handlerInput) {
+    return handlerInput.responseBuilder
+      .speak(messages.GOODBYE)
+      .getResponse();
+  },
+};
+
+const SessionEndedRequestHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'SessionEndedRequest';
+  },
+  handle(handlerInput) {
+    console.log(`Session ended with reason: ${handlerInput.requestEnvelope.request.reason}`);
+
+    return handlerInput.responseBuilder.getResponse();
+  },
+};
+
 const skillBuilder = Alexa.SkillBuilders.custom();
 
 exports.handler = skillBuilder
   .addRequestHandlers(
-    LaunchRequest,
-    GetAddressIntent,
-    SessionEndedRequest,
-    HelpIntent,
-    CancelIntent,
-    StopIntent,
-    UnhandledIntent,
+    GetAddressIntentHandler,
+    SessionEndedRequestHandler,
+    HelpIntentHandler,
+    CancelAndStopIntentHandler,
   )
-  .addErrorHandlers(GetAddressError)
+  .addErrorHandlers(GetAddressErrorHandler)
   .withApiClient(new Alexa.DefaultApiClient())
   .withCustomUserAgent('cookbook/device-location/v1')
   .lambda();
