@@ -9,7 +9,7 @@ The design system toolkits include libraries and templates to design multimodal 
 ### [Get the Adobe XD Toolkit](https://github.com/alexa/alexa-cookbook/tree/master/tools/APL%20Design%20Toolkit/Adobe%20Xd)
 
 ## Additional Resources
-* [Alexa Design Guidelines](https://developer.amazon.com/docs/alexa-design/get-started.html)  ]
+* [Alexa Design Guidelines](https://developer.amazon.com/docs/alexa-design/get-started.html)
 * [Learn more about using Sketch](https://www.sketch.com/docs/)
 * [Learn more about using Adobe XD](https://letsxd.com)
 * [Report bugs or request Adobe XD features](https://adobexd.uservoice.com)
