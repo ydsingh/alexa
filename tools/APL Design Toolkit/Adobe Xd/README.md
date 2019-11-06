@@ -7,7 +7,7 @@
 * **Background Assets:** Base background images for the different viewport profiles.
 
 ## System Requirements
-* [Download](https://www.adobe.com/products/xd.html) the latest version of Adobe Xd
+* [Download the latest version of Adobe Xd](https://www.adobe.com/products/xd.html)
 * [Amazon Typefaces](https://github.com/alexa/alexa-cookbook/tree/master/tools/APL%20Design%20Toolkit/Adobe%20Xd/Amazon%20Typefaces)
 * [Alexa-design-system-templates.xd](https://github.com/alexa/alexa-cookbook/blob/master/tools/APL%20Design%20Toolkit/Adobe%20Xd/Alexa-Design-System-Templates.xd)
 * [Alexa-design-system.xd](https://github.com/alexa/alexa-cookbook/blob/master/tools/APL%20Design%20Toolkit/Adobe%20Xd/Alexa-Design-System.xd)
