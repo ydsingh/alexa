@@ -6,8 +6,8 @@
 * **Amazon Typefaces:** The templates and library use the typeface Amazon Ember Display, which is also included.
 
 ## System Requirements
-* Sketch version 55.2 or higher. Download Now [https://www.sketch.com/](https://www.sketch.com/)
-**Note:***There is currently an issue with Sketch version 58 and our library. If you’ve updated already, the recommended workaround is to [downgrade back to Sketch version 57](https://www.sketch.com/updates/)
+* Sketch version 55.2 or higher. Download Now [https://www.sketch.com/](https://www.sketch.com/)<br> **Note:** There is currently an issue with Sketch version 58 and our library. If you’ve updated already, the recommended    workaround is to [downgrade back to Sketch version 57](https://www.sketch.com/updates/)
+
 * Anima Sketch plugin (free version). Download Now [https://www.animaapp.com/](https://www.animaapp.com/)
 * Alexa Design System layouts and Amazon typeface folder.
 * Alexa Design System Sketch Library Plugin. Download here:
@@ -21,5 +21,5 @@ sketch://add-library/?url=https://s3-us-west-2.amazonaws.com/ddg-apl-library/Ale
 3. Install the Anima Sketch plugin. This helps simulate the responsive nature of APL and the layout files won’t work properly without it.
 
 ## Additional Resources
-Alexa Design Guidelines [https://developer.amazon.com/docs/alexa-design/get-started.html](https://developer.amazon.com/docs/alexa-design/get-started.html)
-Learn more about using Sketch [https://www.sketch.com/docs/](https://www.sketch.com/docs/)
+* [Alexa Design Guidelines](https://developer.amazon.com/docs/alexa-design/get-started.html)
+* [Learn more about using Sketch](https://www.sketch.com/docs/)
