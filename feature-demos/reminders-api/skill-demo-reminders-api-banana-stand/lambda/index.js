@@ -145,6 +145,19 @@ const ConnectionsResponseHandler = {
     }
 };
 
+const NoIntentHandler = {
+    canHandle(handlerInput) {
+        return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+            && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.NoIntent'
+    },
+    handle(handlerInput) {
+        const speechText = 'Alrighty, no problem. When you want me to set a reminder for you just holler.';
+        return handlerInput.responseBuilder
+            .speak(speechText)
+            .getResponse();
+    }
+}
+
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'IntentRequest'
@@ -229,7 +242,8 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        CreateReminderIntentHandler, // Register CreateReminderIntentHandler declared above.
+        CreateReminderIntentHandler,  // Register CreateReminderIntentHandler declared above.
+        NoIntentHandler,             // Register NoIntentHandler for when the user declines to schdedule a reminder.
         ConnectionsResponseHandler, // Register ConnectionsResponseHandler to receive voice permissions response with state.
         HelpIntentHandler,
         CancelAndStopIntentHandler,
