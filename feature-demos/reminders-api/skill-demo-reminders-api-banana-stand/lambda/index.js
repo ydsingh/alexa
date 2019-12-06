@@ -107,6 +107,11 @@ const CreateReminderIntentHandler = {
     }
 };
 
+/*
+    Handler for receiving response back from voice permissions. Response object has information about whether the user has
+    granted the skill permissions through voice and if the home card has been sent.
+    Reference: https://developer.amazon.com/docs/smapi/voice-permissions-for-reminders.html#send-a-connectionssendrequest-directive
+*/
 const ConnectionsResponseHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'Connections.Response'
@@ -116,6 +121,12 @@ const ConnectionsResponseHandler = {
         console.log('connectionsResponse handler')
         const { status, isCardThrown } = handlerInput.requestEnvelope.request.payload
         
+        /* 
+            Check if the user has granted permissions through voice permissions and whether the home card has already been sent.
+            If not, send an AskForPermissionsConsent card to the Alexa Companion mobile app. Otherwise let the user know a
+            home card requesting permissions has been sent to the mobile app and they can also grant permissions through the skill.
+            Reference: https://developer.amazon.com/docs/custom-skills/request-customer-contact-information-for-use-in-your-skill.html#permissions-card-for-requesting-customer-consent
+        */
         if (status === "DENIED" && !isCardThrown) {
             return handlerInput.responseBuilder
                 .speak("Please go to the Alexa mobile app to grant reminders permissions.")
@@ -219,7 +230,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         CreateReminderIntentHandler, // Register CreateReminderIntentHandler declared above.
-        ConnectionsResponseHandler, // Register ConnectionsResponseHandler to receive voice permissions state.
+        ConnectionsResponseHandler, // Register ConnectionsResponseHandler to receive voice permissions response with state.
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,
