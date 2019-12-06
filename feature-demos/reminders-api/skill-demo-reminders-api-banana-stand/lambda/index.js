@@ -36,14 +36,22 @@ const CreateReminderIntentHandler = {
         
         /* 
             Check if the user has granted permissions for the skill to read and write reminders.
-            If the permissions has not been granted, send an AskForPermissionsConsent card to the Alexa Companion mobile app.
-            Reference: https://developer.amazon.com/docs/custom-skills/request-customer-contact-information-for-use-in-your-skill.html#permissions-card-for-requesting-customer-consent
+            If the permissions has not been granted, use voice permissions to ask user to grant permissions.
+            Reference: https://developer.amazon.com/docs/smapi/voice-permissions-for-reminders.html
         */
         if (!permissions) {
             return handlerInput.responseBuilder
-                .speak("Please go to the Alexa mobile app to grant reminders permissions.")
-                .withAskForPermissionsConsentCard(['alexa::alerts:reminders:skill:readwrite'])
-                .getResponse()
+                .addDirective({
+                    type: "Connections.SendRequest",
+                    name: "AskFor",
+                    payload: {
+                        "@type": "AskForPermissionsConsentRequest",
+                        "@version": "1",
+                        "permissionScope": "alexa::alerts:reminders:skill:readwrite"
+                    },
+                    token: ""
+                })
+                .getResponse();
         }
         
         const currentDateTime = moment().tz('America/Los_Angeles'), // Use moment to get current date and time in Pacific Time.
