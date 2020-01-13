@@ -36,14 +36,22 @@ const CreateReminderIntentHandler = {
         
         /* 
             Check if the user has granted permissions for the skill to read and write reminders.
-            If the permissions has not been granted, send an AskForPermissionsConsent card to the Alexa Companion mobile app.
-            Reference: https://developer.amazon.com/docs/custom-skills/request-customer-contact-information-for-use-in-your-skill.html#permissions-card-for-requesting-customer-consent
+            If the permissions has not been granted, use voice permissions to ask user to grant permissions.
+            Reference: https://developer.amazon.com/docs/smapi/voice-permissions-for-reminders.html
         */
         if (!permissions) {
             return handlerInput.responseBuilder
-                .speak("Please go to the Alexa mobile app to grant reminders permissions.")
-                .withAskForPermissionsConsentCard(['alexa::alerts:reminders:skill:readwrite'])
-                .getResponse()
+                .addDirective({
+                    type: "Connections.SendRequest",
+                    name: "AskFor",
+                    payload: {
+                        "@type": "AskForPermissionsConsentRequest",
+                        "@version": "1",
+                        "permissionScope": "alexa::alerts:reminders:skill:readwrite"
+                    },
+                    token: ""
+                })
+                .getResponse();
         }
         
         const currentDateTime = moment().tz('America/Los_Angeles'), // Use moment to get current date and time in Pacific Time.
@@ -98,6 +106,58 @@ const CreateReminderIntentHandler = {
             .getResponse();
     }
 };
+
+/*
+    Handler for receiving response back from voice permissions. Response object has information about whether the user has
+    granted the skill permissions through voice and if the home card has been sent.
+    Reference: https://developer.amazon.com/docs/smapi/voice-permissions-for-reminders.html#send-a-connectionssendrequest-directive
+*/
+const ConnectionsResponseHandler = {
+    canHandle(handlerInput) {
+        return handlerInput.requestEnvelope.request.type === 'Connections.Response'
+            && handlerInput.requestEnvelope.request.name === "AskFor"
+    },
+    handle(handlerInput) {
+        console.log('connectionsResponse handler')
+        const { status, isCardThrown } = handlerInput.requestEnvelope.request.payload
+        
+        /* 
+            Check if the user has granted permissions through voice permissions and whether the home card has already been sent.
+            If not, send an AskForPermissionsConsent card to the Alexa Companion mobile app. Otherwise let the user know a
+            home card requesting permissions has been sent to the mobile app and they can also grant permissions through the skill.
+            Reference: https://developer.amazon.com/docs/custom-skills/request-customer-contact-information-for-use-in-your-skill.html#permissions-card-for-requesting-customer-consent
+        */
+        if (status === "DENIED" && !isCardThrown) {
+            return handlerInput.responseBuilder
+                .speak("Please go to the Alexa mobile app to grant reminders permissions.")
+                .withAskForPermissionsConsentCard(['alexa::alerts:reminders:skill:readwrite'])
+                .getResponse();    
+        } else if (isCardThrown) {
+            return handlerInput.responseBuilder
+                .speak("Ok, no problem. When you are ready, please go to the Alexa mobile app to grant reminders permissions or launch the skill and I'll ask you again.")
+                .getResponse();
+        }
+        const speechText = "Should I go ahead and schedule a daily reminder at one p. m. for you to get a banana?"
+        return handlerInput.responseBuilder
+            .speak(speechText)
+            .reprompt(speechText)
+            .getResponse();
+    }
+};
+
+const NoIntentHandler = {
+    canHandle(handlerInput) {
+        return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+            && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.NoIntent'
+    },
+    handle(handlerInput) {
+        const speechText = 'Alrighty, no problem. When you want me to set a reminder for you just holler.';
+        return handlerInput.responseBuilder
+            .speak(speechText)
+            .getResponse();
+    }
+}
+
 const HelpIntentHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'IntentRequest'
@@ -182,7 +242,9 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        CreateReminderIntentHandler, // Register CreateReminderIntentHandler declared above.
+        CreateReminderIntentHandler,  // Register CreateReminderIntentHandler declared above.
+        NoIntentHandler,             // Register NoIntentHandler for when the user declines to schdedule a reminder.
+        ConnectionsResponseHandler, // Register ConnectionsResponseHandler to receive voice permissions response with state.
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         SessionEndedRequestHandler,

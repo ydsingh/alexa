@@ -34,6 +34,7 @@ Alexa: You succesfully scheduled a daily reminder at one p. m. to get a banana.
 - [Alexa Reminders Guidelines for Usage](https://developer.amazon.com/docs/smapi/alexa-reminders-guidelines-for-usage.html)
 - [Alexa Reminders API Reference](https://developer.amazon.com/docs/smapi/alexa-reminders-api-reference.html)
 - [Alexa Reminders API Best Practices](https://developer.amazon.com/docs/smapi/alexa-reminders-guidelines-for-usage.html#best-practices-for-coding-reminders-in-your-skill)
+- [Set Up Voice Permissions for Reminders](https://developer.amazon.com/docs/smapi/voice-permissions-for-reminders.html)
 - [Calling Alexa Service APIs](https://ask-sdk-for-nodejs.readthedocs.io/en/latest/Calling-Alexa-Service-APIs.html)
 - [Reminder Management Service Client](https://ask-sdk-for-nodejs.readthedocs.io/en/latest/Calling-Alexa-Service-APIs.html#remindermanagementserviceclient)
 - [Example Reminders API Skill on GitHub](https://github.com/alexa/alexa-cookbook/blob/master/feature-demos/skill-demo-reminders/lambda/custom/index.js)

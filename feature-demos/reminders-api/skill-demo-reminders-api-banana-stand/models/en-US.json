@@ -24,6 +24,10 @@
           "samples": [
             "sounds good"
           ]
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": []
         }
       ],
       "types": []
