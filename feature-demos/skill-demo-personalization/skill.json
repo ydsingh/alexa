@@ -27,18 +27,6 @@
       {
         "name": "alexa::person_id:read"
       }
-    ],
-    "privacyAndCompliance": {
-      "allowsPurchases": false,
-      "locales": {
-        "en-US": {
-          "privacyPolicyUrl": "http://developer.amazon.com/sampleTestingUrl"
-        }
-      },
-      "isExportCompliant": true,
-      "containsAds": false,
-      "isChildDirected": false,
-      "usesPersonalInfo": false
-    }
+    ]
   }
 }
