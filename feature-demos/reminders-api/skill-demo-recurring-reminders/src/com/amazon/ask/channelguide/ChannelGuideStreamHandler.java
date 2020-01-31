@@ -4,6 +4,7 @@ import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
 import com.amazon.ask.Skills;
 import com.amazon.ask.channelguide.handlers.CancelStopRequestHandler;
+import com.amazon.ask.channelguide.handlers.ConnectionsResponseHandler;
 import com.amazon.ask.channelguide.handlers.FallbackIntentHandler;
 import com.amazon.ask.channelguide.handlers.HelpRequestHandler;
 import com.amazon.ask.channelguide.handlers.LaunchRequestHandler;
@@ -20,6 +21,7 @@ public class ChannelGuideStreamHandler extends SkillStreamHandler{
                         new WhenIsMyShowIntentHandler(),
                         new YesIntentHandler(),
                         new NoIntentHandler(),
+                        new ConnectionsResponseHandler(),
                         new CancelStopRequestHandler(),
                         new FallbackIntentHandler(),
                         new HelpRequestHandler(),
