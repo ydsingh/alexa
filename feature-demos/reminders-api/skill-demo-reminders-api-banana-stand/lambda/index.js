@@ -68,7 +68,7 @@ const CreateReminderIntentHandler = {
               "timeZoneId" : "America/Los_Angeles",
               "recurrence" : {                     
               "startDateTime": currentDateTime.format('YYYY-MM-DDTHH:mm:ss'),
-              // "endDateTime" : "2020-08-10T10:00:00.000", // Add this to specify the end date for recurring reminders
+              // "endDateTime" : "2020-08-10T10:00:00.000", // Add this to specify the end date for the recurring reminder
               "recurrenceRules" : [                                          
                   `FREQ=DAILY;BYHOUR=13;BYMINUTE=0;BYSECOND=0;INTERVAL=1;`
               ]               
