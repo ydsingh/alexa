@@ -54,39 +54,40 @@ const CreateReminderIntentHandler = {
                 .getResponse();
         }
         
-        const currentDateTime = moment().tz('America/Los_Angeles'), // Use moment to get current date and time in Pacific Time.
+        const currentDateTime = moment().tz('America/Los_Angeles') // Use moment to get current date and time in Pacific Time.
             /* 
                 Declare the reminder request object that will be used by the reminderApiClient to send a POST request to the Reminders API.
                 The request object specifies a daily reminder at 1 p.m. (13:00:00) Pacific Time.
                 Reference: https://developer.amazon.com/docs/smapi/alexa-reminders-api-reference.html#request
             */
-            reminderRequest = {
-              requestTime: currentDateTime.format('YYYY-MM-DDTHH:mm:ss'),
-              trigger: {
-                type: 'SCHEDULED_ABSOLUTE',
-                scheduledTime: currentDateTime.set({
-                    hour: '13',
-                    minute: '00',
-                    second: '00'
-                }).format('YYYY-MM-DDTHH:mm:ss'),
-                timeZoneId: 'America/Los_Angeles',
-                recurrence: {
-                    freq: 'DAILY'
-                }
-              },
-              alertInfo: {
-                spokenInfo: {
-                  content: [{
-                    locale: 'en-US',
-                    text: 'Time to get yo banana',
-                  }],
-                },
-              },
-              pushNotification: {
-                status: 'ENABLED',
-              }
+        const reminderRequest = {
+          "requestTime" : currentDateTime.format('YYYY-MM-DDTHH:mm:ss'),
+          "trigger": {
+              "type" : "SCHEDULED_ABSOLUTE",
+              "scheduledTime" : currentDateTime.format('YYYY-MM-DDTHH:mm:ss'),
+              "timeZoneId" : "America/Los_Angeles",
+              "recurrence" : {                     
+              "startDateTime": currentDateTime.format('YYYY-MM-DDTHH:mm:ss'),
+              // "endDateTime" : "2020-08-10T10:00:00.000", // Add this to specify the end date for the recurring reminder
+              "recurrenceRules" : [                                          
+                  `FREQ=DAILY;BYHOUR=13;BYMINUTE=0;BYSECOND=0;INTERVAL=1;`
+              ]               
             }
-        
+          },
+          "alertInfo": {
+              "spokenInfo": {
+                  "content": [{
+                      "locale": "en-US", 
+                      "text": "Time to get yo banana",
+                      "ssml": '<speak><amazon:emotion name="excited" intensity="high">Time to get yo banana</amazon:emotion></speak>'
+                  }]
+              }
+          },
+          "pushNotification" : {                            
+              "status" : "ENABLED"
+          }
+        }
+      
         try {
             /* Try to create a reminder based on the specified parameters in the request object. */
             await reminderApiClient.createReminder(reminderRequest)

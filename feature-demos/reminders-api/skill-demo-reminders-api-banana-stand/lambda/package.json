@@ -1,12 +1,12 @@
 {
-  "name": "hello-world",
+  "name": "banana-stand-reminders-api",
   "version": "0.9.0",
-  "description": "alexa utility for quickly building skills",
+  "description": "Code sample that compliments https://youtu.be/eF7R4BEFu5c which demonstrates how to integrate the Reminders API into an Alexa skill.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Amazon Alexa",
+  "author": "Pan Wangperawong",
   "license": "ISC",
   "dependencies": {
     "ask-sdk-core": "^2.6.0",
