@@ -208,7 +208,7 @@ const HelpIntentHandler = {
       && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
   },
   handle(handlerInput) {
-    const speechText = 'This skill demonstrates the Text component of APLT on a compatible device such as the Echo dot with clock. To see it, just open the skill without asking for help.';
+    const speechText = 'This is the APL Lazy Loading Lists Demo. To see it, open the skill without asking for help.';
 
     return handlerInput.responseBuilder
       .speak(speechText)
