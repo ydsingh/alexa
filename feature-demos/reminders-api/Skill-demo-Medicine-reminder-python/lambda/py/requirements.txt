@@ -1,0 +1,4 @@
+ask-sdk-core==1.11.0
+ask-sdk-model==1.21.0
+pytz==2019.3
+boto3==1.9.216
