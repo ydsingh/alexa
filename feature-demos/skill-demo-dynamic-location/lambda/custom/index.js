@@ -72,8 +72,8 @@ const MyLocationIntentHandler = {
                 const coordinateAccuracy = geoObject.coordinate.accuracyInMeters;
                 const altitude = geoObject.altitude ? geoObject.altitude.altitudeInMeters : null;
                 const altitudeAccuracy = geoObject.altitude ? geoObject.altitude.accuracyInMeters : null;
-                let heading = geoObject.heading.directionInDegrees;
-                let speed = geoObject.heading.speedInMetersPerSecond;
+                const heading = geoObject.heading.directionInDegrees;
+                const speed = geoObject.heading.speedInMetersPerSecond;
                 const cardinalLat = lat >= 0 ? handlerInput.t('CARDINAL_NORTH') : handlerInput.t('CARDINAL_SOUTH');
                 const cardinalLon = lon >= 0 ? handlerInput.t('CARDINAL_EAST') : handlerInput.t('CARDINAL_WEST');
 
