@@ -49,7 +49,8 @@ The stack also includes the AWS Lambda trigger, IAM role, and a DynamoDB table t
  * Note: The CloudFormation package should be run from the **us-east-1** region, also known as N. Virginia.  Verify your default region in the AWS CLI by typing ```aws configure``` and pressing enter four times.
 
 1. Open a (bash) command terminal.
-1. Navigate to the ```/skill/sam``` folder
+1. Navigate to the ```/feature-demos/skill-demo-proactive-events/skill/sam``` folder
+1. Choose the deployable script for your platform, for windows this is ```deploy.sh``` and for unix-based systems, this is ```deploy.unix.sh```
 1. Make the deploy script executable. Run the command ```chmod +x ./deploy.sh```.
 1. Execute the script to create your stack. Run the command  ```./deploy.sh```.
  * Executing this script launches a CloudFormation setup from the packaged project defined in pingme.yaml.
