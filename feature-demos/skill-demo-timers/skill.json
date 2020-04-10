@@ -23,6 +23,10 @@
         "es-ES": {
           "privacyPolicyUrl": "https://amazon.es/privacy",
           "termsOfUseUrl": ""
+        },
+        "ja-JP": {
+          "privacyPolicyUrl": "https://amazon.co.jp/privacy",
+          "termsOfUseUrl": ""
         }
       },
       "allowsPurchases": false,
@@ -118,6 +122,17 @@
             "Alexa abre demo de temporizadores",
             "crea un temporizador",
             "como va mi temporizador"
+          ],
+          "keywords": []
+        },
+        "ja-JP": {
+          "name": "タイマーデモ",
+          "summary": "タイマーAPIのサンプルスキル",
+          "description": "このサンプルスキルはASK SDKからTimer APIを使う方法を示しています。",
+          "examplePhrases": [
+            "アレクサ、タイマーデモを開いて",
+            "タイマーをセットして",
+            "タイマーをチェックして"
           ],
           "keywords": []
         }
