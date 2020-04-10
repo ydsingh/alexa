@@ -13,7 +13,7 @@ This folder contains the interaction model and skill code.  It is structured to 
 
 ## Exploring the Display Directive
 
-There is one interface to be enabled on the skill configuration side, however most of the dispaly template work is on the skill code side.  There are two handlers, one for the generating the list views and one for the body templates.  You'll notice that their structure is basically the same, with different elements being displayed based on the template selected.  The demo only uses one size image, however many can be supplied in the response and the best one can then be selected by the display rendering engine.
+There is one interface to be enabled on the skill configuration side, however most of the display template work is on the skill code side.  There are two handlers, one for the generating the list views and one for the body templates.  You'll notice that their structure is basically the same, with different elements being displayed based on the template selected.  The demo only uses one size image, however many can be supplied in the response and the best one can then be selected by the display rendering engine.
 
 ## Running the demo
 

@@ -201,4 +201,5 @@ exports.handler = skillBuilder
     SessionEndedHandler,
   )
   .addErrorHandlers(ErrorHandler)
+  .withCustomUserAgent('cookbook/dialog-delegate/v1')
   .lambda();
