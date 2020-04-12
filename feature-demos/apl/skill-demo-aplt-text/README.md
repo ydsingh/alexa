@@ -2,7 +2,7 @@
 
 ## What You Will Need
 *  [Amazon Developer Account](http://developer.amazon.com/alexa)
-*  The sample code on [GitHub](https://github.com/alexa/alexa-cookbook/tree/master/feature-demos/skill-demo-aplt-text).
+*  The sample code on [GitHub](https://github.com/alexa/alexa-cookbook/tree/master/feature-demos/apl/skill-demo-aplt-text).
 
 ## Setting Up the Demo
 If you use Alexa hosted, follow the steps:
