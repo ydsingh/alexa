@@ -76,5 +76,42 @@ module.exports = {
             OFF_TIMER_STATUS_MSG: ' está apagado',
             PAUSED_TIMER_STATUS_MSG: ' está en pausa'
         }
+    },
+    ja: {
+        translation: {
+            WELCOME_MSG: 'ようこそ。このスキルでは、５分のタイマーをセットして、のようにタイマーの時間を設定することができます。どうしますか？',
+            HELP_MSG: '起動中のタイマーを確認するには、タイマーをチェックして。停止する場合は、タイマーを停止して。再開する場合は、タイマーを再開して。削除したい場合は、タイマーを削除して。と指示することができます。どうしますか？',
+            REPROMPT_MSG: `次は、どうしますか？`,
+            GOODBYE_MSG: ['それではまた', 'またね', 'また使ってくださいね', 'バイバイ'],
+            REFLECTOR_MSG: '{{intent}}がトリガーされました',
+            FALLBACK_MSG: `すみません。ちょっとわかりませんでした。もう一度話してみてください。`,
+            ERROR_MSG: 'すみません。なんだかうまく行かないみたいです。もう一度話してみてください。',
+            PERMISSIONS_CARD_MSG: 'お客様のAlexaアプリに、このスキルがタイマーを使用することを許可するためのカードを送りました。権限を許可していただいた後に、もう一度このスキルを呼び出してください。',
+            TIMER_COUNT_MSG: '現在、{{count}}個のタイマーがセットされています。',
+            TIMER_COUNT_MSG_plural: '現在、{{count}}個のタイマーがセットされています。',
+            LAST_TIMER_MSG: 'お客様のタイマーは、現在 {{status}}',
+            NO_TIMER_MSG: `現在、タイマーがセットされていません。タイマーをセットして、と言ってみてください。`,
+            ANNOUNCEMENT_TIMER_TITLE_MSG: 'タイマーのお知らせ',
+            ANNOUNCEMENT_LOCALE_MSG: 'ja-JP',
+            ANNOUNCEMENT_TEXT_MSG: 'お知らせです。',
+            TASK_TIMER_TITLE_MSG: 'タスクのお知らせです',
+            TASK_LOCALE_MSG: 'ja-JP',
+            TASK_TEXT_MSG: 'タイマーの時間が経過しました。{continueWithSkillName}を呼び出しますか？',
+            VOICE_PERMISSION_ACCEPTED: 'それでは、セットしたい時間で、「何分のタイマーをセットして」のように言ってみてください。',
+            VOICE_PERMISSION_DENIED: 'タイマーの使用許可をいただけなかったので、このスキルを続けることができません。後ほどもう一度お試しください。',
+            VOICE_PERMISSION_ERROR: 'タイマーの使用許可をいただく途中でエラーが起きてしまいました。後ほどもう一度お試しください。',
+            CREATE_TIMER_OK_MSG: 'タイマーは起動中です。確認したい場合は、タイマーをチェックして。と言ってみてください。',
+            CREATE_TIMER_ERROR_MSG: 'タイマーのセットに失敗しました。ごめんなさい。',
+            READ_TIMER_ERROR_MSG: 'タイマーの状態を調べるのに失敗しました。ごめんなさい。',
+            DELETE_TIMER_OK_MSG: 'タイマーは削除されました。別のタイマーをセットしたい場合は、「何分のタイマーをセットして」のように言ってみてください',
+            DELETE_TIMER_ERROR_MSG: 'タイマーの削除に失敗しました。ごめんなさい。',
+            PAUSE_TIMER_OK_MSG: 'タイマーは停止中です。再開する場合は、タイマーを再開して。と言ってください。',
+            PAUSE_TIMER_ERROR_MSG: 'タイマーの停止に失敗しました。ごめんなさい。',
+            RESUME_TIMER_OK_MSG: 'タイマーを再開しました。再び停止させたい場合は、タイマーを停止して、と言ってください。 ',
+            RESUME_TIMER_ERROR_MSG: 'タイマーの再開に失敗しました。ごめんなさい。',
+            ON_TIMER_STATUS_MSG: '起動中です。',
+            OFF_TIMER_STATUS_MSG: 'オフになっています。',
+            PAUSED_TIMER_STATUS_MSG: '停止中です。'
+        }
     }
 }
