@@ -65,12 +65,7 @@
       "distributionCountries": []
     },
     "apis": {
-      "custom": {
-        "endpoint": {
-          "sourceDir": "lambda/custom",
-          "uri": "ask-dynamic-location-demo"
-        }
-      }
+      "custom": {}
     },
     "manifestVersion": "1.0",
     "permissions": [
