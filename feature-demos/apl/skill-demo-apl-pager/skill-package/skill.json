@@ -9,13 +9,9 @@
     },
     "apis": {
       "custom": {
-        "endpoint": {
-          "sourceDir": "lambda/custom",
-          "uri": "ask-apl-pager-demo"
-        },
         "interfaces": [
           {
-            "type" : "RENDER_TEMPLATE",
+            "type": "RENDER_TEMPLATE",
             "minimumApmlVersion": "1.0",
             "minimumTemplateVersion": "1.0"
           }
