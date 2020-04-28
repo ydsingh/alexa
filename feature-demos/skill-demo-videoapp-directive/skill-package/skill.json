@@ -11,11 +11,7 @@
     },
     "apis": {
       "custom": {
-        "endpoint": {
-          "sourceDir": "lambda/custom",
-          "uri": "skill-demo-videoapp-directive"
-        },
-        "interfaces":[
+        "interfaces": [
           {
             "type": "VIDEO_APP"
           }
