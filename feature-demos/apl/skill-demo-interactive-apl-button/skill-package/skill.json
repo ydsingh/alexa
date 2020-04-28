@@ -20,10 +20,6 @@
     },
     "apis": {
       "custom": {
-        "endpoint": {
-          "sourceDir": "lambda/custom",
-          "uri": "ask-custom-skill-demo-apl-interactive-button-default"
-        },
         "interfaces": [
           {
             "type": "ALEXA_PRESENTATION_APL"
