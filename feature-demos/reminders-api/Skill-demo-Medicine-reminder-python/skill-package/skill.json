@@ -19,12 +19,7 @@
       "distributionCountries": []
     },
     "apis": {
-      "custom": {
-        "endpoint": {
-          "sourceDir": "lambda/py/lambda_upload",
-          "uri": "ask-custom-Medicine_Reminder-default"
-        }
-      }
+      "custom": {}
     },
     "manifestVersion": "1.0",
     "permissions": [
