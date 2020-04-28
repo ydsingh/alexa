@@ -11,12 +11,7 @@
       }
     },
     "apis": {
-      "custom": {
-        "endpoint": {
-          "sourceDir": "lambda/custom",
-          "uri": "ask-feature-demo-delete-persistent-attributes"
-        }
-      }
+      "custom": {}
     },
     "manifestVersion": "1.0"
   }
