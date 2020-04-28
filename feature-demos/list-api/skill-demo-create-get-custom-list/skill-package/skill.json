@@ -2,10 +2,6 @@
   "manifest": {
     "apis": {
       "custom": {
-        "endpoint": {
-          "sourceDir": "lambda",
-          "uri": "ask-custom-skill-demo-create-get-custom-list"
-        },
         "interfaces": []
       }
     },
