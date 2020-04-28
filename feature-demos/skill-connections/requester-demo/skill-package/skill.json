@@ -8,12 +8,7 @@
       }
     },
     "apis": {
-      "custom": {
-        "endpoint": {
-          "sourceDir": "lambda/custom",
-          "uri": "ask-connections-requester-demo"
-        }
-      }
+      "custom": {}
     },
     "manifestVersion": "1.0"
   }
