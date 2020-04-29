@@ -1,0 +1,21 @@
+{
+  "manifest": {
+    "apis": {
+      "custom": {
+        "interfaces": []
+      }
+    },
+    "permissions": [
+      {
+        "name": "alexa::alerts:reminders:skill:readwrite"
+      }
+    ],
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "name": "Banana Stand"
+        }
+      }
+    }
+  }
+}
