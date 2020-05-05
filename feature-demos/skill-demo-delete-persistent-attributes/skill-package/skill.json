@@ -1,0 +1,18 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "examplePhrases": [
+            "Alexa open delete attributes demo"
+          ],
+          "name": "Feature Demo - Delete Persistent Attributes"
+        }
+      }
+    },
+    "apis": {
+      "custom": {}
+    },
+    "manifestVersion": "1.0"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "Video Skill demo using SDK V2",
+          "name": "display-demo",
+          "description": "Video App Player Skill demo"
+        }
+      }
+    },
+    "apis": {
+      "custom": {
+        "interfaces": [
+          {
+            "type": "VIDEO_APP"
+          }
+        ]
+      }
+    },
+    "manifestVersion": "1.0"
+  }
+}
