@@ -1,0 +1,23 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "name": "Pager Demo Skill"
+        }
+      }
+    },
+    "apis": {
+      "custom": {
+        "interfaces": [
+          {
+            "type": "RENDER_TEMPLATE",
+            "minimumApmlVersion": "1.0",
+            "minimumTemplateVersion": "1.0"
+          }
+        ]
+      }
+    },
+    "manifestVersion": "1.0"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "name": "Skill Connections Demo Provider"
+        }
+      }
+    },
+    "apis": {
+      "custom": {
+        "tasks": [
+          {
+            "name": "AMAZON.PrintWebPage",
+            "version": "1"
+          }
+        ]
+      }
+    },
+    "manifestVersion": "1.0"
+  }
+}
