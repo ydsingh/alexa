@@ -18,7 +18,7 @@ If you would like to use the Developer Portal, you can
 1. follow the steps outlined in the [Hello World](https://github.com/alexa/skill-sample-nodejs-hello-world) example
 1. substituting the [Model](./models/en-US.json)
 1. create an `./lambda/custom/apl` folder
-1. add [button.json](./lambda/custom/apl/button.json) to the `apl` folder
+1. add [video.json](./lambda/custom/apl/video.json) to the `apl` folder
 1. add [skill code](./lambda/custom/index.js) to `./lambda/custom/`.
 
 ## Running the Demo
