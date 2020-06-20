@@ -29,7 +29,7 @@ Ensure that the code in index.js follows this order:
 
 ## General
 1. Code needs to be internationalized (use language strings, etc.) but does not need to be translated. Minimum support of en-US required.
-1. Lint the code according to this [ESLint configuration file](./eslintrc.json). Using ESLint is not required, presuming the result matches. (Config files for other tools accepted as PR's.)
+1. Lint the code according to this [ESLint configuration file](./.eslintrc.json). Using ESLint is not required, presuming the result matches. (Config files for other tools accepted as PR's.)
 > If you are new to ESLint, get started with [ESLint installation and usage information](https://eslint.org/docs/user-guide/getting-started). 
 1. The `.speak` method should take `speakOutput` as its parameter.
 1. The `.reprompt` method should take `repromptOutput` or `speakOutput` as its parameter.
