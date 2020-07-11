@@ -25,8 +25,7 @@ const utilities = require('utilities');
 // GLOBAL
 const sellerId = 'XXXXXXXXX';                                                  // Required; Amazon Pay seller ID; Used for both Setup and Process Payment
 
-// SETUP    
-const checkoutLanguage = 'en-US';                                                          // Optional; US must be en_US
+// SETUP                                                          // Optional; US must be en_US
 const countryOfEstablishment = 'US';                                                             // Required;
 const ledgerCurrency = 'USD';                                                            // Required; This doesn't exist in web SDK; GBP and EUR
 const needAmazonShippingAddress = true;                                                             // Optional; Must be boolean;
@@ -90,7 +89,6 @@ module.exports = {
     // SETUP
     'countryOfEstablishment': countryOfEstablishment,
     'ledgerCurrency': ledgerCurrency,
-    'checkoutLanguage': checkoutLanguage,
     'needAmazonShippingAddress': needAmazonShippingAddress,
     'sandboxCustomerEmailId': sandboxCustomerEmailId,
     'sandboxMode': sandboxMode,
