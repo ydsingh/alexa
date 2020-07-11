@@ -115,7 +115,7 @@ const ConnectionsChargeResponseHandler = {
 		if (connectionResponseStatusCode != 200) {
 			return error.handleErrors(handlerInput);
 		} else {
-			const authorizationStatusState = connectionResponsePayload.authorizationDetails.state;
+			const authorizationStatusState = connectionResponsePayload.authorizationDetails.authorizationStatus.state;
 
 			// Authorization is declined, tell the user their order was not placed
 			if (authorizationStatusState === 'Declined') {
