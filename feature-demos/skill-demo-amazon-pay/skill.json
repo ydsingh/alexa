@@ -1,34 +1,46 @@
 {
-    "manifest": {
-      "publishingInformation": {
-        "locales": {
-          "en-US": {
-            "summary": "Demo skill of Amazon Pay for Alexa Skills",
-            "examplePhrases": [
-              "Alexa, open payments demo"
-            ],
-            "name": "Demo - Amazon Pay for Alexa Skills",
-            "description": "Demo skill of Amazon Pay for Alexa Skills"
-          }
-        },
-        "isAvailableWorldwide": true,
-        "testingInstructions": "n/a",
-        "category": "EDUCATION_AND_REFERENCE",
-        "distributionCountries": []
-      },
-      "apis": {
-        "custom": {
-          "endpoint": {
-            "sourceDir": "lambda/custom"
-          }
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "Demo skill of Amazon Pay for Alexa Skills",
+          "examplePhrases": [
+            "Alexa, open payments demo"
+          ],
+          "name": "Demo - Amazon Pay for Alexa Skills",
+          "description": "Demo skill of Amazon Pay for Alexa Skills"
         }
       },
-      "permissions": [
-        {
-          "name": "payments:autopay_consent"
+      "isAvailableWorldwide": true,
+      "testingInstructions": "n/a",
+      "category": "EDUCATION_AND_REFERENCE",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": "lambda/custom"
         }
-      ],
-      "manifestVersion": "1.0"
-    }
+      }
+    },
+    "permissions": [
+      {
+        "name": "payments:autopay_consent"
+      }
+    ],
+    "privacyAndCompliance": {
+      "locales": {
+        "en-US": {
+          "privacyPolicyUrl": "https://www.example.com/privacy",
+          "termsOfUseUrl": "https://www.example.com/tc"
+        }
+      },
+      "allowsPurchases": true,
+      "usesPersonalInfo": false,
+      "isChildDirected": false,
+      "isExportCompliant": true,
+      "containsAds": false
+    },
+    "manifestVersion": "1.0"
   }
-  
+}

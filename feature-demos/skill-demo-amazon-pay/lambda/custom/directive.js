@@ -1,25 +1,16 @@
 'use strict';
 
-/** 
-	Directives are messages sent from AVS telling a client to perform a specific action
-	Read more here about the interaction model: https://developer.amazon.com/docs/alexa-voice-service/interaction-model.html
-**/
+const AmazonPay = require('@amazonpay/amazon-pay-alexa-utils');
 
+function buildSetupDirective(payloadBuilder, correlationToken) {
+    return AmazonPay.setupDirective(payloadBuilder, correlationToken).build()
+}
 
-function buildDirective( type, name, payload, directiveName, token ) {
-
-    var directive = {
-            'type': type,
-            'name': name,
-            'payload': {}, // Set dynamically below
-            'token': token
-    };		
-
-    directive.payload[ directiveName ] = payload;
-
-	return directive;
+function buildChargeDirective(payloadBuilder, correlationToken) {
+    return AmazonPay.chargeDirective(payloadBuilder, correlationToken).build()
 }
 
 module.exports = {
-    'buildDirective': buildDirective
+    'buildSetupDirective': buildSetupDirective,
+    'buildChargeDirective': buildChargeDirective
 };
