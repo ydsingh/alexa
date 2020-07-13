@@ -1,0 +1,205 @@
+{
+  "en": {
+    "facts": [
+      {
+        "text": "A year on Mercury is just 88 days long. "
+      },
+      {
+        "text": "Despite being farther from the Sun, Venus experiences higher temperatures than Mercury. "
+      },
+      {
+        "text": "Venus rotates counter-clockwise, possibly because of a collision in the past with an asteroid. "
+      },
+      {
+        "text": "On Mars, the Sun appears about half the size as it does on Earth. "
+      },
+      {
+        "text": "Earth is the only planet not named after a god. "
+      },
+      {
+        "text": "Jupiter has the shortest day of all the planets. "
+      },
+      {
+        "text": "The Milky Way galaxy will collide with the Andromeda Galaxy in about 5 billion years. "
+      },
+      {
+        "text": "The Sun contains 99.86% of the mass in the Solar System. "
+      },
+      {
+        "text": "The Sun is an almost perfect sphere. "
+      },
+      {
+        "text": "A total solar eclipse can happen once every 1 to 2 years. This makes them a rare event. "
+      },
+      {
+        "text": "Saturn radiates two and a half times more energy into space than it receives from the sun. "
+      },
+      {
+        "text": "The temperature inside the Sun can reach 15 million degrees Celsius. "
+      },
+      {
+        "text": "The Moon is moving approximately 3.8 cm away from our planet every year. "
+      }
+    ]
+  },
+  "es": {
+    "facts": [
+      {
+        "text": "Un año en Mercurio es de solo 88 días. "
+      },
+      {
+        "text": "A pesar de estar más lejos del Sol, Venus tiene temperaturas más altas que Mercurio. "
+      },
+      {
+        "text": "Venus rota en el sentido contrario de las agujas del reloj, posiblemente por una colisión pasada con un asteriode. "
+      },
+      {
+        "text": "En Marte el sol se ve la mitad de grande que en la Tierra. "
+      },
+      {
+        "text": "La Tierra es el único planeta con un nombre que no es un Dios. "
+      },
+      {
+        "text": "Jupiter tiene el día más corto de todos los planetas. "
+      },
+      {
+        "text": "La Vía Láctea colisionará con la galaxia de Andromeda en aproximadamente 5 billones de años. "
+      },
+      {
+        "text": "El Sol contiene el 99.86% de la masa del Sistema Solar. "
+      },
+      {
+        "text": "El Sol es una esféra casi perfecta. "
+      },
+      {
+        "text": "Un eclipse total de sol puede pasar una vez cada 1 o 2 años. Por lo tanto son eventos raros. "
+      },
+      {
+        "text": "Saturno irradia dos veces y media más energía hacia el espacio que la que recibe del sol. "
+      },
+      {
+        "text": "La temperatura dentro del Sol puede llegar a los 15 millones de grados Celsius. "
+      },
+      {
+        "text": "La luna se aleja aproximadamente 3.8 cm de nuestro planeta cada año. "
+      }
+    ]
+  },
+  "de": {
+    "facts": [
+      {
+        "text": "Ein Jahr dauert auf dem Merkur nur 88 Tage. "
+      },
+      {
+        "text": "Die Venus ist zwar weiter von der Sonne entfernt, hat aber höhere Temperaturen als Merkur. "
+      },
+      {
+        "text": "Venus dreht sich entgegen dem Uhrzeigersinn, möglicherweise aufgrund eines früheren Zusammenstoßes mit einem Asteroiden. "
+      },
+      {
+        "text": "Auf dem Mars erscheint die Sonne nur halb so groß wie auf der Erde. "
+      },
+      {
+        "text": "Jupiter hat den kürzesten Tag aller Planeten. "
+      }
+    ]
+  },
+  "ja": {
+    "facts": [
+      {
+        "text": "水星の一年はたった88日です。 "
+      },
+      {
+        "text": "金星は水星と比べて太陽より遠くにありますが、気温は水星よりも高いです。 "
+      },
+      {
+        "text": "金星は反時計回りに自転しています。過去に起こった隕石の衝突が原因と言われています。 "
+      },
+      {
+        "text": "火星上から見ると、太陽の大きさは地球から見た場合の約半分に見えます。 "
+      },
+      {
+        "text": "木星の<sub alias='いちにち'>1日</sub>は全惑星の中で一番短いです。 "
+      },
+      {
+        "text": "天の川銀河は約50億年後にアンドロメダ星雲と衝突します。 "
+      }
+    ]
+  },
+  "fr": {
+    "facts": [
+      {
+        "text": "Une année sur Mercure ne dure que 88 jours. "
+      },
+      {
+        "text": "En dépit de son éloignement du Soleil, Vénus connaît des températures plus élevées que sur Mercure. "
+      },
+      {
+        "text": "Sur Mars, le Soleil apparaît environ deux fois plus petit que sur Terre. "
+      },
+      {
+        "text": "De toutes les planètes, Jupiter a le jour le plus court. "
+      },
+      {
+        "text": "Le Soleil est une sphère presque parfaite. "
+      }
+    ]
+  },
+  "it": {
+    "facts": [
+      {
+        "text": "Sul pianeta Mercurio, un anno dura solamente 88 giorni. "
+      },
+      {
+        "text": "Pur essendo più lontana dal Sole, Venere ha temperature più alte di Mercurio. "
+      },
+      {
+        "text": "Su Marte il sole appare grande la metà che su la terra. "
+      },
+      {
+        "text": "Tra tutti i pianeti del sistema solare, la giornata più corta è su Giove. "
+      },
+      {
+        "text": "Il Sole è quasi una sfera perfetta. "
+      }
+    ]
+  },
+  "pt": {
+    "facts": [
+      {
+        "text": "Um ano em Mercúrio só dura 88 dias. "
+      },
+      {
+        "text": "Apesar de ser mais distante do sol, Venus é mais quente que Mercúrio. "
+      },
+      {
+        "text": "Visto de marte, o sol parece ser metade to tamanho que nós vemos da terra. "
+      },
+      {
+        "text": "Júpiter tem os dias mais curtos entre os planetas no nosso sistema solar. "
+      },
+      {
+        "text": "O sol é quase uma esfera perfeita. "
+      }
+    ]
+  },
+  "hi": {
+    "facts": [
+      {
+        "text": "बुध गृह में एक साल में केवल अठासी दिन होते हैं "
+      },
+      {
+        "text": "सूरज से दूर होने के बावजूद, Venus का तापमान Mercury से ज़्यादा होता हैं "
+      },
+      {
+        "text": "Earth के तुलना से Mars में सूरज का size तक़रीबन आधा हैं "
+      },
+      {
+        "text": "सारे ग्रहों में Jupiter का दिन सबसे कम हैं "
+      },
+      {
+        "text": "सूरज का shape एकदम गेंद आकार में हैं "
+      }
+    ]
+  }
+}

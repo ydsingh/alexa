@@ -1,0 +1,55 @@
+{
+  "manifest": {
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": "lambda",
+          "uri": "skill-demo-nodejs-fact-s3-select"
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "locales": {
+        "en-US": {}
+      }
+    },
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "name": "Selected Facts",
+          "summary": "Learn fun facts about space.",
+          "description": "Ask for Space Facts, and learn about what really matters, like the temperature of the Sun.\n\nSpace Facts provides fun the whole family can enjoy and is guaranteed to make you smarter.\n\nTo start, just say \"Alexa, launch Space Facts\" or \"Alexa, open Space Facts\" to get a fact.\n\nAt anytime, you can stop by saying \"Alexa, stop\"",
+          "examplePhrases": [
+            "Alexa open space facts",
+            "Alexa ask space facts for a fact",
+            "Alexa tell space facts to tell me trivia"
+          ],
+          "keywords": [
+            "space",
+            "facts",
+            "trivia"
+          ]
+        },
+        "es-ES": {
+          "name": "Curiosidades Selectas",
+          "summary": "Aprende curiosidades selectas sobre el universo.",
+          "description": "Pidé Curiosidades Selectas, y aprende sobre lo más importante, como la temperatura del Sol.\n\nCuriosidades Selectas entretiene a toda la familia y te hará más inteligente.\n\nPara comenzar solo dí \"Alexa, abre Curiosidades Selectas\" or \"Alexa, lanza Curiosidades Selectas\" para obtener una curiosidad.\n\nEn cualquier momento puede salir diciendo \"Alexa, para\"",
+          "examplePhrases": [
+            "Alexa abre curiosidades selectas",
+            "Alexa pídele a curiosidades selectas una curiosidad",
+            "Alexa dile a curiosidades selectas que me diga curiosidades"
+          ],
+          "keywords": [
+            "universo",
+            "curiosidades",
+            "trivia"
+          ]
+        }
+      },
+      "isAvailableWorldwide": true,
+      "category": "KNOWLEDGE_AND_TRIVIA",
+      "distributionCountries": []
+    }
+  }
+}
