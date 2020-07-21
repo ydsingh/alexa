@@ -1,0 +1,60 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "person profile demo",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.PauseIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.ResumeIntent",
+          "samples": []
+        },
+        {
+          "name": "ProfileGivenNameIntent",
+          "slots": [],
+          "samples": [
+            "What is my given name",
+	    "What is my first name"
+          ]
+        },
+        {
+          "name": "ProfileFullNameIntent",
+          "slots": [],
+          "samples": [
+            "What is my full name",
+            "What is my name"
+          ]
+        },
+        {
+          "name": "ProfileNumberIntent",
+          "slots": [],
+          "samples": [
+            "what is my phone number",
+            "What is my number",
+            "What is my mobile number"
+          ]
+        }
+      ],
+      "types": []
+    }
+  },
+  "version": "6"
+}
