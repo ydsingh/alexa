@@ -7,10 +7,10 @@
 
 
 // Used for testing simulation strings in sandbox mode
-function getSimulationString( type ) {
+function getSimulationString(type) {
 	let simulationString = '';
 
-	switch( type ) {
+	switch (type) {
 		case 'InvalidPaymentMethod':
 			// PaymentMethodUpdateTimeInMins only works with Async authorizations to change BA back to OPEN; Sync authorizations will not revert
 			simulationString = '{ "SandboxSimulation": { "State":"Declined", "ReasonCode":"InvalidPaymentMethod", "PaymentMethodUpdateTimeInMins":1, "SoftDecline":"true" } }';
@@ -29,24 +29,17 @@ function getSimulationString( type ) {
 }
 
 // Sometimes you just need a random string right?
-function generateRandomString( length ) {
-    let randomString 	= '';
-    const stringValues 	= 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+function generateRandomString(length) {
+	let randomString = '';
+	const stringValues = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-    for ( let i = 0; i < length; i++ )
-        randomString += stringValues.charAt( Math.floor( Math.random( ) * stringValues.length ) );
+	for (let i = 0; i < length; i++)
+		randomString += stringValues.charAt(Math.floor(Math.random() * stringValues.length));
 
-    return randomString;
-}
-
-function getConsentToken( handlerInput ) {
-	const consentToken = handlerInput.requestEnvelope.context.System.apiAccessToken;
-
-	return consentToken;
+	return randomString;
 }
 
 module.exports = {
-    'generateRandomString': generateRandomString,
-    'getConsentToken': 		getConsentToken,
-    'getSimulationString': 	getSimulationString
+	'generateRandomString': generateRandomString,
+	'getSimulationString': getSimulationString
 };

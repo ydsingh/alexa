@@ -1,67 +1,49 @@
 'use strict';
 
-const config = require( 'config' );
+const config = require('config');
+const AmazonPay = require('@amazonpay/amazon-pay-alexa-utils');
 
 /**
     A detailed list of attributes available to build the payload can be found here:
-    https://developer.integ.amazon.com/docs/amazon-pay/amazon-pay-apis-for-alexa.html
+    https://developer.amazon.com/en-US/docs/alexa/amazon-pay-alexa/amazon-pay-apis-for-alexa.html
 **/
 
 
 // Builds payload for Setup action
-function buildSetup ( consentToken ) {
-    const payload = {
-        'consentToken':                             consentToken,
-        'checkoutLanguage':                         config.checkoutLanguage,
-        'countryOfEstablishment':                   config.countryOfEstablishment,
-        'ledgerCurrency':                           config.ledgerCurrency,
-        'sandboxCustomerEmailId':                   config.sandboxCustomerEmailId,
-        'sandboxMode':                              config.sandboxMode,
-        'sellerId':                                 config.sellerId,
-        'billingAgreementAttributes': {
-            'platformId': 							config.platformId,
-            'sellerNote': 							config.sellerNote,
-            'sellerBillingAgreementAttributes': {
-                'sellerBillingAgreementId': 		config.sellerBillingAgreementId,
-                'storeName': 						config.storeName,
-                'customInformation': 				config.customInformation
-            }
-        },
-        'needAmazonShippingAddress': 				config.needAmazonShippingAddress
-    };
-
-    return payload;
+function getSetupBuilder(locale) {
+    const payloadBuilder = AmazonPay.setupPayload("2")
+        .withSellerId(config.sellerId)
+        .withSellerNote(config.sellerNote)
+        .withCountryOfEstablishment(config.countryOfEstablishment)
+        .withLedgerCurrency(config.ledgerCurrency)
+        .withCheckoutLanguage(locale)
+        .shippingNeeded(config.needAmazonShippingAddress)
+        .withCustomInformation(config.customInformation)
+        .withStoreName(config.storeName)
+        .withSellerBillingAgreementId(config.sellerBillingAgreementId)
+        .onSandbox({ 'eMail': config.sandboxCustomerEmailId });
+    return payloadBuilder;
 }
 
 // Builds payload for Charge action
-function buildCharge ( consentToken, billingAgreementId ) {
-    const payload = {
-        'consentToken':                 consentToken,
-        'sellerId':                     config.sellerId,
-        'billingAgreementId':           billingAgreementId,
-        'paymentAction':                config.paymentAction,
-        'authorizeAttributes': {
-            'authorizationReferenceId': config.authorizationReferenceId,
-            'authorizationAmount': {
-                'amount':               config.amount,
-                'currencyCode':         config.currencyCode
-            },
-            'transactionTimeout':       config.transactionTimeout,
-            'sellerAuthorizationNote':  config.sellerAuthorizationNote,
-            'softDescriptor':           config.softDescriptor
-        },
-        'sellerOrderAttributes': {
-            'sellerOrderId':            config.sellerOrderId,
-            'storeName':                config.storeName,
-            'customInformation':        config.customInformation,
-            'sellerNote':               config.sellerNote
-        }
-    };
-
-    return payload;
+function getChargeBuilder(billingAgreementId) {
+    const payloadBuilder = AmazonPay.chargePayload("2")
+        .withSellerId(config.sellerId)
+        .withBillingAgreementId(billingAgreementId)
+        .withPaymentAction(config.paymentAction)
+        .withAuthorizationReferenceId(config.authorizationReferenceId)
+        .withAmount(config.amount)
+        .withCurrency(config.currencyCode)
+        .withSellerAuthorizationNote(config.sellerAuthorizationNote)
+        .withSoftDescriptor(config.softDescriptor)
+        .withSellerOrderId(config.sellerOrderId)
+        .withStoreName(config.storeName)
+        .withCustomInformation(config.customInformation)
+        .withSellerNote(config.sellerNote);
+    return payloadBuilder;
 }
 
 module.exports = {
-    'buildSetup':       buildSetup,
-    'buildCharge':      buildCharge	
+    'getSetupBuilder': getSetupBuilder,
+    'getChargeBuilder': getChargeBuilder
 };
