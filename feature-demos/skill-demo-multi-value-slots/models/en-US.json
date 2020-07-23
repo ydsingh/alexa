@@ -1,0 +1,367 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "smoothie demo",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "COOKBOOK_MakeSmoothieIntent",
+          "slots": [
+            {
+              "name": "Fruits",
+              "type": "COOKBOOK_FRUITS",
+              "multipleValues": {
+                "enabled": true
+              }
+            },
+            {
+              "name": "Greens",
+              "type": "COOKBOOK_GREENS",
+              "multipleValues": {
+                "enabled": true
+              }
+            },
+            {
+              "name": "Extras",
+              "type": "COOKBOOK_EXTRAS",
+              "multipleValues": {
+                "enabled": true
+              }
+            }
+          ],
+          "samples": [
+            "{Extras}",
+            "{Greens}",
+            "{Fruits}",
+            "{Extras} smoothie with {Fruits} and {Greens}",
+            "{Extras} smoothie with {Greens} and {Fruits}",
+            "{Extras} smoothie with {Greens}",
+            "{Extras} smoothie with {Fruits}",
+            "{Extras} smoothie",
+            "{Fruits} smoothie with {Greens} and {Extras}",
+            "{Fruits} smoothie with {Extras} and {Greens}",
+            "{Fruits} smoothie with {Greens}",
+            "{Fruits} smoothie with {Extras}",
+            "{Fruits} smoothie",
+            "{Greens} smoothie",
+            "{Greens} smoothie with {Fruits} and {Extras}",
+            "{Greens} smoothie with {Extras} and {Fruits}",
+            "{Greens} smoothie with {Fruits}",
+            "{Greens} smoothie with {Extras}",
+            "smoothie with  {Greens} and {Extras}",
+            "smoothie with  {Greens} and {Fruits}",
+            "smoothie with {Fruits} and {Greens} ",
+            "smoothie with {Fruits} and {Extras}",
+            "smoothie with {Extras} and {Fruits}",
+            "smoothie with {Extras} and {Greens}",
+            "smoothie with {Fruits} {Greens} and {Extras}",
+            "smoothie with {Greens} {Fruits} and {Extras}",
+            "smoothie with {Fruits} {Extras} and {Greens}",
+            "smoothie with {Extras} {Fruits} and {Greens}",
+            "smoothie with {Extras} {Greens} and {Fruits}",
+            "smoothie with {Greens} {Extras} and {Fruits}"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "Pumpkin"
+              }
+            },
+            {
+              "name": {
+                "value": "Fig",
+                "synonyms": [
+                  "Figs"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Peach",
+                "synonyms": [
+                  "Peaches"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Lime"
+              }
+            },
+            {
+              "name": {
+                "value": "Grape",
+                "synonyms": [
+                  "Grapes"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Strawberry",
+                "synonyms": [
+                  "Strawberries"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Blackberry",
+                "synonyms": [
+                  "Blackberries"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avocado",
+                "synonyms": [
+                  "Avocados"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Cantaloupe",
+                "synonyms": [
+                  "Cantaloupes"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Blueberry",
+                "synonyms": [
+                  "Blueberries"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Mango",
+                "synonyms": [
+                  "Mangoes"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Banana",
+                "synonyms": [
+                  "Bananas"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Pineapple",
+                "synonyms": [
+                  "Pineapples"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Orange",
+                "synonyms": [
+                  "Oranges"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Apple",
+                "synonyms": [
+                  "Apples"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Pear",
+                "synonyms": [
+                  "Pears"
+                ]
+              }
+            }
+          ],
+          "name": "COOKBOOK_FRUITS"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "Spinach"
+              }
+            },
+            {
+              "name": {
+                "value": "Parsley"
+              }
+            },
+            {
+              "name": {
+                "value": "Garlic"
+              }
+            },
+            {
+              "name": {
+                "value": "Cucumber"
+              }
+            },
+            {
+              "name": {
+                "value": "Celery"
+              }
+            },
+            {
+              "name": {
+                "value": "Carrot",
+                "synonyms": [
+                  "Carrots"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Beet Root",
+                "synonyms": [
+                  "Beet",
+                  "Beets"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Kale",
+                "synonyms": [
+                  "Kale leaves"
+                ]
+              }
+            }
+          ],
+          "name": "COOKBOOK_GREENS"
+        },
+        {
+          "values": [
+            {
+              "name": {
+                "value": "Peppermint"
+              }
+            },
+            {
+              "name": {
+                "value": "Cinnamon"
+              }
+            },
+            {
+              "name": {
+                "value": "Protein Powder"
+              }
+            },
+            {
+              "name": {
+                "value": "Ice"
+              }
+            },
+            {
+              "name": {
+                "value": "Almond Milk"
+              }
+            },
+            {
+              "name": {
+                "value": "Coconut Water"
+              }
+            },
+            {
+              "name": {
+                "value": "Honey"
+              }
+            },
+            {
+              "name": {
+                "value": "Oat",
+                "synonyms": [
+                  "Oats"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Flax Seed",
+                "synonyms": [
+                  "Flax Seeds"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Coconut Milk"
+              }
+            },
+            {
+              "name": {
+                "value": "Yogurt"
+              }
+            },
+            {
+              "name": {
+                "value": "Ginger"
+              }
+            },
+            {
+              "name": {
+                "value": "Coffee"
+              }
+            },
+            {
+              "name": {
+                "value": "Almond butter"
+              }
+            },
+            {
+              "name": {
+                "value": "Vanilla"
+              }
+            },
+            {
+              "name": {
+                "value": "Chocolate",
+                "synonyms": [
+                  "Chocolates"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Peanut butter"
+              }
+            }
+          ],
+          "name": "COOKBOOK_EXTRAS"
+        }
+      ]
+    }
+  },
+  "version": "1"
+}
