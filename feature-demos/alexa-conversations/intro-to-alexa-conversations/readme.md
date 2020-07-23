@@ -11,7 +11,7 @@ To use this code in your own AWS Lambda function, you will need to login to your
 
 # Skill Functionality
 
-Please refer to the [developer documentation](https://developer.integ.amazon.com/en-US/docs/alexa/conversations/about-alexa-conversations.html) for details or terminology you don't understand as part of this guide.
+Please refer to the [developer documentation](https://developer.amazon.com/en-US/docs/alexa/conversations/about-alexa-conversations.html) for details or terminology you don't understand as part of this guide.
 
 This template provides a very simple starting point to demonstrate a few key concepts in Alexa Conversations. Out of the box it supports the following voice flows:
 
