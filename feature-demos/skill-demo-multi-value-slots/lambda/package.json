@@ -1,0 +1,21 @@
+{
+  "name": "skill-sample-nodejs-mvs",
+  "version": "1.0.0",
+  "description": "Lambda function for Multi-Value Slots.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "alexa",
+    "skill",
+    "MVS"
+  ],
+  "author": "Amazon.com",
+  "license": "Amazon Software License",
+  "dependencies": {
+    "ask-sdk-core": "^2.9.0",
+    "ask-sdk-model": "^1.29.0",
+    "aws-sdk": "^2.326.0"
+  }
+}
