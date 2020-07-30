@@ -1,0 +1,24 @@
+{
+  "name": "pizza-reference-skill",
+  "version": "1.0.0",
+  "description": "Example Alexa skill build in Alexa Conversations showing dialog design and interoperability",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pizza",
+    "convefsations"
+  ],
+  "author": "Amazon Alexa",
+  "license": "ASL",
+  "dependencies": {
+    "ask-sdk": "^2.7.0",
+    "ask-sdk-core": "^2.6.0",
+    "ask-sdk-model": "^1.18.0",
+    "aws-sdk": "2.637.0",
+    "i18next": "^19.4.4",
+    "lodash": "^4.17.15",
+    "sprintf-js": "^1.1.2"
+  }
+}
