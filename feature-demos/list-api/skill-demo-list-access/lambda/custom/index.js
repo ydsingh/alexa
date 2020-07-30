@@ -178,7 +178,7 @@ async function getToDoListId(handlerInput) {
       console.log(`decoded listId: ${decodedListId}`);
       // The default lists (To-Do and Shopping List) list_id values are base-64 encoded strings with these formats:
       //  <Internal_identifier>-TASK for the to-do list
-      //  <Internal_identifier>-SHOPPING_LIST for the shopping list
+      //  <Internal_identifier>-SHOPPING_ITEM for the shopping list
       // Developers can base64 decode the list_id value and look for the specified string at the end. This string is constant and agnostic to localization.
       if (decodedListId.endsWith('-TASK')) {
         // since we're looking for the default to do list, it's always present and always active
