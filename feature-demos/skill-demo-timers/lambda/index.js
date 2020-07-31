@@ -8,9 +8,9 @@ const languageStrings = require('./localisation');
 
 const TIMERS_PERMISSION = 'alexa::alerts:timers:skill:readwrite';
 // change to test different types of timers
-//const TIMER_FUNCTION = getAnnouncementTimer;
+const TIMER_FUNCTION = getAnnouncementTimer;
 //const TIMER_FUNCTION = getPredefinedTaskLaunchTimer;
-const TIMER_FUNCTION = getCustomTaskLaunchTimer;
+//const TIMER_FUNCTION = getCustomTaskLaunchTimer;
 
 function getAnnouncementTimer(handlerInput, duration) {
     return {
@@ -53,10 +53,10 @@ function getCustomTaskLaunchTimer(handlerInput, duration) {
                     text: handlerInput.t('TASK_TEXT_MSG')
                 }],
                 task : {
-                    name : 'amzn1.ask.skill.5d7024e1-887f-4660-bc4a-4f2c9bdb7c62.SignHoroscope',
-                    version : '1',
+                    name : '<SKILL_ID>.<TASK_NAME>',
+                    version : '<TASK_VERSION>',
                     input : {
-                        sign: 'libra'
+                        //<TASK_INPUT_PARAMETERS>
                     }
                 }
             },
@@ -64,7 +64,7 @@ function getCustomTaskLaunchTimer(handlerInput, duration) {
                 playAudible: true
             }
         }
-    }
+    };
 }
 
 function getPredefinedTaskLaunchTimer(handlerInput, duration) {
