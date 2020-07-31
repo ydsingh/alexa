@@ -116,7 +116,7 @@ function getPredefinedTaskLaunchTimer(handlerInput, duration) {
                 playAudible: true
             }
         }
-    };
+    }
 }
 
 function verifyConsentToken(handlerInput){
@@ -483,12 +483,10 @@ const AskForResponseHandler = {
         if (status.code === '400') {
             console.log('You forgot to specify the permission in the skill manifest!')
         }
-        // TODO There seems to be a bug right now that makes the server return a 500
-        // but the permission is effectively enabled
-        // remove the whole "if" block below when this is fixed
+        
         if (status.code === '500') {
             return handlerInput.responseBuilder
-                .speak(handlerInput.t('VOICE_PERMISSION_ACCEPTED') + handlerInput.t('REPROMPT_MSG'))
+                .speak(handlerInput.t('VOICE_PERMISSION_ERROR') + handlerInput.t('REPROMPT_MSG'))
                 .reprompt(handlerInput.t('REPROMPT_MSG'))
                 .getResponse();
         }
