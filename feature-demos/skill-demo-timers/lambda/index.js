@@ -8,9 +8,9 @@ const languageStrings = require('./localisation');
 
 const TIMERS_PERMISSION = 'alexa::alerts:timers:skill:readwrite';
 // change to test different types of timers
-const TIMER_FUNCTION = getAnnouncementTimer;
+//const TIMER_FUNCTION = getAnnouncementTimer;
 //const TIMER_FUNCTION = getPredefinedTaskLaunchTimer;
-//const TIMER_FUNCTION = getCustomTaskLaunchTimer;
+const TIMER_FUNCTION = getCustomTaskLaunchTimer;
 
 function getAnnouncementTimer(handlerInput, duration) {
     return {
@@ -53,10 +53,10 @@ function getCustomTaskLaunchTimer(handlerInput, duration) {
                     text: handlerInput.t('TASK_TEXT_MSG')
                 }],
                 task : {
-                    name : '<SKILL_ID>.<TASK_NAME>',
-                    version : '<TASK_VERSION>',
+                    name : 'amzn1.ask.skill.5d7024e1-887f-4660-bc4a-4f2c9bdb7c62.SignHoroscope',
+                    version : '1',
                     input : {
-                        //<TASK_INPUT_PARAMETERS>
+                        sign: 'libra'
                     }
                 }
             },
@@ -64,7 +64,7 @@ function getCustomTaskLaunchTimer(handlerInput, duration) {
                 playAudible: true
             }
         }
-    };
+    }
 }
 
 function getPredefinedTaskLaunchTimer(handlerInput, duration) {
@@ -116,7 +116,7 @@ function getPredefinedTaskLaunchTimer(handlerInput, duration) {
                 playAudible: true
             }
         }
-    };
+    }
 }
 
 function verifyConsentToken(handlerInput){
@@ -483,12 +483,10 @@ const AskForResponseHandler = {
         if (status.code === '400') {
             console.log('You forgot to specify the permission in the skill manifest!')
         }
-        // TODO There seems to be a bug right now that makes the server return a 500
-        // but the permission is effectively enabled
-        // remove the whole "if" block below when this is fixed
+        
         if (status.code === '500') {
             return handlerInput.responseBuilder
-                .speak(handlerInput.t('VOICE_PERMISSION_ACCEPTED') + handlerInput.t('REPROMPT_MSG'))
+                .speak(handlerInput.t('VOICE_PERMISSION_ERROR') + handlerInput.t('REPROMPT_MSG'))
                 .reprompt(handlerInput.t('REPROMPT_MSG'))
                 .getResponse();
         }
