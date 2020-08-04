@@ -1,0 +1,103 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "A skill that gives you your daily horoscope",
+          "examplePhrases": [
+            "Alexa open simple horoscope",
+            "Tell me the horoscope for libra",
+            "I'm capricorn"
+          ],
+          "name": "Simple Horoscope",
+          "description": "A skill that gives you your daily horoscope using your zodiac sign"
+        },
+        "en-GB": {
+          "summary": "A skill that gives you your daily horoscope",
+          "examplePhrases": [
+            "Alexa open simple horoscope",
+            "Tell me the horoscope for libra",
+            "I'm capricorn"
+          ],
+          "name": "Simple Horoscope",
+          "description": "A skill that gives you your daily horoscope using your zodiac sign"
+        },
+        "en-CA": {
+          "summary": "A skill that gives you your daily horoscope",
+          "examplePhrases": [
+            "Alexa open simple horoscope",
+            "Tell me the horoscope for libra",
+            "I'm capricorn"
+          ],
+          "name": "Simple Horoscope",
+          "description": "A skill that gives you your daily horoscope using your zodiac sign"
+        },
+        "en-IN": {
+          "summary": "A skill that gives you your daily horoscope",
+          "examplePhrases": [
+            "Alexa open simple horoscope",
+            "Tell me the horoscope for libra",
+            "I'm capricorn"
+          ],
+          "name": "Simple Horoscope",
+          "description": "A skill that gives you your daily horoscope using your zodiac sign"
+        },
+        "en-AU": {
+          "summary": "A skill that gives you your daily horoscope",
+          "examplePhrases": [
+            "Alexa open simple horoscope",
+            "Tell me the horoscope for libra",
+            "I'm capricorn"
+          ],
+          "name": "Simple Horoscope",
+          "description": "A skill that gives you your daily horoscope using your zodiac sign"
+        },
+        "es-ES": {
+          "summary": "Una skill que te da tu horóscopo del día",
+          "examplePhrases": [
+            "Alexa abre horóscopo simple",
+            "Dime el horóscopo de libra",
+            "Soy de capricornio"
+          ],
+          "name": "Horóscopo Simple",
+          "description": "Una skill que te da el horóscopo del día en base al signo del zodíaco"
+        },
+        "es-MX": {
+          "summary": "Una skill que te da tu horóscopo del día",
+          "examplePhrases": [
+            "Alexa abre horóscopo simple",
+            "Dime el horóscopo de libra",
+            "Soy de capricornio"
+          ],
+          "name": "Horóscopo Simple",
+          "description": "Una skill que te da el horóscopo del día en base al signo del zodíaco"
+        },
+        "es-US": {
+          "summary": "Una skill que te da tu horóscopo del día",
+          "examplePhrases": [
+            "Alexa abre horóscopo simple",
+            "Dime el horóscopo de libra",
+            "Soy de capricornio"
+          ],
+          "name": "Horóscopo Simple",
+          "description": "Una skill que te da el horóscopo del día en base al signo del zodíaco"
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "Sample Testing Instructions.",
+      "category": "KNOWLEDGE_AND_TRIVIA",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "tasks": [
+          {
+            "name": "SignHoroscope",
+            "version": "1"
+          }
+        ]
+      }
+    },
+    "manifestVersion": "1.0"
+  }
+}

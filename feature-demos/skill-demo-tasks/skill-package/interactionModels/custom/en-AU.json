@@ -1,0 +1,434 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "simple horoscope",
+            "modelConfiguration": {
+                "fallbackIntentSensitivity": {
+                    "level": "HIGH"
+                }
+            },
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "HoroscopeIntent",
+                    "slots": [
+                        {
+                            "name": "i_want",
+                            "type": "getType"
+                        },
+                        {
+                            "name": "my",
+                            "type": "articleType"
+                        },
+                        {
+                            "name": "daily",
+                            "type": "dailyType"
+                        }
+                    ],
+                    "samples": [
+                        "{i_want} {my} horoscope {daily}",
+                        "{i_want} {my} {daily} horoscope",
+                        "{i_want} {my} horoscope",
+                        "{my} horoscope {daily}",
+                        "{my} {daily} horoscope",
+                        "{daily} horoscope",
+                        "horoscope {daily}",
+                        "{my} horoscope",
+                        "horoscope"
+                    ]
+                },
+                {
+                    "name": "SignHoroscopeIntent",
+                    "slots": [
+                        {
+                            "name": "i_want",
+                            "type": "getType"
+                        },
+                        {
+                            "name": "my",
+                            "type": "articleType"
+                        },
+                        {
+                            "name": "daily",
+                            "type": "dailyType"
+                        },
+                        {
+                            "name": "of",
+                            "type": "ofType"
+                        },
+                        {
+                            "name": "sign",
+                            "type": "signType",
+                            "samples": [
+                                "of {sign}",
+                                "I'm {sign}",
+                                "{my} sign is {sign}",
+                                "{sign}",
+                                "it's {sign}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "to find {my} horoscope {of} {sign}",
+                        "to get {my} horoscope {of} {sign}",
+                        "{i_want} {my} horoscope {of} {sign}",
+                        "{sign} {daily} horoscope",
+                        "{sign} horoscope {daily}",
+                        "{sign} horoscope",
+                        "{my} {sign} {daily} horoscope",
+                        "{my} {sign} horoscope {daily}",
+                        "{my} {sign} horoscope",
+                        "{of} {sign}",
+                        "{sign}",
+                        "{my} zodiac sign is {sign}",
+                        "{my} sign is {sign}",
+                        "I'm {sign}",
+                        "{my} sign",
+                        "{my} zodiac sign",
+                        "zodiac sign"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                }
+            ],
+            "types": [
+                {
+                    "name": "getType",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "I would like to know"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "I'd like to know"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "I want to know"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "let's find"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "let's get"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "I need"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "I'd love"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "I would love"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "I'd like"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "I would like"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "find"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "find me"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "fetch me"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "get me"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "tell me"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "give me"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "I want"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "articleType",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "the"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "my"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "dailyType",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "fresh"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "today"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "of today"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "current"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "of the day"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "daily"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ofType",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "of"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "for"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "signType",
+                    "values": [
+                        {
+                            "id": "aries",
+                            "name": {
+                                "value": "aries"
+                            }
+                        },
+                        {
+                            "id": "taurus",
+                            "name": {
+                                "value": "tauro"
+                            }
+                        },
+                        {
+                            "id": "gemini",
+                            "name": {
+                                "value": "gemini"
+                            }
+                        },
+                        {
+                            "id": "cancer",
+                            "name": {
+                                "value": "cancer"
+                            }
+                        },
+                        {
+                            "id": "leo",
+                            "name": {
+                                "value": "leo"
+                            }
+                        },
+                        {
+                            "id": "virgo",
+                            "name": {
+                                "value": "virgo"
+                            }
+                        },
+                        {
+                            "id": "libra",
+                            "name": {
+                                "value": "libra"
+                            }
+                        },
+                        {
+                            "id": "scorpio",
+                            "name": {
+                                "value": "scorpio"
+                            }
+                        },
+                        {
+                            "id": "sagittarius",
+                            "name": {
+                                "value": "sagittarius"
+                            }
+                        },
+                        {
+                            "id": "capricorn",
+                            "name": {
+                                "value": "capricorn"
+                            }
+                        },
+                        {
+                            "id": "aquarius",
+                            "name": {
+                                "value": "aquarius"
+                            }
+                        },
+                        {
+                            "id": "pisces",
+                            "name": {
+                                "value": "pisces"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "SignHoroscopeIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "i_want",
+                            "type": "getType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "my",
+                            "type": "articleType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "daily",
+                            "type": "dailyType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "of",
+                            "type": "ofType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "sign",
+                            "type": "signType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1483729131164.489800821137"
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.70186047050.174251496893.1332832630563"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.1483729131164.489800821137",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "please tell me your zodiac sign"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "what's your zodiac sign?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.70186047050.174251496893.1332832630563",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "I don't think that's a real zodiac sign. please say it again"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "I didn't catch that sign. please say that again"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "that's not a valid zodiac sign. please say that again"
+                    }
+                ]
+            }
+        ]
+    }
+}
