@@ -1,0 +1,374 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "horóscopo simple",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "HoroscopeIntent",
+                    "slots": [
+                        {
+                            "name": "quiero",
+                            "type": "getType"
+                        },
+                        {
+                            "name": "mi",
+                            "type": "articleType"
+                        },
+                        {
+                            "name": "diario",
+                            "type": "dailyType"
+                        }
+                    ],
+                    "samples": [
+                        "horóscopo {diario}",
+                        "{mi} horóscopo {diario}",
+                        "{quiero} {mi} horóscopo {diario}",
+                        "{quiero} {mi} horóscopo",
+                        " {mi} horóscopo",
+                        " horóscopo"
+                    ]
+                },
+                {
+                    "name": "SignHoroscopeIntent",
+                    "slots": [
+                        {
+                            "name": "sign",
+                            "type": "signType",
+                            "samples": [
+                                "es {sign}",
+                                "el signo es {sign}",
+                                "de {sign}",
+                                "mi signo es {sign}",
+                                "{sign}",
+                                "soy de {sign}"
+                            ]
+                        },
+                        {
+                            "name": "quiero",
+                            "type": "getType"
+                        },
+                        {
+                            "name": "mi",
+                            "type": "articleType"
+                        },
+                        {
+                            "name": "diario",
+                            "type": "dailyType"
+                        }
+                    ],
+                    "samples": [
+                        "signo de {sign}",
+                        "{mi} signo de {sign}",
+                        "{mi} signo es {sign}",
+                        "soy de {sign}",
+                        "{mi} signo del zodíaco es {sign}",
+                        "{sign}",
+                        "de {sign}",
+                        "horóscopo de {sign}",
+                        "{mi} horóscopo de {sign}",
+                        "{quiero} {mi} horóscopo de {sign}",
+                        "signo de {sign} {diario}",
+                        "{mi} signo de {sign} {diario}",
+                        "{sign} {diario}",
+                        "de {sign} {diario}",
+                        "horóscopo de {sign} {diario}",
+                        "{mi} horóscopo de {sign} {diario}",
+                        "{quiero} {mi} horóscopo de {sign} {diario}"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                }
+            ],
+            "types": [
+                {
+                    "name": "articleType",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "mi"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "el"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getType",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "cuál es"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "me dé"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "saber"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "necesito"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "busca"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "quiero saber"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "quiero"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "da me"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "di me"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "dame"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "dime"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "dailyType",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "hoy"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "actual"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "de hoy"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "diario"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "del día"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "signType",
+                    "values": [
+                        {
+                            "id": "aries",
+                            "name": {
+                                "value": "aries"
+                            }
+                        },
+                        {
+                            "id": "taurus",
+                            "name": {
+                                "value": "tauro"
+                            }
+                        },
+                        {
+                            "id": "gemini",
+                            "name": {
+                                "value": "géminis"
+                            }
+                        },
+                        {
+                            "id": "cancer",
+                            "name": {
+                                "value": "cáncer"
+                            }
+                        },
+                        {
+                            "id": "leo",
+                            "name": {
+                                "value": "leo"
+                            }
+                        },
+                        {
+                            "id": "virgo",
+                            "name": {
+                                "value": "virgo"
+                            }
+                        },
+                        {
+                            "id": "libra",
+                            "name": {
+                                "value": "libra"
+                            }
+                        },
+                        {
+                            "id": "scorpio",
+                            "name": {
+                                "value": "escorpio"
+                            }
+                        },
+                        {
+                            "id": "sagittarius",
+                            "name": {
+                                "value": "sagitario"
+                            }
+                        },
+                        {
+                            "id": "capricorn",
+                            "name": {
+                                "value": "capricornio"
+                            }
+                        },
+                        {
+                            "id": "aquarius",
+                            "name": {
+                                "value": "acuario"
+                            }
+                        },
+                        {
+                            "id": "pisces",
+                            "name": {
+                                "value": "piscis"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "SignHoroscopeIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "sign",
+                            "type": "signType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.693833615639.718432832477"
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1308024449321.1399433619105.1089208396329"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "quiero",
+                            "type": "getType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "mi",
+                            "type": "articleType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "diario",
+                            "type": "dailyType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.693833615639.718432832477",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "dime tu signo del zodíaco por favor"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "dime tu signo por favor"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "cuál es tu signo del zodíaco?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "cuál es tu signo?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1308024449321.1399433619105.1089208396329",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "necesito que me digas un signo del zodíaco. por favor díme uno válido"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "no creo haber escuchado un signo válido. me lo dices otra vez?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "a ese signo no lo conozco. podrías repetirlo?"
+                    }
+                ]
+            }
+        ]
+    }
+}

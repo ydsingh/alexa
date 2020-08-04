@@ -1,0 +1,78 @@
+// Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: LicenseRef-.amazon.com.-AmznSL-1.0
+// Licensed under the Amazon Software License  http://aws.amazon.com/asl/
+
+module.exports = {
+    en: {
+        translation: {
+            WELCOME_MSG: 'Welcome. To give you your horoscope I need to know your zodiac sign. What is yours? ',
+            HELP_MSG: 'I can tell you your daily horoscope after you tell me your zodiac sign, also known as astrological sign. Which one is yours? ',
+            REPROMPT_MSG: `Please tell me your zodiac sign. `,
+            GOODBYE_MSG: ['Goodbye! ', 'So long! ', 'See you later! ', 'Cheers! '],
+            REFLECTOR_MSG: 'You just triggered {{intent}}',
+            FALLBACK_MSG: `Sorry, I don't know about that. Please try again. `,
+            ERROR_MSG: 'Sorry, there was an error. Please try again. ',
+            SOURCE_MSG: 'In order to give you your daily horoscope I need to know your zodiac sign. Which one is it? ',
+            Aquarius: 'Aquarius',
+            Pisces: 'Pisces',
+            Aries: 'Aries',
+            Taurus: 'Taurus',
+            Gemini: 'Gemini',
+            Cancer: 'Cancer',
+            Leo: 'Leo',
+            Virgo: 'Virgo',
+            Libra: 'Libra',
+            Scorpio: 'Scorpio',
+            Sagittarius: 'Sagittarius',
+            Capricorn: 'Capricorn',
+            HOROSCOPE_aquarius: 'If this wasn\'t a demo, here I would tell you the horoscope for Aquarius',
+            HOROSCOPE_pisces: 'If this wasn\'t a demo, here I would tell you the horoscope for Pisces',
+            HOROSCOPE_aries: 'If this wasn\'t a demo, here I would tell you the horoscope for Aries',
+            HOROSCOPE_taurus: 'If this wasn\'t a demo, here I would tell you the horoscope for Taurus',
+            HOROSCOPE_gemini: 'If this wasn\'t a demo, here I would tell you the horoscope for Gemini',
+            HOROSCOPE_cancer: 'If this wasn\'t a demo, here I would tell you the horoscope for Cancer',
+            HOROSCOPE_leo: 'If this wasn\'t a demo, here I would tell you the horoscope for Leo',
+            HOROSCOPE_virgo: 'If this wasn\'t a demo, here I would tell you the horoscope for Virgo',
+            HOROSCOPE_libra: 'If this wasn\'t a demo, here I would tell you the horoscope for Libra',
+            HOROSCOPE_scorpio: 'If this wasn\'t a demo, here I would tell you the horoscope for Scorpio',
+            HOROSCOPE_sagittarius: 'If this wasn\'t a demo, here I would tell you the horoscope for Sagittarius',
+            HOROSCOPE_capricorn: 'If this wasn\'t a demo, here I would tell you the horoscope for Capricorn'
+        }
+    },
+    es: {
+        translation: {
+            WELCOME_MSG: 'Te doy la bienvenida. Para darte tu horóscopo necesito saber tu signo del zodíaco. Cuál es el tuyo? ',
+            HELP_MSG: 'Puedo darte el horóscopo diaro si me dice tu signo del zodíaco. Cuál es el tuyo? ',
+            REPROMPT_MSG: `Por favor dime tu signo del zodíaco. `,
+            GOODBYE_MSG: ['Hasta luego! ', 'Adios! ', 'Hasta pronto! ', 'Nos vemos! '],
+            REFLECTOR_MSG: 'Acabas de activar {{intent}}',
+            FALLBACK_MSG: 'Lo siento, no se nada sobre eso. Por favor inténtalo otra vez. ',
+            ERROR_MSG: 'Lo siento, ha habido un problema. Por favor inténtalo otra vez. ',
+            SOURCE_MSG: 'Para poder darte tu horóscopo de hoy necesito saber tu signo del zodíaco. Cuál es? ',
+            Aquarius: 'Acuario',
+            Pisces: 'Piscis',
+            Aries: 'Aries',
+            Taurus: 'Tauro',
+            Gemini: 'Géminis',
+            Cancer: 'Cáncer',
+            Leo: 'Leo',
+            Virgo: 'Virgo',
+            Libra: 'Libra',
+            Scorpio: 'Escorpio',
+            Sagittarius: 'Sagitario',
+            Capricorn: 'Capricornio',
+            HOROSCOPE_aquarius: 'Si esta no fuera una demo aquí te diría el horóscopo de Acuario',
+            HOROSCOPE_pisces: 'Si esta no fuera una demo aquí te diría el horóscopo de Piscis',
+            HOROSCOPE_aries: 'Si esta no fuera una demo aquí te diría el horóscopo de Aries',
+            HOROSCOPE_taurus: 'Si esta no fuera una demo aquí te diría el horóscopo de Tauro',
+            HOROSCOPE_gemini: 'Si esta no fuera una demo aquí te diría el horóscopo de Géminis',
+            HOROSCOPE_cancer: 'Si esta no fuera una demo aquí te diría el horóscopo de Cáncer',
+            HOROSCOPE_leo: 'Si esta no fuera una demo aquí te diría el horóscopo de Leo',
+            HOROSCOPE_virgo: 'Si esta no fuera una demo aquí te diría el horóscopo de Virgo',
+            HOROSCOPE_libra: 'Si esta no fuera una demo aquí te diría el horóscopo de Libra',
+            HOROSCOPE_scorpio: 'Si esta no fuera una demo aquí te diría el horóscopo de Escorpio',
+            HOROSCOPE_sagittarius: 'Si esta no fuera una demo aquí te diría el horóscopo de Sagitario',
+            HOROSCOPE_capricorn: 'Si esta no fuera una demo aquí te diría el horóscopo de Capricornio',
+        }
+    }
+}

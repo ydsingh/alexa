@@ -1,0 +1,96 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Task to give you the horoscope by sign",
+        "version": "1",
+        "x-amzn-alexa-access-scope": "vendor-private",
+        "x-amzn-display-details": {
+            "en-US": {
+                "title": "A task to get the horoscope"
+            },
+            "es-US": {
+                "title": "Una tarea para obtener el horóscopo"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "horoscope by sign"
+        }
+    ],
+    "paths": {
+        "/SignHoroscope": {
+            "summary": "Horoscope by Sign",
+            "description": "To give you your horoscope by sign",
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Input"
+                            },
+                            "examples": {
+                                "dailyHoroscopeOfLibra": {
+                                    "summary": "An example input to get the horoscope of libra",
+                                    "description": "The example inputs would be used for validation of the task",
+                                    "value": {
+                                        "sign": "libra"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "When the horoscope is delivered successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessfulResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "When parameters are missing - e.g. sign is missing"
+                    },
+                    "404": {
+                        "description": "When the given parameter fails a validation - e.g. non existent zodiac sign"
+                    },
+                    "500": {
+                        "description": "When there's an error retrieving the horoscope"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Input": {
+                "type": "object",
+                "properties": {
+                    "sign": {
+                        "type": "string",
+                        "x-amzn-display-details": {
+                            "en-US": {
+                                "name": "Zodiac sign"
+                            },
+                            "es-US": {
+                                "name": "Signo del zodíaco"
+                            }
+                        }
+                    }
+                }
+            },
+            "SuccessfulResponse": {
+                "type": "object",
+                "properties": {
+                    "payload": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
