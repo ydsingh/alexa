@@ -1,0 +1,129 @@
+
+# Error Notifications for Alexa Skills
+
+## Synopsis
+
+This repo contains an Alexa Skill that demonstrates sending messages for different types of errors, using AWS Short Notification Service (SNS) and Slack Webhooks.
+
+**Because of this Skill's complex infrastructure requirements, it is not well-suited as an Alexa-hosted Skill.**
+
+## Introduction
+
+Awareness of defects is a basic building block of operational excellence for Alexa Skills. Skill crashes, i.e. failed responses / sessions, are a very disruptive experience for Alexa Skill users, and can have a range of negative consequences:
+- Reduced engagement + retention generally
+- Reduced trust, so that users are less likely to purchase from the Skill
+- Negative reviews, especially by users that turned from engaged to frustrated
+
+Thus, monitoring Skill crashes should be part of every Skill developer's toolkit.
+
+This repository contains an Alexa Skill that performs some common causes of Skill crashes, and mechanisms to be alerted about these via email and/or Slack. The error notifications are designed to be maximum helpful for identifying the errors in your logs.
+
+### Challenges in monitoring errors
+
+If you're the only one using a Skill, particularly while in development, making sense of your logs is quite easy: Typically you can are the user that experiences the error, and if you look it up right away, all your session's logs will be neatly ordered in the most current CloudWatch log group.
+
+However, if your Skill experiences errors in a production environment, tracing errors will me more challenging:
+- You need to identify the log group in which the error was logged
+- If you have concurrent Lambda instances, the logs of the failed session might be distributed over multiple log groups
+- You want to have the right amount of logging to be able to reproduce the error, e.g. the device's interfaces, the user's requests, the Skill's response, session variables etc.
+
+A particularly severe kind of error is when your Lambda function crashes, e.g. because you try to load a non-existent module. Inthis case, the Skill's error handler crashes along with the Lambda function, so that you don't get a full error mail. To mitigate this scenario, this Skill provisions a CloudWatch alert that is triggered by failed Lambda invocations. This error message is only available via email (not Slack), and is less verbose, but gives you some degree of visibility of the error.
+
+## Pre-requisites
+
+This repository assumes the following:
+- You have ASK CLI v2 installed and set up
+- You use AWS, have a programmatic IAM user associated to your ASK CLI, and have permissions for Lambda, CloudWatch, IAM, SNS
+- Optional: You have access to a Slack workspace where you can create channels and apps
+
+## Setup
+
+This project makes heavy use of a CloudFormation template (`infrastructure/cfn-deployer/skill-stack.yaml`) for the ASK CLI deployment. You should customize your CloudFormation template with the following parameters before deploying the Skill:
+- `NotificationEMail`: The email address to which you want to have error notification mails delivered by AWS SNS
+- `DebugMode`: Should be either `true` or `false`. In debug mode (default setting), the error handler will emit the error message and location within Alexa's speech output. If debug mode is disabled, it will only emit a sound.
+- `LogRetention`: The number of days that AWS CloudWatch will retain your logs before deleting them. Default (for dev environment) is 1, but for a production Skill you'd want at least 30 ndays.
+- `SlackWebhook`: This contains a dummy webhook that is not functional. You can either leave it empty if you don't want to receive error messages in Slack, or follow the instructions in the next section to create your own Slack webhook URL
+
+### Create a Slack webhook
+
+Follow these steps to create an app that can publish error messages into a selected channel in your workspace:
+1. Log into a Slack workspace in which you are authorized to create channels and apps.
+2. In Slack, create a new channel for error notifications to be posted in, e.g. 'Error Notifications'.
+3. Open your [Slack API Apps overview page](https://api.slack.com/apps) and click on 'Create New App'.
+4. In the wizard, select a name for your app (e.g. 'Error Notification Bot') and the Workspace you want to work with.
+5. Now you should be in the 'Basic Information' screen for your new app. With 'Display Information' below you can give your app a cute icon. When you're done, click on 'Incoming Webhooks' in the 'Add features and functionality' section.
+6. Toggle 'Active Incoming Webhooks' to 'On' in the 'Incoming Webhooks' screen.
+7. Now scroll down and click on the button 'Add New Webhook to Workspace'.
+8. In the dropdown menu 'Where should `<App Name>` post?', choose the channel you created in step 2 and confirm.
+9. Back in the 'Incoming Webhooks' screen, scroll to the bottom to see the webhook URL that your app can use to post in the selected channel. Copy the URL and paste as the value of `SlackWebhook` in your CloudFormation template.
+
+### Deploy
+
+Once you have customized your CloudFormation template, you're ready to deploy:
+
+```
+ask deploy
+```
+
+This will create a new custom Skill with `de-DE`, `en-GB` and `en-US` locales, and a CloudFormation stack with the following resources:
+- A Lambda function with environment variables for most of the parameters you specified above
+- The IAM role for the Lambda function, with permissions for CloudWatch and SNS
+- The event permission of the Alexa Skill to invoke the Lambda function
+- A CloudWatch log group with your selected log retention
+- A CloudWatch alarm that is triggered once the number of errors per 60 seconds is above one
+- An SNS topic with the `NotificationEMail` email as a subscriber
+
+Please note that you will get an email from AWS to the `NotificationEMail` address. You need to open this email and confirm that you opt-in to this subscription, otherwise you won't receive emails with error messages.
+
+## Using the Skill
+
+The happy path of this Skill is a conversation like the following:
+
+- *User*: Alexa, open Crash Monitor!
+- *Alexa*: Welcome! Which kind of error do you want to trigger: Time-out, invalid response, or runtime exception?
+- *User*: Invalid response.
+- *Alexa*: As you wish! [short break] There was a problem with the requested Skill's response.
+
+If you set up your Skill completely, you will receive a message on both email and Slack, with the following data:
+- Error type: `INVALID_RESPONSE`
+- Error message: `Invalid SSML Output Speech [...]. Error: Invalid attribute target for SSML element break`
+- Log stream: `2020/09/01/[$LATEST]abcdef0123456789...`
+- Log stream URL: `https://console.aws.amazon.com/cloudwatch/home?region=...`
+- Session ID: `amazn1.echo-api.session.abcdef0123456789...`
+- Session query URL: `https://console.aws.amazon.com/cloudwatch/home?region=...`
+- AWS Request ID: `abcdef01-2345-6789-abcdef012345`
+- Error timestamp: `2020-09-01T12:00:00.000Z`
+- Handler input: `[object Object]` (Basically, the request envelope)
+
+With these data, we will be able to efficiently trace the error in CloudWatch logs. But before, let's take a step back and investigate which log data the Skill emits:
+- If the request is the first in a session, the full handler input object will be logged
+- For subsequent requests in a session, only the request propoerty will be logged
+- To enable better tacing of a user's interaction with the Skill, the current `sessionId` gets appended to the logged request property
+- The `outputSpeech` text or SSML is also logged, so that SSML errors can be identified easier
+- Every log item also contains the prepended AWS request ID. This will be useful for showing all log items for one interaction
+
+Now, to quickly access the logs for the Lambda invocation in which the error was raised, you can do the following:
+1. Copy the value of **AWS Request ID** from the error message to your clipboard
+2. Follow the **Log stream URL** link. It will take you to the corresponding CloudWatch log stream in your AWS console (asking you to log in if you aren't already).
+3. Paste the AWS Request ID into the search bar. This will show you the logs for this exact turn.
+
+If you want to trace the entire session until the point where it failed, you can do the following:
+1. Follow the **Session query URL** link in the email, which will lead you to CloudWatch insights
+2. Give CloudWatch some seconds, or up to a minute to ingest and index all the log data. If you execute the query too soon, you will get 0 results.
+3. After about a minute, execute the pre-populated query with 'Run query'
+4. Each line in the result should represent one turn in your failed session. You can use the fields `logStream` and `requestId` to 'zoom in' on individual turns in more detail.
+
+## AWS Services and Costs
+
+For full transparency, here is a list of the AWS services that this project uses, and their respective costs (in the `us-east-1` region, at 2020-07-20). If you're using this as for learning and demonstration purposes, you can expect no AWS costs, but if you build error notifications into your Skill projects and have a lot of errors, you might incur some cents for AWS SNS.
+
+| Service              | Free Tier                                       | Costs                                               | Comment                                                                                 |
+|----------------------|-------------------------------------------------|-----------------------------------------------------|-----------------------------------------------------------------------------------------|
+| Lambda               | 400,000 GB-seconds per month                    | $0.0000166667 per GB-second                         |                                                                                         |
+| IAM roles            | n/a                                             | n/a                                                 | IAM roles are free of charge                                                            |
+| CloudWatch Log Group | 5GB Data (ingestion, archival + scanning)       | $0.50 per GB (ingestion) + $0.03  per GB (archival) | To reduce archival costs, the CloudFormation template contains a log retention policy   |
+| CloudWatch Insights  | 5GB Data (ingestion, archival + scanning)       | $0.005  per GB of data scanned                      | The error notification mail contains a prepared CloudWatch Insight query                |
+| CloudWatch Alarms    | 10 Alarm metrics                                | $0.10 per alarm metric                              | This project creates a CloudWatch alarm to monitor your Lambda for errors               |
+| SNS Publishes        | First 1 million SNS requests per month          | $0.50  per 1 million Amazon SNS requests thereafter | If you have so many errors, these 50 cents will be the least of your concerns :D        |
+| SNS email delivery   | 1000 requests (of max 64 KB per item) per month | $2.00 per 100,000 requests                          | This, along with CloudWatch logs, is where you would most likely see any kind of costs. |
+| CloudFormation       | n/a                                             | n/a                                                 | CloudFormation is free of charge, but you get billed for the services it provisions     |                                                                                    |
