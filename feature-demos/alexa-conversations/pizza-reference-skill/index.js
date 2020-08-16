@@ -200,7 +200,7 @@ const YesIntentHandler = {
             // if we dont have a special name, lets ask for it again
             if (!name){
                 speakOutput = handlerInput.t('GET_SPECIAL_PIZZA_NAME');
-                repromt = handlerInput.t('GET_SPECIAL_PIZZA_NAME_REPROMPT');
+                reprompt = handlerInput.t('GET_SPECIAL_PIZZA_NAME_REPROMPT');
             } else {
                 return handlerInput.responseBuilder
                     .addDirective({
