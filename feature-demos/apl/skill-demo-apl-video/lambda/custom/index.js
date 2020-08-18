@@ -15,7 +15,7 @@ const LaunchRequestHandler = {
       .addDirective({
         type: 'Alexa.Presentation.APL.RenderDocument',
         version: '1.2',
-        document: require('./apl/button'), // Import button APL document
+        document: require('./apl/video'), // Import video APL document
         datasources: {}
       })
       .getResponse()
