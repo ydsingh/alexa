@@ -18,7 +18,7 @@ Resources:
       Description: Alexa Skill Lambda function
       Handler: index.handler
       MemorySize: 128
-      Runtime: nodejs8.10
+      Runtime: nodejs12.x
       Timeout: 7
       Events:
         AlexaTrigger:

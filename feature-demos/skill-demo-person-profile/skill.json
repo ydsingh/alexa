@@ -1,0 +1,40 @@
+{
+  "manifest": {
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": "lambda",
+          "uri": "skill-demo-nodejs-person-profile"
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "permissions": [
+      {
+        "name": "alexa::profile:name:read"
+      },
+      {
+        "name": "alexa::profile:mobile_number:read"
+      },
+      {
+        "name": "alexa::person_id:read"
+      }
+    ],
+    "publishingInformation": {
+      "category": "EDUCATION_AND_REFERENCE",
+      "distributionCountries": [],
+      "isAvailableWorldwide": true,
+      "locales": {
+        "en-US": {
+          "description": "Allows the recognized user to ask for their profile name or phone number.",
+          "examplePhrases": [
+            "Alexa open person profile demo"
+          ],
+          "name": "Person Profile Demo",
+          "summary": "Sample skill demo that showcases Person Profile API"
+        }
+      },
+      "testingInstructions": "Sample Testing Instructions."
+    }
+  }
+}

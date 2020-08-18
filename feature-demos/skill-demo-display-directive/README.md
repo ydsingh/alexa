@@ -9,11 +9,11 @@ When you begin this skill it will display the data we have in our skill in a ver
 *  The sample code on [GitHub](https://github.com/alexa/alexa-cookbook/tree/master/feature-demos/skill-demo-display-directive).
 
 ## Setting Up the Demo
-This folder contains the interaction model and skill code.  It is structured to make it easy to deploy if you have the ASK CLI already setup.  If you would like to use the Developer Portal, you can follow the steps outlined in the [Hello World](https://github.com/alexa/skill-sample-nodejs-hello-world) example, substituting the [Model](./models/en-US.json) and the [skill code](./lambda/custom/index.js) when called for.
+This folder contains the interaction model and skill code.  It is structured to make it easy to deploy if you have the ASK CLI already setup.  If you would like to use the Developer Portal, you can follow the steps outlined in the [Hello World](https://github.com/alexa/skill-sample-nodejs-hello-world) example, substituting the [Model](./skill-package/interactionModels/custom/en-US.json) and the [skill code](./lambda/custom/index.js) when called for.
 
 ## Exploring the Display Directive
 
-There is one interface to be enabled on the skill configuration side, however most of the dispaly template work is on the skill code side.  There are two handlers, one for the generating the list views and one for the body templates.  You'll notice that their structure is basically the same, with different elements being displayed based on the template selected.  The demo only uses one size image, however many can be supplied in the response and the best one can then be selected by the display rendering engine.
+There is one interface to be enabled on the skill configuration side, however most of the display template work is on the skill code side.  There are two handlers, one for the generating the list views and one for the body templates.  You'll notice that their structure is basically the same, with different elements being displayed based on the template selected.  The demo only uses one size image, however many can be supplied in the response and the best one can then be selected by the display rendering engine.
 
 ## Running the demo
 
