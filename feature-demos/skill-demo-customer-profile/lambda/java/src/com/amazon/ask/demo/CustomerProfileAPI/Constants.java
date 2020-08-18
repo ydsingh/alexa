@@ -18,6 +18,6 @@ public class Constants {
     public static final String STOP= "Bye! Thanks for using the Sample Alexa Customer Profile API Skill!";
 
     public static final String NAME_PERMISSION = "alexa::profile:name:read";
-    public static final String EMAIL_PERMISSION = "alexa::profile::email:read";
+    public static final String EMAIL_PERMISSION = "alexa::profile:email:read";
     public static final String MOBILE_NUMBER_PERMISSION = "alexa::profile:mobile_number:read";
 }
