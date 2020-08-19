@@ -72,8 +72,9 @@ Manual steps:
 1. Locate and double click on the new zip file you made previously.
 1. You will need to click the blue "Save" button, or continue creating your new skill, for the upload to complete.
 
-Using the ASK CLI:
-From the folder with your skill.json file, enter ```ask deploy```.
+## Additional Tools
+
+*[Local Persistence Adapter](./LocalPersistence/)* - A persistence adapter you can use to persist skill data locally as flat files when you are coding and debugging locally. It makes it easy to inspect and edit persistent data for testing.
 
 See also [How To Test](../guides/testing/README.md)
 
